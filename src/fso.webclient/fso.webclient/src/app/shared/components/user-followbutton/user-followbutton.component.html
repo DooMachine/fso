@@ -1,0 +1,19 @@
+<button
+  *ngIf="followState === 2 || followState === null"
+  class="text-white followButton "
+  color="primary"
+  (click)="onfollow.emit({username: username, previousFollowState: followState})" 
+  color="primary" mat-stroked-button> {{followText}}</button>
+<button 
+  *ngIf="followState === 1"
+  class="followButton no-border"
+  (click)="onunfollow.emit({username: username,previousFollowState: followState})"
+      
+  color="primary" mat-stroked-button>{{followingText}} </button>
+  <button 
+  *ngIf="followState === 0"
+  (mouseenter)="pendingEnter()"
+  (mouseleave)="pendingLeave()"
+  class="followButton" (click)="onunfollow.emit({username: username,previousFollowState: followState})"
+    
+  color="accent" mat-raised-button>{{pendingText}} </button>

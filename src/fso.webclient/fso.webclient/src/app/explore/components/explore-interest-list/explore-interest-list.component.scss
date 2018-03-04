@@ -1,0 +1,45 @@
+.i_name{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    text-overflow: ellipsis;
+    font-size: 21px;
+    font-weight: 600;
+    color:#fff;
+    -webkit-filter: drop-shadow(29px 16px 21px rgba(0,0,0,0.9));
+  filter: drop-shadow(29px 16px 21px rgba(0,0,0,0.9));
+  text-shadow: 2px 16px 21px rgba(0,0,0,0.9);
+}
+
+.i_cover_img{
+    height: 100%;
+}
+.fexp-fol{
+    -webkit-filter: saturate(50%);
+    -moz-filter: saturate(50%);
+    -o-filter: saturate(50%);
+    -ms-filter: saturate(50%);
+    filter: saturate(50%);
+}
+.filter-animation{
+    animation: all ease .4s;
+}
+mat-grid-list{
+    cursor: pointer;
+}
+$size:32px;
+mat-icon{
+    position: absolute;
+    right: 0px;
+    top:0px;
+    padding-left: 6px;
+    padding-bottom: 6px;
+    background: rgba(0,0,0,0.21);
+    border-bottom-left-radius: 40px;
+    font-size: 21px;
+    font-weight: 600;
+    color:#fff;
+    font-size: $size;
+    width:$size;
+    height: $size;
+}

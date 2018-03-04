@@ -1,0 +1,28 @@
+
+
+  <mat-list>
+    <mat-divider color="primary"></mat-divider>
+    <mat-list-item title="{{interest.name}}" *ngFor="let interest of interests">
+      <img [default]
+      [style.border-color]="interest.alphaColor" mat-list-avatar class="img-circle img-group" [src]="interest.profileImage" />
+      <p  mat-line>
+        <a class="a-grey interest-list-name" [routerLink]="['/explore',interest.urlKey]"
+        ><span>{{interest.name}}</span></a>             
+      </p>
+      <span mat-line class="secondary-text">
+        {{interest.followerCount | number}} people
+      </span>
+      <button
+      color="primary"
+      class="followButton"
+       fxFlex="90px" mat-raised-button (click)="joinGroup.emit(interest)"
+      *ngIf="!interest.isCurrentUserFollowing">Join</button>
+      <button mat-stroked-button
+      color="primary"  
+      class="followButton"    
+      fxFlex="90px"
+      (click)="leaveGroup.emit(interest)"
+      *ngIf="interest.isCurrentUserFollowing">Leave</button>
+    </mat-list-item>
+  </mat-list>
+

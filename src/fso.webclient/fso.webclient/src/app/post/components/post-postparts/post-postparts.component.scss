@@ -1,0 +1,46 @@
+$mq-tablet-portrait : 768px !default;
+@mixin mobile-portrait-and-below {
+	@media (max-width : $mq-tablet-portrait) {
+		@content;
+	}
+}
+
+.postPart-gallery-container{
+    height: 485px !important;
+    max-width: 100%;
+    background:rgba(0,0,0,1);
+    @include mobile-portrait-and-below(){
+        height: 395px !important;
+    }
+}
+
+.activepostpart-img{
+    cursor: pointer;
+    text-indent: -12300px;
+}
+.viewmode-buttons{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    color:whitesmoke;
+}
+.navigate-buttons{
+    position: absolute;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    color:whitesmoke;
+}
+.navigate-buttons button{
+    background-color:rgba(0,0,0,0.19);
+    pointer-events: visible;
+}
+.viewmode-buttons button{
+    border-radius: 0;
+    background-color:rgba(0,0,0,0.12);
+}
+.pp-cont{
+    position: relative;
+}

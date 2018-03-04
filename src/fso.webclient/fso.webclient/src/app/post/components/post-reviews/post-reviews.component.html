@@ -1,0 +1,130 @@
+<mat-card-subtitle *ngIf="totalReviewCount == 0" #reviewTitle>    
+    <ng-template >
+      <h3>{{totalReviewCount | number}} Reviews</h3>
+    </ng-template>
+</mat-card-subtitle>
+<mat-card-content>
+    <app-prc-loading count="4" *ngIf="isLoading">
+
+    </app-prc-loading>
+
+  <div *ngFor="let review of reviews">
+    <mat-card >
+      <mat-card-header>
+        <a mat-card-avatar [routerLink]="['/user',review.authorInfo?.username]">
+          <img default mat-card-avatar [src]="review.authorInfo?.profileImage" class="img-circle"/>
+        </a>
+        <mat-card-title><a class="no-anchor-text a-grey" 
+          [routerLink]="['/user',review.authorInfo?.username]">{{review.authorInfo?.username}}</a></mat-card-title>
+        <mat-card-subtitle>{{review.dateUtcPublished | date:"HH:mm"}} - {{review.dateUtcPublished | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="4px">
+            <div fxFlex="45px">
+                <mat-slider 
+                thumbLabel="true"
+                color="warn"
+                vertical min="1" max="10" step="0.5" disabled="true"
+                [value]="review.postRate"></mat-slider>
+            </div>
+            <div fxFlex>
+              <article class="review-content"  [innerHtml]="review.content | newline">
+              </article>     
+            </div>   
+        </div> 
+      </mat-card-content>
+      <mat-card-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+        <div  fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="8px">
+          <span class="feasion-dark-theme" matTooltip="Like" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
+            <button
+            (click)="review.likeStatus == 0 ? onunlikeReview.emit(review.id) : onlikeReview.emit(review.id)"
+            color="{{review.likeStatus == 0 ? 'warn' : 'primary'}}"  mat-icon-button>
+                <mat-icon aria-label="Like">thumb_up</mat-icon>
+            </button>
+            <span class="secondary-text">{{review.likeCount}}</span>
+          </span>
+          <span class="feasion-dark-theme" matTooltip="Dislike" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+            <button
+            (click)="review.likeStatus == 1 ? onundislikeReview.emit(review.id) : ondislikeReview.emit(review.id)"
+              color="{{review.likeStatus == 1 ? 'warn' : 'primary'}}" mat-icon-button>
+                <mat-icon aria-label="Dislike">thumb_down</mat-icon>
+            </button>
+            <span class="secondary-text">{{review.dislikeCount}}</span>
+          </span>
+          <span
+            matTooltip="See comments"
+             class="feasion-dark-theme" matTooltipPosition="above" 
+              matTooltipShowDelay="200" matTooltipHideDelay="200">
+              
+              <button 
+              (click)="review.showComments==true ? hideComments.emit(review.id) : showComments.emit(review.id)"
+              color="primary" mat-icon-button>
+                  <mat-icon aria-label="Comments">comment</mat-icon>
+              </button>
+              <span class="secondary-text">{{review.commentCount}}</span>           
+             
+          </span>
+          
+        </div>
+        <div class="feasion-dark-theme">
+            <button
+              color="primary"  [matMenuTriggerFor]="reportMenu"
+              matTooltip="Report this review" 
+              matTooltipShowDelay ="300" matTooltipHideDelay="200"
+              matTooltipPosition="above"
+              mat-icon-button>
+              <mat-icon aria-label="Rating">feedback</mat-icon>
+          </button>
+            <mat-menu #reportMenu="matMenu">             
+                <button
+                (click)="onReportReview.emit({reviewId: review.id, reportType: 3})"  
+                 mat-menu-item>
+                    <mat-icon> report_problem</mat-icon>
+                    <span>Violating Rules </span>
+                </button>
+                <button
+                (click)="onReportReview.emit({reviewId: review.id, reportType: 4})"  
+                 mat-menu-item>
+                    <mat-icon> sentiment_dissatisfied </mat-icon>
+                    <span>Other </span>
+                </button>
+              </mat-menu>
+        </div>
+      </div>
+      </mat-card-actions>
+      <mat-card-content>
+               
+      </mat-card-content>
+      
+      <app-post-review-comments
+        [hidden]="!review.showComments"
+        (showCommentForm)="showCommentForm.emit($event)"
+        (closeCommentForm)="closeCommentForm.emit($event)"
+        (onlikeComment)="onlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+        (onunlikeComment)="onunlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+        (ondislikeComment)="ondislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+        (onundislikeComment)="onundislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+        [reviewId]="review.id"
+        [comments] ="comments">  
+          <app-post-review-addcomment #commentForm *ngIf="review.showCommentForm"
+          [commentFormPending]="review.commentFormPending"
+          (closeCommentForm)="closeCommentForm.emit(review.id)"
+          (submitComment) ="submitCommentForm.emit({reviewId:review.id,commentForm:$event})"
+          [commentFormError]="review.commentFormError"
+          [authUserProfileImage]="authUserProfileImage" ></app-post-review-addcomment>     
+      </app-post-review-comments>
+      
+    </mat-card>
+    
+  </div>
+  <div *ngIf="hasNextPage" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="2px">
+      <button class="more-button"  (click)="loadNextPage.emit(postId)" mat-button>More..</button>
+  </div>
+  <a *ngIf="showSeeAllReviewsOption" 
+  (click)="loadAllReviews.emit(postId)"
+  [routerLink]="['../../']" mat-button>See all reviews</a>
+    <div *ngIf="totalReviewCount == 0">
+        <app-nothing-to-show icon="sentiment_dissatisfied">No review here.<br /> Add first review of this post.</app-nothing-to-show>
+     </div>
+</mat-card-content>

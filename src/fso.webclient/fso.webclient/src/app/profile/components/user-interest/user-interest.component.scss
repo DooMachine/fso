@@ -1,0 +1,25 @@
+.img-group{
+    width:50px;
+    height: 50px;
+    border:2px solid;
+}
+button{
+    font-weight: 600;
+}
+.mat-subheader{
+    padding:0;
+}
+.mat-subheader h4{
+    padding:0;
+    margin:0;
+}
+.interestTitle{
+    margin-bottom:3px;
+}
+/deep/ 
+ul{
+    padding:0;
+}
+.mat-list .mat-list-item .mat-list-item-content{
+    padding:0;
+}

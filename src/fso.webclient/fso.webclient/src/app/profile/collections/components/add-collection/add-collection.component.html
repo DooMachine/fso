@@ -1,0 +1,38 @@
+
+<mat-card >  
+
+<form [formGroup]="form" novalidate>    
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="12px">
+            <h5 class="mat-subtitle">Add new collection</h5>            
+        <mat-form-field fxFlex color="accent">
+            <input type="text"  matInput placeholder="Collection name" 
+            [formControl]="nameCtrl" />
+            <div *ngIf="nameCtrl.invalid  && (nameCtrl.dirty || nameCtrl.touched)"
+                  class="accent">  
+                <div *ngIf="nameCtrl.errors.required">
+                    Collection name is required.
+                </div>
+                <div *ngIf="nameCtrl.errors.maxLenght">
+                    Collection name must be maximum 100 characters long.
+                </div>
+        </div>
+        </mat-form-field>        
+        <mat-form-field fxFlex color="accent">
+            <textarea type="text" col="5" matInput placeholder="Collection description" 
+            [formControl]="descriptionCtrl" >
+            </textarea>
+            <div *ngIf="descriptionCtrl.invalid  && (descriptionCtrl.dirty || descriptionCtrl.touched)"
+                  class="accent"> 
+                <div *ngIf="descriptionCtrl.errors.maxLenght">
+                    Collection description must be maximum 512 characters long.
+                </div>
+            </div>
+        </mat-form-field>    
+    </div>
+    <span class="error" *ngIf="collectionFormError">{{collectionFormError| async}}</span>      
+    <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="3px">          
+        <button color="warn" [disabled]="collectionFormPending" class="saveButton"  
+        (click)="submit($event)" mat-raised-button>Add</button>
+    </div>
+</form>
+</mat-card>

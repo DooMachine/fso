@@ -1,0 +1,104 @@
+<div>
+<mat-card class="card">
+  
+    <mat-card-header>
+      <a mat-card-avatar [routerLink]="['/user',postCard.authorInfo.username]">
+        <img mat-card-avatar [default] [src]="postCard.authorInfo.profileImage" class="img-circle"/>
+      </a>
+      <mat-card-title><a class="no-anchor-text a-grey"
+        [routerLink]="['/user',postCard.authorInfo.username]">{{postCard.authorInfo.username}}</a> <span class="a-desc secondary-text"><ng-content select="[activityDescription]"></ng-content></span></mat-card-title>
+      <mat-card-subtitle>
+        {{postCard.dateUtcPublished | utcdate | date:'d MMM yy - hh:mm'}} 
+        <span class="settingsButton" *ngIf="isOwner"> 
+          - <a 
+          [routerLink]="['/post',postCard.id,'edit']"
+          mat-icon-button>
+              <mat-icon aria-label="Edit Post">settings</mat-icon>
+          </a>
+        </span> 
+      </mat-card-subtitle>
+      <div fxFlex fxLayout="row" fxLayoutAlign="end center" class="mat-card-header-text text-right">
+          <app-user-followbutton
+          *ngIf="!isOwner"
+          (onfollow)="onFollowUser($event)"
+          (onunfollow)="onUnfollowUser($event)"
+          [username]="postCard.authorInfo.username"
+          [followState] ="postCard.authorInfo.followState"
+          >
+          </app-user-followbutton>
+      </div> 
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="pos-rel">
+        <div class="abs-header">
+          <mat-card-title>
+              <a mat-line class="no-anchor-text p-c-title"
+              [routerLink]="['/post',postCard.id]">
+              {{postCard.title}}</a>
+            </mat-card-title>    
+          </div> 
+        <div
+          class="postPartsBorder" fxLayout="row" fxLayoutAlign="center center">
+          <app-postcard-postpart fxFlex [postId]="postCard.id" 
+          [username]="postCard.authorInfo.username"
+          [postParts]="postCard.postParts"></app-postcard-postpart>      
+        </div>  
+        <div class="abs-actions">
+            <mat-card-actions>
+              <div fxLayout="row" fxLayoutAlign="space-between start">
+                <div  fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="4px">
+                  <span *ngIf="!postCard.isCurrentUserLiked" class="feasion-dark-theme" matTooltip="Add to favourites" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="right">
+                    <button
+                    (click)="onlikePost.emit(postCard.id)"
+                    color="accent"  mat-icon-button>
+                        <mat-icon aria-label="Favourite Post">favorite_border</mat-icon>
+                    </button>
+                    <span class="secondary-text">{{postCard.favouriteCount}}</span>
+                  </span>
+                  <span *ngIf="postCard.isCurrentUserLiked" matTooltip="Remove from favourites" matTooltipPosition="right"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+                    <button
+                    (click)="onunlikePost.emit(postCard.id)"
+                      color="warn"  mat-icon-button>
+                        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+                    </button>
+                    <span class="secondary-text">{{postCard.favouriteCount}}</span>
+                  </span>
+                  <span 
+                      matTooltip="Reviewed {{postCard.rating | number:'1.1-1'}} rating" 
+                      matTooltipShowDelay ="400" matTooltipHideDelay="200"
+                      matTooltipPosition="right">
+                        <button
+                          color="primary"  mat-icon-button>
+                            <mat-icon aria-label="Rating">stars</mat-icon>
+                        </button>
+                        <span class="secondary-text">{{postCard.rating | number:'1.1-1'}}</span>
+                    </span>    
+                  <span
+                    matTooltip="Review this post" class="feasion-dark-theme"
+                    matTooltipPosition="right"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+                      <a color="primary"
+                      class="add-r-b"
+                      color="accent"
+                      [routerLink]="['/post',postCard.id,'addreview']"
+                      mat-icon-button>
+                          <mat-icon aria-label="Add a review">rate_review</mat-icon>
+                      </a>
+                      <span class="secondary-text">{{postCard.reviewCount}}</span>
+                  </span>
+                         
+                </div>
+              <div>
+                <div class="feasion-dark-theme">
+                    
+                </div>
+              </div>
+            </div>
+            </mat-card-actions>    
+          </div>    
+    </div>
+    </mat-card-content>
+    
+</mat-card>
+
+</div>

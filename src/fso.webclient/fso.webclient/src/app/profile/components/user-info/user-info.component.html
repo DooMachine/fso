@@ -1,0 +1,108 @@
+<div fxLayout="column" class="wrap-user" fxLayoutAlign="start center" fxLayoutGap.lt-lg="16px" fxLayoutGap="16px">
+  
+<div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="6px">
+    <div class="user-info-container" 
+       fxLayout="row" fxLayoutAlign="start stretch"
+       fxLayoutWrap
+        fxLayoutGap="2px">
+      <div fxLayout="column" fxFlex.sm ="100%" fxFlex.xs="100%" class="left-container" fxLayoutAlign="start stretch" fxLayoutGap="8px">  
+        <div  fxLayout="column" fxLayoutAlign="start stretch"  class="userInfo">
+          <div fxFlex="auto" [style.paddingRight.px]="12"
+           fxLayout.lt-sm="column" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="18px"  fxLayoutGap.lt-lg="12px">
+            <div [style.width.px] = "230"  fxFlex.sm ="100%" fxFlex.xs ="100%" class="user-info-image-container">
+              <img              
+              class="user-info-image img-circle img-responsive"
+              alt="{{userInfo.username}}"
+              [default]
+              [src]= "userInfo.profileImageUrl" />
+            </div>
+            <div  fxLayout="column" fxLayoutAlign.lt-lg="start stretch"
+             fxLayoutAlign="start stretch" fxLayoutGap="19px">
+              <div
+                fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap.lt-md="12px" fxLayoutGap="12px">
+                <a class="no-anchor-text a-grey" mat-colors="{color:'primary'}" 
+                [routerLink]="[ '/user', userInfo.username ]">
+                  <h3 class="mat-subreading-2" mat-colors="{color:'primary'}">{{userInfo.username}}</h3>
+                  <span class="mat-caption">{{userInfo.name}} {{userInfo.surname}}</span>
+                </a>
+                <div fxLayout="column" fxLayoutGap="4px">           
+                  <div *ngIf="currentUserName !== userInfo.username"> 
+                    <button
+                    *ngIf="userInfo.followingState === 2 || userInfo.followingState === null"
+                      class="text-white followButton " 
+                      (click)="followEmit.emit({userName:userInfo.username, previousFollowState:userInfo.followingState})" 
+                      color="primary" mat-stroked-button>Follow</button>
+                    <button 
+                    *ngIf="userInfo.followingState === 1"
+                      class="followButton no-border"
+                      (click)="unFollowEmit.emit({userName:userInfo.username, previousFollowState:userInfo.followingState})"
+                      color="primary" mat-stroked-button>{{followingText}} </button>
+                      <button 
+                      *ngIf="userInfo.followingState === 0"
+                      class="followButton"
+                      (click)="onunfollow.emit({userName:userInfo.username, previousFollowState:userInfo.followingState})"
+                      color="accent" mat-button>{{pendingText}} </button>
+                    <span *ngIf="userInfo.isUserFollowed">follows you</span>
+                  </div>
+                    <div *ngIf="currentUserName === userInfo.username">
+                        <a 
+                        color="primary"
+                        [routerLink]="['/profilesettings']"
+                        matTooltip="Profile Settings" matTooltipPosition="right" mat-icon-button>
+                        <mat-icon class="big-icon" aria-label="Profile Settings">settings_applications</mat-icon>
+                      </a>
+                    </div>
+                  </div>
+              </div> 
+              <article  class="user-status" [innerHtml]="userInfo.status | newline">
+              </article>           
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="user-stats">
+                <div>
+                  <a class="a-grey" >
+                    <h4>
+                    <span mat-colors="{color:'primary'}">
+                    {{userInfo.totalReputation}}</span> Reputation
+                  </h4>
+                  </a>
+                </div>
+                <div>
+                  <a class="a-grey" [routerLink]="['followers']">
+                    <h4>
+                      <span mat-colors="{color:'primary'}">{{userInfo.followerCount}}                      
+                      </span> Followers
+                    </h4>
+                  </a>
+                </div>
+                <div>
+                  <a class="a-grey" [routerLink]="['following']">
+                    <h4>
+                      <span mat-colors="{color:'primary'}">{{userInfo.followingCount}}                  
+                      </span> Following
+                    </h4>
+                  </a>
+                </div>
+              </div>            
+            </div> 
+          </div>
+        </div>  
+        <div fxHide.lt-sm>
+          <ng-content select="[interests]"></ng-content> 
+        </div>
+        <div fxHide.lt-sm fxFlex>
+          <ng-content  select="[bestPosts]"></ng-content>          
+          <mat-divider ></mat-divider>          
+        </div>
+      </div>          
+      <div style.background="#fff"
+      style.padding.px="4"
+       fxFlex="100" fxFlex.gt-md="600px" 
+       fxLayout="column"  
+        fxLayoutAlign="space-between" fxLayoutGap="12px">      
+        <div>        
+          <ng-content select="[tabs]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,11 @@
+:host{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;    
+    z-index: 1;
+}
+mat-toolbar{
+    padding:0px 3px;
+    background: #fff;
+}

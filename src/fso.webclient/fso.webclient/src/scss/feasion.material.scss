@@ -1,0 +1,177 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700');
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$feasion-app-primary: mat-palette($mat-purple,A400, A100, A700);
+$feasion-app-accent:  mat-palette($mat-grey,A400, A100, A700);
+$feasion-app-warn:  mat-palette($mat-red,A400, A100, A700);
+// Create the theme object (a Sass map containing all of the palettes).
+$feasion-app-theme: mat-light-theme($feasion-app-primary, $feasion-app-accent);
+
+$feasion-typography: mat-typography-config(
+  $font-family: 'Open Sans,  sans-serif',
+  $headline: mat-typography-level(24px, 36px, 600),
+  $body-1: mat-typography-level(14px, 20px, 400)
+);
+
+@include mat-base-typography($feasion-typography);
+
+// Override typography for a specific Angular Material components.
+@include mat-checkbox-typography($feasion-typography);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include angular-material-typography($feasion-typography);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($feasion-app-theme);
+@mixin md-icon-size($size: 28px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+.mat-icon {
+  @include md-icon-size();
+}
+
+$dark-primary: mat-palette($mat-grey,500,300,700);
+$dark-accent:  mat-palette($mat-blue-grey,500);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent);
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.feasion-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.feasion-dark-theme {
+  @include angular-material-theme($dark-theme);  
+}
+
+$night-theme:   mat-dark-theme($feasion-app-primary, $feasion-app-accent);
+.night-theme{
+  @include angular-material-theme($night-theme);  
+}
+.night-theme .a-grey{
+  color:rgb(242, 242, 242);
+  text-decoration:none;  
+}
+.night-theme .secondary-text{
+  color:rgb(199, 199, 199);
+}
+.a-grey{
+  color:rgb(72, 72, 72);
+  text-decoration:none;    
+}
+.Blue_Grey_Theme .a-grey{
+  color:rgb(233, 233, 233);
+  text-decoration:none;    
+}
+.secondary-text {
+  color: rgba(0, 0, 0, 0.54);
+  font-size:11px;
+}
+.primary-light-text {
+  color: mat-color($feasion-app-primary, A100);
+}
+
+.primary-dark-text {
+  color: mat-color($feasion-app-primary, A700);
+}
+
+.primary-text {
+ color: mat-color($feasion-app-primary, A400);
+}
+.accent-light-text {
+  color: mat-color($feasion-app-accent, A100);
+}
+
+.accent-dark-text {
+  color: mat-color($feasion-app-accent, A700);
+}
+
+.accent-text {
+  color: mat-color($feasion-app-accent, A400);
+}
+
+.primary-light-bg {
+  background-color: mat-color($feasion-app-primary, A100);
+}
+
+.primary-dark-bg {
+  background-color: mat-color($feasion-app-primary, A700);
+}
+
+.primary-bg {
+  background-color: mat-color($feasion-app-primary, A400);
+}
+.accent-light-bg {
+  background-color: mat-color($feasion-app-accent, A100);
+}
+
+.accent-dark-bg {
+  background-color: mat-color($feasion-app-accent, A700);
+}
+
+.accent-bg {
+  background-color: mat-color($feasion-app-accent, A400);
+}
+.warn-bg{
+  background-color: mat-color($feasion-app-warn, A400);
+}
+.dark-primary-light-text {
+  color: mat-color($dark-primary, A100);
+}
+
+.dark-primary-dark-text {
+  color: mat-color($dark-primary, A700);
+}
+
+.dark-primary-text {
+ color: mat-color($dark-primary, A400);
+}
+.dark-accent-light-text {
+  color: mat-color($dark-accent, A100);
+}
+
+.dark-accent-dark-text {
+  color: mat-color($dark-accent, A700);
+}
+
+.dark-accent-text {
+  color: mat-color($dark-accent, A400);
+}
+
+.dark-primary-light-bg {
+  background-color: mat-color($dark-primary, A100);
+}
+
+.dark-primary-dark-bg {
+  background-color: mat-color($dark-primary, A700);
+}
+
+.dark-primary-bg {
+  background-color: mat-color($dark-primary, A400);
+}
+.dark-accent-light-bg {
+  background-color: mat-color($dark-accent, A100);
+}
+
+.dark-accent-dark-bg {
+  background-color: mat-color($dark-accent, A700);
+}
+
+.dark-accent-bg {
+  background-color: mat-color($dark-accent, A400);
+}
+
+.fb-share-button{
+    color: #4267b2;
+    border-color:#4267b2;
+}

@@ -1,0 +1,19 @@
+<h4 mat-subheader>Most Popular</h4>
+<app-nothing-to-show *ngIf="isEmpty; else showContent">
+  Nothing to show here..
+</app-nothing-to-show>
+<ng-template #showContent>
+<mat-divider></mat-divider>
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile
+      (mouseover)="mouseOnPost(post.id)"
+      (mouseout)="mouseLeavedPost(post.id)"
+      [style.background-color]="alphaColor" *ngFor="let post of posts"> 
+      <div class="postpart">        
+        <img  class="postpart-image"        
+        [src]="post.thumbnailUrls[post.activeThumbnailIndex]" alt="{{post.title}}">
+      </div>
+      <div mat-line class="post-title"><h5>{{post.title}}</h5></div>
+    </mat-grid-tile>
+</mat-grid-list>
+</ng-template>

@@ -1,0 +1,13 @@
+$size : 17px;
+.settingsButton .mat-icon-button,.settingsButton .mat-icon-button .mat-icon{
+    font-size:$size !important;
+    height: $size !important;
+    width:$size !important;
+    line-height:$size !important;
+}
+.mat-card-header-text{
+    text-align: right;
+}
+.p-desc{
+    margin-top:12px;
+}

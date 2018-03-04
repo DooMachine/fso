@@ -1,0 +1,86 @@
+<mat-card-actions>
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <div  fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="8px">
+        <span *ngIf="!post.isCurrentUserLiked" class="feasion-dark-theme" matTooltip="Add to favourites" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
+          <button
+          (click)="onlikePost.emit(post.id)"
+          color="primary"  mat-icon-button>
+              <mat-icon aria-label="Favourite Post">favorite_border</mat-icon>
+          </button>
+          <span class="secondary-text">{{post.favouriteCount}}</span>
+        </span>
+        <span *ngIf="post.isCurrentUserLiked" matTooltip="Remove from favourites" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+          <button
+          (click)="onunlikePost.emit(post.id)"
+            color="warn"  mat-icon-button>
+              <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+          </button>
+          <span class="secondary-text">{{post.favouriteCount}}</span>
+        </span>
+        <span 
+            matTooltip="Reviews rated {{post.rating | number : '1.1-1'}}" 
+            matTooltipShowDelay="400" matTooltipHideDelay="200"
+            matTooltipPosition="above">
+              <button
+                color="primary"  mat-icon-button>
+                  <mat-icon aria-label="Rating">stars</mat-icon>
+              </button>
+              <span class="secondary-text">{{post.rating | number : '1.1-1'}}</span>
+        </span>
+        <span
+          matTooltip="Add a review" class="feasion-dark-theme"
+          matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+            <a color="primary"
+            [routerLink]="['/post',post.id,'addreview']"
+            mat-icon-button>
+                <mat-icon aria-label="Add a review">rate_review</mat-icon>
+            </a>
+        </span>
+       
+      </div>
+    <div>
+      <div class="feasion-dark-theme">
+          <span 
+            class="feasion-dark-theme"
+            matTooltip="Share" 
+            matTooltipShowDelay ="400" matTooltipHideDelay="200"
+            matTooltipPosition="above">
+                <button
+                (click)="toggleShare()"
+                color="primary"  mat-icon-button>
+                  <mat-icon aria-label="Share">share</mat-icon>
+              </button>
+          </span>
+        <button
+          color="primary"  [matMenuTriggerFor]="reportMenu"
+            matTooltip="Report this post" 
+            matTooltipShowDelay ="300" matTooltipHideDelay="200"
+            matTooltipPosition="above"
+            mat-icon-button>
+            <mat-icon aria-label="Rating">feedback</mat-icon>
+        </button>
+        <mat-menu #reportMenu="matMenu">                            
+            <button
+            (click)="onReportPost.emit({postId: post.id, reportType: 3})"  
+              mat-menu-item>
+                <mat-icon> report_problem</mat-icon>
+                <span>Violating Rules </span>
+            </button>
+            <button
+            (click)="onReportPost.emit({postId: post.id, reportType: 4})"  
+              mat-menu-item>
+                <mat-icon> sentiment_dissatisfied </mat-icon>
+                <span>Other </span>
+            </button>
+          </mat-menu>
+      </div>
+    </div>
+    
+  </div>
+  <div class="feasion-dark-theme" *ngIf="shareTabOpen">
+      <a 
+      class="fb-share-button"
+      mat-stroked-button
+      href="{{'https://www.facebook.com/sharer/sharer.php?u=https://www.feasion.com/post/' + post.id}}" target="_blank">Facebook</a>
+  </div>
+  </mat-card-actions>  

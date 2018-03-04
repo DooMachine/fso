@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>c1286f52-e413-4d40-a7f4-099cd4170100</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\NotificationController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="EasyNetQ" Version="2.2.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.3.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fso.Bootstrapper\fso.Bootstrapper.csproj" />
+    <ProjectReference Include="..\fso.DataExtensions\fso.DataExtensions.csproj" />
+    <ProjectReference Include="..\fso.EventCore\fso.EventCore.csproj" />
+    <ProjectReference Include="..\fso.Settings\fso.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

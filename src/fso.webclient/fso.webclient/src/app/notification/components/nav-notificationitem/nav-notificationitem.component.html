@@ -1,0 +1,5 @@
+<mat-list-item [routerLink]="routerLink" (click)="navigate.emit()">
+    <mat-icon mat-list-icon>{{notification.notificationTypeIcon}}</mat-icon>
+    <img [src]="notification.imageUrl" mat-line/>
+    <p mat-line>{{notification.dateUtcModified | utcdate | date:'d MMM yy - hh:mm'}} </p>
+</mat-list-item>

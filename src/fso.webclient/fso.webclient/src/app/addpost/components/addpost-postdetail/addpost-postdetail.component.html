@@ -1,0 +1,100 @@
+
+<form [formGroup]="form" [connectForm]="formState" novalidate>
+    
+  <div>   
+      <mat-form-field  color="accent">
+          <input matInput placeholder="Title" [formControl]="titleCtrl">
+          <div class="error" *ngIf="titleCtrl.invalid  && (titleCtrl.dirty || titleCtrl.touched)"
+                class="alert alert-danger">
+
+            <div *ngIf="titleCtrl.errors.required">
+                Title is required.
+            </div>
+            <div *ngIf="titleCtrl.errors.maxLenght">
+                Title must be maximum 64 characters long.
+            </div>
+        </div>
+      </mat-form-field>
+      
+      <mat-form-field color="accent" >
+          <textarea matInput [formControl]="descriptionCtrl" rows=4 placeholder="Description">                
+          </textarea>
+          <div class="error" *ngIf="descriptionCtrl.invalid  && (descriptionCtrl.dirty || descriptionCtrl.touched)"
+                class="alert alert-danger">
+            <div *ngIf="descriptionCtrl.errors.maxLenght">
+                Title must be maximum 64 characters long.
+            </div>
+        </div>
+      </mat-form-field> 
+      
+      <mat-form-field >
+        <input matInput
+        [formControl]="interestCtrl"
+        placeholder="Search Interests"
+        (input)="interestInputChanged($event)"
+        aria-label="Post Interests" 
+        [matAutocomplete]="interestAc"> 
+        <mat-autocomplete
+          (optionSelected)="interestSelected($event)"
+          #interestAc="matAutocomplete">
+          <mat-option *ngIf="isautoCompleteInterestsLoading"
+           >
+           <mat-spinner
+            diameter="12"
+            mode="indeterminate">
+           </mat-spinner>
+          </mat-option>
+          <mat-option *ngFor="let interest of autoCompleteInterests"
+           [value]="interest.id">
+            <img style="vertical-align:middle;"
+             aria-hidden src="{{interest.profileImage}}" height="25" />
+            <span>{{ interest.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="start stretch" fxLayourWrap fxLayoutGap="4px">
+          <button mat-fab
+          class="intbutton"
+            (click)="removeSelectetInterest(interest.id)"
+            [style.backgroundImage]="'url('+interest.profileImage +')'"
+            *ngFor="let interest of selectedInterests">
+            <!--Could not handle via css-->
+          <span class="interest-line" mat-line> {{interest.name.length > 4 ? interest.name.slice(0,4)+"..." : interest.name}} </span>
+         </button>  
+        </div>
+      <!--<mat-form-field color="accent">
+        <mat-select color="accent" placeholder="Privacy" formControlName="selectedPrivacySettings">
+            <mat-option   *ngFor="let option of privacySettings"
+            [value]="option.value">
+            {{ option.name }}
+            </mat-option>
+          </mat-select>
+      </mat-form-field >-->
+      <mat-form-field color="accent">
+          <mat-select color="accent" placeholder="Collection to add this post"
+           formControlName="selectedCollectionId">
+              <mat-option
+                  [value]="0">
+                  Not now
+              </mat-option>
+              <mat-option *ngFor="let collection of collectionsList"
+                [value]="collection.id">
+                <img style="vertical-align:middle;"
+                aria-hidden src="{{collection.thumbImageUrl}}" height="25" />
+                <span>{{ collection.name }}</span>
+              </mat-option>
+          </mat-select>
+      </mat-form-field >
+      <span class="error" *ngIf="formError">{{formError}}</span>
+      <span  color="warn" *ngIf="formState.error">{{formState.error}}</span>
+      
+      <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="3px">
+          
+          <span  *ngIf="formState.lastUpdateSucceed">
+              <mat-icon color="accent" *ngIf="formState.lastUpdateSucceed">done</mat-icon>
+          </span>
+          <button color="warn" [disabled]="pending || !form.valid" class="saveButton"  
+          (click)="submit($event)" mat-raised-button>Post</button>
+      </div>
+  </div>
+</form>

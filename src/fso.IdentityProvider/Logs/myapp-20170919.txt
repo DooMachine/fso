@@ -1,0 +1,1684 @@
+2017-09-19T00:26:22.1727462+03:00 0HL7UNLM8CHCB [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:26:30.1645585+03:00 0HL7UNLM8CHCB [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:30.1650590+03:00 0HL7UNLM8CHCB [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:26:30.1680610+03:00 0HL7UNLM8CHCB [ERR] Invalid reference token.
+"{
+  \"ValidateLifetime\": true,
+  \"AccessTokenType\": \"Reference\",
+  \"TokenHandle\": \"5759f536f2064013a87e96d794f8f08aadbc45833e6dcc3892e7b3f3e5f7a0fd\"
+}" (c9724191)
+2017-09-19T00:26:30.1685612+03:00 0HL7UNLM8CHCB [INF] Success token introspection. Token status: "inactive", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:26:30.1710630+03:00 0HL7UNLM8CHCB [INF] Request finished in 8000.144ms 200 application/json (15c52c40)
+2017-09-19T00:26:39.5962301+03:00 0HL7UNLM8CHCC [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:26:39.5982326+03:00 0HL7UNLM8CHCC [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:39.5987316+03:00 0HL7UNLM8CHCC [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:26:39.5992329+03:00 0HL7UNLM8CHCC [ERR] Invalid reference token.
+"{
+  \"ValidateLifetime\": true,
+  \"AccessTokenType\": \"Reference\",
+  \"TokenHandle\": \"5759f536f2064013a87e96d794f8f08aadbc45833e6dcc3892e7b3f3e5f7a0fd\"
+}" (c9724191)
+2017-09-19T00:26:39.5992329+03:00 0HL7UNLM8CHCC [INF] Success token introspection. Token status: "inactive", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:26:39.5997330+03:00 0HL7UNLM8CHCC [INF] Request finished in 3.7437ms 200 application/json (15c52c40)
+2017-09-19T00:26:40.6840608+03:00 0HL7UNLM8CHCD [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.96641411959837981505770000676&state=15057700006760.8545182883274149   (e5be5b71)
+2017-09-19T00:26:40.6880631+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:40.7781228+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (83ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:26:40.7871292+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:26:40.7921325+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:26:40.7991372+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:26:40.8051416+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:26:40.8056413+03:00 0HL7UNLM8CHCD [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:26:40.8061418+03:00 0HL7UNLM8CHCD [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:26:40.8071425+03:00 0HL7UNLM8CHCD [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T00:26:40.8076426+03:00 0HL7UNLM8CHCD [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:26:40.8091458+03:00 0HL7UNLM8CHCD [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:26:40.8096440+03:00 0HL7UNLM8CHCD [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15057700006760.8545182883274149\",
+  \"Nonce\": \"N0.96641411959837981505770000676\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.96641411959837981505770000676\",
+    \"state\": \"15057700006760.8545182883274149\"
+  }
+}" (9a175e33)
+2017-09-19T00:26:40.8286570+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:26:40.8301574+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:26:40.8331602+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:26:40.8361626+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:26:40.8386644+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:26:40.8421658+03:00 0HL7UNLM8CHCD [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:26:40.8656816+03:00 0HL7UNLM8CHCD [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15057700006760.8545182883274149\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T00:26:40.8661817+03:00 0HL7UNLM8CHCD [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:26:40.8671832+03:00 0HL7UNLM8CHCD [INF] Request finished in 184.9354ms 302  (15c52c40)
+2017-09-19T00:26:45.1565378+03:00 0HL7UNLM8CHCE [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/checksession   (e5be5b71)
+2017-09-19T00:26:45.1650440+03:00 0HL7UNLM8CHCF [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T00:26:45.1710476+03:00 0HL7UNLM8CHCE [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:45.1735491+03:00 0HL7UNLM8CHCE [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:26:45.1745497+03:00 0HL7UNLM8CHCE [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:26:45.1745497+03:00 0HL7UNLM8CHCE [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.CheckSessionEndpoint" for "/connect/checksession" (f7642de5)
+2017-09-19T00:26:45.1850565+03:00 0HL7UNLM8CHCE [INF] Request finished in 214.3912ms 200 text/html; charset=UTF-8 (15c52c40)
+2017-09-19T00:26:45.1880593+03:00 0HL7UNLM8CHCF [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:45.1880593+03:00 0HL7UNLM8CHCF [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T00:26:45.1915618+03:00 0HL7UNLM8CHCF [INF] Request finished in 104.8368ms 200 application/json (15c52c40)
+2017-09-19T00:26:45.3901931+03:00 0HL7UNLM8CHCG [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/connect/userinfo   (e5be5b71)
+2017-09-19T00:26:45.4292190+03:00 0HL7UNLM8CHCG [INF] Request finished in 47.2112ms 204  (15c52c40)
+2017-09-19T00:26:45.4547362+03:00 0HL7UNLM8CHCH [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/userinfo application/json  (e5be5b71)
+2017-09-19T00:26:45.4797528+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:45.4797528+03:00 0HL7UNLM8CHCH [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.UserInfoEndpoint" for "/connect/userinfo" (f7642de5)
+2017-09-19T00:26:45.4797528+03:00 0HL7UNLM8CHCH [INF] ValidateAsync: Locating bearer token (a4b419b4)
+2017-09-19T00:26:45.5217803+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:26:45.5407929+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:26:45.5487986+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:26:45.5568031+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:26:45.5843220+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:26:45.5848221+03:00 0HL7UNLM8CHCI [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:26:45.5998329+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:26:45.6013337+03:00 0HL7UNLM8CHCI [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:26:45.6013337+03:00 0HL7UNLM8CHCI [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:26:45.6038351+03:00 0HL7UNLM8CHCH [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:26:45.6043357+03:00 0HL7UNLM8CHCH [INF] Profile service returned to the following claim types: "sub name preferred_username given_name role role email" (a9217bec)
+2017-09-19T00:26:45.6103393+03:00 0HL7UNLM8CHCH [INF] Request finished in 174.0713ms 200 application/json (15c52c40)
+2017-09-19T00:26:45.6313524+03:00 0HL7UNLM8CHCI [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:26:45.6318534+03:00 0HL7UNLM8CHCI [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:26:45.6323531+03:00 0HL7UNLM8CHCI [INF] Request finished in 62.8914ms 200 application/json (15c52c40)
+2017-09-19T00:31:42.1375437+03:00 0HL7UNLM8CHCJ [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.93980770120630911505770302068&state=15057703020680.8975193513023536   (e5be5b71)
+2017-09-19T00:31:42.3100101+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:31:42.3110108+03:00 0HL7UNLM8CHCJ [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:31:42.3115105+03:00 0HL7UNLM8CHCJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:31:42.3120106+03:00 0HL7UNLM8CHCJ [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T00:31:42.3125123+03:00 0HL7UNLM8CHCJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:31:42.3135126+03:00 0HL7UNLM8CHCJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:31:42.3140131+03:00 0HL7UNLM8CHCJ [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15057703020680.8975193513023536\",
+  \"Nonce\": \"N0.93980770120630911505770302068\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.93980770120630911505770302068\",
+    \"state\": \"15057703020680.8975193513023536\"
+  }
+}" (9a175e33)
+2017-09-19T00:31:42.3545031+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (36ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:31:42.3650119+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:31:42.3690138+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:31:42.3725155+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:31:42.3760164+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:31:42.3785207+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:31:42.3820220+03:00 0HL7UNLM8CHCJ [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:31:42.3965303+03:00 0HL7UNLM8CHCJ [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15057703020680.8975193513023536\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T00:31:42.3970316+03:00 0HL7UNLM8CHCJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:31:42.3975313+03:00 0HL7UNLM8CHCJ [INF] Request finished in 261.3976ms 302  (15c52c40)
+2017-09-19T00:31:46.5996714+03:00 0HL7UNLM8CHCK [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T00:31:46.6026730+03:00 0HL7UNLM8CHCK [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:31:46.6031740+03:00 0HL7UNLM8CHCK [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T00:31:46.6041738+03:00 0HL7UNLM8CHCK [INF] Request finished in 4.6614ms 200 application/json (15c52c40)
+2017-09-19T00:31:47.0039398+03:00 0HL7UNLM8CHCL [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:31:47.0064413+03:00 0HL7UNLM8CHCL [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:31:47.0064413+03:00 0HL7UNLM8CHCL [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:31:47.0344599+03:00 0HL7UNLM8CHCL [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:31:47.0349600+03:00 0HL7UNLM8CHCL [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:31:47.0364608+03:00 0HL7UNLM8CHCL [INF] Request finished in 31.7046ms 200 application/json (15c52c40)
+2017-09-19T00:31:47.7194148+03:00 0HL7UNLM8CHCM [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:31:47.7224164+03:00 0HL7UNLM8CHCM [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:31:47.7224164+03:00 0HL7UNLM8CHCM [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:31:47.7444311+03:00 0HL7UNLM8CHCM [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:31:47.7449340+03:00 0HL7UNLM8CHCM [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:31:47.7464320+03:00 0HL7UNLM8CHCM [INF] Request finished in 26.6997ms 200 application/json (15c52c40)
+2017-09-19T00:35:01.5621850+03:00 0HL7UNLM8CHCN [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:35:01.5651870+03:00 0HL7UNLM8CHCN [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:35:01.5651870+03:00 0HL7UNLM8CHCN [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:35:01.5897039+03:00 0HL7UNLM8CHCN [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:35:01.5907057+03:00 0HL7UNLM8CHCN [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:35:01.5927055+03:00 0HL7UNLM8CHCN [INF] Request finished in 30.0791ms 200 application/json (15c52c40)
+2017-09-19T00:35:03.6275369+03:00 0HL7UNLM8CHCO [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:35:03.6340410+03:00 0HL7UNLM8CHCO [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:35:03.6345427+03:00 0HL7UNLM8CHCO [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:35:03.6640613+03:00 0HL7UNLM8CHCO [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:35:03.6645615+03:00 0HL7UNLM8CHCO [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:35:03.6680636+03:00 0HL7UNLM8CHCO [INF] Request finished in 40.4047ms 200 application/json (15c52c40)
+2017-09-19T00:36:44.1178624+03:00 0HL7UNLM8CHCP [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.83207114792702971505770604082&state=15057706040820.23092165776817652   (e5be5b71)
+2017-09-19T00:36:44.1213645+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:36:44.1223652+03:00 0HL7UNLM8CHCP [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:36:44.1228657+03:00 0HL7UNLM8CHCP [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:36:44.1233663+03:00 0HL7UNLM8CHCP [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T00:36:44.1238660+03:00 0HL7UNLM8CHCP [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:36:44.1243665+03:00 0HL7UNLM8CHCP [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:36:44.1243665+03:00 0HL7UNLM8CHCP [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15057706040820.23092165776817652\",
+  \"Nonce\": \"N0.83207114792702971505770604082\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.83207114792702971505770604082\",
+    \"state\": \"15057706040820.23092165776817652\"
+  }
+}" (9a175e33)
+2017-09-19T00:36:44.1288697+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:36:44.1408769+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:36:44.1423785+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:36:44.1438789+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:36:44.1468821+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:36:44.1488822+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:36:44.1503834+03:00 0HL7UNLM8CHCP [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:36:44.1648924+03:00 0HL7UNLM8CHCP [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15057706040820.23092165776817652\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T00:36:44.1653942+03:00 0HL7UNLM8CHCP [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:36:44.1658935+03:00 0HL7UNLM8CHCP [INF] Request finished in 49.113ms 302  (15c52c40)
+2017-09-19T00:36:47.7325293+03:00 0HL7UNLM8CHCQ [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T00:36:47.7360322+03:00 0HL7UNLM8CHCQ [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:36:47.7360322+03:00 0HL7UNLM8CHCQ [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T00:36:47.7370325+03:00 0HL7UNLM8CHCQ [INF] Request finished in 4.6421ms 200 application/json (15c52c40)
+2017-09-19T00:36:48.3764570+03:00 0HL7UNLM8CHCR [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:36:48.3799595+03:00 0HL7UNLM8CHCR [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:36:48.3804604+03:00 0HL7UNLM8CHCR [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:36:48.4079777+03:00 0HL7UNLM8CHCR [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:36:48.4084782+03:00 0HL7UNLM8CHCR [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:36:48.4099786+03:00 0HL7UNLM8CHCR [INF] Request finished in 33.1387ms 200 application/json (15c52c40)
+2017-09-19T00:36:48.9853614+03:00 0HL7UNLM8CHCS [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:36:48.9883630+03:00 0HL7UNLM8CHCS [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:36:48.9883630+03:00 0HL7UNLM8CHCS [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:36:49.0168822+03:00 0HL7UNLM8CHCS [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:36:49.0173831+03:00 0HL7UNLM8CHCS [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:36:49.0178832+03:00 0HL7UNLM8CHCS [INF] Request finished in 32.9086ms 200 application/json (15c52c40)
+2017-09-19T00:41:46.0909514+03:00 0HL7UNLM8CHCT [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.076611387904361951505770906067&state=15057709060670.655373669380583   (e5be5b71)
+2017-09-19T00:41:46.2724475+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:46.2729472+03:00 0HL7UNLM8CHCT [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:41:46.2734474+03:00 0HL7UNLM8CHCT [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:46.2739475+03:00 0HL7UNLM8CHCT [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T00:41:46.2744480+03:00 0HL7UNLM8CHCT [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:46.2754479+03:00 0HL7UNLM8CHCT [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:46.2754479+03:00 0HL7UNLM8CHCT [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15057709060670.655373669380583\",
+  \"Nonce\": \"N0.076611387904361951505770906067\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.076611387904361951505770906067\",
+    \"state\": \"15057709060670.655373669380583\"
+  }
+}" (9a175e33)
+2017-09-19T00:41:46.3965378+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (117ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:41:46.4185516+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:41:46.4225538+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:41:46.4300594+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:41:46.4340617+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:41:46.4370637+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:41:46.4425679+03:00 0HL7UNLM8CHCT [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:41:46.4750889+03:00 0HL7UNLM8CHCT [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15057709060670.655373669380583\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T00:41:46.4755906+03:00 0HL7UNLM8CHCT [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:46.4765909+03:00 0HL7UNLM8CHCT [INF] Request finished in 386.0772ms 302  (15c52c40)
+2017-09-19T00:41:51.2467622+03:00 0HL7UNLM8CHCU [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T00:41:51.2497650+03:00 0HL7UNLM8CHCU [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:51.2497650+03:00 0HL7UNLM8CHCU [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T00:41:51.2507648+03:00 0HL7UNLM8CHCU [INF] Request finished in 4.1877ms 200 application/json (15c52c40)
+2017-09-19T00:41:51.4759147+03:00 0HL7UNLM8CHCV [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:41:51.4904242+03:00 0HL7UNLM8CHCV [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:51.4909247+03:00 0HL7UNLM8CHCV [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:41:51.5204441+03:00 0HL7UNLM8CHCV [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:41:51.5214463+03:00 0HL7UNLM8CHCV [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:41:51.5224454+03:00 0HL7UNLM8CHCV [INF] Request finished in 46.6475ms 200 application/json (15c52c40)
+2017-09-19T00:41:51.5994966+03:00 0HL7UNLM8CHD0 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.191018769454770481505770911358&state=15057709113580.8004579838739769   (e5be5b71)
+2017-09-19T00:41:51.6029991+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:51.6039998+03:00 0HL7UNLM8CHD0 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:41:51.6045003+03:00 0HL7UNLM8CHD0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:51.6045003+03:00 0HL7UNLM8CHD0 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T00:41:51.6055006+03:00 0HL7UNLM8CHD0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:51.6060007+03:00 0HL7UNLM8CHD0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:51.6065012+03:00 0HL7UNLM8CHD0 [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15057709113580.8004579838739769\",
+  \"Nonce\": \"N0.191018769454770481505770911358\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.191018769454770481505770911358\",
+    \"state\": \"15057709113580.8004579838739769\"
+  }
+}" (9a175e33)
+2017-09-19T00:41:51.6120051+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:41:51.6375214+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:41:51.6395227+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:41:51.6420250+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:41:51.6475285+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:41:51.6500299+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:41:51.6525322+03:00 0HL7UNLM8CHD0 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:41:51.6790496+03:00 0HL7UNLM8CHD0 [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15057709113580.8004579838739769\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T00:41:51.6800502+03:00 0HL7UNLM8CHD0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:41:51.6820516+03:00 0HL7UNLM8CHD0 [INF] Request finished in 81.6944ms 302  (15c52c40)
+2017-09-19T00:41:56.9155253+03:00 0HL7UNLM8CHD1 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T00:41:56.9185277+03:00 0HL7UNLM8CHD1 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:56.9185277+03:00 0HL7UNLM8CHD1 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T00:41:56.9200289+03:00 0HL7UNLM8CHD1 [INF] Request finished in 4.0539ms 200 application/json (15c52c40)
+2017-09-19T00:41:57.3823382+03:00 0HL7UNLM8CHD2 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/connect/userinfo   (e5be5b71)
+2017-09-19T00:41:57.3833361+03:00 0HL7UNLM8CHD2 [INF] Request finished in 1.4344ms 204  (15c52c40)
+2017-09-19T00:41:57.4408749+03:00 0HL7UNLM8CHD3 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/userinfo application/json  (e5be5b71)
+2017-09-19T00:41:57.4438773+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:57.4438773+03:00 0HL7UNLM8CHD3 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.UserInfoEndpoint" for "/connect/userinfo" (f7642de5)
+2017-09-19T00:41:57.4438773+03:00 0HL7UNLM8CHD3 [INF] ValidateAsync: Locating bearer token (a4b419b4)
+2017-09-19T00:41:57.4648908+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:41:57.4678932+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:41:57.4708944+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:41:57.4748975+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:41:57.4904076+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:41:57.4969121+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:41:57.4999141+03:00 0HL7UNLM8CHD3 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:41:57.5029157+03:00 0HL7UNLM8CHD3 [INF] Profile service returned to the following claim types: "sub name preferred_username given_name role role email" (a9217bec)
+2017-09-19T00:41:57.5069179+03:00 0HL7UNLM8CHD3 [INF] Request finished in 65.5397ms 200 application/json (15c52c40)
+2017-09-19T00:41:57.5194264+03:00 0HL7UNLM8CHD4 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:41:57.5224288+03:00 0HL7UNLM8CHD4 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:41:57.5229294+03:00 0HL7UNLM8CHD4 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:41:57.5474454+03:00 0HL7UNLM8CHD4 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:41:57.5479460+03:00 0HL7UNLM8CHD4 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:41:57.5484461+03:00 0HL7UNLM8CHD4 [INF] Request finished in 29.1787ms 200 application/json (15c52c40)
+2017-09-19T00:46:53.1025299+03:00 0HL7UNLM8CHD5 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.171847991971276761505771213067&state=15057712130670.17888454417936628   (e5be5b71)
+2017-09-19T00:46:53.2736021+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:46:53.2746020+03:00 0HL7UNLM8CHD5 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T00:46:53.2746020+03:00 0HL7UNLM8CHD5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:46:53.2751029+03:00 0HL7UNLM8CHD5 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T00:46:53.2756030+03:00 0HL7UNLM8CHD5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:46:53.2761036+03:00 0HL7UNLM8CHD5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:46:53.2766037+03:00 0HL7UNLM8CHD5 [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15057712130670.17888454417936628\",
+  \"Nonce\": \"N0.171847991971276761505771213067\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.171847991971276761505771213067\",
+    \"state\": \"15057712130670.17888454417936628\"
+  }
+}" (9a175e33)
+2017-09-19T00:46:53.2976176+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (17ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:46:53.3681647+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:46:53.3736677+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T00:46:53.3776708+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T00:46:53.3861762+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T00:46:53.3881772+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T00:46:53.3926808+03:00 0HL7UNLM8CHD5 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T00:46:53.4131985+03:00 0HL7UNLM8CHD5 [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15057712130670.17888454417936628\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T00:46:53.4141972+03:00 0HL7UNLM8CHD5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T00:46:53.4151951+03:00 0HL7UNLM8CHD5 [INF] Request finished in 312.8368ms 302  (15c52c40)
+2017-09-19T00:46:59.0672481+03:00 0HL7UNLM8CHD6 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T00:46:59.0702493+03:00 0HL7UNLM8CHD6 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:46:59.0702493+03:00 0HL7UNLM8CHD6 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T00:46:59.0712500+03:00 0HL7UNLM8CHD6 [INF] Request finished in 4.4123ms 200 application/json (15c52c40)
+2017-09-19T00:46:59.3714513+03:00 0HL7UNLM8CHD7 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:46:59.3744509+03:00 0HL7UNLM8CHD7 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:46:59.3744509+03:00 0HL7UNLM8CHD7 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:46:59.3994675+03:00 0HL7UNLM8CHD7 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:46:59.3999680+03:00 0HL7UNLM8CHD7 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:46:59.4009691+03:00 0HL7UNLM8CHD7 [INF] Request finished in 29.6161ms 200 application/json (15c52c40)
+2017-09-19T00:47:00.1414611+03:00 0HL7UNLM8CHD8 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T00:47:00.1444631+03:00 0HL7UNLM8CHD8 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T00:47:00.1449628+03:00 0HL7UNLM8CHD8 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T00:47:00.1724813+03:00 0HL7UNLM8CHD8 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T00:47:00.1729818+03:00 0HL7UNLM8CHD8 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T00:47:00.1734820+03:00 0HL7UNLM8CHD8 [INF] Request finished in 32.3342ms 200 application/json (15c52c40)
+2017-09-19T16:14:06.9014918+03:00 0HL7UNLM8CHD9 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/checksession   (e5be5b71)
+2017-09-19T16:14:14.5563265+03:00 0HL7UNLM8CHDA [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration   (e5be5b71)
+2017-09-19T16:14:25.3918386+03:00 0HL7UNLM8CHD9 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:14:25.3928397+03:00 0HL7UNLM8CHDA [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:14:25.3928397+03:00 0HL7UNLM8CHDA [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration" (f7642de5)
+2017-09-19T16:14:25.4013448+03:00 0HL7UNLM8CHDA [INF] Request finished in 10840.3073ms 200 application/json (15c52c40)
+2017-09-19T16:14:25.5949743+03:00 0HL7UNLM8CHDB [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:14:25.5989758+03:00 0HL7UNLM8CHDB [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:14:25.5989758+03:00 0HL7UNLM8CHDB [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:14:25.6014780+03:00 0HL7UNLM8CHDB [ERR] Invalid reference token.
+"{
+  \"ValidateLifetime\": true,
+  \"AccessTokenType\": \"Reference\",
+  \"TokenHandle\": \"cd5c1722fb15f984731dc93c5fbe62a2e16ed7df92b03936a8f33e3b0a9ff2f6\"
+}" (c9724191)
+2017-09-19T16:14:25.6014780+03:00 0HL7UNLM8CHDB [INF] Success token introspection. Token status: "inactive", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:14:25.6019785+03:00 0HL7UNLM8CHDB [INF] Request finished in 18.6107ms 200 application/json (15c52c40)
+2017-09-19T16:14:25.6109841+03:00 0HL7UNLM8CHD9 [INF] Executed DbCommand (210ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:14:25.8021110+03:00 0HL7UNLM8CHD9 [INF] Executed DbCommand (184ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:14:25.8096158+03:00 0HL7UNLM8CHD9 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:14:25.8161203+03:00 0HL7UNLM8CHD9 [INF] Executed DbCommand (3ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:14:25.8216242+03:00 0HL7UNLM8CHD9 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:14:25.8226248+03:00 0HL7UNLM8CHD9 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:14:25.8241260+03:00 0HL7UNLM8CHD9 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:14:25.8241260+03:00 0HL7UNLM8CHD9 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.CheckSessionEndpoint" for "/connect/checksession" (f7642de5)
+2017-09-19T16:14:25.8341327+03:00 0HL7UNLM8CHD9 [INF] Request finished in 18928.2849ms 200 text/html; charset=UTF-8 (15c52c40)
+2017-09-19T16:16:28.6409823+03:00 0HL7UNLM8CHDC [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.54588939473035471505826988605&state=15058269886050.08283651560775729   (e5be5b71)
+2017-09-19T16:16:28.6444849+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:16:28.6449850+03:00 0HL7UNLM8CHDC [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:16:28.6454859+03:00 0HL7UNLM8CHDC [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:16:28.6459857+03:00 0HL7UNLM8CHDC [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:16:28.6464858+03:00 0HL7UNLM8CHDC [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:16:28.6469855+03:00 0HL7UNLM8CHDC [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:16:28.6469855+03:00 0HL7UNLM8CHDC [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058269886050.08283651560775729\",
+  \"Nonce\": \"N0.54588939473035471505826988605\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.54588939473035471505826988605\",
+    \"state\": \"15058269886050.08283651560775729\"
+  }
+}" (9a175e33)
+2017-09-19T16:16:28.6504877+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:16:28.6639976+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:16:28.6664987+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:16:28.6680003+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:16:28.6690002+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:16:28.6710035+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:16:28.6750057+03:00 0HL7UNLM8CHDC [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:16:28.6975197+03:00 0HL7UNLM8CHDC [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058269886050.08283651560775729\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:16:28.6990205+03:00 0HL7UNLM8CHDC [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:16:28.7005221+03:00 0HL7UNLM8CHDC [INF] Request finished in 59.6778ms 302  (15c52c40)
+2017-09-19T16:16:34.4972502+03:00 0HL7UNLM8CHDD [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/checksession   (e5be5b71)
+2017-09-19T16:16:34.5042553+03:00 0HL7UNLM8CHDD [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:16:34.5047550+03:00 0HL7UNLM8CHDD [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:16:34.5052556+03:00 0HL7UNLM8CHDD [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:16:34.5052556+03:00 0HL7UNLM8CHDD [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.CheckSessionEndpoint" for "/connect/checksession" (f7642de5)
+2017-09-19T16:16:34.5087585+03:00 0HL7UNLM8CHDD [INF] Request finished in 8.9483ms 200 text/html; charset=UTF-8 (15c52c40)
+2017-09-19T16:16:34.5277703+03:00 0HL7UNLM8CHDE [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T16:16:34.5312732+03:00 0HL7UNLM8CHDE [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:16:34.5312732+03:00 0HL7UNLM8CHDE [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T16:16:34.5322735+03:00 0HL7UNLM8CHDE [INF] Request finished in 4.7333ms 200 application/json (15c52c40)
+2017-09-19T16:16:34.6363434+03:00 0HL7UNLM8CHDF [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/connect/userinfo   (e5be5b71)
+2017-09-19T16:16:34.6383443+03:00 0HL7UNLM8CHDF [INF] Request finished in 1.3957ms 204  (15c52c40)
+2017-09-19T16:16:34.6603593+03:00 0HL7UNLM8CHDG [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/userinfo application/json  (e5be5b71)
+2017-09-19T16:16:34.6743682+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:16:34.6748688+03:00 0HL7UNLM8CHDG [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.UserInfoEndpoint" for "/connect/userinfo" (f7642de5)
+2017-09-19T16:16:34.6748688+03:00 0HL7UNLM8CHDG [INF] ValidateAsync: Locating bearer token (a4b419b4)
+2017-09-19T16:16:34.7299053+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (7ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:16:34.7444143+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:16:34.7479161+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:16:34.7504183+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:16:34.7534199+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:16:34.7564219+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:16:34.7584240+03:00 0HL7UNLM8CHDG [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:16:34.7584240+03:00 0HL7UNLM8CHDG [INF] Profile service returned to the following claim types: "sub name preferred_username given_name role role email" (a9217bec)
+2017-09-19T16:16:34.7594243+03:00 0HL7UNLM8CHDG [INF] Request finished in 105.1534ms 200 application/json (15c52c40)
+2017-09-19T16:16:34.8389769+03:00 0HL7UNLM8CHDH [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:16:34.8414788+03:00 0HL7UNLM8CHDH [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:16:34.8414788+03:00 0HL7UNLM8CHDH [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:16:34.8594903+03:00 0HL7UNLM8CHDH [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:16:34.8599905+03:00 0HL7UNLM8CHDH [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:16:34.8604918+03:00 0HL7UNLM8CHDH [INF] Request finished in 21.741ms 200 application/json (15c52c40)
+2017-09-19T16:21:29.3933915+03:00 0HL7UNLM8CHDI [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.107899262439326241505827289380&state=15058272893800.055940690658828895   (e5be5b71)
+2017-09-19T16:21:29.7684863+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:21:29.7704908+03:00 0HL7UNLM8CHDI [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:21:29.7724902+03:00 0HL7UNLM8CHDI [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:29.7724902+03:00 0HL7UNLM8CHDI [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:21:29.7734932+03:00 0HL7UNLM8CHDI [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:29.7744915+03:00 0HL7UNLM8CHDI [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:29.7744915+03:00 0HL7UNLM8CHDI [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058272893800.055940690658828895\",
+  \"Nonce\": \"N0.107899262439326241505827289380\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.107899262439326241505827289380\",
+    \"state\": \"15058272893800.055940690658828895\"
+  }
+}" (9a175e33)
+2017-09-19T16:21:29.8215365+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (40ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:21:29.8395465+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:21:29.8425493+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:21:29.8455493+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:21:29.8495520+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:21:29.8505542+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:21:29.8535550+03:00 0HL7UNLM8CHDI [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:21:29.8665649+03:00 0HL7UNLM8CHDI [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058272893800.055940690658828895\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:21:29.8675643+03:00 0HL7UNLM8CHDI [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:29.8685662+03:00 0HL7UNLM8CHDI [INF] Request finished in 476.1133ms 302  (15c52c40)
+2017-09-19T16:21:32.4584643+03:00 0HL7UNLM8CHDJ [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.20356688136390091505827292445&state=15058272924450.7176839799859875   (e5be5b71)
+2017-09-19T16:21:32.4619669+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:21:32.4624674+03:00 0HL7UNLM8CHDJ [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:21:32.4629675+03:00 0HL7UNLM8CHDJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:32.4634688+03:00 0HL7UNLM8CHDJ [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:21:32.4634688+03:00 0HL7UNLM8CHDJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:32.4644687+03:00 0HL7UNLM8CHDJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:32.4644687+03:00 0HL7UNLM8CHDJ [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058272924450.7176839799859875\",
+  \"Nonce\": \"N0.20356688136390091505827292445\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.20356688136390091505827292445\",
+    \"state\": \"15058272924450.7176839799859875\"
+  }
+}" (9a175e33)
+2017-09-19T16:21:32.4689719+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:21:32.4824807+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:21:32.4849817+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:21:32.4874836+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:21:32.4894849+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:21:32.4914863+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:21:32.4974902+03:00 0HL7UNLM8CHDJ [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:21:32.5255084+03:00 0HL7UNLM8CHDJ [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058272924450.7176839799859875\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:21:32.5265111+03:00 0HL7UNLM8CHDJ [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:21:32.5275102+03:00 0HL7UNLM8CHDJ [INF] Request finished in 69.2826ms 302  (15c52c40)
+2017-09-19T16:21:34.5976131+03:00 0HL7UNLM8CHDK [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T16:21:34.5996148+03:00 0HL7UNLM8CHDK [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:21:34.5996148+03:00 0HL7UNLM8CHDK [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T16:21:34.6006147+03:00 0HL7UNLM8CHDK [INF] Request finished in 3.7658ms 200 application/json (15c52c40)
+2017-09-19T16:21:34.8152827+03:00 0HL7UNLM8CHDL [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:21:34.8172757+03:00 0HL7UNLM8CHDL [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:21:34.8172757+03:00 0HL7UNLM8CHDL [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:21:34.8322857+03:00 0HL7UNLM8CHDL [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:21:34.8322857+03:00 0HL7UNLM8CHDL [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:21:34.8332864+03:00 0HL7UNLM8CHDL [INF] Request finished in 17.9341ms 200 application/json (15c52c40)
+2017-09-19T16:21:35.6435762+03:00 0HL7UNLM8CHDM [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:21:35.6525818+03:00 0HL7UNLM8CHDM [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:21:35.6525818+03:00 0HL7UNLM8CHDM [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:21:35.6775988+03:00 0HL7UNLM8CHDM [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:21:35.6780993+03:00 0HL7UNLM8CHDM [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:21:35.6796001+03:00 0HL7UNLM8CHDM [INF] Request finished in 38.0426ms 200 application/json (15c52c40)
+2017-09-19T16:26:33.3865539+03:00 0HL7UNLM8CHDN [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.099125337596980061505827593379&state=15058275933790.10631197427038286   (e5be5b71)
+2017-09-19T16:26:33.5688196+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:26:33.5693202+03:00 0HL7UNLM8CHDN [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:26:33.5698199+03:00 0HL7UNLM8CHDN [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:26:33.5698199+03:00 0HL7UNLM8CHDN [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:26:33.5708210+03:00 0HL7UNLM8CHDN [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:26:33.5718256+03:00 0HL7UNLM8CHDN [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:26:33.5723230+03:00 0HL7UNLM8CHDN [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058275933790.10631197427038286\",
+  \"Nonce\": \"N0.099125337596980061505827593379\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.099125337596980061505827593379\",
+    \"state\": \"15058275933790.10631197427038286\"
+  }
+}" (9a175e33)
+2017-09-19T16:26:33.6143607+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (38ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:26:33.6333730+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:26:33.6393769+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:26:33.6433804+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:26:33.6463812+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:26:33.6473830+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:26:33.6513853+03:00 0HL7UNLM8CHDN [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:26:33.6704023+03:00 0HL7UNLM8CHDN [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058275933790.10631197427038286\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:26:33.6709020+03:00 0HL7UNLM8CHDN [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:26:33.6719031+03:00 0HL7UNLM8CHDN [INF] Request finished in 286.325ms 302  (15c52c40)
+2017-09-19T16:26:38.4958304+03:00 0HL7UNLM8CHDO [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T16:26:38.4998342+03:00 0HL7UNLM8CHDO [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:26:38.4998342+03:00 0HL7UNLM8CHDO [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T16:26:38.5008337+03:00 0HL7UNLM8CHDO [INF] Request finished in 4.5225ms 200 application/json (15c52c40)
+2017-09-19T16:26:38.9246448+03:00 0HL7UNLM8CHDP [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:26:38.9286475+03:00 0HL7UNLM8CHDP [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:26:38.9286475+03:00 0HL7UNLM8CHDP [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:26:38.9446577+03:00 0HL7UNLM8CHDP [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:26:38.9456584+03:00 0HL7UNLM8CHDP [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:26:38.9456584+03:00 0HL7UNLM8CHDP [INF] Request finished in 21.2417ms 200 application/json (15c52c40)
+2017-09-19T16:26:39.8259778+03:00 0HL7UNLM8CHDQ [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:26:39.8279803+03:00 0HL7UNLM8CHDQ [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:26:39.8279803+03:00 0HL7UNLM8CHDQ [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:26:39.8439909+03:00 0HL7UNLM8CHDQ [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:26:39.8449900+03:00 0HL7UNLM8CHDQ [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:26:39.8449900+03:00 0HL7UNLM8CHDQ [INF] Request finished in 20.0211ms 200 application/json (15c52c40)
+2017-09-19T16:31:34.3917940+03:00 0HL7UNLM8CHDR [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.84803203767306281505827894380&state=15058278943800.060179030399794   (e5be5b71)
+2017-09-19T16:31:34.5703982+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:31:34.5718998+03:00 0HL7UNLM8CHDR [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:31:34.5728985+03:00 0HL7UNLM8CHDR [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:31:34.5733998+03:00 0HL7UNLM8CHDR [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:31:34.5743997+03:00 0HL7UNLM8CHDR [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:31:34.5754003+03:00 0HL7UNLM8CHDR [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:31:34.5759009+03:00 0HL7UNLM8CHDR [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058278943800.060179030399794\",
+  \"Nonce\": \"N0.84803203767306281505827894380\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.84803203767306281505827894380\",
+    \"state\": \"15058278943800.060179030399794\"
+  }
+}" (9a175e33)
+2017-09-19T16:31:34.6269387+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (45ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:31:34.6569594+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:31:34.6659729+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:31:34.6741780+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (4ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:31:34.6811921+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:31:34.6841913+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:31:34.6901961+03:00 0HL7UNLM8CHDR [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:31:34.7082096+03:00 0HL7UNLM8CHDR [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058278943800.060179030399794\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:31:34.7092162+03:00 0HL7UNLM8CHDR [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:31:34.7102086+03:00 0HL7UNLM8CHDR [INF] Request finished in 319.8012ms 302  (15c52c40)
+2017-09-19T16:31:38.5802710+03:00 0HL7UNLM8CHDS [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T16:31:38.5832730+03:00 0HL7UNLM8CHDS [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:31:38.5832730+03:00 0HL7UNLM8CHDS [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T16:31:38.5847734+03:00 0HL7UNLM8CHDS [INF] Request finished in 4.4112ms 200 application/json (15c52c40)
+2017-09-19T16:31:38.8929788+03:00 0HL7UNLM8CHDT [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:31:38.8989824+03:00 0HL7UNLM8CHDT [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:31:38.8994830+03:00 0HL7UNLM8CHDT [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:31:38.9285026+03:00 0HL7UNLM8CHDT [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:31:38.9290028+03:00 0HL7UNLM8CHDT [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:31:38.9295033+03:00 0HL7UNLM8CHDT [INF] Request finished in 36.9511ms 200 application/json (15c52c40)
+2017-09-19T16:31:39.5709481+03:00 0HL7UNLM8CHDU [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:31:39.5744506+03:00 0HL7UNLM8CHDU [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:31:39.5744506+03:00 0HL7UNLM8CHDU [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:31:39.6004675+03:00 0HL7UNLM8CHDU [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:31:39.6009680+03:00 0HL7UNLM8CHDU [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:31:39.6019687+03:00 0HL7UNLM8CHDU [INF] Request finished in 30.927ms 200 application/json (15c52c40)
+2017-09-19T16:36:36.3850337+03:00 0HL7UNLM8CHDV [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.0563966371103936661505828196377&state=15058281963770.03354257217846501   (e5be5b71)
+2017-09-19T16:36:36.4846344+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:36:36.4866377+03:00 0HL7UNLM8CHDV [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:36:36.4876368+03:00 0HL7UNLM8CHDV [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:36.4876368+03:00 0HL7UNLM8CHDV [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:36:36.4886370+03:00 0HL7UNLM8CHDV [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:36.4896397+03:00 0HL7UNLM8CHDV [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:36.4906399+03:00 0HL7UNLM8CHDV [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058281963770.03354257217846501\",
+  \"Nonce\": \"N0.0563966371103936661505828196377\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.0563966371103936661505828196377\",
+    \"state\": \"15058281963770.03354257217846501\"
+  }
+}" (9a175e33)
+2017-09-19T16:36:36.4976426+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:36:36.5186601+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:36:36.5236638+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:36:36.5276629+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:36:36.5316680+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:36:36.5346692+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:36:36.5376704+03:00 0HL7UNLM8CHDV [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:36:36.5696972+03:00 0HL7UNLM8CHDV [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058281963770.03354257217846501\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:36:36.5711983+03:00 0HL7UNLM8CHDV [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:36.5721990+03:00 0HL7UNLM8CHDV [INF] Request finished in 187.2533ms 302  (15c52c40)
+2017-09-19T16:36:39.7131581+03:00 0HL7UNLM8CHE0 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.94419835072245071505828199662&state=15058281996620.2104151604483353   (e5be5b71)
+2017-09-19T16:36:39.7166610+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:36:39.7176613+03:00 0HL7UNLM8CHE0 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:36:39.7181614+03:00 0HL7UNLM8CHE0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:39.7181614+03:00 0HL7UNLM8CHE0 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:36:39.7191625+03:00 0HL7UNLM8CHE0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:39.7201627+03:00 0HL7UNLM8CHE0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:39.7201627+03:00 0HL7UNLM8CHE0 [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058281996620.2104151604483353\",
+  \"Nonce\": \"N0.94419835072245071505828199662\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.94419835072245071505828199662\",
+    \"state\": \"15058281996620.2104151604483353\"
+  }
+}" (9a175e33)
+2017-09-19T16:36:39.7251668+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:36:39.7396763+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:36:39.7421777+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:36:39.7441787+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:36:39.7466805+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:36:39.7491820+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:36:39.7511833+03:00 0HL7UNLM8CHE0 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:36:39.7852059+03:00 0HL7UNLM8CHE0 [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058281996620.2104151604483353\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:36:39.7857060+03:00 0HL7UNLM8CHE0 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:36:39.7862066+03:00 0HL7UNLM8CHE0 [INF] Request finished in 74.4198ms 302  (15c52c40)
+2017-09-19T16:36:42.0367536+03:00 0HL7UNLM8CHE1 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T16:36:42.0397564+03:00 0HL7UNLM8CHE1 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:36:42.0407562+03:00 0HL7UNLM8CHE1 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T16:36:42.0417569+03:00 0HL7UNLM8CHE1 [INF] Request finished in 4.7479ms 200 application/json (15c52c40)
+2017-09-19T16:36:42.3229641+03:00 0HL7UNLM8CHE2 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:36:42.3254660+03:00 0HL7UNLM8CHE2 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:36:42.3259661+03:00 0HL7UNLM8CHE2 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:36:42.3524835+03:00 0HL7UNLM8CHE2 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:36:42.3529836+03:00 0HL7UNLM8CHE2 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:36:42.3649916+03:00 0HL7UNLM8CHE2 [INF] Request finished in 39.9606ms 200 application/json (15c52c40)
+2017-09-19T16:36:42.9884059+03:00 0HL7UNLM8CHE3 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:36:42.9919080+03:00 0HL7UNLM8CHE3 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:36:42.9919080+03:00 0HL7UNLM8CHE3 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:36:43.0159236+03:00 0HL7UNLM8CHE3 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:36:43.0164241+03:00 0HL7UNLM8CHE3 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:36:43.0174248+03:00 0HL7UNLM8CHE3 [INF] Request finished in 28.6679ms 200 application/json (15c52c40)
+2017-09-19T16:41:42.3840564+03:00 0HL7UNLM8CHE4 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.47169969064610931505828502376&state=15058285023760.32153784554752796   (e5be5b71)
+2017-09-19T16:41:42.5470624+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:41:42.5470624+03:00 0HL7UNLM8CHE4 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:41:42.5480635+03:00 0HL7UNLM8CHE4 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:42.5480635+03:00 0HL7UNLM8CHE4 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:41:42.5480635+03:00 0HL7UNLM8CHE4 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:42.5490641+03:00 0HL7UNLM8CHE4 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:42.5490641+03:00 0HL7UNLM8CHE4 [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058285023760.32153784554752796\",
+  \"Nonce\": \"N0.47169969064610931505828502376\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.47169969064610931505828502376\",
+    \"state\": \"15058285023760.32153784554752796\"
+  }
+}" (9a175e33)
+2017-09-19T16:41:42.5820864+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (30ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:41:42.5950284+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:41:42.5980339+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:41:42.6010347+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:41:42.6040375+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:41:42.6055379+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:41:42.6090456+03:00 0HL7UNLM8CHE4 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:41:42.6220558+03:00 0HL7UNLM8CHE4 [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058285023760.32153784554752796\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:41:42.6230541+03:00 0HL7UNLM8CHE4 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:42.6240540+03:00 0HL7UNLM8CHE4 [INF] Request finished in 240.7645ms 302  (15c52c40)
+2017-09-19T16:41:45.5976818+03:00 0HL7UNLM8CHE5 [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/authorize?response_type=id_token%20token&client_id=fso.AngularClient&redirect_uri=http://localhost:65271&scope=openid%20email%20profile%20fso.Api&nonce=N0.88933400698234771505828505571&state=15058285055710.8029314021303229   (e5be5b71)
+2017-09-19T16:41:45.6011843+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:41:45.6016849+03:00 0HL7UNLM8CHE5 [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:41:45.6021850+03:00 0HL7UNLM8CHE5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:45.6026851+03:00 0HL7UNLM8CHE5 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.AuthorizeEndpoint" for "/connect/authorize" (f7642de5)
+2017-09-19T16:41:45.6031853+03:00 0HL7UNLM8CHE5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:45.6041883+03:00 0HL7UNLM8CHE5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:45.6046865+03:00 0HL7UNLM8CHE5 [INF] ValidatedAuthorizeRequest
+"{
+  \"ClientId\": \"fso.AngularClient\",
+  \"ClientName\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"AllowedRedirectUris\": [
+    \"http://localhost:65271\",
+    \"http://localhost:65271/auth/firstlogin\"
+  ],
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ResponseType\": \"id_token token\",
+  \"ResponseMode\": \"fragment\",
+  \"GrantType\": \"implicit\",
+  \"RequestedScopes\": \"openid email profile fso.Api\",
+  \"State\": \"15058285055710.8029314021303229\",
+  \"Nonce\": \"N0.88933400698234771505828505571\",
+  \"SessionId\": \"60a38b915d863461594a8797549fff83\",
+  \"Raw\": {
+    \"response_type\": \"id_token token\",
+    \"client_id\": \"fso.AngularClient\",
+    \"redirect_uri\": \"http://localhost:65271\",
+    \"scope\": \"openid email profile fso.Api\",
+    \"nonce\": \"N0.88933400698234771505828505571\",
+    \"state\": \"15058285055710.8029314021303229\"
+  }
+}" (9a175e33)
+2017-09-19T16:41:45.6096898+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:41:45.6252003+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:41:45.6282023+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0 (6438bdd5)
+2017-09-19T16:41:45.6322049+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AspNetRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0 (6438bdd5)
+2017-09-19T16:41:45.6927453+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0 (6438bdd5)
+2017-09-19T16:41:45.6957473+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0 (6438bdd5)
+2017-09-19T16:41:45.6977486+03:00 0HL7UNLM8CHE5 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Name], [r].[NormalizedName]
+FROM [AspNetRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedRoleName_0 (6438bdd5)
+2017-09-19T16:41:45.7232658+03:00 0HL7UNLM8CHE5 [INF] Authorize endpoint response
+"{
+  \"SubjectId\": \"3c7cca64-00cd-49cc-9407-3128eae83098\",
+  \"ClientId\": \"fso.AngularClient\",
+  \"RedirectUri\": \"http://localhost:65271\",
+  \"State\": \"15058285055710.8029314021303229\",
+  \"Scope\": \"openid email profile fso.Api\"
+}" (5993a9fa)
+2017-09-19T16:41:45.7237655+03:00 0HL7UNLM8CHE5 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:41:45.7247658+03:00 0HL7UNLM8CHE5 [INF] Request finished in 127.6299ms 302  (15c52c40)
+2017-09-19T16:41:48.3816820+03:00 0HL7UNLM8CHE6 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks   (e5be5b71)
+2017-09-19T16:41:48.3836833+03:00 0HL7UNLM8CHE6 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:41:48.3846840+03:00 0HL7UNLM8CHE6 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.DiscoveryEndpoint" for "/.well-known/openid-configuration/jwks" (f7642de5)
+2017-09-19T16:41:48.3846840+03:00 0HL7UNLM8CHE6 [INF] Request finished in 3.4551ms 200 application/json (15c52c40)
+2017-09-19T16:41:48.5808280+03:00 0HL7UNLM8CHE7 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:41:48.5838300+03:00 0HL7UNLM8CHE7 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:41:48.5848303+03:00 0HL7UNLM8CHE7 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:41:48.6018412+03:00 0HL7UNLM8CHE7 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:41:48.6018412+03:00 0HL7UNLM8CHE7 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:41:48.6028414+03:00 0HL7UNLM8CHE7 [INF] Request finished in 21.5511ms 200 application/json (15c52c40)
+2017-09-19T16:41:49.6640158+03:00 0HL7UNLM8CHE8 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:41:49.6670174+03:00 0HL7UNLM8CHE8 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:41:49.6675179+03:00 0HL7UNLM8CHE8 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:41:49.6910329+03:00 0HL7UNLM8CHE8 [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:41:49.6915335+03:00 0HL7UNLM8CHE8 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:41:49.6920344+03:00 0HL7UNLM8CHE8 [INF] Request finished in 28.2649ms 200 application/json (15c52c40)
+2017-09-19T16:42:42.3300817+03:00 0HL7UNLM8CHE9 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:42:42.3330844+03:00 0HL7UNLM8CHE9 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:42:42.3330844+03:00 0HL7UNLM8CHE9 [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:42:42.3521026+03:00 0HL7UNLM8CHE9 [INF] Executed DbCommand (2ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:42:42.3521026+03:00 0HL7UNLM8CHE9 [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:42:42.3531044+03:00 0HL7UNLM8CHE9 [INF] Request finished in 23.2821ms 200 application/json (15c52c40)
+2017-09-19T16:42:51.4401066+03:00 0HL7UNLM8CHEA [INF] Request starting HTTP/1.1 GET http://localhost:5000/connect/checksession   (e5be5b71)
+2017-09-19T16:42:51.4431090+03:00 0HL7UNLM8CHEA [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:42:51.4431090+03:00 0HL7UNLM8CHEA [INF] HttpContext.User merged via AutomaticAuthentication from authenticationScheme: "Identity.Application". (bdba1d38)
+2017-09-19T16:42:51.4441100+03:00 0HL7UNLM8CHEA [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2017-09-19T16:42:51.4441100+03:00 0HL7UNLM8CHEA [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.CheckSessionEndpoint" for "/connect/checksession" (f7642de5)
+2017-09-19T16:42:51.4451095+03:00 0HL7UNLM8CHEA [INF] Request finished in 4.6523ms 200 text/html; charset=UTF-8 (15c52c40)
+2017-09-19T16:42:51.5892190+03:00 0HL7UNLM8CHEB [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:42:51.5982238+03:00 0HL7UNLM8CHEB [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:42:51.5982238+03:00 0HL7UNLM8CHEB [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:42:51.6252417+03:00 0HL7UNLM8CHEB [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:42:51.6257423+03:00 0HL7UNLM8CHEB [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:42:51.6507585+03:00 0HL7UNLM8CHEB [INF] Request finished in 45.1585ms 200 application/json (15c52c40)
+2017-09-19T16:42:59.3846769+03:00 0HL7UNLM8CHEC [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:42:59.3876785+03:00 0HL7UNLM8CHEC [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:42:59.3876785+03:00 0HL7UNLM8CHEC [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:42:59.4101968+03:00 0HL7UNLM8CHEC [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:42:59.4106973+03:00 0HL7UNLM8CHEC [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:42:59.4111978+03:00 0HL7UNLM8CHEC [INF] Request finished in 27.1067ms 200 application/json (15c52c40)
+2017-09-19T16:43:04.5148138+03:00 0HL7UNLM8CHED [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:43:04.5168147+03:00 0HL7UNLM8CHED [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:43:04.5168147+03:00 0HL7UNLM8CHED [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:43:04.5343305+03:00 0HL7UNLM8CHED [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:43:04.5348318+03:00 0HL7UNLM8CHED [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:43:04.5353319+03:00 0HL7UNLM8CHED [INF] Request finished in 20.5967ms 200 application/json (15c52c40)
+2017-09-19T16:43:09.0737454+03:00 0HL7UNLM8CHEE [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:43:09.0757467+03:00 0HL7UNLM8CHEE [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:43:09.0767470+03:00 0HL7UNLM8CHEE [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:43:09.0912620+03:00 0HL7UNLM8CHEE [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:43:09.0917617+03:00 0HL7UNLM8CHEE [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:43:09.0927632+03:00 0HL7UNLM8CHEE [INF] Request finished in 18.9249ms 200 application/json (15c52c40)
+2017-09-19T16:43:12.0418248+03:00 0HL7UNLM8CHEF [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:43:12.0438257+03:00 0HL7UNLM8CHEF [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:43:12.0448264+03:00 0HL7UNLM8CHEF [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:43:12.0688431+03:00 0HL7UNLM8CHEF [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:43:12.0698434+03:00 0HL7UNLM8CHEF [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:43:12.0698434+03:00 0HL7UNLM8CHEF [INF] Request finished in 29.0224ms 200 application/json (15c52c40)
+2017-09-19T16:43:15.0319764+03:00 0HL7UNLM8CHEG [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/introspect application/x-www-form-urlencoded 145 (e5be5b71)
+2017-09-19T16:43:15.0339778+03:00 0HL7UNLM8CHEG [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory'); (6438bdd5)
+2017-09-19T16:43:15.0339778+03:00 0HL7UNLM8CHEG [INF] Invoking IdentityServer endpoint: "IdentityServer4.Endpoints.IntrospectionEndpoint" for "/connect/introspect" (f7642de5)
+2017-09-19T16:43:15.0529896+03:00 0HL7UNLM8CHEG [INF] Executed DbCommand (0ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Active], [e].[BirthDate], [e].[ConcurrencyStamp], [e].[Email], [e].[EmailConfirmed], [e].[Locale], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[Name], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[PictureUrl], [e].[ProfilePageUrl], [e].[RegisterTime], [e].[SecurityStamp], [e].[Status], [e].[Surname], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0 (6438bdd5)
+2017-09-19T16:43:15.0529896+03:00 0HL7UNLM8CHEG [INF] Success token introspection. Token status: "active", for API name: "fso.Api" (c4bc8338)
+2017-09-19T16:43:15.0539903+03:00 0HL7UNLM8CHEG [INF] Request finished in 22.793ms 200 application/json (15c52c40)

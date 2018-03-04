@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="4px">
+  <div fxFlex="50" fxFlex.lt-md="100" class="col-img-holder">
+    <mat-grid-list cols="1" rowHeight="1:1">
+      <mat-grid-tile
+        colspan="1"
+        rowspan="1"
+        >
+        <img [default]="defaultCollectionThumbUrl" [src]="collection.thumbImageUrl" alt="{{collection.name}}" >
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-between stretch"
+  class="col-detail-holder" fxFlex="49" fxFlex.lt-md="100">
+  <div>
+    <h2>{{collection.name}}</h2>
+    <p>{{collection.description}}</p>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start start" fxLayoutWrap fxLayoutGap="4px">
+    <span *ngIf="collection.postsCount > 0" class="dark-primary-text">{{collection.postsCount}} posts</span>
+    <span  class="dark-primary-text"><span class="bold">Last Updated </span>: {{collection.dateUtcModified | date:'HH:mm'}} - {{collection.dateUtcModified | date}}</span>
+  </div>
+  </div>
+</div>
+<mat-divider></mat-divider>

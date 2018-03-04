@@ -1,0 +1,17 @@
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationBusListener.deps.json
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationBusListener.runtimeconfig.json
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationBusListener.runtimeconfig.dev.json
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationBusListener.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationBusListener.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.Core.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.EventCore.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationData.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.EventCore.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.NotificationData.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\bin\Debug\netcoreapp2.0\fso.Core.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\obj\Debug\netcoreapp2.0\fso.NotificationBusListener.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\obj\Debug\netcoreapp2.0\fso.NotificationBusListener.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\obj\Debug\netcoreapp2.0\fso.NotificationBusListener.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\obj\Debug\netcoreapp2.0\fso.NotificationBusListener.AssemblyInfo.cs
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\obj\Debug\netcoreapp2.0\fso.NotificationBusListener.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationBusListener\obj\Debug\netcoreapp2.0\fso.NotificationBusListener.pdb

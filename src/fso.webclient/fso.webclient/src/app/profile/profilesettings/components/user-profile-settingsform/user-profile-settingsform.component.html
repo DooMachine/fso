@@ -1,0 +1,47 @@
+
+<form [formGroup]="form" [connectForm]="formState">
+    
+    <div> 
+        <h3>Profile Settings </h3>   
+        
+        <mat-form-field  color="accent">
+            <input matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field color="accent">
+            <input matInput placeholder="Surname" formControlName="surname">
+        </mat-form-field >
+        <mat-form-field color="accent" >
+                <textarea matInput formControlName="status" placeholder="Status">1600 Amphitheatre Pkwy</textarea>
+        </mat-form-field>
+
+        <!--<mat-form-field color="accent">
+            <mat-select
+                formControlName="selectedFollowSettings"
+                placeholder="Followers" >
+                <mat-option *ngFor="let option of followSetting" 
+                [value]="option.value"
+                >                    
+                {{ option.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>-->
+        <!--<mat-form-field color="accent">
+            <mat-select color="accent" placeholder="Profile" formControlName="selectedPrivacySettings">
+                <mat-option   *ngFor="let option of privacySettings"
+                [value]="option.value">
+                {{ option.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>-->
+        <span  color="warn" *ngIf="formState.error">{{formState.error}}</span>
+        <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="3px">
+            <span  *ngIf="formState.lastUpdateSucceed">
+                    <mat-icon color="accent" *ngIf="formState.lastUpdateSucceed">done</mat-icon>
+            </span>
+            <button color="warn" [disabled]="pending" class="saveButton"  
+            (click)="submit($event)" mat-raised-button>Save</button>
+        </div>
+        
+        
+    </div>
+</form>

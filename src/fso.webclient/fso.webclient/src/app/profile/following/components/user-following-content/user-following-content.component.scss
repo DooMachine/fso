@@ -1,0 +1,19 @@
+.modal-exit-button{
+    position: absolute;
+    top:10px;
+    right: 20px;
+    color:rgb(244, 244, 244);
+}
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  
+.big-icon {
+    @include md-icon-size(36px);
+}
+/deep/
+mat-card{
+    box-shadow: none;
+}

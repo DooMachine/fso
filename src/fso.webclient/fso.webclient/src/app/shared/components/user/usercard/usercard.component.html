@@ -1,0 +1,37 @@
+<mat-card class="no-box-shadow">
+  <mat-card-header>
+      <a mat-card-avatar
+      (click)="navigate.emit()"
+       [routerLink]="['/user', user.username]">
+        <img mat-card-avatar 
+        [default]=""
+        [src]="user.profileImage" class="img-circle"/>
+      </a>
+      <mat-card-title><a mat-line class="no-anchor-text a-grey" 
+        (click)="navigate.emit()"
+        [routerLink]="['/user', user.username]">{{user.username}}</a></mat-card-title>
+        <mat-card-subtitle
+        class="reputationBeforeDot"
+        color="primary"
+        matTooltip="Total reputation: {{user.reputation | number}}"
+        >{{user.reputation | number}}</mat-card-subtitle>
+        <div class="mat-card-header-text">             
+            <button
+              *ngIf="user.followState === 2 || user.followState === null"
+              class="text-white followButton "
+              color="primary"
+              (click)="onfollow.emit({username: user.username, previousFollowState: user.followState})" 
+              color="primary" mat-stroked-button> {{followText}}</button>
+            <button 
+              *ngIf="user.followState === 1"
+              class="followButton no-border" (click)="onunfollow.emit({username: user.username, previousFollowState: user.followState})"
+              color="primary" mat-stroked-button>{{followingText}} </button>
+              <button 
+              *ngIf="user.followState === 0"
+              (mouseenter)="pendingEnter()"
+              (mouseleave)="pendingLeave()"
+              class="followButton" (click)="onunfollow.emit({username: user.username, previousFollowState: user.followState})"
+              color="accent" mat-stroked-button>{{pendingText}} </button>
+          </div>    
+  </mat-card-header>    
+</mat-card>

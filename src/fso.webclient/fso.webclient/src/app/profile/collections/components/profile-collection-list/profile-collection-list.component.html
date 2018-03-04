@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap fxLayoutGap="0px">
+  <div *ngFor="let collection of collections" fxFlex="50" fxFlex.lt-md="100" >
+    <div class="c-img-cont">
+      <span class="col-s-b-c" *ngIf="isOwner">
+        <button matTooltip="Change thumbnail image" (click)="setChangeColId(collection.id); cflI.click()" mat-icon-button><mat-icon>camera_enhance</mat-icon></button> 
+        <button matTooltip="Delete collection" (click)="collectionDelete.emit(collection.id);" mat-icon-button><mat-icon>delete</mat-icon></button>   
+      </span>
+      <mat-grid-list cols="1" rowHeight="1:1">
+        <mat-grid-tile
+          colspan="1">
+          <a [routerLink]="[collection.id]">
+            <img [src]="collection.thumbImageUrl"
+             [default]="defaultCollectionThumbUrl" alt="{{collection.name}}"></a>
+        </mat-grid-tile>
+      </mat-grid-list>  
+      <div class="c-col-details">
+        <div class="c-col-d-in">
+          <a [routerLink]="[collection.id]"><h3 mat-line>{{collection.name}}</h3></a>
+          <span  mat-line *ngIf="collection.postCount ==0 || collection.postCount ==null" class="secondary-text">No post</span>
+          <span  mat-line *ngIf="collection.postCount !=0 && collection.postCount !=null " class="secondary-text">{{collection.postCount}} post</span><br>
+          <span  mat-line class="secondary-text">Last Updated: {{collection.dateUtcModified | date}} {{collection.dateUtcModified | date:'HH:mm'}} </span>
+        </div>    
+      </div>
+    </div>    
+  </div>
+</div>
+<input #cflI type="file" accept="image/*" name="cfl" id="cflI" (change)="continueColChange($event)" hidden />

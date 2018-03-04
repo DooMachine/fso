@@ -1,0 +1,38 @@
+.header-image{
+    background-size: cover;
+}
+mat-card{
+    max-width:100%;
+}
+.postPartsBorder {
+    padding: 10px 10px 10px 10px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin-bottom: 20px;
+}
+.mat-card-subtitle, .mat-card-content, .mat-card-header .mat-card-title{
+    margin-bottom: 8px;
+}
+.mat-card-actions{
+    margin:0;
+    padding:0;
+}
+$size : 16px;
+.settingsButton .mat-icon-button,.settingsButton .mat-icon-button .mat-icon{
+    font-size:$size !important;
+    height: $size !important;
+    width:$size !important;
+    line-height:$size !important;
+}
+.arr_holder{
+    height: 20px;
+}
+.smallCollapsed{
+    max-height: 160px !important;
+    overflow: hidden;
+}
+
+.postPartsBorder{
+    max-height: 700px;    
+    cursor: pointer;
+}

@@ -1,0 +1,59 @@
+
+<mat-card *ngIf="showForm$ | async">
+        <h3 class="a-grey">Add your review</h3>
+        <mat-card-header>
+                <a mat-card-avatar [routerLink]="['/user',this.authUsername$ | async]">
+                  <img mat-card-avatar [default] [src]="this.authUserProfileImage$ | async" class="img-circle"/>
+                </a>
+            <mat-card-title><a class="no-anchor-text a-grey"
+            [routerLink]="['/user',this.authUsername$ | async]">{{this.authUsername$ | async}}</a></mat-card-title> 
+            <mat-card-subtitle> </mat-card-subtitle>                                   
+        </mat-card-header>
+
+    <form [formGroup]="form" novalidate>    
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start stretch" fxLayoutAlign="start stretch" fxLayoutGap="12px">
+                <h5 class="mat-subtitle">Rate post</h5>
+                <div 
+                *ngIf="isSmallScreen" fxFlex="80">           
+                    <mat-slider  
+                    color="warn"
+                    value="5"
+                    fxFlex="70"                 
+                    min="1" max="10" step="0.5"
+                    (change)="onRatingSlideChange($event)"
+                    thumbLabel></mat-slider>
+                </div>
+                <div 
+                *ngIf="!isSmallScreen" fxFlex="8">   
+                    <mat-slider  
+                    color="warn"
+                    value="5"
+                    fxFlex
+                    vertical
+                    min="1" max="10" step="0.5"
+                    (change)="onRatingSlideChange($event)"
+                    thumbLabel></mat-slider>
+                </div>
+            <mat-form-field fxFlex color="accent">
+                <textarea cols="15"  matInput placeholder="Your review details" 
+                [formControl]="contentCtrl">
+            </textarea>
+                <div class="error" *ngIf="contentCtrl.invalid  && (contentCtrl.dirty || contentCtrl.touched)"
+                    class="accent">  
+                <div *ngIf="contentCtrl.errors.required">
+                    Review details is required.
+                </div>
+                <div *ngIf="contentCtrl.errors.maxLenght">
+                    Review must be maximum 10240 characters long.
+                </div>
+            </div>
+            </mat-form-field>
+            
+        </div>
+        <span class="error" *ngIf="formError | async">{{formError| async}}</span>      
+        <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="3px">          
+            <button color="warn" [disabled]="pending" class="saveButton"  
+            (click)="submit($event)" mat-raised-button>Submit</button>
+        </div>
+    </form>
+</mat-card>

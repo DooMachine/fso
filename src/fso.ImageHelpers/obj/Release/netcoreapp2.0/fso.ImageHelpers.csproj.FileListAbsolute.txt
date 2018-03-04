@@ -1,0 +1,11 @@
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\bin\Release\netcoreapp2.0\ImageSettings.Development.json
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\bin\Release\netcoreapp2.0\ImageSettings.json
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\bin\Release\netcoreapp2.0\fso.ImageHelpers.deps.json
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\bin\Release\netcoreapp2.0\fso.ImageHelpers.dll
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\bin\Release\netcoreapp2.0\fso.ImageHelpers.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\obj\Release\netcoreapp2.0\fso.ImageHelpers.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\obj\Release\netcoreapp2.0\fso.ImageHelpers.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\obj\Release\netcoreapp2.0\fso.ImageHelpers.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\obj\Release\netcoreapp2.0\fso.ImageHelpers.AssemblyInfo.cs
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\obj\Release\netcoreapp2.0\fso.ImageHelpers.dll
+C:\Users\doom\Desktop\fso\feasion\fso.ImageHelpers\obj\Release\netcoreapp2.0\fso.ImageHelpers.pdb

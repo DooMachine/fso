@@ -1,0 +1,18 @@
+
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutWrap fxLayoutGap="4px">
+    <div [ngClass]="{'fexp-fol': interest.isCurrentUserFollowing,'filter-animation':true}" fxFlex="49" fxFlex.xs="100" *ngFor="let interest of interests">
+    <mat-grid-list 
+    (click)="interest.isCurrentUserFollowing ? unfollow.emit(interest) : follow.emit(interest)"
+    cols="4" rowHeight="1:1">
+        <mat-grid-tile
+          colspan="4"
+          rowspan="1">
+        <img [default] class="i_cover_img" [src]="interest.coverImage" alt="{{interest.name}}" />
+        <span class="i_name">{{interest.name}}</span>
+        <div *ngIf="interest.isCurrentUserFollowing">
+          <mat-icon color="primary" >check</mat-icon>
+        </div>
+      </mat-grid-tile>      
+    </mat-grid-list>
+  </div>
+  </div>

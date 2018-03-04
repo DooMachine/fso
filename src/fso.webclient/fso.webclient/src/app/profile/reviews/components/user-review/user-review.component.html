@@ -1,0 +1,16 @@
+
+    <app-postcard
+      (onlikePost)="onlikePost.emit($event)"
+      (onunlikePost)="onunlikePost.emit($event)"
+      [postCard]="post"
+      >
+      <app-postcard-review    
+        [review] = "actualreview"
+        (onlikeReview)="onlikeReview.emit($event)"
+        (ondislikeReview)="ondislikeReview.emit($event)"
+        (onunlikeReview)="onunlikeReview.emit($event)"
+        (onundislikeReview)="onundislikeReview.emit($event)"
+        reviews> 
+      </app-postcard-review>
+
+    </app-postcard>

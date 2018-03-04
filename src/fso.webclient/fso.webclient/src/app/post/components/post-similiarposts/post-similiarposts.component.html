@@ -1,0 +1,31 @@
+<h3>You may interested</h3>
+<app-prc-loading  count="6" *ngIf="isLoading">
+
+</app-prc-loading>
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="4px">
+  <div *ngFor="let post of similiarPosts" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="4px">
+    <div fxFlex="42">
+        <mat-grid-list cols="1" rowHeight="120px">
+            <mat-grid-tile
+              colspan="1">
+              <a [routerLink]="[ '/post', post.id ]"><img  class="postpart-image"        
+                [src]="post.thumbnailUrls[post.activeThumbnailIndex]" alt="{{post.title}}"></a>
+            </mat-grid-tile>
+          </mat-grid-list>
+      </div>
+      <div fxFlex="57">        
+        <mat-card>
+            <a class="no-anchor-text a-grey bold" [routerLink]="[ '/post', post.id ]"><h3>{{post.title}}</h3></a>
+            <mat-card-header>                              
+                <a mat-card-avatar [routerLink]="['/user',post.userInfo.userName]">
+                  <img mat-card-avatar [default] [src]="post.userInfo.profileImage" class="img-circle"/>
+                </a>
+                <mat-card-title><a class="no-anchor-text a-grey"
+                  [routerLink]="['/user',post.userInfo.userName]">{{post.userInfo.userName}}</a></mat-card-title>
+                
+            </mat-card-header>
+              
+        </mat-card>
+    </div>
+  </div> 
+  </div>

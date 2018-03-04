@@ -1,0 +1,18 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="6px" fxLayoutWrap>
+  <span  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="3px" *ngFor="let group of groups">
+    <!--<a [style.borderColor]="group.alphaColor" [routerLink]="['/interest',group.urlKey]">
+      <img class="img-circle"  [src]="group.profileImage" alt="{{group.name}}"/>
+    </a> -->
+    <a  class="semi-bold no-anchor-text"
+      [style.color]="group.alphaColor"
+       [routerLink]="['/explore',group.urlKey]">
+       #{{group.name}}
+    </a>
+  </span> 
+  
+</div>
+<span  *ngIf="collection.id!=0">
+    <span class="semi-bold"> In Collection:</span><a 
+    class="a-grey"
+    [routerLink]="['/user',username,'collections',collection.id]"> {{collection.name}}</a>
+</span>

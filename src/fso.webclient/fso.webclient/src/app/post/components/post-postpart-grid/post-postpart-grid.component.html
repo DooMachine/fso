@@ -1,0 +1,20 @@
+<mat-grid-list cols="24" rowHeight="{{rowHeight}}">
+    <mat-grid-tile
+        *ngFor="let tile of gridTiles; let i=index"
+        (click)="onPostPartClick.emit(tile.postPart?.id)"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows">
+          <img
+          *ngIf="tile.loading"
+          [@outAnimation]
+          [ngClass]="'fillContainer'"
+          [src]=" tile.postPart?.image.lazyUrl"
+          class="postPartImageSizeHandle absLazy" />
+          <img          
+          [hidden]="tile.loading"
+          (load)="imageLoaded(i)"
+          [ngClass]="i==0 || postPartCount==2 ?  'img-responsive' : ''"
+          [src]=" i==0 || postPartCount==2 ? tile.postPart.image.url:tile.postPart.image.smallUrl"
+          class="postPartImageSizeHandle" />
+    </mat-grid-tile>
+  </mat-grid-list>

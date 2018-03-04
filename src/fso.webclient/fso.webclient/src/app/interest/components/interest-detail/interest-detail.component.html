@@ -1,0 +1,60 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px">
+  <div class="i-c-holder">
+    <div class="mod-area" *ngIf="isMod">
+      <button mat-icon-button matTooltipPosition="right" matTooltip="Change Cover Image" (click)="hiddenCoverInput.click()">
+        <mat-icon>camera_alt</mat-icon>
+      </button>
+      <input hidden type="file" #hiddenCoverInput accept="image/*" (change)="coverImageChanged($event)">
+      <button mat-icon-button matTooltipPosition="right" matTooltip="Change Profile Image" (click)="hiddenProfileInput.click()">
+        <mat-icon>camera</mat-icon>
+      </button>
+      <input hidden type="file" #hiddenProfileInput accept="image/*" (change)="profileImageChanged($event)">
+    </div>
+      <div class="i-n-holder">
+        <div class="i-n-rel home-wrapper-no-vertical-margin">
+          <div fxHide.lt-sm >
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="14px">
+              <h1 class="mat-h1">{{interest.name}}</h1>
+              <div fxLayout="column" fxLayoutAlign="center center"  class="i-p-foll-holder">
+                  <button
+                  color="primary"
+                  class="followButton"
+                   mat-raised-button (click)="followGroup.emit(interest)"
+                  *ngIf="interest.followState==1">Join</button>
+                  <button mat-stroked-button
+                  color="primary"  
+                  class="followButton bg-white"    
+                  
+                  (click)="leaveGroup.emit(interest)"
+                  *ngIf="interest.followState==0">Leave</button>
+              </div>
+            </div>
+          </div>
+          <div fxHide.gt-xs fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="6px">
+              
+                <h2 class="mat-h4">{{interest.name}}</h2>
+                <div class="i-p-foll-holder">
+                    <button
+                    color="primary"
+                    class=""
+                     mat-raised-button (click)="followGroup.emit(interest)"
+                    *ngIf="interest.followState==1">Join</button>
+                    <button mat-stroked-button
+                    color="primary"  
+                    class=" bg-white"    
+                    
+                    (click)="leaveGroup.emit(interest)"
+                    *ngIf="interest.followState==0">Leave</button>
+                </div>
+              
+            </div>
+        </div>
+      </div>
+    <img [default] class="g-c-i" [src]="interest.coverImage.url" />
+  </div>
+  <div class="d-tab-holder" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="12px">
+            
+        <ng-content select="[tabs]"></ng-content>
+      
+  </div>
+</div>

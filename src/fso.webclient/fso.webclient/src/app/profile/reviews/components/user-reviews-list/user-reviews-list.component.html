@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="6px">
+  <app-user-review-item
+      *ngFor="let post of posts"
+      (onlikeReview)="onlikeReview.emit($event)"
+      (ondislikeReview)="ondislikeReview.emit($event)"
+      (onunlikeReview)="onunlikeReview.emit($event)"
+      (onundislikeReview)="onundislikeReview.emit($event)"
+      (onlikePost)="onlikePost.emit($event)"
+      (onunlikePost)="onunlikePost.emit($event)"
+      [reviews]="reviews"
+      [post]="post"
+  >
+  </app-user-review-item>
+</div>

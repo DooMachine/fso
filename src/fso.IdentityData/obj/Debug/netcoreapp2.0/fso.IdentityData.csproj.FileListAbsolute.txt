@@ -1,0 +1,9 @@
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\bin\Debug\netcoreapp2.0\fso.IdentityData.deps.json
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\bin\Debug\netcoreapp2.0\fso.IdentityData.dll
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\bin\Debug\netcoreapp2.0\fso.IdentityData.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\obj\Debug\netcoreapp2.0\fso.IdentityData.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\obj\Debug\netcoreapp2.0\fso.IdentityData.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\obj\Debug\netcoreapp2.0\fso.IdentityData.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\obj\Debug\netcoreapp2.0\fso.IdentityData.AssemblyInfo.cs
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\obj\Debug\netcoreapp2.0\fso.IdentityData.dll
+C:\Users\doom\Desktop\fso\feasion\fso.IdentityData\obj\Debug\netcoreapp2.0\fso.IdentityData.pdb

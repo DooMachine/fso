@@ -1,0 +1,66 @@
+
+<form [formGroup]="form" [connectForm]="formState" novalidate>
+    
+  <div>   
+      <mat-form-field  color="accent">
+          <input matInput placeholder="Title" [formControl]="nameCtrl">
+          <div class="error" *ngIf="nameCtrl.invalid  && (nameCtrl.dirty || nameCtrl.touched)"
+                class="alert alert-danger">
+
+            <div *ngIf="nameCtrl.errors.required">
+                Title is required.
+            </div>
+            <div *ngIf="nameCtrl.errors.maxLenght">
+                Title must be maximum 64 characters long.
+            </div>
+        </div>
+      </mat-form-field>
+      <mat-form-field  color="accent">
+            <input matInput placeholder="Urlkey" [formControl]="urlKeyCtrl">
+            <div class="error" *ngIf="urlKeyCtrl.invalid  && (urlKeyCtrl.dirty || urlKeyCtrl.touched)"
+                  class="alert alert-danger">
+  
+              <div *ngIf="urlKeyCtrl.errors.required">
+                  Urlkey is required.
+              </div>
+              <div *ngIf="urlKeyCtrl.errors.maxLenght">
+                    Urlkey must be maximum 64 characters long.
+              </div>
+          </div>
+        </mat-form-field>
+        <mat-form-field  color="accent">
+            <input matInput placeholder="Color-Alpha" [formControl]="colorAlphaCtrl">
+            <div class="error" *ngIf="colorAlphaCtrl.invalid  && (colorAlphaCtrl.dirty || colorAlphaCtrl.touched)"
+                    class="alert alert-danger">
+    
+                <div *ngIf="colorAlphaCtrl.errors.required">
+                    Urlkey is required.
+                </div>
+                <div *ngIf="colorAlphaCtrl.errors.maxLenght">
+                    Urlkey must be maximum 64 characters long.
+                </div>
+            </div>
+        </mat-form-field>
+      <mat-form-field color="accent" >
+          <textarea matInput [formControl]="descriptionCtrl" rows=4 placeholder="Description">                
+          </textarea>
+          <div class="error" *ngIf="descriptionCtrl.invalid  && (descriptionCtrl.dirty || descriptionCtrl.touched)"
+                class="alert alert-danger">
+            <div *ngIf="descriptionCtrl.errors.maxLenght">
+                Title must be maximum 64 characters long.
+            </div>
+        </div>
+      </mat-form-field> 
+      <span class="error" *ngIf="formError">{{formError}}</span>
+      <span  color="warn" *ngIf="formState.error">{{formState.error}}</span>
+      
+      <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="3px">
+          
+          <span  *ngIf="formState.lastUpdateSucceed">
+              <mat-icon color="accent" *ngIf="formState.lastUpdateSucceed">done</mat-icon>
+          </span>
+          <button color="warn" [disabled]="pending || !form.valid" class="saveButton"  
+          (click)="submit($event)" mat-raised-button>Add Interest</button>
+      </div>
+  </div>
+</form>

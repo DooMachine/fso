@@ -1,0 +1,11 @@
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\bin\Release\netcoreapp2.0\fso.NotificationData.deps.json
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\bin\Release\netcoreapp2.0\fso.NotificationData.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\bin\Release\netcoreapp2.0\fso.NotificationData.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\bin\Release\netcoreapp2.0\fso.Core.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\bin\Release\netcoreapp2.0\fso.Core.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\obj\Release\netcoreapp2.0\fso.NotificationData.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\obj\Release\netcoreapp2.0\fso.NotificationData.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\obj\Release\netcoreapp2.0\fso.NotificationData.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\obj\Release\netcoreapp2.0\fso.NotificationData.AssemblyInfo.cs
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\obj\Release\netcoreapp2.0\fso.NotificationData.dll
+C:\Users\doom\Desktop\fso\feasion\fso.NotificationData\obj\Release\netcoreapp2.0\fso.NotificationData.pdb

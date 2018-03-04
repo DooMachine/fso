@@ -1,0 +1,12 @@
+
+    <nav class="user-nav" mat-tab-nav-bar aria-label="user info links">        
+      <a mat-tab-link
+         *ngFor="let tabLink of tabLinks; let i = index"
+         [routerLink]="tabLink.link"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive ? true : false ">
+        <b>{{tabLink.label}}</b>
+      </a>
+    </nav>
+<router-outlet></router-outlet>
+  

@@ -1,0 +1,16 @@
+<h3>Profile Image</h3>
+<img
+  [style.height.px] = "130" [style.width.px] = "130"
+  class="point img-circle img-responsive"
+  [src]= "profileImageState.currentProfileImageUrl" 
+  (click)="profileFileInput.click()"
+  [default]
+  />
+<br>
+  <span 
+  (click)="profileFileInput.click()"
+   class="secondary-text max-width">Click/Tap picture to change your profile picture</span>
+  <input type="file" #profileFileInput
+  (change)="fileChangeEvent($event)"
+  accept="image/*"
+  name="profileFileInput" id="profileFileInput"/>

@@ -1,0 +1,19 @@
+.mat-card-subtitle, .mat-card-content, .mat-card-header .mat-card-title{
+    margin-bottom: 8px;
+}
+.mat-card-actions{
+    margin:0;
+    padding:0;
+}
+mat-card-content{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.mat-slider-thumb::before{
+    content: attr(data-review-value);
+    
+}
+.mat-slider:not(.mat-slider-disabled) .mat-slider-thumb-label {
+    pointer-events: none;
+    cursor: pointer;
+}

@@ -1,0 +1,26 @@
+
+<a class="a-grey" [routerLink]="routerLink" (click)="navigate.emit()">
+  <mat-list-item >
+      <mat-icon
+      color="{{!notification.isSeen ? 'primary' : ''}}"
+      mat-list-icon>{{icon}}</mat-icon>    
+      <div mat-line fxLayout="row" fxLayoutAlign="start start">        
+          <img
+          *ngFor="let user of notification.activityUsers"          
+          [matTooltip]="user.username" 
+          matTooltipPosition="above" 
+          [default]=""
+          [src]="user.imageUrl"
+          class="img-circle img-user"/>        
+      </div>
+      <!--<img class="img-circle img-notification" [src]="notification.imageUrl" />-->
+      <p mat-line><b>{{notification.userInfoContent}}</b></p>
+      <p mat-line> {{notification.content}} </p>
+      <small mat-line>{{notification.dateUtcModified | utcdate | date:'d MMM yy - hh:mm'}} </small>
+    <ng-content></ng-content>
+  </mat-list-item>
+</a>
+<!--ng-template>
+    <h2 mat-subheader>notification.dateUtcModified | date</h2>
+    <mat-divider></mat-divider>
+</ng-template>-->

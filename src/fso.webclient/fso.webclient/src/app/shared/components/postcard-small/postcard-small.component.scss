@@ -1,0 +1,68 @@
+.abs-header{
+    position: absolute;   
+    left: 0px;
+    width:100%;
+    top:0px;
+    background: rgba(0, 0, 0, 0.72);
+    color: #cfcfcf;
+    z-index: 15;
+}
+.abs-actions{
+    position: absolute;
+    left: 0px;
+    width:100%;
+    bottom:0px;
+    background: rgba(0, 0, 0, 0.72);
+    color: #cfcfcf;
+    text-indent: 6px;
+}
+mat-card{padding:6px;}
+.mat-card-actions{
+    margin:0;
+}
+mat-card-title{
+    text-overflow: ellipsis;
+    color:#fff;
+    font-size:14px;
+    font-weight: 400;
+    
+}
+.abs-header mat-card-title{
+    padding:6px 9px;
+    margin-bottom:0px !important;
+}
+.p-c-title{
+    z-index: 12;
+    color:#cfcfcf;
+    font-weight: 600;
+    font-size:1rem;
+    
+}
+.secondary-text{
+    color:inherit;
+}
+$size : 16px;
+.settingsButton .mat-icon-button,.settingsButton .mat-icon-button .mat-icon{
+    font-size:$size !important;
+    height: $size !important;
+    width:$size !important;
+    line-height:$size !important;
+}
+
+$actionButtonSize:21px;
+
+mat-card-actions .mat-icon-button .mat-icon{
+    font-size:$actionButtonSize !important;
+    height: $actionButtonSize !important;
+    width:$actionButtonSize !important;
+    line-height:$actionButtonSize !important;
+}
+mat-card-actions span{
+    height: 20px;
+}
+mat-card-actions{
+    padding-top:0px;
+}
+.add-r-b{
+    text-align: left;
+}

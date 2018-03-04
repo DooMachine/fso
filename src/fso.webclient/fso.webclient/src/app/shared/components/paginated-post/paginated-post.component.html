@@ -1,0 +1,20 @@
+
+<div fxLayout="row" fxLayoutWrap>
+    <div
+    *ngFor="let post of posts"
+    fxFlex="33"
+    fxFlex.lt-md="100"
+    >
+        <app-postcard-small  
+        
+        
+            [postCard]="post"
+            (onlikePost)="likePost.emit($event)"
+            [authUserId]="authUserId"
+            (onunlikePost)="unlikePost.emit($event)"   
+            (followUser)="followUser.emit($event)"   
+            (unfollowUser)="unfollowUser.emit($event)" 
+            >
+        </app-postcard-small>
+    </div>
+</div>

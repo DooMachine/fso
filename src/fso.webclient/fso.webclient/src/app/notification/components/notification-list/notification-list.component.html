@@ -1,0 +1,17 @@
+<mat-list>
+  <div fxLayout="row" fxLayoutAlign="space-between center"  fxLayoutGap="2px">
+      <h3 mat-subheader>Notifications</h3>
+      <a mat-subheader href="#" (click)="setAllNotificationReaded($event)">Set all as readed</a>
+  </div>
+    <mat-divider></mat-divider>
+    <app-notification-item
+      *ngFor="let notificationDto of notifications; let i = index;"
+      [notification] ="notificationDto"
+      [icon]="notificationDto.notificationTypeIcon"
+      (navigate)="navigateNotification.emit(notificationDto)"
+      [routerLink]="notificationDto.redirectUrl"
+    >
+</app-notification-item>
+    <mat-divider></mat-divider>
+</mat-list>
+

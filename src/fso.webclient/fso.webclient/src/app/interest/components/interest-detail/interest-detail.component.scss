@@ -1,0 +1,52 @@
+.mod-area{
+    position: absolute;
+    background: rgba(0,0,0,0.3);
+    color:whitesmoke;
+    top:0px;
+    padding:1px;
+    left:0px;
+}
+h1{
+    text-shadow: 1px 0px 1px black;
+}
+.i-c-holder{
+    position: relative;
+}
+.rel-wrap{
+    position: relative;
+}
+.g-c-i{
+    max-height: 210px;
+    width:100%;
+}
+.thumbImage{
+    width: 140px;
+    height: 140px;
+}
+.mat-h1{
+    color:rgba(255,255,255,0.92);
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 4px;
+    margin-left: 14px;
+}
+.mat-h4{
+    color:rgba(255,255,255,0.92);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+.i-n-holder{
+    position: absolute;
+    margin:0 auto;
+    width:100%;
+    text-align:center;
+    bottom: 5px;
+    
+}
+.i-n-rel{
+    position: relative;
+}
+.bg-white{
+    background: white;
+}

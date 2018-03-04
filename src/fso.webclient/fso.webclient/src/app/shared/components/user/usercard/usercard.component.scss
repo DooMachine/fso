@@ -1,0 +1,17 @@
+.mat-card-subtitle, .mat-card-content, .mat-card-header .mat-card-title{
+    margin-bottom: 8px;
+}
+mat-card{
+    box-shadow:none !important;
+}
+.followButton{
+    max-width: 86px;
+    min-width: 70px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 112px !important;
+}
+.mat-card-header-text{
+    width:100%;
+    text-align: right;
+}

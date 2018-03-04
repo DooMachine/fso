@@ -1,0 +1,9 @@
+<div *ngFor="let post of favourites">
+    <app-postcard        
+        [postCard]="post"
+        (onlikePost)="onlikePost.emit($event)"
+        [authUserId]="authUserId"
+        (onunlikePost)="onunlikePost.emit($event)"      
+        >
+    </app-postcard>
+    </div>

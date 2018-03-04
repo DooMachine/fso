@@ -1,0 +1,41 @@
+:host {
+    display: flex;
+    justify-content: center;
+    margin: 12px auto;    
+    max-width: 500px;
+    
+    width:100%;
+  }
+  .mat-form-field {
+    width: 100%;
+    min-width: 200px;
+  }
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+  .error {
+    padding: 9px 4px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .saveButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: flex-end;
+  }
+  .interest-line{
+      max-width: 100%;
+      width:56px !important;
+      text-overflow: ellipsis;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius:4px;
+  }
+  .intbutton{
+      max-width:56px;
+  }
+  

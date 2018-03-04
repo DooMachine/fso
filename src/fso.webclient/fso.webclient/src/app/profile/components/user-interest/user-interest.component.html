@@ -1,0 +1,34 @@
+<h4 class="interestTitle"  mat-subheader>Interests</h4>
+<app-nothing-to-show *ngIf="isEmpty; else showContent">
+  No Interests here
+</app-nothing-to-show>
+<ng-template #showContent>
+  <mat-list>
+    <mat-divider color="primary"></mat-divider>
+    <mat-list-item *ngFor="let interest of interests">
+      <img [default] [style.border-color]="interest.alphaColor" mat-list-avatar class="img-circle img-group" [src]="interest.profileImage" />
+      <p mat-line>
+        <a class="a-grey interest-list-name" [routerLink]="['/explore',interest.urlKey]"
+        ><span>{{interest.name}}</span></a>             
+      </p>
+      <span mat-line class="secondary-text">
+        {{interest.followerCount | number}} people
+      </span>
+      <button
+      color="primary"
+      class="followButton"
+       fxFlex="90px" mat-raised-button (click)="follow.emit(interest)"
+      *ngIf="!interest.isCurrentUserFollowing">Join</button>
+      <button mat-stroked-button
+      color="primary"  
+      class="followButton"    
+      fxFlex="90px"
+      (click)="unfollow.emit(interest)"
+      *ngIf="interest.isCurrentUserFollowing">Leave</button>
+    </mat-list-item>
+  </mat-list>
+  <div class="text-center">
+    <!--<a  fxFlexAlign="end" href="#" class="a-grey" (click)="showMore($event)">Show All</a>-->
+  </div>
+
+</ng-template>

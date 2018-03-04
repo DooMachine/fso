@@ -1,0 +1,13 @@
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\fso.EventCore.deps.json
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\fso.EventCore.dll
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\fso.EventCore.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\obj\Release\netcoreapp2.0\fso.EventCore.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\obj\Release\netcoreapp2.0\fso.EventCore.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\obj\Release\netcoreapp2.0\fso.EventCore.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\obj\Release\netcoreapp2.0\fso.EventCore.AssemblyInfo.cs
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\obj\Release\netcoreapp2.0\fso.EventCore.dll
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\obj\Release\netcoreapp2.0\fso.EventCore.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\fso.Core.dll
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\fso.Core.pdb
+C:\Users\doom\Desktop\fso\feasion\fso.EventCore\bin\Release\netcoreapp2.0\Newtonsoft.Json.xml

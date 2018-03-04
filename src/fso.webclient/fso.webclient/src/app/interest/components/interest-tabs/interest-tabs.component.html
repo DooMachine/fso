@@ -1,0 +1,13 @@
+
+    
+    <nav color="primary" class="interest-nav" mat-tab-nav-bar aria-label="interest info links">        
+      <a mat-tab-link
+        [matTooltip]="tabLink.tooltip" matTooltipPosition="above"
+         *ngFor="let tabLink of tabLinks; let i = index"
+         [routerLink]="tabLink.link"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive ? true : false ">
+         <mat-icon color="primary" class="tab-icon">{{tabLink.icon}}</mat-icon>
+        <b>{{tabLink.label}}</b>
+      </a>
+    </nav>

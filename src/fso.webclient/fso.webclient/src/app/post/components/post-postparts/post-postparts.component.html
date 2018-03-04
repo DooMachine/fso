@@ -1,0 +1,52 @@
+<div class="pp-cont">
+  <div *ngIf="postpartViewStyle == 0"
+  fxLayout="column"
+   fxLayoutAlign="center center" 
+   class="postPart-gallery-container">
+    <img 
+    (click)="navigateRight($event)"
+    class="activepostpart-img img-responsive"
+    [src]="activePostPart?.image.url"
+    alt="{{activePostPart?.title}}" />    
+  </div>
+  <div 
+  *ngIf="postpartViewStyle == 1">
+    <app-post-postpart-grid
+    [activePostPart]="activePostPart"
+    [nonActivepostParts] = "nonActivepostParts"
+    (onPostPartClick)="gridPostPartClicked.emit($event)"
+    >    
+    </app-post-postpart-grid>
+  </div>
+  <div class="viewmode-buttons">
+      <div fxLayout="row" fxLayoutAlign="end end" >
+        <button 
+        *ngIf="postpartViewStyle == 0"
+          (click)="changeToGrid($event)"
+          matTooltip="View All Images In Grid" matTooltipPosition="below" mat-icon-button>
+            <mat-icon class="big-icon" aria-label="View Quilt">view_quilt</mat-icon>
+        </button>
+        <button 
+        *ngIf="postpartViewStyle == 1"
+          (click)="changeToSlide($event)"
+          matTooltip="View Images In Slide" matTooltipPosition="below" mat-icon-button>
+              <mat-icon class="big-icon" aria-label="View Carousel">collections</mat-icon>
+        </button>
+      </div>
+  </div>
+  <div class="navigate-buttons">
+      <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <button 
+          (click)="navigateLeft($event)"
+          matTooltip="Previous" matTooltipPosition="right" mat-icon-button>
+              <mat-icon class="big-icon" aria-label="Navigate Left">navigate_before</mat-icon>
+      </button>
+      <button 
+      (click)="navigateRight($event)"
+          matTooltip="Next" matTooltipPosition="left" mat-icon-button>
+            <mat-icon class="big-icon" aria-label="Navigate Right">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>  
+</div>
+

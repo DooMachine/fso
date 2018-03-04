@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayoutAlign="start start"
+ fxLayoutWrap fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="10">
+  <div 
+  *ngFor="let user of users">
+      <app-usercard 
+      [user]="user"
+      (onfollow)="followUser.emit($event)"
+      (onunfollow)="unfollowUser.emit($event)"
+      >
+      </app-usercard>
+  </div>
+  <div class="follow-modal-button-area">
+        <button
+          fxFill
+          mat-stroked-button
+          *ngIf="(hasNextPage) && !(isLoading)"
+          (click)="loadMore.emit()">Load More..</button>
+          <mat-progress-bar *ngIf="isLoading" mode="buffer"></mat-progress-bar>
+  </div>
+</div>

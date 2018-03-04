@@ -1,0 +1,359 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700);
+
+/*COLOR VARIABLES*/
+$grey-color: #aeaeaebb;
+$sblack:#212121;
+$small-link-font-size: 11px;
+$small-link-padding:3px 2px;
+$medium-link-font-size:13px;
+$semi-bold:600;
+$followButtonWidth: 95px;
+
+.mat-menu-panel{
+    min-width:159px !important;
+}
+
+.mat-dialog-container {
+    max-height: 90vh !important;
+  }
+.pos-rel{
+    position: relative;
+}
+// Image
+.img-responsive{
+    max-width: 100%;
+    max-height: 100%;
+}
+.no-anchor-text{
+    text-decoration: none !important;
+}
+.semi-bold{
+    font-weight: $semi-bold;
+}
+.interest-small-link{
+    @extend .no-anchor-text;
+    color:$grey-color;
+    font-size:$small-link-font-size;
+    padding:$small-link-padding;
+    font-weight: $semi-bold;
+}
+.interest-list-name{
+    @extend .no-anchor-text;
+    font-size:$medium-link-font-size;
+    font-weight: $semi-bold;
+}
+body{
+    color:$sblack;
+    font-family: 'Open Sans', sans-serif;
+    font-size:13px;
+}
+.main-user-wrapper{
+    width: 800px;
+    max-width: 98%;
+    margin: 12px auto;
+    margin-bottom: 40px;
+}
+.main-container{
+    width: 800px;
+    max-width: 98%;
+    margin: 12px auto;
+    margin-bottom: 40px;
+}
+.main-post-wrapper{
+    width: 632px;
+    max-width: 98%;
+    margin: 12px auto;
+    margin-bottom: 10px;
+}
+.img-circle{
+    border-radius: 50%;
+}
+.text-white{
+    color: #fff;
+}
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%  !important;
+  }
+.max-width{
+    width:100%;
+}
+.modal-exit-button{
+    position: absolute;
+    top:-10px;
+    right: -10px;
+}
+.followButton{
+    border:1px solid;
+    background: white;
+    font-weight: 700 !important;
+    width: $followButtonWidth;
+    border-radius: 123px !important;
+}
+.unFollowButton{
+    font-weight: 700 !important;
+    width: $followButtonWidth;
+}
+.follow-modal-button-area
+{
+    display: block;
+    padding: 10px 0px;
+    min-height: 40px;
+}
+.no-box-shadow{
+    box-shadow: none;
+}
+.text-center{
+    text-align: center;
+}
+.reputationBeforeDot::before{
+    content: '•';
+    margin: 0 4px;
+}
+// margin
+.no-bottom-margin{
+    margin-bottom: 0;
+}
+.no-margin{
+    margin:0
+}
+.no-left-margin{
+    margin-left: 0;
+}
+.no-right-margin{
+    margin-right: 0;
+}
+.no-top-margin{
+    margin-top:0;
+}
+.no-vertical-margin{
+    margin-top:0;
+    margin-bottom: 0;
+}
+.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title{
+    margin-bottom:10px !important;
+}
+.fitHeader{
+    margin-top:0px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    color:#212121;
+    font-weight: 400;
+}
+.no-border{
+    border:none !important;
+}
+
+$mq-mobile-portrait		: 320px !default;
+$mq-mobile-landscape	: 480px !default;
+$mq-tablet-portrait		: 768px !default;
+$mq-tablet-landscape	: 1024px !default;
+$mq-desktop				: 1382px !default;
+$mq-sm:960px !default;
+
+@mixin smaller-tablet{
+    @media(max-width:$mq-sm){
+        @content;
+    }
+}
+mat-sidenav-container{
+    @include smaller-tablet(){
+        margin-bottom: 56px;
+    }
+}
+// Both portrait and landscape
+@mixin mobile-only {
+	@media (max-width : $mq-mobile-landscape) {
+		@content;
+	}
+}
+
+// Everything up to and including the portrait width of the phone
+// Since it's the smallest query it doesn't need a min
+@mixin mobile-portrait-only {
+	@media (max-width : $mq-mobile-portrait) {
+		@content;
+	}
+}
+
+// Everything up to and including the mobile portrait
+@mixin mobile-portrait-and-below {
+	@media (max-width : $mq-mobile-portrait) {
+		@content;
+	}
+}
+
+// Everything above and including the mobile portrait
+@mixin mobile-portrait-and-up {
+	@media (min-width : $mq-mobile-portrait) {
+		@content;
+	}
+}
+
+// Everthing larger than a portrait mobile up until mobile landscape
+@mixin mobile-landscape-only {
+	@media only screen and (min-width : $mq-mobile-portrait + 1) and (max-width : $mq-mobile-landscape) {
+		@content;
+	}
+}
+
+// Everything up to and including the mobile landscape width
+@mixin mobile-landscape-and-below {
+	@media only screen and (max-width : $mq-mobile-landscape) {
+		@content;
+	}
+}
+
+// Everything above and including the mobile landscape width
+@mixin mobile-landscape-and-up {
+	@media only screen and (min-width : $mq-mobile-portrait + 1) {
+		@content;
+	}
+}
+
+// Both the portrait and landscape width of the tablet
+// Larger than a landscape mobile but less than or equal to a landscape tablet
+@mixin tablet-only {
+	@media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-landscape) {
+		@content;
+	}
+}
+
+// Everything larger than mobile landscape up until the portrait width of the tablet
+@mixin tablet-portrait-only {
+	@media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-portrait) {
+		@content;
+	}
+}
+
+// Everything below and including the portrait width of the tablet
+@mixin tablet-portrait-and-below {
+	@media only screen and (max-width : $mq-tablet-portrait) {
+		@content;
+	}
+}
+
+// Everything above and including the portrait width of the tablet
+@mixin tablet-portrait-and-up {
+	@media only screen and (min-width : $mq-mobile-landscape + 1) {
+		@content;
+	}
+}
+
+// Larger than portrait but less than or equal to the landscape width
+@mixin tablet-landscape-only {
+	@media only screen and (min-width : $mq-tablet-portrait + 1) and (max-width : $mq-tablet-landscape) {
+		@content;
+	}
+}
+
+// Up to and including the tablet landscape
+@mixin tablet-landscape-and-below {
+	@media only screen and (max-width : $mq-tablet-landscape) {
+		@content;
+	}
+}
+
+// Everything larger than portrait tablet
+@mixin tablet-landscape-and-up {
+	@media only screen and (min-width : $mq-tablet-portrait + 1) {
+		@content;
+	}
+}
+
+// Everything larger than a landscape tablet
+@mixin desktop-and-up {
+	@media only screen and (min-width : $mq-tablet-landscape + 1) {
+		@content;
+	}
+}
+
+// Everything below and including the desktop 
+@mixin desktop-and-below {
+	@media only screen and (max-width : $mq-desktop) {
+		@content;
+	}
+}
+
+// Everything larger than a landscape tablet but less than or equal to the desktop
+@mixin desktop-only {
+	@media only screen and (min-width : $mq-tablet-landscape + 1) and (max-width : $mq-desktop) {
+		@content;
+	}
+}
+
+// Retina screens have a 1.5 pixel ratio, not 2
+@mixin retina {
+	@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+		@content;
+	}
+}
+.home-wrapper{
+    margin:24px auto;
+    @include mobile-landscape-and-below(){
+        width:98%;
+    }
+    @include desktop-and-up() {
+        width:1120px;
+    }
+}
+.home-wrapper-no-vertical-margin{
+    margin:0 auto;
+    @include mobile-landscape-and-below(){
+        width:98%;
+    }
+    @include desktop-and-up() {
+        width:1120px;
+    }
+}
+.small-wrapper{
+    margin:0 auto;
+    @include mobile-landscape-and-below(){
+        width:98%;
+    }
+    @include desktop-and-up() {
+        width:800px;
+    }
+    
+}
+.full-wrapper{
+    margin:0 auto;    
+    width:99%;
+    
+    @include desktop-and-up() {
+        width:1300px;
+    }
+    
+}
+.post-wrapper{
+    margin:0 auto;    
+    width:99%;
+    
+    @include desktop-and-up() {
+        width:1120px;
+    }
+    
+}
+$size:18px;
+.activity-desc mat-icon{
+    font-size: $size;
+    width:$size;
+    height: $size;
+    position: absolute;
+}
+.a-desc-content{
+    margin-left:27px; 
+}
+

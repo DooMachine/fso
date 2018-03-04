@@ -1,0 +1,49 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+        <a mat-card-avatar [routerLink]="['/user',post.authorInfo.username]">
+          <img mat-card-avatar
+          [default]
+           [src]="post.authorInfo.profileImage" class="img-circle"/>
+        </a>
+        <mat-card-title><a class="no-anchor-text a-grey"
+          [routerLink]="['/user',post.authorInfo.username]">{{post.authorInfo.username}}</a></mat-card-title>
+        <mat-card-subtitle>
+          <span>{{post.dateUtcPublished | utcdate | date:'d MMM yy - hh:mm'}}</span>
+          <span class="settingsButton" *ngIf="authUserId == post.authorInfo.appUserId"> 
+            - <a 
+            [routerLink]="['/post',post.id,'edit']"
+            mat-icon-button>
+              <mat-icon aria-label="Edit Post">settings</mat-icon>
+            </a>
+          </span> 
+        </mat-card-subtitle>
+        <div fxFlex class="mat-card-header-text">
+            <app-user-followbutton
+            *ngIf="authUserId != post.authorInfo.appUserId"
+            (onfollow)="followUser.emit($event)"
+            (onunfollow)="unfollowUser.emit($event)"
+            [username]="post.authorInfo.username"
+            [followState] ="post.authorInfo.followState"
+            >
+
+            </app-user-followbutton>
+        </div>
+      </mat-card-header>   
+      <mat-card-title>
+        <a class="no-anchor-text a-grey"
+        [routerLink]="['/post',post.id]">
+        {{post.title}}</a>
+    </mat-card-title>   
+     
+    <mat-card-content>         
+      <article class="p-desc" [innerHtml]="post.description | newline">
+      </article>
+    </mat-card-content>       
+    <app-post-groups
+      [groups]="post.postGroups"
+      [collection]="post.collectionInfo"
+      [username]="post.authorInfo.username"
+      >
+  </app-post-groups> 
+  </mat-card>

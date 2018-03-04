@@ -1,0 +1,20 @@
+mat-grid-tile{
+    cursor: pointer;
+}
+.post-title {
+    position: absolute;
+    width:100%;
+    height: 20px;
+    bottom: 0px;
+    background: rgba(0,0,0,0.72);
+    padding:4px 12px;
+    text-indent: 6px
+}
+.post-title h5 {
+    margin:0;
+    line-height: 20px;
+    color:#cfcfcf;
+}
+.mat-subheader{
+    padding:0;
+}
