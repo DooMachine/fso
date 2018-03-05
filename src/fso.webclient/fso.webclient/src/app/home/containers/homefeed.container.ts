@@ -4,10 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { MatMenuTrigger } from '@angular/material';
 import { SEOService } from '../../shared/services/seo.service';
 import { State } from '../reducers';
-import { getIsAuthenticated, selectUserId } from '../../auth/reducers/auth.reducer';
+import { getIsAuthenticated, selectUserId, selectUserProfileImage } from '../../auth/reducers/auth.reducer';
 import * as fromActivityActions  from '../actions/activityfeed';
 import { UserActivity } from '../../shared/models/user/userActivity';
 import { selectAll, isEmpty, getLoading, selectHasNextPage } from '../reducers/activityfeed'
+import { ReviewComment } from '../../post/models/reviewComment';
+import * as fromFeedComments from '../../feed/feed-comments/reducers';
+import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
 
 @Component({
     changeDetection:ChangeDetectionStrategy.OnPush,
@@ -30,10 +33,26 @@ import { selectAll, isEmpty, getLoading, selectHasNextPage } from '../reducers/a
                     (onunlikePost)="unlikePost($event)"
                     (onunlikeReview)="unlikeReview($event)"
                     (onundislikeReview)="undislikeReview($event)"
+
+                    (onlikeComment)="likeComment($event)"
+                    (onunlikeComment) = "unlikeComment($event)"
+                    (ondislikeComment)="dislikeComment($event)"
+                    (onundislikeComment)="undislikeComment($event)"
+
+                    (showCommentForm)="showCommentForm($event)"
+                    (hideCommentForm)="hideCommentForm($event)"
+                    (submitCommentForm)="submitComment($event)"
+                
+                    [authUserProfileImage]="authUserProfileImage$ | async"
                     [authUserId]="currentUserId$ | async"
                     [isEmpty]="isEmpty$ | async"
                     [loading]="loading$ | async"
-            
+                    (openCommentsSection)="openCommentsSection($event)"
+                    [comments]="comments$ | async"
+                    [openedCommentReviewIds]="openedCommentReviewIds$ | async"
+                    [loadedCommentReviewIds] = "loadedCommentReviewIds$ | async"
+                    [openedCommentFormReviewIds]="openedCommentFormReviewIds$ | async"
+
                 [activities] = "feedActivities$ | async">
                 
                 </app-feed-list>
@@ -64,6 +83,12 @@ export class HomeFeedComponent implements OnInit {
     isEmpty$: Observable<boolean>;
     currentUserId$:Observable<string>;
     loading$:Observable<boolean>;
+    authUserProfileImage$:Observable<string>
+    
+    comments$: Observable<ReviewComment[]>;
+    openedCommentReviewIds$:Observable<number[]>;
+    loadedCommentReviewIds$:Observable<number[]>;
+    openedCommentFormReviewIds$:Observable<number[]>;
 
     constructor(private store: Store<State>) {        
         this.store.dispatch( new fromActivityActions.GetFeedAction());
@@ -73,6 +98,12 @@ export class HomeFeedComponent implements OnInit {
         this.currentUserId$ = this.store.select(selectUserId);
         this.loading$ = this.store.select(getLoading)
         this.isUserAuthenticated$ = this.store.select(getIsAuthenticated);
+
+        this.comments$ = this.store.select(fromFeedComments.selectAll);
+        this.openedCommentReviewIds$ = this.store.select(fromFeedComments.selectOpenedCommentReviewIds);
+        this.openedCommentFormReviewIds$ = this.store.select(fromFeedComments.selectopenedCommentFormReviewIds);
+        this.loadedCommentReviewIds$ = this.store.select(fromFeedComments.selectLoadedCommentReviewIds);
+        this.authUserProfileImage$ = this.store.select(selectUserProfileImage);    
     }
     ngOnInit() {
     }
@@ -82,6 +113,7 @@ export class HomeFeedComponent implements OnInit {
     onLeave(){
 
     }
+    
     likePost($event){
         this.store.dispatch(new fromActivityActions.LikePostAction($event))
      }
@@ -100,4 +132,29 @@ export class HomeFeedComponent implements OnInit {
      undislikeReview($event){
         this.store.dispatch(new fromActivityActions.UnDislikeReviewAction($event))
      }
+     openCommentsSection($event){
+        this.store.dispatch(new fromFeedCommentActions.OpenCommentSection($event))
+    }
+     hideCommentForm($event){
+        this.store.dispatch(new fromFeedCommentActions.CloseCommentFormSection($event));
+     }
+     showCommentForm($event){
+        this.store.dispatch(new fromFeedCommentActions.OpenCommentFormSection($event));
+     }
+     submitComment($event){
+        const body = {reviewId:$event.reviewId,content:$event.commentForm.content};
+        this.store.dispatch(new fromFeedCommentActions.PublishComment(body))
+     }
+    likeComment($event){
+        this.store.dispatch(new fromFeedCommentActions.LikeCommentAction($event));
+    }
+    unlikeComment($event){
+        this.store.dispatch(new fromFeedCommentActions.UnLikeCommentAction($event));
+    }
+    dislikeComment($event){
+        this.store.dispatch(new fromFeedCommentActions.DislikeCommentAction($event));
+    }
+    undislikeComment($event){
+        this.store.dispatch(new fromFeedCommentActions.UnDislikeCommentAction($event));
+    }
 }

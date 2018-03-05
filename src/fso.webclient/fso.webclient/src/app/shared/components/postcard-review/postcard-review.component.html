@@ -43,15 +43,15 @@
           <span class="secondary-text">{{review.dislikeCount}}</span>
         </span>
         <span
-        (click)="addCommentClicked.emit(review.id)"
-          matTooltip="Add a comment"
+        
+          matTooltip="See comments"
            class="feasion-dark-theme" matTooltipPosition="above" 
             matTooltipShowDelay="200" matTooltipHideDelay="200">
-            <a 
-            [routerLink]="['/post',review.postId,'review',review.id]"
+            <button
+            (click)="onOpenCommentsSection.emit(review.id)"
             color="accent" mat-icon-button>
                 <mat-icon aria-label="Comments">comment</mat-icon>
-            </a>
+            </button>
             <span class="secondary-text">{{review.commentCount}}</span>            
            
         </span>

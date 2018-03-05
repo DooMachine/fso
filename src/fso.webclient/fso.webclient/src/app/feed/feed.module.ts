@@ -12,6 +12,14 @@ import { FollowGroupComponent } from './feed-item-components/follow-group/follow
 import { MaterialModule } from '../material/index';
 import { SharedModule }from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { FeedCommentsService } from './feed-comments/commentservice';
+import {reducers,metaReducer } from './feed-comments';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { FeedCommentEffects } from './feed-comments/effects';
+import { FeedReviewCommentsComponent } from './feed-comments/components/feed-review-comments/feed-review-comments.component';
+import { FeedReviewAddCommentComponent } from './feed-comments/components/feed-review-add-comment/feed-review-add-comment.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const COMPONENTS = [
   FeedListComponent,
@@ -22,16 +30,23 @@ const COMPONENTS = [
   AddCollectionComponent,
   AddPostActivityComponent,
   AddPostCollectionComponent,
+  FeedReviewCommentsComponent,
+  FeedReviewAddCommentComponent,
   FollowGroupComponent]
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
+    StoreModule.forFeature('feed-comments', reducers, {metaReducers: metaReducer}),
+    EffectsModule.forFeature([FeedCommentEffects]),
     RouterModule
   ],
   exports: [COMPONENTS],
-  declarations: [COMPONENTS]
+  declarations: [COMPONENTS],
+  providers:[FeedCommentsService]
 })
 export class FeedModule { }

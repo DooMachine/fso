@@ -21,6 +21,7 @@ export class PostcardReviewComponent implements OnInit {
   @Output() seeReviewsClicked: EventEmitter<any> = new EventEmitter();
   @Output() addCommentClicked = new EventEmitter();
   @Output() onReportReview = new EventEmitter();
+  @Output() onOpenCommentsSection = new EventEmitter();
   constructor() { }
 
   ngOnInit() {

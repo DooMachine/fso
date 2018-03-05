@@ -1,0 +1,79 @@
+<h3>Comments</h3>
+<mat-card-content >  
+    <span          
+      matTooltip="Add a comment to review"
+      class="feasion-dark-theme" matTooltipPosition="above" 
+        matTooltipShowDelay="200" matTooltipHideDelay="200">              
+        <a href="#" (click)=" showComment($event)" class="dark-primary-text" >Add a comment</a> 
+    </span>
+    <div class="c-f-c">
+      <ng-content ></ng-content>
+    </div>  
+    <div *ngFor="let comment of commentarray" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="4px">
+        <a mat-card-avatar [routerLink]="['/user',comment.userInfo?.userName]">
+          <img mat-card-avatar [default]  [src]="comment.userInfo?.profileImage" class="img-circle"/>
+        </a>    
+    <mat-card fxFlex>
+      <mat-card-header>        
+        <mat-card-title><a class="no-anchor-text a-grey"
+          [routerLink]="['/user',comment.userInfo?.userName]">{{comment.userInfo?.userName}}</a></mat-card-title>
+        <mat-card-subtitle>{{comment.dateUtcPublished | date:"HH:mm"}} - {{comment.dateUtcPublished | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="4px">           
+            <div fxFlex>
+              <article class="comment-content"  [innerHtml]="comment.content | newline">
+              </article>     
+            </div>   
+        </div> 
+      </mat-card-content>
+      <mat-card-actions>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+        <div  fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="8px">
+          <span class="feasion-dark-theme" matTooltip="Like" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
+            <button
+            (click)="comment.likeStatus == 0 ? onunlikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus}) : onlikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus})"
+            color="{{comment.likeStatus == 0 ? 'warn' : 'primary'}}"  mat-icon-button>
+                <mat-icon aria-label="Like">thumb_up</mat-icon>
+            </button>
+            <span class="secondary-text">{{comment.likeCount}}</span>
+          </span>
+          <span class="feasion-dark-theme" matTooltip="Dislike" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+            <button
+            (click)="comment.likeStatus == 1 ? onundislikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus}) : ondislikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus})"
+              color="{{comment.likeStatus == 1 ? 'warn' : 'primary'}}" mat-icon-button>
+                <mat-icon aria-label="Dislike">thumb_down</mat-icon>
+            </button>
+            <span class="secondary-text">{{comment.dislikeCount}}</span>
+          </span>
+        </div>
+        <div class="feasion-dark-theme">
+            <button
+              color="primary"  [matMenuTriggerFor]="reportMenu"
+              matTooltip="Report this comment" 
+              matTooltipShowDelay ="300" matTooltipHideDelay="200"
+              matTooltipPosition="above"
+              mat-icon-button>
+              <mat-icon aria-label="Rating">feedback</mat-icon>
+          </button>
+            <mat-menu #reportMenu="matMenu">
+                              
+                <button
+                (click)="onReportComment.emit({commentId: comment.id, reportType: 3})"  
+                 mat-menu-item>
+                    <mat-icon> report_problem</mat-icon>
+                    <span>Violating Rules </span>
+                </button>
+                <button
+                (click)="onReportComment.emit({commentId: comment.id, reportType: 4})"  
+                 mat-menu-item>
+                    <mat-icon> sentiment_dissatisfied </mat-icon>
+                    <span>Other </span>
+                </button>
+              </mat-menu>
+        </div>
+      </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</mat-card-content>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/concatMap'
 import { Action, Store } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import * as interestActions from '../actions/interest';
@@ -28,17 +29,17 @@ export class InterestEffects {
     onRequestInterest$: Observable<Action> =
     this.actions$.ofType<interestActions.RequestInterest>(interestActions.InterestActionTypes.REQUEST_INTEREST)
     .withLatestFrom(this.store.select(store => store['interest'])) 
-    .mergeMap(([action, store]) => {
+    .switchMap(([action, store]) => {
         if(store.interest.urlKey == action.payload.urlKey){
             return Observable.of({type:'NO_ACTION'});
         }
-        this.store.dispatch({type:'CLEAR_INTEREST_STATE'});
         return this._interestService
         .GetGroupIndex(action.payload.urlKey,store['posts'].pageIndex, 
          store['posts'].pageSize, store['posts'].order)
-        .switchMap(resp => {
+        .concatMap(resp => {
             this._seoService.updateInterestPage(resp.group);
             let obs = [
+                {type:'CLEAR_INTEREST_STATE'},
                 new interestActions.RecieveInterestSuccess(resp.group),
                 new GetPostSuccessAction(resp.posts)
             ];
