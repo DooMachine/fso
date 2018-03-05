@@ -9,3 +9,14 @@ C:\Users\doom\Desktop\fso\feasion\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.Asse
 C:\Users\doom\Desktop\fso\feasion\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.AssemblyInfo.cs
 C:\Users\doom\Desktop\fso\feasion\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.dll
 C:\Users\doom\Desktop\fso\feasion\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.pdb
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\bin\Debug\netcoreapp2.0\fso.Core.deps.json
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\bin\Debug\netcoreapp2.0\fso.Core.dll
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\bin\Debug\netcoreapp2.0\fso.Core.pdb
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\bin\Debug\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\bin\Debug\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.AssemblyInfo.cs
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.dll
+C:\Users\doom\Desktop\feasionRepo\src\fso.Core\obj\Debug\netcoreapp2.0\fso.Core.pdb

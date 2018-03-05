@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, EventEmitter, Output, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State, getShowForm, getFormError } from '../../reducers/addreview';
@@ -7,14 +7,15 @@ import {SubmitForm } from '../../actions/addreview';
 import { Observable } from 'rxjs/Observable';
 import { selectUserName, selectUserProfileImage } from '../../../auth/reducers/auth.reducer';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { ScrollService } from '../../../shared/services/scroll.service';
 
 @Component({
   selector: 'app-post-addreview',
   templateUrl: './post-addreview.component.html',
   styleUrls: ['./post-addreview.component.scss']
 })
-export class PostAddreviewComponent implements OnInit , OnDestroy{
-
+export class PostAddreviewComponent implements OnInit , OnDestroy,AfterViewInit{
+  @ViewChild('myname') fromWrapper:ElementRef;
   form: FormGroup;
   formState: any;
   formError$: Observable<null|string>;  
@@ -29,6 +30,8 @@ export class PostAddreviewComponent implements OnInit , OnDestroy{
   constructor(
     private store: Store<State>,
     private breakpointObserver: BreakpointObserver,
+    private scrollService:ScrollService,
+    public element: ElementRef,
     private formBuilder: FormBuilder) {
 
       this.showForm$ = this.store.select(getShowForm);
@@ -48,6 +51,13 @@ export class PostAddreviewComponent implements OnInit , OnDestroy{
 
   ngOnInit() {
     this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
+  }
+  ngAfterViewInit() {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class. 
+    setTimeout(() => {
+      this.element.nativeElement.scrollIntoView({ behavior: "smooth",block:"start"});      
+    }, 20);
   }
   onRatingSlideChange($event){
     this.form.setValue({'content': this.form.value.content,'rating': $event.value});

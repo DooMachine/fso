@@ -9407,11 +9407,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Data\\fso.Data.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Data\\fso.Data.csproj",
       "projectName": "fso.Data",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Data\\fso.Data.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Data\\fso.Data.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Data\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9430,17 +9430,17 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Caching\\fso.Caching.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Caching\\fso.Caching.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Caching\\fso.Caching.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Caching\\fso.Caching.csproj"
             },
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.DataExtensions\\fso.DataExtensions.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.DataExtensions\\fso.DataExtensions.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.DataExtensions\\fso.DataExtensions.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.DataExtensions\\fso.DataExtensions.csproj"
             },
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Settings\\fso.Settings.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Settings\\fso.Settings.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Settings\\fso.Settings.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Settings\\fso.Settings.csproj"
             },
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Core\\fso.Core.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Core\\fso.Core.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Core\\fso.Core.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Core\\fso.Core.csproj"
             }
           }
         }

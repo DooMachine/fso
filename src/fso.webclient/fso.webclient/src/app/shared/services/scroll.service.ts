@@ -56,6 +56,7 @@ export class ScrollService {
    */
   scrollToElement(element: Element|null) {
     if (element) {
+      console.log(element);
       element.scrollIntoView();
 
       if (window && window.scrollBy) {

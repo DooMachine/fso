@@ -7110,11 +7110,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationBusListener\\fso.NotificationBusListener.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationBusListener\\fso.NotificationBusListener.csproj",
       "projectName": "fso.NotificationBusListener",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationBusListener\\fso.NotificationBusListener.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationBusListener\\fso.NotificationBusListener.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationBusListener\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationBusListener\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7133,11 +7133,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationData\\fso.NotificationData.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationData\\fso.NotificationData.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationData\\fso.NotificationData.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationData\\fso.NotificationData.csproj"
             },
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.EventCore\\fso.EventCore.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.EventCore\\fso.EventCore.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.EventCore\\fso.EventCore.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.EventCore\\fso.EventCore.csproj"
             }
           }
         }

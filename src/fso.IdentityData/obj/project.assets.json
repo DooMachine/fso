@@ -5646,11 +5646,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityData\\fso.IdentityData.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityData\\fso.IdentityData.csproj",
       "projectName": "fso.IdentityData",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityData\\fso.IdentityData.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityData\\fso.IdentityData.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityData\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

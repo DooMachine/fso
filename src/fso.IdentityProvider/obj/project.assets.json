@@ -11092,11 +11092,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityProvider\\fso.IdentityProvider.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityProvider\\fso.IdentityProvider.csproj",
       "projectName": "fso.IdentityProvider",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityProvider\\fso.IdentityProvider.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityProvider\\fso.IdentityProvider.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityProvider\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityProvider\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11115,11 +11115,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.EventCore\\fso.EventCore.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.EventCore\\fso.EventCore.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.EventCore\\fso.EventCore.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.EventCore\\fso.EventCore.csproj"
             },
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityData\\fso.IdentityData.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.IdentityData\\fso.IdentityData.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityData\\fso.IdentityData.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.IdentityData\\fso.IdentityData.csproj"
             }
           }
         }

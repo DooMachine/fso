@@ -5011,11 +5011,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationData\\fso.NotificationData.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationData\\fso.NotificationData.csproj",
       "projectName": "fso.NotificationData",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationData\\fso.NotificationData.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationData\\fso.NotificationData.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.NotificationData\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.NotificationData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5034,8 +5034,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Core\\fso.Core.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.Core\\fso.Core.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Core\\fso.Core.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.Core\\fso.Core.csproj"
             }
           }
         }

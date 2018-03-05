@@ -13358,11 +13358,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.AppMediaProvider\\fso.AppMediaProvider.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.AppMediaProvider\\fso.AppMediaProvider.csproj",
       "projectName": "fso.AppMediaProvider",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.AppMediaProvider\\fso.AppMediaProvider.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.AppMediaProvider\\fso.AppMediaProvider.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.AppMediaProvider\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.AppMediaProvider\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13381,8 +13381,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.EventCore\\fso.EventCore.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.EventCore\\fso.EventCore.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.EventCore\\fso.EventCore.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.EventCore\\fso.EventCore.csproj"
             }
           }
         }

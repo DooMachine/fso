@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy ,AfterContentInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy ,AfterContentInit, ViewChild, ElementRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
@@ -63,7 +63,7 @@ import { ScrollService } from "../../shared/services/scroll.service";
                     ></app-post-actions>
                 </div>          
                 <router-outlet></router-outlet>
-                <div>
+                <div #reviewlist>
                     <app-post-reviews
                     [comments]="comments$ | async"
                     (loadAllReviews)="loadAllReviews($event)"
@@ -110,6 +110,7 @@ import { ScrollService } from "../../shared/services/scroll.service";
 })
 
 export class PostComponent implements OnInit, AfterContentInit {
+    @ViewChild('reviewlist') reviewlist:ElementRef;
     authUserId$: Observable<string>;
     post$: Observable<fromPost.PostState>;
     similiarPosts$:Observable<SimiliarPost[]>;
@@ -132,7 +133,11 @@ export class PostComponent implements OnInit, AfterContentInit {
             this.scrollService.scrollToTop();
             this.reviewIdparam = params['reviewId'];  
             this.showSeeAllReviewsOption = this.reviewIdparam !=undefined;
-            
+            if(this.showSeeAllReviewsOption){
+                setTimeout(() => {
+                    this.reviewlist.nativeElement.scrollIntoView({ behavior: "smooth"}); 
+                }, 220);
+            }
             this.store.dispatch(new postActions.GetPost({postId:this.urlParam,reviewId:this.reviewIdparam}));
         });
         
@@ -155,7 +160,6 @@ export class PostComponent implements OnInit, AfterContentInit {
     ngAfterContentInit() {
         //Called after ngOnInit when the component's or directive's content has been initialized.
         //Add 'implements AfterContentInit' to the class.
-        
     } 
     loadAllReviews($event){
         this.store.dispatch(new postReviewActions.LoadInitialReviews({id:this.urlParam}))

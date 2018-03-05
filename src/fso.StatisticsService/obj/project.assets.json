@@ -12653,11 +12653,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.StatisticsService\\fso.StatisticsService.csproj",
+      "projectUniqueName": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.StatisticsService\\fso.StatisticsService.csproj",
       "projectName": "fso.StatisticsService",
-      "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.StatisticsService\\fso.StatisticsService.csproj",
+      "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.StatisticsService\\fso.StatisticsService.csproj",
       "packagesPath": "C:\\Users\\doom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.StatisticsService\\obj\\",
+      "outputPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.StatisticsService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12676,8 +12676,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.StatisticsData\\fso.StatisticsData.csproj": {
-              "projectPath": "C:\\Users\\doom\\Desktop\\fso\\feasion\\fso.StatisticsData\\fso.StatisticsData.csproj"
+            "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.StatisticsData\\fso.StatisticsData.csproj": {
+              "projectPath": "C:\\Users\\doom\\Desktop\\feasionRepo\\src\\fso.StatisticsData\\fso.StatisticsData.csproj"
             }
           }
         }

@@ -9,3 +9,14 @@ C:\Users\doom\Desktop\fso\feasion\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso
 C:\Users\doom\Desktop\fso\feasion\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.AssemblyInfo.cs
 C:\Users\doom\Desktop\fso\feasion\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.dll
 C:\Users\doom\Desktop\fso\feasion\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.pdb
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\bin\Debug\netcoreapp2.0\fso.StatisticsData.deps.json
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\bin\Debug\netcoreapp2.0\fso.StatisticsData.dll
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\bin\Debug\netcoreapp2.0\fso.StatisticsData.pdb
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\bin\Debug\netcoreapp2.0\fso.Core.dll
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\bin\Debug\netcoreapp2.0\fso.Core.pdb
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.csprojResolveAssemblyReference.cache
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.csproj.CoreCompileInputs.cache
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.AssemblyInfoInputs.cache
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.AssemblyInfo.cs
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.dll
+C:\Users\doom\Desktop\feasionRepo\src\fso.StatisticsData\obj\Debug\netcoreapp2.0\fso.StatisticsData.pdb
