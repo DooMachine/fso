@@ -27,17 +27,16 @@ namespace fso.Data
         {
             if (!_databaseInitialized)
             {
-                bool isMigrated = !Database.GetPendingMigrations().Any();
-                // TODO HANDLE MIGRATION RUNTIME
-                if ((this.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
-                {                    
-                    DbInitializer di = new DbInitializer(this);
-                    di.Initialize();
+                // TODO HANDLE MIGRATION AND SEED RUNTIME
+                if (!(this.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
+                {
+                    Database.EnsureCreated();
                     _databaseInitialized = true;
                 }
-                if (!isMigrated)
+                else if (this.Database.GetPendingMigrations().Any())
                 {
-                    Database.Migrate();
+                    Database.EnsureDeleted();
+                    Database.EnsureCreated();
                     _databaseInitialized = true;
                 }
             }
@@ -65,15 +64,9 @@ namespace fso.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // get the configuration from the app settings
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
             // define the database to use
             optionsBuilder
-                .UseSqlServer(config.GetConnectionString("DefaultConnection"),
+                .UseMySql("Server=localhost;Database=f_m_db;Uid=root;Pwd=seph1w12",
                     x =>
                     {
                         x.MigrationsAssembly("fso.Data");

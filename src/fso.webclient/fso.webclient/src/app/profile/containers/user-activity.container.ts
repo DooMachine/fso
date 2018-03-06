@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State, selectAll, isEmpty, getLoading,selectHasNextPage } from '../reducers/userActivity';
 import * as userActivityActions from '../actions/userActivity';
 import { User } from '../models/userinfo';

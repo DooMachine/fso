@@ -1,4 +1,4 @@
-import * as fromProfileImage from './profileImage';
+import * as fromProfileImage from './profileimage';
 import * as fromProfileSettings from './profilesettings';
 import { ActionReducerMap, ActionReducer, MetaReducer, Action, createFeatureSelector, createSelector } from '@ngrx/store';
 

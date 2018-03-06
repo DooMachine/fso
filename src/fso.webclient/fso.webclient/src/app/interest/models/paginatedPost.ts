@@ -1,4 +1,4 @@
-import { PostCard } from '../../shared/models/postCard/postCard';
+import { PostCard } from '../../shared/models/postcard/postCard';
 
 export interface PaginatedPostList {
     posts: PostCard[];

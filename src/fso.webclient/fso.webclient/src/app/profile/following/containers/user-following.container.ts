@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State, getFollowingsState, selectAll, selectIsModalOpen } from '../reducers/following';
 import { GetFollowingAction, CloseModalAction } from '../actions/following';
 import { UserInfoSmallCard } from '../../../shared/models/user/userSmallCard';

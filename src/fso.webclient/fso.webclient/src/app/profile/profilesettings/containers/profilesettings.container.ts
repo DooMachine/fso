@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import * as fromProfileSettings from '../reducers/profilesettings';
 import * as fromSettings from '../reducers';
 import * as fromSettingsActions from '../actions/profilesettings';

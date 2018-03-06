@@ -12,7 +12,7 @@ namespace fso.EventBusListener
     {
         static void Main(string[] args)
         {
-            var bus = RabbitHutch.CreateBus("host=localhost");
+            var bus = RabbitHutch.CreateBus("username=guest;password=guest;host=localhost");
             var subscriber = new AutoSubscriber(bus, "#");
 
             subscriber.Subscribe(Assembly.GetExecutingAssembly());

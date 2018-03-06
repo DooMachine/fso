@@ -36,14 +36,10 @@ namespace fso.IdentityData.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // get the configuration from the app settings
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
 
             // define the database to use
-            optionsBuilder.UseSqlServer(config.GetConnectionString("IdentityConnection"));
+            optionsBuilder
+                .UseMySql("Server=localhost;Database=f_i_acc_db;Uid=root;Pwd=seph1w12");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

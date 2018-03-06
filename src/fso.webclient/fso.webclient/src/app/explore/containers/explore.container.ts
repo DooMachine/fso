@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State, selectAllExploreInterests,selectHasNextPage, getLoading } from '../reducers/interest';
 import { selectUserName, selectUserId } from '../../auth/reducers/auth.reducer';
 import { GetInterestAction, FollowInterestAction, UnfollowInterestAction } from '../actions/interest';

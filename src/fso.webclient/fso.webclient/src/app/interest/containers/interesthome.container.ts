@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import * as postActions from '../actions/posts';
 import { Interest } from '../models/interest';
 import { PaginatedPostList } from '../models/paginatedPost';
 import * as fromInterest from '../reducers/interest';
 import * as fromInterestPost from '../reducers/posts';
-import { PostCard } from '../../shared/models/postCard/postCard';
+import { PostCard } from '../../shared/models/postcard/postCard';
 import { selectUserId,selectIsMod } from '../../auth/reducers/auth.reducer';
 import { selectInterest } from '../reducers/interest';
 import { State } from '../reducers/interest';

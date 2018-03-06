@@ -2,11 +2,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { InterestCard } from '../../shared/models/interest/interestcard';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import * as popActions from '../actions/popularposts';
 import * as fromPop from '../reducers/popularposts';
 import { getUserAlphaColor } from '../reducers/user';
-import { PostBest } from '../../shared/models/post/PostBest';
+import { PostBest } from '../../shared/models/post/postbest';
 
 @Component({
     selector: 'app-user-popularposts',

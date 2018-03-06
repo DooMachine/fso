@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy ,AfterContentInit, ViewChild, ElementRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State } from '../reducers';
 import * as postActions from '../actions/post';
 import * as postReviewActions from '../actions/reviews';

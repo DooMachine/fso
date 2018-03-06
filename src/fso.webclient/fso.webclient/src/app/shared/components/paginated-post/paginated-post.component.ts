@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter ,ChangeDetectionStrategy} from '@angular/core';
 
-import { PostCard } from '../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../shared/models/postcard/postCard';
 @Component({
   changeDetection:ChangeDetectionStrategy.OnPush,
   selector: 'app-paginated-post',

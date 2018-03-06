@@ -47,14 +47,10 @@ namespace fso.NotificationData.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // get the configuration from the app settings
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
 
             // define the database to use
-            optionsBuilder.UseSqlServer(config.GetConnectionString("NotificationConnection"));
+            optionsBuilder
+                .UseMySql("Server=localhost;Database=f_n_db;Uid=root;Pwd=seph1w12");
         }
         public DbSet<TEntity> SetChild<TEntity>() where TEntity : class
         {

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State } from '../reducers/interest';
 import { UserActions, GetUserAction, FollowUserAction, UnfollowUserAction, UpdateProfileSeo } from '../actions/user';
 import { UserActivityActions, GetUserActivitiesAction } from '../actions/userActivity';

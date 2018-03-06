@@ -35,7 +35,6 @@ import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { ModGuard } from './auth/guards/mod.guard';
 import { LayoutEffects } from './core/effects/index';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 const ROUTES = [
   { path : '',  loadChildren: './home/home.module#HomeModule' , pathMatch: 'full'},

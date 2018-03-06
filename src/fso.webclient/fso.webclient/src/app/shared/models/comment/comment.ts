@@ -1,4 +1,4 @@
-import { LikeStatus } from "../likestatus.enum";
+import { LikeStatus } from "../likeStatus.enum";
 import { UserInfoExtraSmall } from "../userInfoExtraSmall";
 
 export interface Comment{

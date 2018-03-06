@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2017.3/system/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_fso.Web.-916216602.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Infrastructure" t="Include" />
+      <e p="Library" t="Include">
+        <e p="ApiLib" t="Include" />
+        <e p="CacheLib" t="Include" />
+        <e p="Media" t="Include" />
+        <e p="_Core" t="Include" />
+      </e>
+      <e p="Presentation" t="Include">
+        <e p="IdentityProvider" t="Include" />
+        <e p="StatisticsService" t="Include" />
+        <e p="Web" t="Include" />
+        <e p="mediaFileProvider" t="Include" />
+        <e p="notificationService" t="Include" />
+        <e p="postService" t="Include" />
+      </e>
+      <e p="Test" t="Include" />
+      <e p="fso.Api/fso.Api.csproj" t="IncludeRecursive" />
+      <e p="fso.AppMediaProvider/fso.AppMediaProvider.csproj" t="IncludeRecursive" />
+      <e p="fso.Bootstrapper/fso.Bootstrapper.csproj" t="IncludeRecursive" />
+      <e p="fso.Caching/fso.Caching.csproj" t="IncludeRecursive" />
+      <e p="fso.Core/fso.Core.csproj" t="IncludeRecursive" />
+      <e p="fso.Data/fso.Data.csproj" t="IncludeRecursive" />
+      <e p="fso.DataExtensions/fso.DataExtensions.csproj" t="IncludeRecursive" />
+      <e p="fso.EventBusListener/fso.EventBusListener.csproj" t="IncludeRecursive" />
+      <e p="fso.EventCore/fso.EventCore.csproj" t="IncludeRecursive" />
+      <e p="fso.IdentityBusListener/fso.IdentityBusListener.csproj" t="IncludeRecursive" />
+      <e p="fso.IdentityData/fso.IdentityData.csproj" t="IncludeRecursive" />
+      <e p="fso.IdentityProvider/fso.IdentityProvider.csproj" t="IncludeRecursive" />
+      <e p="fso.NotificationApi/fso.NotificationApi.csproj" t="IncludeRecursive" />
+      <e p="fso.NotificationBusListener/fso.NotificationBusListener.csproj" t="IncludeRecursive" />
+      <e p="fso.NotificationData/fso.NotificationData.csproj" t="IncludeRecursive" />
+      <e p="fso.Services/fso.Services.csproj" t="IncludeRecursive" />
+      <e p="fso.Settings/fso.Settings.csproj" t="IncludeRecursive" />
+      <e p="fso.StatisticsData/fso.StatisticsData.csproj" t="IncludeRecursive" />
+      <e p="fso.StatisticsService/fso.StatisticsService.csproj" t="IncludeRecursive" />
+      <e p="fso.Web.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

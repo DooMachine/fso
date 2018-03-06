@@ -15,7 +15,7 @@ namespace fso.Bootstrapper
 {
     public class WebBoot
     {        
-        public static void RegisterServices(IServiceCollection services, IConfigurationRoot Configuration)
+        public static void RegisterServices(IServiceCollection services, IConfiguration Configuration)
         {
             // DbContext
             services.AddDbContext<FsoContext>(options=> {

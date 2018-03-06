@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State, getReviewsState,selectAll ,selectReviewsLoading,selectHasNextPage} from '../reducers/review';
 import { selectAllPosts} from '../reducers/post';
 import * as fromReviewActions from '../actions/review';
 import * as fromPostActions from '../actions/post';
 import { Review } from '../../../shared/models/review/review';
-import { PostCard } from '../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../shared/models/postcard/postCard';
 import { selectUserId } from '../../../auth/reducers/auth.reducer';
 
 

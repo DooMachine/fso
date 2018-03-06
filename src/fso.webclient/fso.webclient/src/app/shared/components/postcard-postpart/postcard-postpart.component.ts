@@ -1,5 +1,5 @@
 import { Component, OnInit,Input, trigger, transition, animate,SimpleChanges, style,OnDestroy,ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { PostCardPostPart } from '../../models/postCard/postCardPostPart';
+import { PostCardPostPart } from '../../models/postcard/postCardPostPart';
 import { Observable } from 'rxjs/Observable';
 import { BreakpointObserver } from '@angular/cdk/layout';
 

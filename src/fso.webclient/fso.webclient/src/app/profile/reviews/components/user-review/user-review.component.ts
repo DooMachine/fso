@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input, ChangeDetectionStrategy } from '@angular/core';
-import { PostCard } from '../../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../../shared/models/postcard/postCard';
 import { Review } from '../../../../shared/models/review/review';
 
 @Component({

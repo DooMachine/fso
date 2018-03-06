@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
-import { PostCard } from '../../../shared/models/postCard/postCard';
+import { Observable } from 'rxjs/Observable';
+import { PostCard } from '../../../shared/models/postcard/postCard';
 import { selectUserId,selectIsMod } from '../../../auth/reducers/auth.reducer';
 import { State } from '../reducers';
 import * as fromPosts from '../reducers/posts';

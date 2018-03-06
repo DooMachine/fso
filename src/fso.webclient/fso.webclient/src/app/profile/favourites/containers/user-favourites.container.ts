@@ -1,10 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State,selectAll,selectLoading,selectHasNextPage,selectIsEmpty } from '../reducers/favourites';
 import { GetFavouritesAction ,LikePostAction, UnLikePostAction} from '../actions/favourites';
-import { PostCard } from '../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../shared/models/postcard/postCard';
 import { selectUserId } from '../../../auth/reducers/auth.reducer';
 
 

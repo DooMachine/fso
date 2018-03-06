@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { InterestCard } from '../../shared/models/interest/interestcard';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { GetInterestAction, FollowInterestAction, UnfollowInterestAction } from '../actions/interest';
 import * as fromInterest from '../reducers/interest';
 

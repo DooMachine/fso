@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State, getCollectionsState, selectAll,selectIsLoading,selectHasNextPage ,selectShowCollectionForm} from '../reducers/collections';
 import { GetCollectionAction, AddCollection, UpdateCollectionImage, DeleteCollection, ToggleCollectionForm } from '../actions/collection';
 import { getIsUserOwner } from '../../reducers/user';

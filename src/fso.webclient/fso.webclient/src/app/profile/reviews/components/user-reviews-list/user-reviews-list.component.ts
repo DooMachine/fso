@@ -1,6 +1,6 @@
 import { Component, OnInit,ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { Review } from '../../../../shared/models/review/review';
-import { PostCard } from '../../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../../shared/models/postcard/postCard';
 
 @Component({
   changeDetection:ChangeDetectionStrategy.OnPush,

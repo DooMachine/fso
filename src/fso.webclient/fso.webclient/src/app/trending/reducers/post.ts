@@ -4,7 +4,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as trendingPostActions from '../actions/post';
 import * as fromFeatureRoot from './';
 import { State as TrendingState} from './';
-import { PostCard } from "../../shared/models/postCard/postCard";
+import { PostCard } from "../../shared/models/postcard/postCard";
 
 export interface State extends EntityState<PostCard> {
     pageSize: number;

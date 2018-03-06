@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { PostCard } from '../../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../../shared/models/postcard/postCard';
 
 @Component({
   selector: 'app-userpost-list-component',

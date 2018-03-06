@@ -1,10 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { State} from '../reducers/post';
 import { GetPostAction, LikePostAction, UnLikePostAction } from '../actions/post';
-import { PostCard } from '../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../shared/models/postcard/postCard';
 import { getAllPosts,selectProfilePostLoading,selectProfilePostHasNextPage } from '../reducers';
 import { selectUserId } from '../../../auth/reducers/auth.reducer';
 

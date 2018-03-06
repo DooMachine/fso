@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as postActions from '../actions/post';
 import * as interestActions from '../actions/interest';
-import { PostCard } from "../../shared/models/postCard/postCard";
+import { PostCard } from "../../shared/models/postcard/postCard";
 import { InterestCard } from "../../shared/models/interest/interestcard";
 import { selectAllTrendingInterests } from "../reducers/interest";
 import { selectAllTrendingPosts } from "../reducers/post";

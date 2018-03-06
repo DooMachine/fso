@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter ,OnDestroy, ChangeDetectionStrategy} from '@angular/core';
-import { PostBest } from '../../../shared/models/post/PostBest';
+import { PostBest } from '../../../shared/models/post/postbest';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 

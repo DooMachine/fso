@@ -14,9 +14,6 @@ namespace fso.IdentityProvider
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseIISIntegration()
-                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .UseUrls("http://localhost:5000", "http://192.168.1.67:5000")
                 .Build();

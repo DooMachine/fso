@@ -21,18 +21,14 @@ namespace fso.Api
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public IConfiguration Configuration { get; set; }
+        public Startup(IHostingEnvironment env ,IConfiguration configuration)
         {
             _env = env;
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{_env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("CommonSettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"CommonSettings.{_env.EnvironmentName}.json", optional: true);
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; set; }
+        
 
         private IHostingEnvironment _env { get; set; }
 
@@ -41,8 +37,6 @@ namespace fso.Api
         {
 
             WebBoot.RegisterServices(services, Configuration);
-            Configuration = CommonStartupSettings.RegisterSettings(services, Configuration, _env);
-
             var appSettings = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettings);
 

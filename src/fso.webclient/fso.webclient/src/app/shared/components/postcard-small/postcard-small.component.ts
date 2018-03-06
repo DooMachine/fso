@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter,ChangeDetectionStrategy } from '@angular/core';
 
-import { PostCard } from '../../models/postCard/postCard';
-import { PostCardReview } from '../../models/postCard/postCardReview';
+import { PostCard } from '../../models/postcard/postCard';
+import { PostCardReview } from '../../models/postcard/postCardReview';
 @Component({
   changeDetection:ChangeDetectionStrategy.OnPush,
   selector: 'app-postcard-small',

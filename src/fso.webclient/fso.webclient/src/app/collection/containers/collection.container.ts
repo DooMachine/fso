@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { selectUserId, selectUserProfileImage } from '../../auth/reducers/auth.reducer';
 import { State } from '../../reducers';
 import { GetCollection } from '../actions/collection';
 import { CollectionState,selectCollectionState,getCollection } from '../reducers/collection';
-import { PostCard } from '../../shared/models/postCard/postCard';
+import { PostCard } from '../../shared/models/postcard/postCard';
 import { selectAll } from '../reducers/post';
 import { LikeCollectionPostAction, UnLikeCollectionPostAction } from '../actions/post';
 

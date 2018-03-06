@@ -3,7 +3,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as postActions from '../actions/post';
 import * as fromCollecitonRoot from './';
-import { PostCard } from '../../shared/models/postCard/postCard';
+import { PostCard } from '../../shared/models/postcard/postCard';
 
 export interface State extends EntityState<PostCard> {
     pageSize: number;

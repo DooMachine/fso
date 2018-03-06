@@ -2,7 +2,7 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Collection } from '../../../shared/models/collection/collection';
-import { PostCard } from '../../../shared/models/postCard/postCard';
+import { PostCard } from '../../../shared/models/postcard/postCard';
 import { Review } from '../../../post/models/review';
 import * as postActions from '../actions/post';
 import * as fromUserReviewRoot from './';
