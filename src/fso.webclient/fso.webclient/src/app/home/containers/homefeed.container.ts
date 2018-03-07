@@ -91,7 +91,7 @@ export class HomeFeedComponent implements OnInit {
     openedCommentFormReviewIds$:Observable<number[]>;
 
     constructor(private store: Store<State>) {        
-        this.store.dispatch( new fromActivityActions.GetFeedAction());
+        //this.store.dispatch( new fromActivityActions.GetFeedAction());
         this.feedActivities$ = this.store.select(selectAll);
         this.hasNextPage$ = this.store.select(selectHasNextPage);
         this.isEmpty$ = this.store.select(isEmpty);

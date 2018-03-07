@@ -23,4 +23,13 @@ namespace fso.DataExtensions.Models
         // Paginate Selectlist
         public IEnumerable<CollectionCard> UserCollections { get; set; }
     }
+    public class EditPostReturnModel: AddPostReturnModel
+    {
+        public EditPostReturnModel():base(){
+
+        }
+        public bool IsAvaliable { get; set; }
+        public PostCollection PostCollection { get; set; }
+        
+    }
 }

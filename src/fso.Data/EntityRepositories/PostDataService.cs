@@ -138,6 +138,61 @@ namespace fso.Data.EntityRepositories
             }
             return ret;
         }
+        public EditPostReturnModel GetEditingPost(int postId,string currUserId){
+            EditPostReturnModel ret = new EditPostReturnModel();
+            if (string.IsNullOrEmpty(currUserId))
+            {
+                ret.IsAvaliable=false;
+                return ret;
+            }
+            Post post =  _context.Set<Post>()
+            .FirstOrDefault(p => p.IsPublished == true && p.Id==postId && p.UserInfoId == currUserId);
+            if(post==null){
+                ret.IsAvaliable=false;
+                return ret;
+            }
+            ret.UserCollections = _context.Set<PostCollection>()
+                .AsNoTracking()
+                .Select(p => new CollectionCard()
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ThumbImageUrl = p.ThumbFile.SmallPath,
+                    UserInfoId = p.UserInfoId,
+                    DateUtcModified = p.DateUtcModified
+                })
+                .Where(p => p.UserInfoId == currUserId)
+                .OrderByDescending(p => p.DateUtcModified);
+            
+            
+            ret.PrivacyStatus = post.PrivacyStatus;
+            ret.Title = post.Title;
+            ret.Content = post.Content;
+            ret.Description = post.Description;
+            ret.Id = post.Id;
+            if(post.CollectionId.HasValue){
+                ret.PostCollection = _context.Set<PostCollection>()
+                    .AsNoTracking().FirstOrDefault(p=>p.Id == post.CollectionId);
+            }
+
+            ret.PostParts = _context.Set<PostPart>()
+                .Select(p => new PostPartDisplay()
+                {
+                    PostId = p.PostId,
+                    Description = p.Description,
+                    Id = p.Id,
+                    Title = p.Title,
+                    Image = new BaseImageReturn()
+                    {
+                        Dimension = p.Image.ImageDimension,
+                        Extension = p.Image.FileExtension,
+                        LazyUrl = p.Image.SmallPath,
+                        Url = p.Image.ResizedPath
+                    }
+                })
+                .Where(p => p.PostId == post.Id).ToList();
+            return ret;
+        }
 
         public PaginatedList<PostCard> GetGroupIndexPosts(int groupId,string currUserId, int pageIndex, int pageSize)
         {

@@ -106,7 +106,7 @@ namespace fso.Data.EntityRepositories
             ret.PostAuthorId = _postSet.Where(p => p.Id == postId).Select(p => p.UserInfoId).FirstOrDefault();
             return ret;
         }
-
+        
         public PublishPostReturnModel PublishPost(PublishPostParameters model, string currUserId)
         {
             PublishPostReturnModel ret = new PublishPostReturnModel()
@@ -231,5 +231,7 @@ namespace fso.Data.EntityRepositories
             }
             return ret;
         }
+
+        
     }
 }

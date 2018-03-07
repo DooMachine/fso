@@ -9,6 +9,7 @@ namespace fso.DataExtensions.DataServices
     public interface IPostDataService
     {
         AddPostReturnModel GetUserUnpublishedPost(string currUserId);
+        EditPostReturnModel GetEditingPost(int postId,string currUserId);
         PaginatedList<PostCard> GetGroupIndexPosts(int groupId, string currUserId, int pageIndex, int pageSize);
         PaginatedList<PostCard> GetGroupIndexPosts(int groupId, int pageIndex, int pageSize);
         PostIndexReturn GetPostIndex(int postId,int? reviewId, string currUserId);
