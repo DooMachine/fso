@@ -35,9 +35,9 @@ namespace fso.Data
                 }
                 else if (this.Database.GetPendingMigrations().Any())
                 {
-                    Database.EnsureDeleted();
-                    Database.EnsureCreated();
-                    _databaseInitialized = true;
+                    // Database.EnsureDeleted();
+                    // Database.EnsureCreated();
+                    // _databaseInitialized = true;
                 }
             }
 
