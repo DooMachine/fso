@@ -74,7 +74,7 @@ namespace fso.AppMediaProvider.Controllers
                 var headers = collectionimage.Headers;
                 string userId = User.FindFirst("sub").Value;
                 // Check if directory Exist
-                var directoryPath = Path.Combine(rootFolder, "fimg\\c\\" + collectionid);
+                var directoryPath = Path.Combine(rootFolder, "fimg/c/" + collectionid);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -97,7 +97,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\c\\" + collectionid + "\\" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     thumbUrlPath = prefx + rootPath + "/fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -120,7 +120,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\c\\" + collectionid + "\\" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     smallUrlpath = prefx + rootPath + "/fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -142,7 +142,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\c\\" + collectionid + "\\lazy.jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/c/" + collectionid + "/lazy.jpeg");
 
                     image.Save(path);
                     lazyUrlPath = prefx + rootPath + "/fimg/c/" + collectionid + "/lazy.jpeg";

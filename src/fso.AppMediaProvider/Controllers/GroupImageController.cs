@@ -69,7 +69,7 @@ namespace fso.AppMediaProvider.Controllers
                 var headers = profileImage.Headers;
                 string userId = User.FindFirst("sub").Value;
                 // Check if directory Exist
-                var directoryPath = Path.Combine(rootFolder, "fimg\\g\\" + groupId);
+                var directoryPath = Path.Combine(rootFolder, "fimg/g/" + groupId);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -92,7 +92,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\g\\" + groupId + "\\p_" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/p_" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     thumbUrlPath = prefx + rootPath + "/fimg/g/" + groupId + "/p_" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -115,7 +115,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\g\\" + groupId + "\\p_" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/p_" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     smallUrlpath = prefx + rootPath + "/fimg/g/" + groupId + "/p_" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -166,7 +166,7 @@ namespace fso.AppMediaProvider.Controllers
                 var headers = coverImage.Headers;
                 string userId = User.FindFirst("sub").Value;
                 // Check if directory Exist
-                var directoryPath = Path.Combine(rootFolder, "fimg\\g\\" + groupId);
+                var directoryPath = Path.Combine(rootFolder, "fimg/g/" + groupId);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -189,7 +189,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\g\\" + groupId + "\\" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     thumbUrlPath = prefx + rootPath + "/fimg/g/" + groupId + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -212,7 +212,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\g\\" + groupId + "\\" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     smallUrlpath = prefx + rootPath + "/fimg/g/" + groupId + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -235,7 +235,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\g\\" + groupId + "\\" + +imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/" + +imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     largeUrlPath = prefx + rootPath + "/fimg/g/" + groupId + "/" +imageWidth + "x" + imageHeight + ".jpeg";

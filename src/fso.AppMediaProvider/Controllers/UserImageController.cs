@@ -56,8 +56,8 @@ namespace fso.AppMediaProvider.Controllers
                         }
                     });
                     image.AutoOrient();
-                    var directoryPath = Path.Combine(rootFolder, "fimg\\u\\" + userId);
-                    var path = Path.Combine(rootFolder, "fimg\\u\\" + userId + "\\230x230.jpeg");
+                    var directoryPath = Path.Combine(rootFolder, "fimg/u/" + userId);
+                    var path = Path.Combine(rootFolder, "fimg/u/" + userId + "/230x230.jpeg");
                     if (!Directory.Exists(directoryPath))
                     {
                         Directory.CreateDirectory(directoryPath);

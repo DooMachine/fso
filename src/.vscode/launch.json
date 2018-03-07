@@ -4,6 +4,36 @@
    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
    "version": "0.2.0",
    "configurations": [
+       {
+           "name": "fso AppMediaProvider (web)",
+           "type": "coreclr",
+           "request": "launch",
+           "preLaunchTask": "build AppMediaProvider",
+           "program": "${workspaceFolder}/fso.AppMediaProvider/bin/Debug/netcoreapp2.0/fso.AppMediaProvider.dll",
+           "args": [],
+           "cwd": "${workspaceFolder}/fso.AppMediaProvider",
+           "stopAtEntry": false,
+           "launchBrowser": {
+               "enabled": true,
+               "args": "${auto-detect-url}",
+               "windows": {
+                   "command": "cmd.exe",
+                   "args": "/C start ${auto-detect-url}"
+               },
+               "osx": {
+                   "command": "open"
+               },
+               "linux": {
+                   "command": "xdg-open"
+               }
+           },
+           "env": {
+               "ASPNETCORE_ENVIRONMENT": "Development"
+           },
+           "sourceFileMap": {
+               "/Views": "${workspaceRoot}/Views"
+           }
+       },
         {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",

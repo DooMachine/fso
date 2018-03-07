@@ -72,7 +72,7 @@ namespace fso.AppMediaProvider.Controllers
                 var headers = postpartimage.Headers;
                 string userId = User.FindFirst("sub").Value;
                 // Check if directory Exist
-                var directoryPath = Path.Combine(rootFolder, "fimg\\pp\\" + postpartid);
+                var directoryPath = Path.Combine(rootFolder, "fimg/pp/" + postpartid);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -95,7 +95,7 @@ namespace fso.AppMediaProvider.Controllers
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     busAction.Dimension = (((float)image.Width / (float)image.Height)).ToString();
-                    var path = Path.Combine(rootFolder, "fimg\\pp\\" + postpartid + "\\"+ imageWidth + "x"+imageHeight+".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/"+ imageWidth + "x"+imageHeight+".jpeg");
                     
                     image.Save(path);
                     largeUrlPath = prefx + rootPath + "/fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -118,7 +118,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\pp\\" + postpartid + "\\" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     thumbUrlPath = prefx + rootPath + "/fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -141,7 +141,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\pp\\" + postpartid + "\\" + imageWidth + "x" + imageHeight + ".jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
 
                     image.Save(path);
                     smallUrlpath = prefx + rootPath + "/fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
@@ -163,7 +163,7 @@ namespace fso.AppMediaProvider.Controllers
                     image.AutoOrient();
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
-                    var path = Path.Combine(rootFolder, "fimg\\pp\\" + postpartid + "\\lazy.jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/lazy.jpeg");
 
                     image.Save(path);
                     lazyUrlPath = prefx + rootPath + "/fimg/pp/" + postpartid + "/lazy.jpeg";
