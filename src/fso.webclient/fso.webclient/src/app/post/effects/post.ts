@@ -14,6 +14,7 @@ import { PostService } from '../services/post.service';
 import { PostLikeService } from '../../shared/services/postlike.service';
 import { UserFollowService } from '../../shared/services/userfollow.service';
 import { SEOService } from '../../shared/services/seo.service';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -21,6 +22,7 @@ export class PostEffects {
     constructor(
         private actions$: Actions,
         private _postService: PostService,
+        private router:Router,
         private store: Store<State>,
         private seoService: SEOService,
         private postLikeService: PostLikeService,
@@ -118,6 +120,33 @@ export class PostEffects {
             return Observable.of(
               new postActions.UnLikePostFailAction({isLiked: true })
             );
+          });
+    });
+
+    @Effect() onDeletePost$: Observable<Action> =
+    this.actions$.ofType<postActions.DeletePost>(postActions.PostActionTypes.DELETE_POST)  
+    .withLatestFrom(this.store.select(p=>p['auth'].userData.nickname))  
+    .switchMap(([action,username]) => {
+        return this._postService
+        .DeletePost(action.payload)
+        .switchMap(data => {
+            if(data.isActionSucceed){
+                this.router.navigate(['',username]);
+                return Observable.from([
+                    new postActions.DeletePostSuccess(),
+                    new fromCore.ShowSnackBarAction({message:"Post deleted",action:null,config:{duration:3000}})
+                ]);
+            }else{
+                return Observable.from([
+                    new postActions.DeletePostSuccess(),
+                    new fromCore.ShowSnackBarAction({message:"Post could not deleted, try again later",action:null,config:{duration:3400}})
+                ]);
+            }            
+          })
+          .catch((error) => {
+            return Observable.from([
+              new postActions.UnLikePostFailAction({isLiked: true })
+            ]);
           });
     });
 

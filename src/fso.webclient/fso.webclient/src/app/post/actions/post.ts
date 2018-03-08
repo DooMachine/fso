@@ -19,6 +19,10 @@ export enum PostActionTypes {
     UNLIKE_POST_SUCCESS = '[Post] UNLIKE_POST_SUCCESS',
     UNLIKE_POST_FAIL = '[Post] UNLIKE_POST_FAIL',
 
+    DELETE_POST = '[Post] DELETE_POST',
+    DELETE_POST_SUCCESS = '[Post] DELETE_POST_SUCCESS',
+    DELETE_POST_FAIL = '[Post] DELETE_POST_FAIL',
+
     FOLLOW_USER = '[Post] FOLLOW_USER',
     FOLLOW_USER_SUCCESS = '[Post] FOLLOW_USER_SUCCESS',
     FOLLOW_USER_FAIL = '[Post] FOLLOW_USER_FAIL',
@@ -71,6 +75,8 @@ export class LikePostFailAction implements Action {
 
     constructor(public payload: any) { }
 }
+
+
 export class UnLikePostAction implements Action {
     readonly type = PostActionTypes.UNLIKE_POST;
 
@@ -88,6 +94,22 @@ export class UnLikePostFailAction implements Action {
     constructor(public payload: any) { }
 }
 
+export class DeletePost implements Action {
+    readonly type = PostActionTypes.DELETE_POST;
+
+    constructor(public payload?:any) { }
+}
+
+export class DeletePostSuccess implements Action {
+    readonly type = PostActionTypes.DELETE_POST_SUCCESS;
+
+    constructor(public payload?: any) { }
+}
+export class DeletePostFail implements Action {
+    readonly type = PostActionTypes.DELETE_POST_FAIL;
+
+    constructor(public payload?: any) { }
+}
 
 export class FollowUserAction implements Action {
     readonly type = PostActionTypes.FOLLOW_USER;
@@ -127,6 +149,9 @@ export type PostActions
                         = GetPost
                         | GetPostSuccess
                         | GetPostFail
+                        |DeletePost
+                        |DeletePostFail
+                        |DeletePostSuccess
                         | LikePostAction  
                         | LikePostSuccessAction 
                         | LikePostFailAction 

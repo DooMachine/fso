@@ -34,7 +34,7 @@ import { ScrollService } from "../../shared/services/scroll.service";
             fxLayout="column" fxLayoutAlign="start stretch">   
                 <div>
                     <app-post-details
-                    
+                    (ondelete)="deletePost($event)"
                     (followUser)="followUser($event)"
                     (unfollowUser)="unfollowUser($event)"
                     [post]="post$ | async"                    
@@ -129,7 +129,7 @@ export class PostComponent implements OnInit, AfterContentInit {
 
     constructor(private store: Store<State>, private route: ActivatedRoute,private scrollService: ScrollService) {
         this.route.params.subscribe( (params) => {
-            this.urlParam = params['id'];  
+            this.urlParam = params['postId'];  
             this.scrollService.scrollToTop();
             this.reviewIdparam = params['reviewId'];  
             this.showSeeAllReviewsOption = this.reviewIdparam !=undefined;
@@ -196,7 +196,9 @@ export class PostComponent implements OnInit, AfterContentInit {
     reportPost($event){
         //this.store.dispatch(new postActions.ReportPost($event));
     }
-
+    deletePost($event){
+        this.store.dispatch(new postActions.DeletePost($event));
+    }
     likeReview($event){
         console.log($event);
         this.store.dispatch(new postReviewActions.LikeReviewAction({id: $event}))

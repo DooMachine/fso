@@ -171,10 +171,22 @@ namespace fso.Data.EntityRepositories
             ret.Description = post.Description;
             ret.Id = post.Id;
             if(post.CollectionId.HasValue){
-                ret.PostCollection = _context.Set<PostCollection>()
-                    .AsNoTracking().FirstOrDefault(p=>p.Id == post.CollectionId);
+                ret.PrevCollectionId = post.CollectionId.Value;
             }
-
+            int[] interestIds = _context.SetChild<GroupPost>().Where(p=>p.PostId==postId)
+                .Select(f=>f.GroupId).ToArray();
+            if(interestIds!=null){
+                ret.PrevInterests = _context.Set<Group>().AsNoTracking()
+                    .Where(f=>interestIds.Contains(f.Id))
+                    .Select(p=> new InterestCard(){
+                        AlphaColor = p.ColorAlpha,
+                        ProfileImage = p.ProfileImage.SmallPath,
+                        Id = p.Id,
+                        Name = p.Name,
+                        UrlKey = p.UrlKey,
+                    }).ToList();
+            }
+                
             ret.PostParts = _context.Set<PostPart>()
                 .Select(p => new PostPartDisplay()
                 {

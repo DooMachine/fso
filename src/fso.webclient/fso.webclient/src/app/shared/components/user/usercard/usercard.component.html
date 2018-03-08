@@ -2,14 +2,14 @@
   <mat-card-header>
       <a mat-card-avatar
       (click)="navigate.emit()"
-       [routerLink]="['/user', user.username]">
+       [routerLink]="['', user.username]">
         <img mat-card-avatar 
         [default]=""
         [src]="user.profileImage" class="img-circle"/>
       </a>
       <mat-card-title><a mat-line class="no-anchor-text a-grey" 
         (click)="navigate.emit()"
-        [routerLink]="['/user', user.username]">{{user.username}}</a></mat-card-title>
+        [routerLink]="['', user.username]">{{user.username}}</a></mat-card-title>
         <mat-card-subtitle
         class="reputationBeforeDot"
         color="primary"

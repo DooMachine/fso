@@ -10,13 +10,13 @@
       <ng-content ></ng-content>
     </div>  
     <div *ngFor="let comment of commentarray" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="4px">
-        <a mat-card-avatar [routerLink]="['/user',comment.userInfo?.userName]">
+        <a mat-card-avatar [routerLink]="['',comment.userInfo?.userName]">
           <img mat-card-avatar [default]  [src]="comment.userInfo?.profileImage" class="img-circle"/>
         </a>    
     <mat-card fxFlex>
       <mat-card-header>        
         <mat-card-title><a class="no-anchor-text a-grey"
-          [routerLink]="['/user',comment.userInfo?.userName]">{{comment.userInfo?.userName}}</a></mat-card-title>
+          [routerLink]="['',comment.userInfo?.userName]">{{comment.userInfo?.userName}}</a></mat-card-title>
         <mat-card-subtitle>{{comment.dateUtcPublished | date:"HH:mm"}} - {{comment.dateUtcPublished | date}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>

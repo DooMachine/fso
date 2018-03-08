@@ -13,7 +13,7 @@ import { PostComponent } from './containers/post.container';
 import { PostPostpartsComponent } from './components/post-postparts/post-postparts.component';
 import { PostReviewsComponent } from './components/post-reviews/post-reviews.component';
 import { PostSimiliarpostsComponent } from './components/post-similiarposts/post-similiarposts.component';
-import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostDetailsComponent, AskIfSureDialogComponent } from './components/post-details/post-details.component';
 import { PostPostpartGridComponent } from './components/post-postpart-grid/post-postpart-grid.component';
 import { SharedModule } from '../shared/shared.module';
 import { PostAddreviewComponent } from './containers/post-addreview/post-addreview.component';
@@ -38,6 +38,7 @@ const COMPONENTS = [
     PostAddreviewComponent,
     PostReviewCommentsComponent,
     PostReviewAddcommentComponent,
+    AskIfSureDialogComponent,
     PostActionsComponent,
     PostGroupsComponent
 ];
@@ -63,8 +64,8 @@ export class MyHammerConfig extends HammerGestureConfig  {
         EffectsModule.forFeature([PostEffects,AddReviewEffects,PostReviewLikeEffects,PostCommentEffects]),
         RouterModule.forChild([
             { path: '', component: PostComponent, pathMatch: 'full' },
-            { path: ':id/review/:reviewId', component: PostComponent },
-            { path: ':id', component: PostComponent,
+            { path: ':postId/review/:reviewId', component: PostComponent },
+            { path: ':postId', component: PostComponent,
                 children:[{
                   path:'addreview', canActivate:[AuthGuard], component:PostAddreviewComponent
                 },
@@ -72,7 +73,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
         ]),
       ],
       declarations: COMPONENTS,
-      exports: COMPONENTS,
+      entryComponents:[AskIfSureDialogComponent],
       providers: [PostService, AddReviewService, 
         { 
         provide: HAMMER_GESTURE_CONFIG, 

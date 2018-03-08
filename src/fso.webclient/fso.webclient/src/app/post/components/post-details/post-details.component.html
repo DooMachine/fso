@@ -1,13 +1,13 @@
 
 <mat-card class="example-card">
     <mat-card-header>
-        <a mat-card-avatar [routerLink]="['/user',post.authorInfo.username]">
+        <a mat-card-avatar [routerLink]="['',post.authorInfo.username]">
           <img mat-card-avatar
           [default]
            [src]="post.authorInfo.profileImage" class="img-circle"/>
         </a>
         <mat-card-title><a class="no-anchor-text a-grey"
-          [routerLink]="['/user',post.authorInfo.username]">{{post.authorInfo.username}}</a></mat-card-title>
+          [routerLink]="['',post.authorInfo.username]">{{post.authorInfo.username}}</a></mat-card-title>
         <mat-card-subtitle>
           <span>{{post.dateUtcPublished | utcdate | date:'d MMM yy - hh:mm'}}</span>
           <span class="settingsButton" *ngIf="authUserId == post.authorInfo.appUserId"> 
@@ -15,6 +15,10 @@
             [routerLink]="['/post',post.id,'edit']"
             mat-icon-button>
               <mat-icon aria-label="Edit Post">settings</mat-icon>
+            </a> - <a 
+            (click)="deletePost(post.id)"
+            mat-icon-button>
+              <mat-icon aria-label="Edit Post">delete</mat-icon>
             </a>
           </span> 
         </mat-card-subtitle>

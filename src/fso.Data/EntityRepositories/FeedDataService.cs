@@ -253,6 +253,7 @@ namespace fso.Data.EntityRepositories
                                     Id = p.Id,
                                 })
                                 .FirstOrDefault(p => p.Id == reviewActivity.ParentEntityId);
+                            
                             reviewedPost.Rating = GetPostRating(reviewedPost.Id, 10);
                             reviewedPost.FavouriteCount = _postCacheService.GetPostLikesCount(reviewedPost.Id)
                                 ?? _postDataService.GetPostLikeCount(reviewedPost.Id, cacheTreshold: 20);

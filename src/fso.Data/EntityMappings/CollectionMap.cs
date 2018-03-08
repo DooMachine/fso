@@ -1,6 +1,7 @@
 ﻿using fso.Core.Domains;
 using fso.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace fso.Data.EntityMappings
@@ -11,6 +12,7 @@ namespace fso.Data.EntityMappings
         {
             builder
                 .HasKey(p => p.Id);
+            builder.ForMySQLHasCollation("utf8mb4");
             builder
                 .HasQueryFilter(p => !p.IsSoftDeleted);
 

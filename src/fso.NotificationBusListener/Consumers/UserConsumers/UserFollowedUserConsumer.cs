@@ -39,7 +39,7 @@ namespace fso.NotificationBusListener.Consumers.UserConsumers
                     ActivityUserJsonArray = JsonConvert.SerializeObject(lu),
                     IsSoftDeleted = false,
                     ImageUrl = UserSmallImageUrl.Replace("{appUserId}", message.FollowingUserId),
-                    RedirectUrl = "/user/" + message.FollowingUsername,
+                    RedirectUrl = "/" + message.FollowingUsername,
                     IsSeen = false,
                     UserId = message.FollowedUserId
                 };

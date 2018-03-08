@@ -27,7 +27,6 @@ import { State } from '../reducers/interest';
                 [authUserId]="authUserId$ | async"
                 [isMod]="isMod$ | async"
                 [posts]="posts$ | async"
-                (onScrollTriggered)="triggerScroll($event)"
                 (likePost)="likePost($event)"
                 (unlikePost)="unlikePost($event)"
                 (followUser)="followUser($event)"

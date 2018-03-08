@@ -280,6 +280,9 @@ namespace IdentityServerWithAspNetIdentity.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                if(_appSettings.ForbiddenUsernames.Contains(model.UName.Trim().ToLower())){
+                    ModelState.AddModelError("","Please pick another username.");
+                }
                 var user = new AppUser { UserName = model.Email, Email = model.Email,UName=model.UName,Name=model.Name,Surname=model.Surname};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

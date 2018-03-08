@@ -15,7 +15,7 @@ import { ReviewComment } from '../../../post/models/reviewComment';
      >
      <div class="activity-desc" activityDescriptionTop>
      
-     <img class ="img-circle" [src]=" activity.primaryEntity.authorInfo.profileImage" />
+     <img class ="img-circle" [default] [src]=" activity.primaryEntity.authorInfo.profileImage" />
      <b>{{ activity.primaryEntity.authorInfo.username}}</b>
       <span class="secondary-text">reviewed a post</span>
      </div>

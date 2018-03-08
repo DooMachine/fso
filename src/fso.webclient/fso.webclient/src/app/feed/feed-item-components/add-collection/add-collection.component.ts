@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment';
   <div class ="cq">
     <div class="activity-desc" activityDescriptionTop>
       
-    <img class ="img-circle" [src]=" activity.primaryEntity.userInfo.profileImage" />
+    <img class ="img-circle" [default] [src]=" activity.primaryEntity.userInfo.profileImage" />
     <b>{{ activity.primaryEntity.userInfo.username}}</b>
     <span class="secondary-text">published a new collection</span>
     </div>
@@ -20,7 +20,7 @@ import { environment } from '../../../../environments/environment';
             colspan="1"
             rowspan="1"
             >
-            <a [routerLink]="['/user',activity.primaryEntity.userInfo.username,'collections',activity.primaryEntity.id]">
+            <a [routerLink]="['',activity.primaryEntity.userInfo.username,'collections',activity.primaryEntity.id]">
               <img [default]="defaultCollectionThumbUrl" [src]="activity.primaryEntity.thumbImageUrl" alt="{{activity.primaryEntity.name}}" >
             </a>
           </mat-grid-tile>
@@ -29,7 +29,7 @@ import { environment } from '../../../../environments/environment';
       <div fxLayout="column" fxLayoutAlign="space-between stretch"
       class="col-detail-holder" fxFlex="49" fxFlex.lt-md="100">
       <div>
-      <a class="c-a-name a-grey" [routerLink]="['/user',activity.primaryEntity.userInfo.username,'collections',activity.primaryEntity.id]">
+      <a class="c-a-name a-grey" [routerLink]="['',activity.primaryEntity.userInfo.username,'collections',activity.primaryEntity.id]">
         <h2 >{{activity.primaryEntity.name}}</h2>
       </a>
         <p>{{activity.primaryEntity.description}}</p>

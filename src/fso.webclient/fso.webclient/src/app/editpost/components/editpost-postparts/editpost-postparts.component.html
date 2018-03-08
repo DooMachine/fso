@@ -1,0 +1,49 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutWrap fxLayoutGap="2px">  
+    <div
+      fxFlex="24"
+      fxFlex.lt-md="49"
+      fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1px"
+      class="postpartcontainer"
+      [style.background-color]="alphaColor" 
+      *ngFor="let postpart of postparts">  
+        <button 
+        color="accent"
+        class="remove-pp-button"
+        mat-icon-button>
+            <mat-icon 
+            (click)="removePostpart.emit({postPartId: postpart.id})"
+            aria-label="Delete This Picture">delete_forever</mat-icon>
+        </button>  
+      <div fxFlex 
+      fxLayout="column" fxLayoutAlign="center center"
+      class="postpartfig">                      
+          <img 
+          class="postpart-image img-responsive"
+          [src]="postpart.image.url" alt="{{postpart.title}}">
+      </div>
+   </div>
+    <div
+    *ngIf="!postPartPending && postpartcount < maxPostPartCount;else pSpinner"
+     fxFlex="24"
+     fxFlex.lt-md="49"
+     class="postpartcontainer"      
+      fxLayout="row" fxLayoutAlign="center center"
+      (click)="postpartInput.click()"
+      style.background-color="black"> 
+      <div >        
+          <mat-icon>add_a_photo</mat-icon>
+      </div>
+      <input type="file"
+        accept="image/*"
+        #postpartInput
+        [hidden]="true"
+        (change)="fileChangeEvent($event)" />
+    </div>
+    <ng-template #pSpinner>
+        <mat-progress-spinner          
+        indeterminate
+        color="accent"
+         *ngIf="postPartPending">
+        </mat-progress-spinner>  
+    </ng-template>
+  </div>

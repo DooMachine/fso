@@ -28,12 +28,11 @@ namespace fso.Data
             if (!_databaseInitialized)
             {
                 // TODO HANDLE MIGRATION AND SEED RUNTIME
-                if (!(this.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
-                {
-                    Database.EnsureCreated();
-                    _databaseInitialized = true;
-                }
-                else if (this.Database.GetPendingMigrations().Any())
+                
+                Database.EnsureCreated();
+                _databaseInitialized = true;
+                
+                if (this.Database.GetPendingMigrations().Any())
                 {
                     // Database.EnsureDeleted();
                     // Database.EnsureCreated();

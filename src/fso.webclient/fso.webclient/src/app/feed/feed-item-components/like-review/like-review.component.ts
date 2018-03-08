@@ -14,7 +14,7 @@ import { UserActivity } from '../../../shared/models/user/userActivity';
      >
      <div class="activity-desc" activityDescriptionTop>
      
-     <img class ="img-circle" [src]=" activity.primaryEntity.authorInfo.profileImage" />
+     <img [default] class ="img-circle" [src]=" activity.primaryEntity.authorInfo.profileImage" />
      <b>{{ activity.primaryEntity.authorInfo.username}}</b>
       <span class="secondary-text">liked a review</span>
      </div>

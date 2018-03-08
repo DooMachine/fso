@@ -35,9 +35,8 @@ import { UserPopularPostsService } from './services/popularposts.service';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { SharedModule } from '../shared/shared.module';
 
-const ROUTES = [
-    { path: '', component: UserComponent , pathMatch: 'full'},    
-    { path: ':userName', component: UserComponent,
+const ROUTES = [   
+    { path: '', component: UserComponent,
     children: [
         {path: '', component: UserActivityComponent},
         {path: 'reviews', canActivate: [AuthGuard], loadChildren: 'app/profile/reviews/userreviews.module#UserReviewsModule'},

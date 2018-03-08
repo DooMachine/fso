@@ -81,35 +81,39 @@
               panelClass='acc_panel'
               [overlapTrigger]="false"
               #acc_menu="matMenu">
-              <button mat-menu-item>
                 <a        
                 class="a-grey"     
                   routerLinkActive #rla55="routerLinkActive"
                   matTooltipShowDelay="310"
                   [routerLinkActiveOptions]="{ exact: true }"                
-                  [routerLink]="['user',loggedUserName$ | async]">
-                <img class="img-circle acc_img" [default] [src]="profileImage$|async" />
-                <span>{{loggedUserName$ | async}}</span>
-                </a>
-              </button>
-              <button mat-menu-item>
+                  [routerLink]="['',loggedUserName$ | async]">
+                <button mat-menu-item>
+                
+                  <img class="img-circle acc_img" [default] [src]="profileImage$|async" />
+                  <span>{{loggedUserName$ | async}}</span>
+                  
+                </button>
+              </a>
+              
                 <a           
                 class="a-grey"    
                     matTooltipShowDelay="310"               
                     [routerLink]="['help']">
+                    <button mat-menu-item>
                   <mat-icon  color="primary">help</mat-icon>
                   <span>Help</span>
+                  </button>
                   </a>
-              </button>
-              <button mat-menu-item>
-                <a      
-                class="a-grey"
-                    matTooltipShowDelay="310"               
-                    (click)="toggleTheme($event)">
-                  <mat-icon  color="primary">brightness_3</mat-icon>
-                  <span>Night Mode</span>
-                </a>
-              </button>
+                  <a      
+                  class="a-grey"
+                  matTooltipShowDelay="310"               
+                  (click)="toggleTheme($event)">
+                    <button mat-menu-item>
+                    
+                      <mat-icon  color="primary">brightness_3</mat-icon>
+                      <span>Night Mode</span>
+                      </button>
+                  </a>              
             </mat-menu>
             
         </div>             
@@ -152,7 +156,7 @@
             <a    
             [routerLinkActiveOptions]="{ exact: true }"  
             routerLinkActive #rla4="routerLinkActive"
-            [routerLink]="[ '/user',  (loggedUserName$ | async) ]">
+            [routerLink]="[ '',  (loggedUserName$ | async) ]">
             <mat-icon     
             color="{{ rla4.isActive ? 'accent': 'primary'}}">account_circle</mat-icon>
           </a>

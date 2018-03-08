@@ -146,7 +146,7 @@ namespace fso.Data.EntityRepositories
             {
                 if (model.SelectedCollectionId > 1)
                 {
-                    PostCollection pcol = _postCollectionDbSet.FirstOrDefault(p => p.Id == model.SelectedCollectionId);
+                    PostCollection pcol = _postCollectionDbSet.FirstOrDefault(p => p.Id == model.SelectedCollectionId&& p.UserInfoId==currUserId);
                     if (pcol != null)
                     {
                         if (pcol.UserInfoId != currUserId)
@@ -231,7 +231,157 @@ namespace fso.Data.EntityRepositories
             }
             return ret;
         }
+        public SaveEditingPostReturnModel SaveEditingPost(SaveEditingPostParameters model, string currUserId){
+            SaveEditingPostReturnModel ret = new SaveEditingPostReturnModel()
+            {
+                IsActionSucceed = false,
+                Errors = new Dictionary<string, string>()
+            };
 
-        
+            Post post = _postSet.Include(p => p.PostParts).Include(p=>p.Groups).Include(p => p.UserInfo).FirstOrDefault(p => p.Id == model.Id && p.UserInfoId == currUserId);
+            if (post == null)
+            {                
+                return ret;
+            }
+            post.Title = TagHelpers.RemoveUnwantedTags(model.Title);
+            post.DateUtcModified = DateTime.UtcNow;
+            post.Description = model.Description;
+            post.IsPublished = true;
+            post.Content = TagHelpers.RemoveUnwantedTags(model.Content);
+            
+            if (post.PostParts.Count < 1)
+            {
+                ret.Errors.Add("custom", "Please add your pictures");
+                return ret;
+            }
+            if (model.SelectedCollectionId.HasValue)
+            {
+                if (model.SelectedCollectionId >0)
+                {
+                    PostCollection pcol = _postCollectionDbSet.FirstOrDefault(p => p.Id == model.SelectedCollectionId && p.UserInfoId==currUserId);
+                    if (pcol == null)
+                    {
+                        
+                        ret.Errors.Add("custom", "That collection does not belongs to you buddy");
+                        return ret;
+                        
+                    }
+                    post.Collection = pcol;
+                }
+            }
+            if (model.SelectedInterestIds.Length < 1)
+            {
+                ret.Errors.Add("custom", "Please add at least one interest");
+                return ret;
+            }
+            List<Group> groups = _groupDbSet.Where(p => model.SelectedInterestIds.Contains(p.Id)).ToList();
+            int[] groupIds = groups.Select(p => p.Id).ToArray();
+            int[] prevGroupIds = post.Groups.Select(f=>f.GroupId).ToArray();
+            int[] alreadyFollowIds = _userGroupDbSet
+                .Where(p => p.GroupFollowState == GroupFollowState.Followed && p.UserId == currUserId && groupIds.Contains(p.GroupId)).Select(p=>p.GroupId).ToArray();
+            foreach(var gId in prevGroupIds){
+                if(!groupIds.Contains(gId)){
+                    post.Groups.Remove(post.Groups.FirstOrDefault(p=>p.GroupId==gId));
+                }
+            }
+            foreach (var item in groupIds)
+            {                
+                if(!post.Groups.Any(f=>f.GroupId==item)){
+                    post.Groups.Add(new GroupPost()
+                    {
+                        GroupId = item,
+                        DateUtcAdded = DateTime.UtcNow,
+                        PostPopularityLevel = 0,                        
+                    });
+                }
+            }
+            IEnumerable<Group> unFolloweds = groups.Where(p => !alreadyFollowIds.Contains(p.Id));
+            foreach (var unfollowedGroup in unFolloweds)
+            {
+                UserGroup ug = _userGroupDbSet.FirstOrDefault(p => p.GroupId == unfollowedGroup.Id && p.UserId == currUserId);
+                if (ug == null)
+                {
+                    ug = new UserGroup()
+                    {
+                        DateUtcFollowed = DateTime.UtcNow,
+                        Group = unfollowedGroup,
+                        UserInfo = post.UserInfo,
+                        GroupFollowState = GroupFollowState.Followed,
+                        UserReputationInGroup = 0
+                    };
+                    _userGroupDbSet.Add(ug);
+                }
+                else
+                {
+                    ug.GroupFollowState = GroupFollowState.Followed;
+                    _userGroupDbSet.Update(ug);
+                }
+            }
+            _postSet.Update(post);
+            if (_context.SaveChanges() < 1)
+            {
+                // if ef-sql exception
+                ret.IsActionSucceed = false;
+                ret.Errors.Add("custom", "Oops.. Something bad happened. Try again later");
+            }
+            else
+            {
+                // reset group-post caches
+                foreach (var item in groupIds)
+                {
+                    var postIdRels = _groupCacheService.GetPostRelationships(item);
+                    if (postIdRels !=null)
+                    {
+                        if (postIdRels.Count() > 0)
+                        {
+                            // Remove Deleted Interests from cache
+                            if(prevGroupIds!=null){
+                                postIdRels = postIdRels.Where(p=> !prevGroupIds.Contains(p.GroupId)).ToArray();
+                            }
+                            postIdRels = postIdRels.Append(new GroupPost()
+                            {
+                                DateUtcAdded = DateTime.UtcNow,
+                                GroupId = item,
+                                PostId = post.Id
+                            }).ToArray();
+                            _groupCacheService.SetPostRelationships(item, postIdRels, 30);
+                        }
+                    }
+                                       
+                }
+                // set return to succeed
+                ret.IsActionSucceed = true;
+                ret.PublishedPostId = post.Id;
+            }
+            return ret;
+        }
+        public DeletePostReturnModel DeletePost(int postId, string currUserId){
+            DeletePostReturnModel ret = new DeletePostReturnModel();
+            if(string.IsNullOrEmpty(currUserId)){
+                ret.IsActionSucceed =false;
+                return ret;
+            }
+            Post post = _context.Set<Post>().FirstOrDefault(p=>p.UserInfoId==currUserId && p.Id==postId);
+            if(post==null){
+                ret.Errors.TryAdd("custom","Post already deleted");
+                ret.IsActionSucceed=false;
+                return ret;
+            }
+            post.IsSoftDeleted = true;
+            _context.GetDbEntityEntrySafely(post).State = EntityState.Modified;
+            // Deleting related activities 
+            List<UserActivity> relActs = _context.Set<UserActivity>()
+                .Where(p=>p.ParentEntityId==post.Id || p.ParentEntityId==post.Id).ToList();
+            foreach(var item in relActs){
+                item.IsSoftDeleted = true;
+                _context.GetDbEntityEntrySafely(item).State = EntityState.Modified;              
+            }
+            if(_context.SaveChanges()>0){
+                ret.IsActionSucceed =true;
+                return ret;
+            }
+            ret.IsActionSucceed=false;
+            return ret;
+        }
     }
 }

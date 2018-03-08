@@ -17,8 +17,10 @@ export class PostService {
     constructor(private _http: HttpClient) {
         this.actionUrl = `${environment.serviceUrls.Base}api/Post/`;
         this.reviewActionUrl = `${environment.serviceUrls.Base}api/Review/`;
-
         
+        this.headers = new HttpHeaders();
+        this.headers = this.headers.set('Content-Type', 'application/json');
+        this.headers = this.headers.set('Accept', 'application/json');
     }
     public GetPostIndex = (postId: number,reviewId?:number): Observable<any> => {
         if(reviewId==undefined || reviewId==null){            
@@ -43,5 +45,10 @@ export class PostService {
         
         return this._http.get<any>(this.actionUrl + `GetPaginatedReviews?postId=${postId}&pageIndex=${pageIndex}&pageSize=${pageSize}&order=${order}&`,
               { headers: this.headers});
+    }
+
+    public DeletePost = (postId: number): Observable<any> => {
+        const body: any = { 'postId': postId };
+        return this._http.post<any>(this.actionUrl + `DeletePost`, JSON.stringify(body), { headers: this.headers});
     }
 }

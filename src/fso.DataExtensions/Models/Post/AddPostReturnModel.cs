@@ -1,6 +1,7 @@
 ﻿using fso.Core.Domains;
 using fso.Core.Domains.Helpers.Enum;
 using fso.DataExtensions.Models.Collections;
+using fso.DataExtensions.Models.GroupReturnModels;
 using System.Collections.Generic;
 
 namespace fso.DataExtensions.Models
@@ -29,7 +30,8 @@ namespace fso.DataExtensions.Models
 
         }
         public bool IsAvaliable { get; set; }
-        public PostCollection PostCollection { get; set; }
+        public int PrevCollectionId { get; set; }
         
+        public ICollection<InterestCard> PrevInterests { get; set;}
     }
 }

@@ -55,6 +55,7 @@ namespace fso.Data.EntityRepositories
             }
             if (langCodeTrendingInterestIds == null || langCodeTrendingInterestIds.Count()==0)
             {
+                // Order by follower count
                 langCodeTrendingInterestIds = _context.Set<Group>()
                      .AsNoTracking()
                      .SelectMany(a => a.UsersFollowing)  
@@ -70,8 +71,9 @@ namespace fso.Data.EntityRepositories
                     .Skip((req.PageIndex - 1) * req.PageSize)
                     .Take(req.PageSize)                    
                     .ToArray();
-
-                _exploreCacheService.SetExploreInterestIds(req.LangCode, req.PageIndex, langCodeTrendingInterestIds, 60 * 24);
+                if(langCodeTrendingInterestIds != null)
+                    if(langCodeTrendingInterestIds.Length>req.PageSize)
+                        _exploreCacheService.SetExploreInterestIds(req.LangCode, req.PageIndex, langCodeTrendingInterestIds, 60 * 24);
             }
             ret.Entities = _context.Set<Group>().AsNoTracking()
                 .Select(p => new { Entity = p, Image = p.ProfileImage, p.CoverImage })

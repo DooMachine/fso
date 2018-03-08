@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
 namespace fso.IdentityData.Data
 {
@@ -44,7 +45,7 @@ namespace fso.IdentityData.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            builder.Entity<AppUser>().ForMySQLHasCollation("utf8mb4");
             builder.Entity<AppUser>()
                 .HasMany(e => e.Claims)
                 .WithOne()

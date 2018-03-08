@@ -9,6 +9,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
 namespace fso.NotificationData.Data
 {
@@ -44,6 +45,8 @@ namespace fso.NotificationData.Data
         {
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Notification>().ForMySQLHasCollation("utf8mb4");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
