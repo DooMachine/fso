@@ -169,5 +169,28 @@ namespace fso.Api.Controllers
 
             }
         }
+
+        [Authorize(Policy = "fso.AngularUser")]
+        [HttpPost("[action]")]
+        public IActionResult DeletePost([FromBody]PostIdModel model)
+        {
+            DeletePostReturnModel ret;
+            try
+            {
+                Claim idClaim = User.FindFirst("sub");
+                if (idClaim == null)
+                {
+                    return Unauthorized();
+                }
+                string userId = idClaim.Value;
+                ret = _postActionService.DeletePost(model.PostId, userId);
+                
+                return Ok(ret);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

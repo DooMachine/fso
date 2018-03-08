@@ -49,7 +49,15 @@ namespace fso.Api.Controllers
         }
         [Authorize(Policy = "fso.AngularUser")]
         [HttpGet("[action]")]
-        public IActionResult GetAutoCompleteInterest([FromQuery]string query, int pageSize=4)
+        public IActionResult GetEditingPost([FromQuery]int postId)
+        {
+            Claim idClaim = User.FindFirst("sub");
+            var ret = _postDataService.GetEditingPost(postId,idClaim.Value);
+            return Ok(ret);
+        }
+        [Authorize(Policy = "fso.AngularUser")]
+        [HttpGet("[action]")]
+        public IActionResult GetAutoCompleteInterest([FromQuery]string query, int pageSize=6)
         {
             Claim idClaim = User.FindFirst("sub");
             var ret = _groupDataService.GetAutoCompleteInterest(query, pageSize);
@@ -115,6 +123,31 @@ namespace fso.Api.Controllers
                 });
             }
             return Ok(Json(ret));
+        }
+
+        [Authorize(Policy = "fso.AngularUser")]
+        [HttpPost("[action]")]
+        public IActionResult SaveEditingPost([FromBody]SaveEditingPostParameters model)
+        {
+            SaveEditingPostReturnModel ret = new SaveEditingPostReturnModel();
+            if (!ModelState.IsValid)
+            {
+                ret.IsActionSucceed = false;
+                ret.Errors = new Dictionary<string, string>();
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        ret.Errors.Add(error.Exception.HResult.ToString(),error.ErrorMessage);
+                    }
+                }
+                return Ok(ret);
+            }
+            Claim idClaim = User.FindFirst("sub");
+            if(idClaim==null) return Unauthorized();
+            ret = _postActionService.SaveEditingPost(model, idClaim?.Value);
+            
+            return Ok(ret);
         }
     }
 }
