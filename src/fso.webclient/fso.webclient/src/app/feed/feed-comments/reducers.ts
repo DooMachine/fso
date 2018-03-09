@@ -10,6 +10,7 @@ export interface State extends EntityState<ReviewComment> {
     commentloadedReviewIds:Array<number>;
     openedReviewCommentIds:Array<number>;
     openedCommentFormReviewIds:Array<number>;
+    openedCommentEditIds:Array<number>;
 }
 
 export const adapter: EntityAdapter<ReviewComment> = createEntityAdapter<ReviewComment>({
@@ -24,7 +25,8 @@ export function sortDescendingById(a: ReviewComment, b: ReviewComment): number {
 export const initialState: State = adapter.getInitialState({
     commentloadedReviewIds:[],
     openedReviewCommentIds:[],
-    openedCommentFormReviewIds:[]
+    openedCommentFormReviewIds:[],
+    openedCommentEditIds:[]
 });
 
   export function reducer(state = initialState, action): State {
@@ -48,6 +50,14 @@ export const initialState: State = adapter.getInitialState({
         case commentActions.FeedCommentsActionTypes.CLOSE_COMMENT_FORM_SECTION:{
             return {...state,openedCommentFormReviewIds: state.openedCommentFormReviewIds.filter(val=> val != action.payload)};            
             }
+        case commentActions.FeedCommentsActionTypes.OPEN_EDIT_COMMENT:{
+            let openedIds = state.openedCommentEditIds;
+            openedIds.push(action.payload);
+            return {...state,openedCommentEditIds: openedIds};            
+            }
+        case commentActions.FeedCommentsActionTypes.CLOSE_EDIT_COMMENT:{
+            return {...state,openedCommentEditIds: state.openedCommentEditIds.filter(val=> val != action.payload)};            
+            }
         case commentActions.FeedCommentsActionTypes.LOAD_REVIEW_COMMENTS:{
             return state;
         }
@@ -62,7 +72,7 @@ export const initialState: State = adapter.getInitialState({
         case commentActions.FeedCommentsActionTypes.LIKE_COMMENT:{
 
             return adapter.updateOne({id: action.payload.commentId,
-                changes: { likeStatus: action.payload.likeStatus }},
+                changes: { likeStatus: LikeStatus.Like }},
                 state);
             }
         case commentActions.FeedCommentsActionTypes.LIKE_COMMENT_SUCCESS:{
@@ -76,6 +86,36 @@ export const initialState: State = adapter.getInitialState({
             return adapter.updateOne({id: action.payload.commentId,
                 changes: {  likeStatus: action.payload.prevlikeStatus }},
                 state);
+            }
+        case commentActions.FeedCommentsActionTypes.SAVE_EDIT_COMMENT:{
+
+            return state;
+            }
+        case commentActions.FeedCommentsActionTypes.SAVE_EDIT_COMMENT_SUCCESS:{
+            let openedIds = state.openedCommentEditIds;
+            openedIds = openedIds.filter(m=> m != action.payload.comment.id);
+            return {
+                ...adapter.updateOne({id: action.payload.comment.id,
+                changes: { content: action.payload.comment.content }},
+                state),
+                openedCommentEditIds: openedIds
+                };
+            }
+        case commentActions.FeedCommentsActionTypes.SAVE_EDIT_COMMENT_FAIL:{
+
+            return state;
+            }
+        case commentActions.FeedCommentsActionTypes.DELETE_COMMENT:{
+
+            return state
+            }
+        case commentActions.FeedCommentsActionTypes.DELETE_COMMENT_SUCCESS:{
+
+            return adapter.removeOne(action.payload.commentId,state);
+            }
+        case commentActions.FeedCommentsActionTypes.DELETE_COMMENT_FAIL:{
+
+            return state;
             }
         case commentActions.FeedCommentsActionTypes.UNLIKE_COMMENT:{
 
@@ -141,6 +181,7 @@ export const initialState: State = adapter.getInitialState({
   export const selectOpenedCommentReviewIds = createSelector(getCommentsState,state=>state.openedReviewCommentIds);
   export const selectLoadedCommentReviewIds = createSelector(getCommentsState,state=>state.commentloadedReviewIds);
   export const selectopenedCommentFormReviewIds = createSelector(getCommentsState,state=>state.openedCommentFormReviewIds);
+  export const selectopenedCommentEditIds = createSelector(getCommentsState,state=>state.openedCommentEditIds);
   export const {
     selectIds,
     selectEntities,

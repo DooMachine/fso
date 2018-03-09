@@ -38,4 +38,12 @@ export class CommentService {
         const body: any = { 'commentId': commentId };
         return this._http.post<any>(this.actionUrl + `UndislikeComment`, JSON.stringify(body), { headers: this.headers});
     }
+    public DeleteComment = (commentId: number): Observable<any> => {
+        const body: any = { 'commentId': commentId };
+        return this._http.post<any>(this.actionUrl + `DeleteComment`, JSON.stringify(body), { headers: this.headers});
+    }
+    public SaveEditingComment = (formVal: any): Observable<any> => {
+        
+        return this._http.post<any>(this.actionUrl + `SaveEditingComment`, JSON.stringify(formVal), { headers: this.headers});
+    }
 }

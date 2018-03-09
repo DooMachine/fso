@@ -31,12 +31,16 @@ import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
         (onunlikePost)="unlikePost($event)"
         (onunlikeReview)="unlikeReview($event)"
         (onundislikeReview)="undislikeReview($event)"
-
+        (deleteComment)="deleteComment($event)"
         (onlikeComment)="likeComment($event)"
         (onunlikeComment) = "unlikeComment($event)"
         (ondislikeComment)="dislikeComment($event)"
         (onundislikeComment)="undislikeComment($event)"
-
+        (editComment)="editCommentAction($event)"
+        (closeCommentEditForm)="closeCommentEditForm($event)"
+        (submitEdit)="submitCommentEdit($event)"
+        [openedCommentEditIds]="openedCommentEditIds$ | async"
+        
         (showCommentForm)="showCommentForm($event)"
         (hideCommentForm)="hideCommentForm($event)"
         (submitCommentForm)="submitComment($event)"
@@ -80,7 +84,7 @@ export class UserActivityComponent implements OnInit {
     openedCommentReviewIds$:Observable<number[]>;
     loadedCommentReviewIds$:Observable<number[]>;
     openedCommentFormReviewIds$:Observable<number[]>;
-    
+    openedCommentEditIds$:Observable<number[]>;
     constructor(
         private store: Store<State>,
         private route: ActivatedRoute
@@ -99,6 +103,7 @@ export class UserActivityComponent implements OnInit {
         this.openedCommentReviewIds$ = this.store.select(fromFeedComments.selectOpenedCommentReviewIds);
         this.openedCommentFormReviewIds$ = this.store.select(fromFeedComments.selectopenedCommentFormReviewIds);
         this.loadedCommentReviewIds$ = this.store.select(fromFeedComments.selectLoadedCommentReviewIds);
+        this.openedCommentEditIds$ = this.store.select(fromFeedComments.selectopenedCommentEditIds);
         this.authUserProfileImage$ = this.store.select(selectUserProfileImage);    
      }
 
@@ -153,5 +158,17 @@ export class UserActivityComponent implements OnInit {
     undislikeComment($event){
         this.store.dispatch(new fromFeedCommentActions.UnDislikeCommentAction($event));
     }
-
+    deleteComment($event){
+        this.store.dispatch(new fromFeedCommentActions.DeleteComment($event));
+    }
+    editCommentAction($event){
+        console.log($event);
+        this.store.dispatch(new fromFeedCommentActions.OpenEditComment($event));
+    }
+    closeCommentEditForm($event){
+        this.store.dispatch(new fromFeedCommentActions.CloseEditComment($event));
+    }
+    submitCommentEdit($event){
+        this.store.dispatch(new fromFeedCommentActions.SaveEditComment($event));
+    }
 }

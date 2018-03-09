@@ -65,6 +65,8 @@ import { ScrollService } from "../../shared/services/scroll.service";
                 <router-outlet></router-outlet>
                 <div #reviewlist>
                     <app-post-reviews
+                    (deleteComment)="deleteComment($event)"
+                    [authUserId]="authUserId$ | async"
                     [comments]="comments$ | async"
                     (loadAllReviews)="loadAllReviews($event)"
                     [hasNextPage]="hasNextPage$ | async"
@@ -95,7 +97,6 @@ import { ScrollService } from "../../shared/services/scroll.service";
             fxFlex="29"
             fxFlex.lt-md="100"
             fxLayout="column" fxLayoutAlign="start start"> 
-
                 <app-post-similiarposts
                 [isLoading]="isLoading$ | async"
                 (mouseOnPostEmitter)="mouseOnPost($event)"
@@ -161,6 +162,9 @@ export class PostComponent implements OnInit, AfterContentInit {
         //Called after ngOnInit when the component's or directive's content has been initialized.
         //Add 'implements AfterContentInit' to the class.
     } 
+    deleteComment($event){
+        this.store.dispatch(new postCommentActions.DeleteComment($event))
+    }
     loadAllReviews($event){
         this.store.dispatch(new postReviewActions.LoadInitialReviews({id:this.urlParam}))
     }

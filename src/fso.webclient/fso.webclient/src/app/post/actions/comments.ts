@@ -12,6 +12,10 @@ export enum PostIndexCommentsActionTypes {
     LIKE_COMMENT_SUCCESS = '[PostIndexComments] LIKE_COMMENT_SUCCESS',
     LIKE_COMMENT_FAIL = '[PostIndexComments] LIKE_COMMENT_FAIL',
 
+    DELETE_COMMENT = '[PostIndexComments] DELETE_COMMENT',
+    DELETE_COMMENT_SUCCESS = '[PostIndexComments] DELETE_COMMENT_SUCCESS',
+    DELETE_COMMENT_FAIL = '[PostIndexComments] DELETE_COMMENT_FAIL',
+
     UNLIKE_COMMENT= '[PostIndexComments] UNLIKE_COMMENT',
     UNLIKE_COMMENT_SUCCESS = '[PostIndexComments] UNLIKE_COMMENT_SUCCESS',
     UNLIKE_COMMENT_FAIL = '[PostIndexComments] UNLIKE_COMMENT_FAIL',
@@ -35,6 +39,22 @@ export enum PostIndexCommentsActionTypes {
 
 
 
+export class DeleteComment implements Action {
+    readonly type = PostIndexCommentsActionTypes.DELETE_COMMENT;
+
+    constructor(public payload: any) { }
+}
+
+export class DeleteCommentSuccess implements Action {
+    readonly type = PostIndexCommentsActionTypes.DELETE_COMMENT_SUCCESS;
+
+    constructor(public payload: any) { }
+}
+export class DeleteCommentFail implements Action {
+    readonly type = PostIndexCommentsActionTypes.DELETE_COMMENT_FAIL;
+
+    constructor(public payload: any) { }
+}
 
 export class LikeCommentAction implements Action {
     readonly type = PostIndexCommentsActionTypes.LIKE_COMMENT;
@@ -131,6 +151,9 @@ export type PostIndexCommentsActions
                         DislikeCommentSuccessAction |
                         DislikeCommentFailAction | 
                         UnDislikeCommentAction | 
+                        DeleteComment 
+                        | DeleteCommentFail
+                        | DeleteCommentSuccess|
                         UnDislikeCommentSuccessAction | 
                         UnDislikeCommentFailAction
                         | LoadCommentsSuccess

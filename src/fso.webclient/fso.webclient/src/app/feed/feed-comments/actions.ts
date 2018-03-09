@@ -10,6 +10,17 @@ export enum FeedCommentsActionTypes {
     PUBLISH_COMMENT_SUCCESS = '[FeedComments] PUBLISH_COMMENT_SUCCESS',
     PUBLISH_COMMENT_FAIL = '[FeedComments] PUBLISH_COMMENT_FAIL',
 
+    SAVE_EDIT_COMMENT = '[FeedComments] SAVE_EDIT_COMMENT',
+    SAVE_EDIT_COMMENT_SUCCESS = '[FeedComments] SAVE_EDIT_COMMENT_SUCCESS',
+    SAVE_EDIT_COMMENT_FAIL = '[FeedComments] SAVE_EDIT_COMMENT_FAIL',
+
+    OPEN_EDIT_COMMENT = '[FeedComments] OPEN_EDIT_COMMENT',
+    CLOSE_EDIT_COMMENT = '[FeedComments] CLOSE_EDIT_COMMENT',
+
+    DELETE_COMMENT = '[FeedComments] DELETE_COMMENT',
+    DELETE_COMMENT_SUCCESS = '[FeedComments] DELETE_COMMENT_SUCCESS',
+    DELETE_COMMENT_FAIL = '[FeedComments] DELETE_COMMENT_FAIL',
+
     LIKE_COMMENT = '[FeedComments] LIKE_COMMENT',
     LIKE_COMMENT_SUCCESS = '[FeedComments] LIKE_COMMENT_SUCCESS',
     LIKE_COMMENT_FAIL = '[FeedComments] LIKE_COMMENT_FAIL',
@@ -42,6 +53,18 @@ export enum FeedCommentsActionTypes {
  * payload. Expressing actions as classes enables powerful 
  * type checking in reducer functions.
  */
+
+export class OpenEditComment implements Action {
+    readonly type = FeedCommentsActionTypes.OPEN_EDIT_COMMENT;
+
+    constructor(public payload: any) { }
+}
+
+export class CloseEditComment implements Action {
+    readonly type = FeedCommentsActionTypes.CLOSE_EDIT_COMMENT;
+
+    constructor(public payload: any) { }
+}
 
 export class OpenCommentSection implements Action {
     readonly type = FeedCommentsActionTypes.OPEN_COMMENT_SECTION;
@@ -83,6 +106,22 @@ export class LikeCommentFailAction implements Action {
     constructor(public payload: any) { }
 }
 
+export class DeleteComment implements Action {
+    readonly type = FeedCommentsActionTypes.DELETE_COMMENT;
+
+    constructor(public payload: any) { }
+}
+
+export class DeleteCommentSuccess implements Action {
+    readonly type = FeedCommentsActionTypes.DELETE_COMMENT_SUCCESS;
+
+    constructor(public payload: any) { }
+}
+export class DeleteCommentFail implements Action {
+    readonly type = FeedCommentsActionTypes.DELETE_COMMENT_FAIL;
+
+    constructor(public payload: any) { }
+}
 export class UnLikeCommentAction implements Action {
     readonly type = FeedCommentsActionTypes.UNLIKE_COMMENT;
 
@@ -149,6 +188,22 @@ export class PublishCommentFail implements Action {
 
     constructor(public payload: any) { }
 }
+
+export class SaveEditComment implements Action {
+    readonly type = FeedCommentsActionTypes.SAVE_EDIT_COMMENT;
+
+    constructor(public payload: any) { }
+}
+export class SaveEditCommentSuccess implements Action {
+    readonly type = FeedCommentsActionTypes.SAVE_EDIT_COMMENT_SUCCESS;
+
+    constructor(public payload: any) { }
+}
+export class SaveEditCommentFail implements Action {
+    readonly type = FeedCommentsActionTypes.SAVE_EDIT_COMMENT_FAIL;
+
+    constructor(public payload: any) { }
+}
 export class LoadFeedComments implements Action {
     readonly type = FeedCommentsActionTypes.LOAD_REVIEW_COMMENTS;
 
@@ -172,6 +227,8 @@ export type FeedCommentsActions
                         = 
                         | LikeCommentAction | 
                         LikeCommentSuccessAction | 
+                        OpenEditComment |
+                        CloseEditComment |
                         LikeCommentFailAction |
                         UnLikeCommentAction | 
                         UnLikeCommentSuccessAction |
@@ -182,6 +239,12 @@ export type FeedCommentsActions
                         UnDislikeCommentAction | 
                         UnDislikeCommentSuccessAction | 
                         UnDislikeCommentFailAction
+                        | SaveEditComment
+                        | SaveEditCommentFail
+                        | SaveEditCommentSuccess
+                        | DeleteComment
+                        | DeleteCommentFail
+                        | DeleteCommentSuccess
                         | LoadFeedComments
                         | LoadFeedCommentsSuccess
                         | LoadFeedCommentsFail

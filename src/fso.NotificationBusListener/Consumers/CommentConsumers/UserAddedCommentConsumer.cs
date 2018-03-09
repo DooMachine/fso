@@ -52,7 +52,7 @@ namespace fso.NotificationBusListener.Consumers.CommentConsumers
                             NotificationType = NotificationType.Review_Commended,
                             ActivityDescription = "LIKE_COMMENT",
                             ActivityUserJsonArray = JsonConvert.SerializeObject(nUserDataList) ,
-                            RedirectUrl = "post/" + message.PostId.ToString() + "/review/" + message.ReviewId.ToString() + "?c=" + message.CommentId.ToString(),
+                            RedirectUrl = "post/" + message.PostId.ToString() + "/review/" + message.ReviewId.ToString() + "/c/" + message.CommentId.ToString(),
                             UserId = message.ReviewAuthorId,
                             EntityId = message.ReviewId
                         };
@@ -74,7 +74,7 @@ namespace fso.NotificationBusListener.Consumers.CommentConsumers
 
                     if (db.SaveChanges() != 0)
                     {
-                        Console.WriteLine("User Added Comment Action Handled for {0} and {1}", message.CommentId, message.UserId);
+                        Console.WriteLine("User Added Comment Action Handled for {0} and {1} Review Author {2}", message.CommentId, message.UserId,message.ReviewAuthorId);
                     }
                     else
                     {

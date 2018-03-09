@@ -38,11 +38,17 @@ import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
                     (onunlikeComment) = "unlikeComment($event)"
                     (ondislikeComment)="dislikeComment($event)"
                     (onundislikeComment)="undislikeComment($event)"
+                    
+                    (deleteComment)="deleteCommentAction($event)"
+
+                    (editComment)="editCommentAction($event)"
+                    (closeCommentEditForm)="closeCommentEditForm($event)"
+                    (submitEdit)="submitCommentEdit($event)"
+                    [openedCommentEditIds]="openedCommentEditIds$ | async"
 
                     (showCommentForm)="showCommentForm($event)"
                     (hideCommentForm)="hideCommentForm($event)"
                     (submitCommentForm)="submitComment($event)"
-                
                     [authUserProfileImage]="authUserProfileImage$ | async"
                     [authUserId]="currentUserId$ | async"
                     [isEmpty]="isEmpty$ | async"
@@ -89,6 +95,7 @@ export class HomeFeedComponent implements OnInit {
     openedCommentReviewIds$:Observable<number[]>;
     loadedCommentReviewIds$:Observable<number[]>;
     openedCommentFormReviewIds$:Observable<number[]>;
+    openedCommentEditIds$:Observable<number[]>;
 
     constructor(private store: Store<State>) {        
         //this.store.dispatch( new fromActivityActions.GetFeedAction());
@@ -103,6 +110,7 @@ export class HomeFeedComponent implements OnInit {
         this.openedCommentReviewIds$ = this.store.select(fromFeedComments.selectOpenedCommentReviewIds);
         this.openedCommentFormReviewIds$ = this.store.select(fromFeedComments.selectopenedCommentFormReviewIds);
         this.loadedCommentReviewIds$ = this.store.select(fromFeedComments.selectLoadedCommentReviewIds);
+        this.openedCommentEditIds$ = this.store.select(fromFeedComments.selectopenedCommentEditIds);
         this.authUserProfileImage$ = this.store.select(selectUserProfileImage);    
     }
     ngOnInit() {
@@ -156,5 +164,17 @@ export class HomeFeedComponent implements OnInit {
     }
     undislikeComment($event){
         this.store.dispatch(new fromFeedCommentActions.UnDislikeCommentAction($event));
+    }
+    deleteCommentAction($event){
+        this.store.dispatch(new fromFeedCommentActions.DeleteComment($event));
+    }
+    editCommentAction($event){
+        this.store.dispatch(new fromFeedCommentActions.OpenEditComment($event));
+    }
+    closeCommentEditForm($event){
+        this.store.dispatch(new fromFeedCommentActions.CloseEditComment($event));
+    }
+    submitCommentEdit($event){
+        this.store.dispatch(new fromFeedCommentActions.SaveEditComment($event));
     }
 }

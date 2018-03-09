@@ -13,6 +13,9 @@ export class PostReviewCommentsComponent implements OnInit {
   @Input() commentarray:ReviewComment[];
   @Output() showCommentForm = new EventEmitter();
   @Output() closeCommentForm = new EventEmitter();
+  @Output() deleteComment = new EventEmitter();
+
+  @Input() authUserId:string;
   
   @Input() set comments(com: ReviewComment[]) {
     this.commentarray = com.filter((comment) => {

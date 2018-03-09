@@ -1,14 +1,14 @@
 # Feasion
 
-Feasion is a social review app.
+Feasion is a social review app about fashion.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+...
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You need MySQL, RabbitMQ server Nodejs .Net Core 2.0^ Python 2.7 angular@cli 
 
 ```
 Give examples

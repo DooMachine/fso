@@ -71,7 +71,7 @@ export class UserCollectionsComponent implements OnInit {
      }
 
     ngOnInit() {        
-        this.store.dispatch(new GetCollectionAction({userName: this.userName }));
+        // this.store.dispatch(new GetCollectionAction({userName: this.userName }));
     }
     onScroll(){
         this.store.dispatch(new GetCollectionAction({userName: this.userName }));

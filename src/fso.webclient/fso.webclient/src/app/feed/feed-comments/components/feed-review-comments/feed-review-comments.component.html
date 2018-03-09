@@ -9,10 +9,20 @@
     <div class="c-f-c">
       <ng-content ></ng-content>
     </div>  
-    <div *ngFor="let comment of commentarray" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="4px">
-        <a mat-card-avatar [routerLink]="['',comment.userInfo?.userName]">
-          <img mat-card-avatar [default]  [src]="comment.userInfo?.profileImage" class="img-circle"/>
-        </a>    
+    <div *ngFor="let comment of commentarray" fxLayout="row" 
+    fxLayoutAlign="start start"
+     fxLayoutGap="4px">
+     <app-feed-review-edit-comment
+     *ngIf="openedCommentEditIds!=null ? openedCommentEditIds.indexOf(comment.id)>-1 :false; else comContent"
+     [comment]="comment"
+     [authUserProfileImage]="authUserProfileImage"
+     (submitEdit)="submitEdit.emit({commentId:comment.id,content: $event.content})"
+     (closeCommentEditForm)="closeCommentEditForm.emit(comment.id)"
+     ></app-feed-review-edit-comment>
+      <ng-template  #comContent>
+      <a mat-card-avatar [routerLink]="['',comment.userInfo?.userName]">
+        <img mat-card-avatar [default] [src]="comment.userInfo?.profileImage" class="img-circle"/>
+      </a>   
     <mat-card fxFlex>
       <mat-card-header>        
         <mat-card-title><a class="no-anchor-text a-grey"
@@ -33,23 +43,41 @@
           <span class="feasion-dark-theme" matTooltip="Like" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
             <button
             (click)="comment.likeStatus == 0 ? onunlikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus}) : onlikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus})"
-            color="{{comment.likeStatus == 0 ? 'warn' : 'primary'}}"  mat-icon-button>
+            color="{{comment.likeStatus == 0 ? 'primary' : 'accent'}}"  mat-icon-button>
                 <mat-icon aria-label="Like">thumb_up</mat-icon>
             </button>
             <span class="secondary-text">{{comment.likeCount}}</span>
-          </span>
+          </span> 
           <span class="feasion-dark-theme" matTooltip="Dislike" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
             <button
             (click)="comment.likeStatus == 1 ? onundislikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus}) : ondislikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus})"
-              color="{{comment.likeStatus == 1 ? 'warn' : 'primary'}}" mat-icon-button>
+              color="{{comment.likeStatus == 1 ? 'primary' : 'accent'}}" mat-icon-button>
                 <mat-icon aria-label="Dislike">thumb_down</mat-icon>
-            </button>
+            </button> 
             <span class="secondary-text">{{comment.dislikeCount}}</span>
           </span>
         </div>
         <div class="feasion-dark-theme">
             <button
-              color="primary"  [matMenuTriggerFor]="reportMenu"
+              color="accent" *ngIf="comment.userInfo?.appUserId == authUserId"
+              (click)="editComment.emit(comment.id)" 
+              matTooltip="Edit comment"  
+              matTooltipShowDelay ="500" matTooltipHideDelay="200"
+              matTooltipPosition="above"
+              mat-icon-button>
+              <mat-icon aria-label="Rating">mode_edit</mat-icon>
+          </button>
+            <button
+              color="accent" *ngIf="comment.userInfo?.appUserId == authUserId"
+              (click)="deleteComment.emit(comment.id)" 
+              matTooltip="Delete comment"  
+              matTooltipShowDelay ="500" matTooltipHideDelay="200"
+              matTooltipPosition="above"
+              mat-icon-button>
+              <mat-icon aria-label="Rating">delete</mat-icon>
+          </button>
+            <button
+              color="accent"  [matMenuTriggerFor]="reportMenu"
               matTooltip="Report this comment" 
               matTooltipShowDelay ="300" matTooltipHideDelay="200"
               matTooltipPosition="above"
@@ -75,5 +103,6 @@
       </div>
       </mat-card-actions>
     </mat-card>
+    </ng-template >
   </div>
 </mat-card-content>

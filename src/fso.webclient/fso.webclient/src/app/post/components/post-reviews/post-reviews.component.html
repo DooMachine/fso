@@ -39,7 +39,7 @@
           <span class="feasion-dark-theme" matTooltip="Like" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
             <button
             (click)="review.likeStatus == 0 ? onunlikeReview.emit(review.id) : onlikeReview.emit(review.id)"
-            color="{{review.likeStatus == 0 ? 'warn' : 'primary'}}"  mat-icon-button>
+            color="{{review.likeStatus == 0 ? 'primary' : 'accent'}}"  mat-icon-button>
                 <mat-icon aria-label="Like">thumb_up</mat-icon>
             </button>
             <span class="secondary-text">{{review.likeCount}}</span>
@@ -47,7 +47,7 @@
           <span class="feasion-dark-theme" matTooltip="Dislike" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
             <button
             (click)="review.likeStatus == 1 ? onundislikeReview.emit(review.id) : ondislikeReview.emit(review.id)"
-              color="{{review.likeStatus == 1 ? 'warn' : 'primary'}}" mat-icon-button>
+              color="{{review.likeStatus == 1 ? 'primary' : 'accent'}}" mat-icon-button>
                 <mat-icon aria-label="Dislike">thumb_down</mat-icon>
             </button>
             <span class="secondary-text">{{review.dislikeCount}}</span>
@@ -59,7 +59,7 @@
               
               <button 
               (click)="review.showComments==true ? hideComments.emit(review.id) : showComments.emit(review.id)"
-              color="primary" mat-icon-button>
+              color="accent" mat-icon-button>
                   <mat-icon aria-label="Comments">comment</mat-icon>
               </button>
               <span class="secondary-text">{{review.commentCount}}</span>           
@@ -69,7 +69,7 @@
         </div>
         <div class="feasion-dark-theme">
             <button
-              color="primary"  [matMenuTriggerFor]="reportMenu"
+              color="accent"  [matMenuTriggerFor]="reportMenu"
               matTooltip="Report this review" 
               matTooltipShowDelay ="300" matTooltipHideDelay="200"
               matTooltipPosition="above"
@@ -102,6 +102,8 @@
         (onunlikeComment)="onunlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
         (ondislikeComment)="ondislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
         (onundislikeComment)="onundislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+        (deleteComment)="deleteComment.emit($event)"
+        [authUserId]="authUserId"
         [reviewId]="review.id"
         [comments] ="comments">  
           <app-post-review-addcomment #commentForm *ngIf="review.showCommentForm"

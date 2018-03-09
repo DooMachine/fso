@@ -11,7 +11,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $feasion-app-primary: mat-palette($mat-red,800, 400, 700);
-$feasion-app-accent:  mat-palette($mat-grey,A400, A100, A700);
+$feasion-app-accent:  mat-palette($mat-grey,500, 300, 800);
 $feasion-app-warn:  mat-palette($mat-purple,800, 400, 700);
 // Create the theme object (a Sass map containing all of the palettes).
 $feasion-app-theme: mat-light-theme($feasion-app-primary, $feasion-app-accent);

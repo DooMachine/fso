@@ -2,6 +2,7 @@
 using fso.Api.Models.GetParameters;
 using fso.Api.Models.RequestModels;
 using fso.DataExtensions.DataServices;
+using fso.DataExtensions.Models;
 using fso.DataExtensions.Models.Comment;
 using fso.EventCore.CommentActions;
 using Microsoft.AspNetCore.Authorization;
@@ -238,6 +239,48 @@ namespace fso.Api.Controllers
             }
             return Ok(ret);
         }
-        
+        [Authorize(Policy = "fso.AngularUser")]
+        [HttpPost("[action]")]
+        public IActionResult DeleteComment([FromBody]CommentIdModel model)
+        {
+            BaseReturnModel ret;
+            if (model == null)
+            {
+                return BadRequest();
+            }
+            Claim idClaim = User.FindFirst("sub");
+
+            if (idClaim == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                ret = _commentActionService.RemoveComment(model.CommentId,idClaim.Value);                
+            }
+            return Ok(ret);
+        }
+
+        [Authorize(Policy = "fso.AngularUser")]
+        [HttpPost("[action]")]
+        public IActionResult SaveEditingComment([FromBody]CommentEditModel model)
+        {
+            CommentEditReturnModel ret;
+            if (model == null)
+            {
+                return BadRequest();
+            }
+            Claim idClaim = User.FindFirst("sub");
+
+            if (idClaim == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                ret = _commentActionService.EditComment(model.CommentId,model.Content,idClaim.Value);                
+            }
+            return Ok(ret);
+        }
     }
 }

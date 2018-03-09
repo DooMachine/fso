@@ -59,18 +59,16 @@
               matTooltip="Add new post"
               matTooltipShowDelay="310"
               routerLinkActive #rla51="routerLinkActive"
-              [ngClass]="{'feasion-dark-theme': !rla51.isActive}"
               [routerLink]="['newpost']" *ngIf="(loggedIn$ | async)">
-            <mat-icon  color="primary">add_a_photo</mat-icon>
+            <mat-icon  color="{{rla51.isActive?'primary': 'accent'}}">add_a_photo</mat-icon>
             </a>
 
             <app-nav-notification ></app-nav-notification>  
             <button
             *ngIf="(loggedIn$ | async)"
-              matTooltip="{{loggedUserName$ | async}}"              
-              [ngClass]="{'feasion-dark-theme': !rla55.isActive}"
-              mat-icon-button [matMenuTriggerFor]="acc_menu"
-              
+              matTooltip="{{loggedUserName$ | async}}"   
+              color="{{rla55.isActive ? 'primary': 'accent'}}" 
+              mat-icon-button [matMenuTriggerFor]="acc_menu"              
               >
               <img class="img-circle acc_img" [default] [src]="profileImage$|async" />
             </button>
@@ -125,21 +123,21 @@
             [routerLink]="[ '/']"    
             [routerLinkActiveOptions]="{ exact: true }"        
             routerLinkActive #rla="routerLinkActive">
-            <mat-icon color="{{ rla.isActive ? 'accent': 'primary'}}">home</mat-icon>
+            <mat-icon color="{{ rla.isActive ? 'primary': 'accent'}}">home</mat-icon>
           </a>
         </mat-toolbar-row>
         <mat-toolbar-row>
             <a         
             routerLinkActive #rla2="routerLinkActive"
             [routerLink]="[ '/newpost']">
-            <mat-icon color="{{ rla2.isActive ? 'accent': 'primary'}}">add_a_photo</mat-icon>
+            <mat-icon color="{{ rla2.isActive ? 'primary': 'accent'}}">add_a_photo</mat-icon>
           </a>
         </mat-toolbar-row>
         <mat-toolbar-row>
             <a         
             routerLinkActive #rla3="routerLinkActive"
             [routerLink]="[ '/search']">
-            <mat-icon color="{{ rla3.isActive ? 'accent': 'primary'}}">search</mat-icon>
+            <mat-icon color="{{ rla3.isActive ? 'primary': 'accent'}}">search</mat-icon>
           </a>          
         </mat-toolbar-row>        
         <mat-toolbar-row 
@@ -149,7 +147,7 @@
             routerLinkActive #rla4="routerLinkActive"
             [routerLink]="[ '/notifications']">
             <mat-icon     
-            color="{{ rla4.isActive ? 'accent': 'primary'}}">notifications_active</mat-icon>
+            color="{{ rla4.isActive ? 'primary': 'accent'}}">notifications_active</mat-icon>
           </a>
         </mat-toolbar-row>
         <mat-toolbar-row *ngIf="loggedIn$ | async">
@@ -158,7 +156,7 @@
             routerLinkActive #rla4="routerLinkActive"
             [routerLink]="[ '',  (loggedUserName$ | async) ]">
             <mat-icon     
-            color="{{ rla4.isActive ? 'accent': 'primary'}}">account_circle</mat-icon>
+            color="{{ rla4.isActive ? 'primary': 'accent'}}">account_circle</mat-icon>
           </a>
         </mat-toolbar-row>
         <mat-toolbar-row *ngIf="!(loggedIn$ | async)">
@@ -167,7 +165,7 @@
             routerLinkActive #rla4="routerLinkActive"
             [routerLink]="[ '/login' ]">
             <mat-icon 
-            color="{{ rla4.isActive ? 'accent': 'primary'}}">person_add</mat-icon>
+            color="{{ rla4.isActive ? 'primary': 'accent'}}">person_add</mat-icon>
           </a>
         </mat-toolbar-row>
     </app-bottom-navbar>

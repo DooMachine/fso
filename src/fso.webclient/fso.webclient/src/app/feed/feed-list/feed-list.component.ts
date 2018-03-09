@@ -11,46 +11,51 @@ import { ReviewComment } from '../../post/models/reviewComment';
     <div *ngFor="let activity of activities;last as isLast">
       
       <app-activity-review-post 
-      (onlikePost)="onlikePost.emit({id: $event, activityId:activity.id})"
-      (onlikeReview)="onlikeReview.emit({id: $event, activityId:activity.id})"
-      (ondislikeReview)="ondislikeReview.emit({id: $event, activityId:activity.id})"
-      (onunlikePost)="onunlikePost.emit({id: $event, activityId:activity.id})"
-      (onunlikeReview)="onunlikeReview.emit({id: $event, activityId:activity.id})"
-      (onundislikeReview)="onundislikeReview.emit({id: $event, activityId:activity.id})"
+        (onlikePost)="onlikePost.emit({id: $event, activityId:activity.id})"
+        (onlikeReview)="onlikeReview.emit({id: $event, activityId:activity.id})"
+        (ondislikeReview)="ondislikeReview.emit({id: $event, activityId:activity.id})"
+        (onunlikePost)="onunlikePost.emit({id: $event, activityId:activity.id})"
+        (onunlikeReview)="onunlikeReview.emit({id: $event, activityId:activity.id})"
+        (onundislikeReview)="onundislikeReview.emit({id: $event, activityId:activity.id})"
+        (deleteComment)="deleteComment.emit($event)" 
+        (editComment)="editComment.emit($event)"
+        (submitEdit)="submitEdit.emit($event)"
+        (onlikeComment)="onlikeComment.emit($event)"
+        (onunlikeComment) = "onunlikeComment.emit($event)"
+        (ondislikeComment)="ondislikeComment.emit($event)"
+        (onundislikeComment)="onundislikeComment.emit($event)"
+        (onOpenCommentsSection)="openCommentsSection.emit($event)"
+        (closeCommentEditForm)="closeCommentEditForm.emit($event)"
 
-      (onlikeComment)="onlikeComment.emit($event)"
-      (onunlikeComment) = "onunlikeComment.emit($event)"
-      (ondislikeComment)="ondislikeComment.emit($event)"
-      (onundislikeComment)="onundislikeComment.emit($event)"
-      (onOpenCommentsSection)="openCommentsSection.emit($event)"
-
-      (showCommentForm)="showCommentForm.emit($event)"
-      (closeCommentForm)="hideCommentForm.emit($event)"
-      (submitCommentForm)="submitCommentForm.emit($event)"
-      *ngIf="activity.feedType === 1"
-      [authUserProfileImage]="authUserProfileImage"
-      [authUserId]="authUserId"
-      [comments]="comments"
-      [openedCommentReviewIds]="openedCommentReviewIds"
-      [loadedCommentReviewIds]="loadedCommentReviewIds"
-      [openedCommentFormReviewIds]="openedCommentFormReviewIds"
-      [activity]="activity"></app-activity-review-post>
+        (showCommentForm)="showCommentForm.emit($event)"
+        (closeCommentForm)="hideCommentForm.emit($event)"
+        (submitCommentForm)="submitCommentForm.emit($event)"
+        *ngIf="activity.feedType === 1"
+        [authUserProfileImage]="authUserProfileImage"
+        [authUserId]="authUserId"
+        [comments]="comments"
+        [openedCommentReviewIds]="openedCommentReviewIds"
+        [loadedCommentReviewIds]="loadedCommentReviewIds"
+        [openedCommentEditIds]="openedCommentEditIds"
+        [openedCommentFormReviewIds]="openedCommentFormReviewIds"
+        [activity]="activity"></app-activity-review-post>
 
       <app-activity-like-review 
-      (onlikePost)="onlikePost.emit({id: $event, activityId:activity.id})"
-      (onlikeReview)="onlikeReview.emit({id: $event, activityId:activity.id})"
-      (ondislikeReview)="ondislikeReview.emit({id: $event, activityId:activity.id})"
-      (onunlikePost)="onunlikePost.emit({id: $event, activityId:activity.id})"
-      (onunlikeReview)="onunlikeReview.emit({id: $event, activityId:activity.id})"
-      (onundislikeReview)="onundislikeReview.emit({id: $event, activityId:activity.id})"
+        (onlikePost)="onlikePost.emit({id: $event, activityId:activity.id})"
+        (onlikeReview)="onlikeReview.emit({id: $event, activityId:activity.id})"
+        (ondislikeReview)="ondislikeReview.emit({id: $event, activityId:activity.id})"
+        (onunlikePost)="onunlikePost.emit({id: $event, activityId:activity.id})"
+        (onunlikeReview)="onunlikeReview.emit({id: $event, activityId:activity.id})"
+        (onundislikeReview)="onundislikeReview.emit({id: $event, activityId:activity.id})"
 
-      (onlikeComment)="onlikeComment.emit($event)"
-      (onunlikeComment) = "onunlikeComment.emit($event)"
-      (ondislikeComment)="ondislikeComment.emit($event)"
-      (onundislikeComment)="onundislikeComment.emit($event)"
-      *ngIf="activity.feedType === 2"
-      [authUserId]="authUserId"
-      [activity]="activity"></app-activity-like-review>
+        (onlikeComment)="onlikeComment.emit($event)"
+        (deleteComment)="deleteComment.emit($event)" 
+        (onunlikeComment) = "onunlikeComment.emit($event)"
+        (ondislikeComment)="ondislikeComment.emit($event)"
+        (onundislikeComment)="onundislikeComment.emit($event)"
+        *ngIf="activity.feedType === 2"
+        [authUserId]="authUserId"
+        [activity]="activity"></app-activity-like-review>
 
       <app-activity-add-post 
       (onlikePost)="onlikePost.emit({id: $event, activityId:activity.id})"
@@ -74,6 +79,7 @@ export class FeedListComponent implements OnInit {
   @Input() openedCommentReviewIds:number[];
   @Input() loadedCommentReviewIds:number[];
   @Input() openedCommentFormReviewIds:number[];
+  @Input() openedCommentEditIds:number[];
 
   @Input() authUserId:string;
   @Input() authUserProfileImage:string;
@@ -90,6 +96,10 @@ export class FeedListComponent implements OnInit {
   @Output() onunlikeComment = new EventEmitter();
   @Output() ondislikeComment = new EventEmitter();
   @Output() onundislikeComment = new EventEmitter();
+  @Output() deleteComment = new EventEmitter();
+  @Output() editComment = new EventEmitter();
+  @Output() submitEdit = new EventEmitter();
+  @Output() closeCommentEditForm = new EventEmitter();
 
   @Output() openCommentsSection = new EventEmitter();
   @Output() closeCommentsSection = new EventEmitter();

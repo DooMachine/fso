@@ -1,4 +1,5 @@
-﻿using fso.DataExtensions.Models.Comment;
+﻿using fso.DataExtensions.Models;
+using fso.DataExtensions.Models.Comment;
 using System;
 
 namespace fso.DataExtensions.DataServices
@@ -10,6 +11,7 @@ namespace fso.DataExtensions.DataServices
         CommentLikeReturnModel UnLikeComment(string currUserId, int commentId);
         CommentLikeReturnModel DislikeComment(string currUserId, int commentId);
         CommentLikeReturnModel UnDislikeComment(string currUserId, int commentId);
-
+        BaseReturnModel RemoveComment(int commentId, string currUserId);
+        CommentEditReturnModel EditComment(int commentId,string content, string currUserId);
     }
 }

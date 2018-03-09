@@ -119,7 +119,18 @@ export const initialState: State = adapter.getInitialState({
                 changes: { likeStatus: action.payload.prevlikeStatus  }},
                 state);
             }
-       
+        case commentActions.PostIndexCommentsActionTypes.DELETE_COMMENT:{
+
+            return state
+            }
+        case commentActions.PostIndexCommentsActionTypes.DELETE_COMMENT_SUCCESS:{
+
+            return adapter.removeOne(action.payload.commentId,state);
+            }
+        case commentActions.PostIndexCommentsActionTypes.DELETE_COMMENT_FAIL:{
+
+            return state;
+            }
         default:
             return state;
     }

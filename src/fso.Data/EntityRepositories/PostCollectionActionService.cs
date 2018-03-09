@@ -11,6 +11,7 @@ using fso.Settings.Image;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace fso.Data.EntityRepositories
@@ -85,6 +86,11 @@ namespace fso.Data.EntityRepositories
             }
             pcol.IsSoftDeleted = true;
             ret.CollectionId = pcol.Id;
+            IQueryable<Post> colPosts = _entityContext.Set<Post>().Where(p=>p.CollectionId==id && p.IsPublished);
+            foreach(var post in colPosts){
+                post.Collection=null;                
+                _entityContext.GetDbEntityEntrySafely(post).State =EntityState.Modified;                
+            }
             _entityContext.GetDbEntityEntrySafely(pcol).State = EntityState.Modified;
             if (_entityContext.SaveChanges() !=0 )
             {

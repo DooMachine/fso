@@ -144,7 +144,7 @@ namespace fso.Data.EntityRepositories
             }
             if (model.SelectedCollectionId.HasValue)
             {
-                if (model.SelectedCollectionId > 1)
+                if (model.SelectedCollectionId > 0)
                 {
                     PostCollection pcol = _postCollectionDbSet.FirstOrDefault(p => p.Id == model.SelectedCollectionId&& p.UserInfoId==currUserId);
                     if (pcol != null)
@@ -156,6 +156,7 @@ namespace fso.Data.EntityRepositories
                         }
                     }
                     post.Collection = pcol;
+                    post.CollectionId = model.SelectedCollectionId;
                 }
             }
             if (model.SelectedInterestIds.Length < 1)

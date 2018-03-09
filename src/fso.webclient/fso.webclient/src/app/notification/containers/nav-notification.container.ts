@@ -16,17 +16,18 @@ import { State } from '../../reducers';
         `
         <div *ngIf="(isUserAuthenticated$ | async)" class="n-not-c">
             <div  *ngIf="(this.unseenCount$ | async) > 0"
-            class="unseenC warn-bg">{{ this.unseenCount$ | async}}</div>
-            <a routerLink="notifications"
+            class="unseenC primary-bg">{{ this.unseenCount$ | async}}</div>
+            <a [routerLink]="['notifications']"
             matTooltip="Notifications"
             matTooltipShowDelay="310"
             routerLinkActive #rla55="routerLinkActive"
-            [ngClass]="{'feasion-dark-theme': !rla55.isActive}"
             mat-icon-button
-            (onMenuOpen)="notificationMenuOpened()" (onMenuClose)="notificationMenuClosed()" #navMenuTrigger>
-                <mat-icon color="primary" *ngIf='!(unseenCount$ | async); else noUnseenNotification '>notifications_none</mat-icon>
+            (onMenuOpen)="notificationMenuOpened()" 
+            (onMenuClose)="notificationMenuClosed()"
+             #navMenuTrigger>
+                <mat-icon color="{{rla55.isActive ? 'primary': 'accent'}}"  *ngIf='!(unseenCount$ | async); else noUnseenNotification '>notifications_none</mat-icon>
                 <ng-template #noUnseenNotification>
-                    <mat-icon color="primary" >notifications_active</mat-icon>
+                    <mat-icon color="{{rla55.isActive ? 'primary': 'accent'}}">notifications_active</mat-icon>
                 </ng-template >
             </a>
         </div>

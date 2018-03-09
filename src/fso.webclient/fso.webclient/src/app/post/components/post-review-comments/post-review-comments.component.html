@@ -33,7 +33,7 @@
           <span class="feasion-dark-theme" matTooltip="Like" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
             <button
             (click)="comment.likeStatus == 0 ? onunlikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus}) : onlikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus})"
-            color="{{comment.likeStatus == 0 ? 'warn' : 'primary'}}"  mat-icon-button>
+            color="{{comment.likeStatus == 0 ? 'primary' : 'accent'}}"  mat-icon-button>
                 <mat-icon aria-label="Like">thumb_up</mat-icon>
             </button>
             <span class="secondary-text">{{comment.likeCount}}</span>
@@ -41,7 +41,7 @@
           <span class="feasion-dark-theme" matTooltip="Dislike" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
             <button
             (click)="comment.likeStatus == 1 ? onundislikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus}) : ondislikeComment.emit({commentId:comment.id,prevlikeStatus:comment.likeStatus})"
-              color="{{comment.likeStatus == 1 ? 'warn' : 'primary'}}" mat-icon-button>
+              color="{{comment.likeStatus == 1 ? 'primary' : 'accent'}}" mat-icon-button>
                 <mat-icon aria-label="Dislike">thumb_down</mat-icon>
             </button>
             <span class="secondary-text">{{comment.dislikeCount}}</span>
@@ -49,7 +49,16 @@
         </div>
         <div class="feasion-dark-theme">
             <button
-              color="primary"  [matMenuTriggerFor]="reportMenu"
+              color="accent" *ngIf="comment.userInfo?.appUserId == authUserId"
+              (click)="deleteComment.emit(comment.id)" 
+              matTooltip="Delete comment"  
+              matTooltipShowDelay ="500" matTooltipHideDelay="200"
+              matTooltipPosition="above"
+              mat-icon-button>
+              <mat-icon aria-label="Rating">delete</mat-icon>
+          </button>
+            <button
+              color="accent"  [matMenuTriggerFor]="reportMenu"
               matTooltip="Report this comment" 
               matTooltipShowDelay ="300" matTooltipHideDelay="200"
               matTooltipPosition="above"
@@ -59,7 +68,8 @@
             <mat-menu #reportMenu="matMenu">
                               
                 <button
-                (click)="onReportComment.emit({commentId: comment.id, reportType: 3})"  
+                (click)="onReportComment.emit({commentId: comment.id, reportType: 3})" 
+                c 
                  mat-menu-item>
                     <mat-icon> report_problem</mat-icon>
                     <span>Violating Rules </span>

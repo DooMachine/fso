@@ -1,24 +1,25 @@
 <mat-card-actions>
     <div fxLayout="row" fxLayoutAlign="space-between start">
       <div  fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="8px">
-        <span *ngIf="!post.isCurrentUserLiked" class="feasion-dark-theme" matTooltip="Add to favourites" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
+        <span *ngIf="!post.isCurrentUserLiked"  matTooltip="Add to favourites" matTooltipShowDelay ="400" matTooltipHideDelay="200" matTooltipPosition="above">
           <button
           (click)="onlikePost.emit(post.id)"
-          color="primary"  mat-icon-button>
+          color="accent"  mat-icon-button>
               <mat-icon aria-label="Favourite Post">favorite_border</mat-icon>
           </button>
           <span class="secondary-text">{{post.favouriteCount}}</span>
         </span>
-        <span *ngIf="post.isCurrentUserLiked" matTooltip="Remove from favourites" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
+        <span *ngIf="post.isCurrentUserLiked"
+         matTooltip="Remove from favourites" matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
           <button
           (click)="onunlikePost.emit(post.id)"
-            color="warn"  mat-icon-button>
+            color="primary"  mat-icon-button>
               <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
           </button>
           <span class="secondary-text">{{post.favouriteCount}}</span>
         </span>
         <span 
-            matTooltip="Reviews rated {{post.rating | number : '1.1-1'}}" 
+            matTooltip="Reviews rated {{post.rating | number : '1.1-1'}} this post" 
             matTooltipShowDelay="400" matTooltipHideDelay="200"
             matTooltipPosition="above">
               <button
@@ -28,9 +29,9 @@
               <span class="secondary-text">{{post.rating | number : '1.1-1'}}</span>
         </span>
         <span
-          matTooltip="Add a review" class="feasion-dark-theme"
+          matTooltip="Add a review" 
           matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
-            <a color="primary"
+            <a color="accent"
             [routerLink]="['/post',post.id,'addreview']"
             mat-icon-button>
                 <mat-icon aria-label="Add a review">rate_review</mat-icon>
@@ -39,20 +40,20 @@
        
       </div>
     <div>
-      <div class="feasion-dark-theme">
+      <div >
           <span 
-            class="feasion-dark-theme"
+            
             matTooltip="Share" 
             matTooltipShowDelay ="400" matTooltipHideDelay="200"
             matTooltipPosition="above">
                 <button
                 (click)="toggleShare()"
-                color="primary"  mat-icon-button>
+                color="accent"  mat-icon-button>
                   <mat-icon aria-label="Share">share</mat-icon>
               </button>
           </span>
         <button
-          color="primary"  [matMenuTriggerFor]="reportMenu"
+          color="accent"  [matMenuTriggerFor]="reportMenu"
             matTooltip="Report this post" 
             matTooltipShowDelay ="300" matTooltipHideDelay="200"
             matTooltipPosition="above"
@@ -77,7 +78,7 @@
     </div>
     
   </div>
-  <div class="feasion-dark-theme" *ngIf="shareTabOpen">
+  <div *ngIf="shareTabOpen">
       <a 
       class="fb-share-button"
       mat-stroked-button

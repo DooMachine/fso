@@ -12,11 +12,13 @@ export class PostReviewsComponent implements OnInit {
   @Input() totalReviewCount:number;
   @Input() postId:number;
   @Input() authUserProfileImage:string;
+  @Input() authUserId:string;
   @Input() isLoading:boolean;
   @Input() showSeeAllReviewsOption: boolean;
   @Input() comments:ReviewComment[];
   @Input() hasNextPage:boolean;
-
+  
+  @Output() deleteComment = new EventEmitter();
   @Output() loadAllReviews = new EventEmitter();
   @Output() loadNextPage = new EventEmitter();
   @Output() hideComments = new EventEmitter();

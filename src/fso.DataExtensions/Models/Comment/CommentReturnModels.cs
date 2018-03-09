@@ -48,6 +48,12 @@ namespace fso.DataExtensions.Models.Comment
         public ReviewCommentDTO Comment { get; set; }
         public string ReviewAuthorId { get; set; }
     }
+    public class CommentEditReturnModel : BaseFormReturnModel{
+        public CommentEditReturnModel() : base()
+        {
+        }
+        public ReviewCommentDTO Comment { get; set; }
+    }
     public class CommentVMReturn
     {
         public int Id { get; set; }

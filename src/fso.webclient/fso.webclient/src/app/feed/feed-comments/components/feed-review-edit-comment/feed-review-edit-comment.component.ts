@@ -2,22 +2,28 @@
 
 import { Component, OnInit,Output,EventEmitter,Input } from '@angular/core';
 import { FormGroup, FormBuilder , FormControl,Validators} from '@angular/forms';
+import { ReviewComment } from '../../../../post/models/reviewComment';
 
 @Component({
-  selector: 'app-feed-review-addcomment',
-  templateUrl: './feed-review-add-comment.component.html',
-  styleUrls: ['./feed-review-add-comment.component.scss']
+  selector: 'app-feed-review-edit-comment',
+  templateUrl: './feed-review-edit-comment.component.html',
+  styleUrls: ['./feed-review-edit-comment.component.scss']
 })
-export class FeedReviewAddCommentComponent implements OnInit {
+export class FeedReviewEditCommentComponent implements OnInit {
   form: FormGroup; 
+  @Input() 
+  set comment(com:ReviewComment){
+    this.form.patchValue({'content': com.content });
+  }
   contentCtrl:FormControl;
-  @Output() submitComment = new EventEmitter();
-  @Output() closeCommentForm = new EventEmitter();
-  @Input() commentFormError :string|null;
+  @Output() submitEdit = new EventEmitter();
+  @Output() closeCommentEditForm = new EventEmitter();
+  
+  @Input() commentEditFormError :string|null;
   @Input() authUsername:string;
   @Input() authUserProfileImage: string;
   @Input()
-  set commentFormPending(value:boolean){
+  set commentEditFormPending(value:boolean){
     if(value){
       this.form.disable();
     }else{
@@ -33,7 +39,6 @@ export class FeedReviewAddCommentComponent implements OnInit {
     this.form = this.formBuilder.group({
       content: this.contentCtrl,
     });
-    this.form.setValue({'content':''});
   }
 
 
@@ -41,7 +46,7 @@ export class FeedReviewAddCommentComponent implements OnInit {
   }
   submit($event){
     if(this.form.valid){
-      this.submitComment.emit(this.form.value);
+      this.submitEdit.emit(this.form.value);
     }
   }
 

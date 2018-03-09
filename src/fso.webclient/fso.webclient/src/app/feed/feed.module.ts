@@ -20,6 +20,7 @@ import { FeedCommentEffects } from './feed-comments/effects';
 import { FeedReviewCommentsComponent } from './feed-comments/components/feed-review-comments/feed-review-comments.component';
 import { FeedReviewAddCommentComponent } from './feed-comments/components/feed-review-add-comment/feed-review-add-comment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FeedReviewEditCommentComponent } from './feed-comments/components/feed-review-edit-comment/feed-review-edit-comment.component';
 
 const COMPONENTS = [
   FeedListComponent,
@@ -31,6 +32,7 @@ const COMPONENTS = [
   AddPostActivityComponent,
   AddPostCollectionComponent,
   FeedReviewCommentsComponent,
+  FeedReviewEditCommentComponent,
   FeedReviewAddCommentComponent,
   FollowGroupComponent]
 
@@ -43,10 +45,10 @@ const COMPONENTS = [
     SharedModule,
     StoreModule.forFeature('feed-comments', reducers, {metaReducers: metaReducer}),
     EffectsModule.forFeature([FeedCommentEffects]),
-    RouterModule
+    RouterModule 
   ],
   exports: [COMPONENTS],
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS], 
   providers:[FeedCommentsService]
 })
 export class FeedModule { }

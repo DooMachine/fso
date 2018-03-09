@@ -26,6 +26,38 @@ export class FeedCommentEffects {
             );
           });
     });
+
+    @Effect() onDeleteComment$: Observable<Action> =
+    this.actions$.ofType<feedCommentActions.DeleteComment>(feedCommentActions.FeedCommentsActionTypes.DELETE_COMMENT)    
+    
+    .switchMap((action) => {
+        return this.commentService
+        .DeleteComment(action.payload)
+        .map(data => {             
+               return new feedCommentActions.DeleteCommentSuccess({commentId:action.payload});
+          })
+          .catch((error) => {
+            return Observable.of(
+              new feedCommentActions.DeleteCommentFail({commentId: action.payload.comentId})
+            );
+          });
+    });
+
+    @Effect() onEditComment$: Observable<Action> =
+    this.actions$.ofType<feedCommentActions.SaveEditComment>(feedCommentActions.FeedCommentsActionTypes.SAVE_EDIT_COMMENT)    
+    
+    .switchMap((action) => {
+        return this.commentService
+        .SaveEditingComment(action.payload)
+        .map(data => {
+               return new feedCommentActions.SaveEditCommentSuccess(data);
+          })
+          .catch((error) => {
+            return Observable.of(
+              new feedCommentActions.SaveEditCommentFail({error:error})
+            );
+          });
+    });
     @Effect() onUserLikeComment$: Observable<Action> =
     this.actions$.ofType<feedCommentActions.LikeCommentAction>(feedCommentActions.FeedCommentsActionTypes.LIKE_COMMENT)    
     .switchMap((action) => {

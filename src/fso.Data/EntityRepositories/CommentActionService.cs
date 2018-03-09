@@ -42,6 +42,12 @@ namespace fso.Data.EntityRepositories
                 ret.IsActionSucceed = false;
                 return ret;
             }
+            Review review = _context.Set<Review>().FirstOrDefault(f=>f.Id==reviewId);
+            if(review == null){
+                ret.IsActionSucceed = false;
+                return ret;
+            }
+            ret.ReviewAuthorId = review.UserId;
             Comment comment = new Comment()
             {
                 DateUtcAdd = DateTime.UtcNow,
@@ -334,9 +340,10 @@ namespace fso.Data.EntityRepositories
         public BaseReturnModel RemoveComment(int commentId, string currUserId)
         {
             BaseReturnModel ret = new BaseReturnModel();
-            Comment cmd = _dbSet.FirstOrDefault(p=>p.Id==commentId);
-            if (cmd.AuthorId != currUserId)
+            Comment cmd = _dbSet.FirstOrDefault(p=>p.Id==commentId && p.AuthorId==currUserId);
+            if (cmd == null)
             {
+                ret.IsActionSucceed =false;
                 return ret;
             }
             else
@@ -345,6 +352,31 @@ namespace fso.Data.EntityRepositories
                 _dbSet.Update(cmd);
                 if (_context.SaveChanges() != 0)
                 {
+                    ret.IsActionSucceed = true;
+                }
+                return ret;
+            }
+        }
+        public CommentEditReturnModel EditComment(int commentId,string content, string currUserId)
+        {
+            CommentEditReturnModel ret = new CommentEditReturnModel();
+            Comment cmd = _dbSet.FirstOrDefault(p=>p.Id==commentId && p.AuthorId==currUserId);
+            if (cmd == null)
+            {
+                ret.IsActionSucceed =false;
+                return ret;
+            }
+            else
+            {
+                cmd.Content = content;
+                _dbSet.Update(cmd);
+                if (_context.SaveChanges() != 0)
+                {
+                    // return necessary information
+                    ret.Comment = new ReviewCommentDTO(){
+                        Id=cmd.Id,
+                        Content=TagHelpers.RemoveUnwantedTags(cmd.Content)
+                    };
                     ret.IsActionSucceed = true;
                 }
                 return ret;

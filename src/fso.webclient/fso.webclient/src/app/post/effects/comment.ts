@@ -35,6 +35,21 @@ export class PostCommentEffects {
                 );
             });
         });
+    @Effect() onDeleteComment$: Observable<Action> =
+    this.actions$.ofType<postCommentActions.DeleteComment>(postCommentActions.PostIndexCommentsActionTypes.DELETE_COMMENT)    
+    
+    .switchMap((action) => {
+        return this.commentService
+        .DeleteComment(action.payload)
+        .map(data => {             
+            return new postCommentActions.DeleteCommentSuccess({commentId:action.payload});
+        })
+        .catch((error) => {
+            return Observable.of(
+            new postCommentActions.DeleteCommentFail({commentId: action.payload.comentId})
+            );
+        });
+    });
         @Effect() onUserUnlikeComment$: Observable<Action> =
         this.actions$.ofType<postCommentActions.UnLikeCommentAction>(postCommentActions.PostIndexCommentsActionTypes.UNLIKE_COMMENT)    
         .switchMap((action) => {

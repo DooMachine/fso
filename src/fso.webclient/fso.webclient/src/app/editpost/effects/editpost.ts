@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Action, Store} from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
+import 'rxjs/add/operator/concatMap'
 import * as editpostActions from '../actions/editpost';
 import { State } from '../reducers/editpost';
 import { EditPostService } from '../services/editpost.service';
@@ -19,7 +20,7 @@ export class EditPostEffects {
         return this.editPostService
         .GetEditingPost(action.payload.postId)
         .map(data => {
-            return new editpostActions.GetEditingPostSuccess(data);
+            return new editpostActions.GetEditingPostSuccess(data)                  
           })
           .catch((error) => {
             return Observable.of(
@@ -49,12 +50,17 @@ export class EditPostEffects {
         // action.payload.selectedInterestIds = store.editPostState.post.selectedInterestIds;
         return this.editPostService
         .SaveEditingPost(action.payload)
-        .map(data => {
+        .concatMap(data => {
             if(!data.isActionSucceed){
-              return new editpostActions.SubmitFormFail({error:data.errors.custom});
+              return Observable.from([
+                new editpostActions.SubmitFormFail({error:data.errors.custom})
+              ]);
             }else{
               this.router.navigate(['/post',data.publishedPostId]);
-              return new editpostActions.SubmitFormSuccess(data);
+              return Observable.from([
+                {type:'CLEAR_POST_STATE'},
+                new editpostActions.SubmitFormSuccess(data)]
+              );
             }
           })
           .catch((error) => {

@@ -10,8 +10,8 @@ import { ReviewComment } from '../../../post/models/reviewComment';
     <app-postcard
      (onlikePost)="onlikePost.emit($event)"
      (onunlikePost)="onunlikePost.emit($event)"
-     [postCard]="activity.parentEntity"
-     
+     [postCard]="activity.parentEntity"     
+     [authUserId]="authUserId"
      >
      <div class="activity-desc" activityDescriptionTop>
      
@@ -36,7 +36,14 @@ import { ReviewComment } from '../../../post/models/reviewComment';
           (onunlikeComment)="onunlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:activity.primaryEntity.id})"
           (ondislikeComment)="ondislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:activity.primaryEntity.id})"
           (onundislikeComment)="onundislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:activity.primaryEntity.id})"
-          [reviewId]="activity.primaryEntity.id"
+          (deleteComment)="deleteComment.emit($event)"
+          [authUserId]="authUserId" 
+          [reviewId]="activity.primaryEntity.id"  
+          [openedCommentEditIds]="openedCommentEditIds"  
+          (editComment)="editComment.emit($event)"
+          (closeCommentEditForm)="closeCommentEditForm.emit($event)"
+          (submitEdit)="submitEdit.emit($event)"      
+          [authUserProfileImage]="authUserProfileImage"
           [comments] ="comments">  
             <app-feed-review-addcomment #commentForm
             *ngIf=" openedCommentFormReviewIds!=null ? openedCommentFormReviewIds.indexOf(activity.primaryEntity.id)>-1 : false"
@@ -56,6 +63,7 @@ export class ActivityReviewPostComponent implements OnInit {
   @Input() comments:ReviewComment[];
   @Input() openedCommentReviewIds:number[];
   @Input() loadedCommentReviewIds:number[];
+  @Input() openedCommentEditIds:number[];
   @Input() openedCommentFormReviewIds:number[];
   @Input() authUserId:string;
   @Input() authUserProfileImage:string;
@@ -71,7 +79,10 @@ export class ActivityReviewPostComponent implements OnInit {
   @Output() onunlikeComment = new EventEmitter();
   @Output() ondislikeComment = new EventEmitter();
   @Output() onundislikeComment = new EventEmitter();
-
+  @Output() deleteComment = new EventEmitter();
+  @Output() editComment = new EventEmitter();
+  @Output() submitEdit = new EventEmitter();
+  @Output() closeCommentEditForm = new EventEmitter();
   @Output() onOpenCommentsSection = new EventEmitter();
 
   @Output() showCommentForm = new EventEmitter();
