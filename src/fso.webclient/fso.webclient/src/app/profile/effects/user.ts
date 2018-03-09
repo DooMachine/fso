@@ -35,7 +35,6 @@ export class UserInfoEffects {
             this.seoService.updateUserPage(data.value);
             return Observable.from([
               {type:"CLEAR_PROFILE_STATE"},
-              new userActivityActions.GetUserActivitiesAction({userName: action.payload.userName }),
               new userInfoActions.GetUserSuccessAction(data.value),
               new interestActions.GetInterestAction({userName: action.payload.userName}),
               ]);

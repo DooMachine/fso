@@ -58,7 +58,7 @@
               matTooltipShowDelay="200" matTooltipHideDelay="200">
               
               <button 
-              (click)="review.showComments==true ? hideComments.emit(review.id) : showComments.emit(review.id)"
+              (click)="review.showComments==true ? closeCommentsSection.emit(review.id) : openCommentsSection.emit(review.id)"
               color="accent" mat-icon-button>
                   <mat-icon aria-label="Comments">comment</mat-icon>
               </button>
@@ -94,25 +94,30 @@
       </div>
       </mat-card-actions>
       
-      <app-post-review-comments
-        [hidden]="!review.showComments"
-        (showCommentForm)="showCommentForm.emit($event)"
-        (closeCommentForm)="closeCommentForm.emit($event)"
-        (onlikeComment)="onlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
-        (onunlikeComment)="onunlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
-        (ondislikeComment)="ondislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
-        (onundislikeComment)="onundislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
-        (deleteComment)="deleteComment.emit($event)"
-        [authUserId]="authUserId"
-        [reviewId]="review.id"
-        [comments] ="comments">  
-          <app-post-review-addcomment #commentForm *ngIf="review.showCommentForm"
-          [commentFormPending]="review.commentFormPending"
-          (closeCommentForm)="closeCommentForm.emit(review.id)"
-          (submitComment) ="submitCommentForm.emit({reviewId:review.id,commentForm:$event})"
-          [commentFormError]="review.commentFormError"
-          [authUserProfileImage]="authUserProfileImage" ></app-post-review-addcomment>     
-      </app-post-review-comments>
+      <app-feed-review-comments comments
+         *ngIf="openedCommentReviewIds!=null ? openedCommentReviewIds.indexOf(review.id)>-1 : false"
+          (showCommentForm)="showCommentForm.emit($event)"
+          (closeCommentForm)="closeCommentForm.emit($event)"
+          (onlikeComment)="onlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+          (onunlikeComment)="onunlikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+          (ondislikeComment)="ondislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+          (onundislikeComment)="onundislikeComment.emit({commentId:$event.commentId,prevlikeStatus:$event.prevlikeStatus,reviewId:review.id})"
+          (deleteComment)="deleteComment.emit($event)"
+          [authUserId]="authUserId" 
+          [reviewId]="review.id"  
+          [openedCommentEditIds]="openedCommentEditIds"  
+          (editComment)="editComment.emit($event)"
+          (closeCommentEditForm)="closeCommentEditForm.emit($event)"
+          (submitEdit)="submitEdit.emit($event)"      
+          [authUserProfileImage]="authUserProfileImage"
+          [comments] ="comments">  
+            <app-feed-review-addcomment #commentForm
+            *ngIf=" openedCommentFormReviewIds!=null ? openedCommentFormReviewIds.indexOf(review.id)>-1 : false"
+            (closeCommentForm)="closeCommentForm.emit(review.id)"
+            (submitComment) ="submitCommentForm.emit({reviewId:review.id,commentForm:$event})"
+            [authUserProfileImage]="authUserProfileImage"
+            ></app-feed-review-addcomment>     
+        </app-feed-review-comments>
       
     </mat-card>
     

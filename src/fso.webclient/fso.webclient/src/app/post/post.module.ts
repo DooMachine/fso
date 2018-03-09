@@ -22,11 +22,9 @@ import { AddReviewEffects } from './effects/addreview';
 import { AddReviewService } from './services/review.service';
 import { PostReviewLikeEffects } from './effects/review';
 import { AuthGuard } from '../auth/guards/auth.guard';
-import { PostReviewCommentsComponent } from './components/post-review-comments/post-review-comments.component';
-import { PostReviewAddcommentComponent } from './components/post-review-addcomment/post-review-addcomment.component';
-import { PostCommentEffects } from './effects/comment';
 import { PostActionsComponent } from './components/post-actions/post-actions.component';
 import { PostGroupsComponent } from './components/post-groups/post-groups.component';
+import { FeedModule } from '../feed/feed.module';
 
 const COMPONENTS = [
     PostComponent,
@@ -36,8 +34,6 @@ const COMPONENTS = [
     PostDetailsComponent,
     PostPostpartGridComponent,
     PostAddreviewComponent,
-    PostReviewCommentsComponent,
-    PostReviewAddcommentComponent,
     AskIfSureDialogComponent,
     PostActionsComponent,
     PostGroupsComponent
@@ -58,13 +54,16 @@ export class MyHammerConfig extends HammerGestureConfig  {
         CommonModule,
         MaterialModule,
         FormsModule,
+        FeedModule,
         ReactiveFormsModule,
         SharedModule,
         StoreModule.forFeature('post', reducers, {metaReducers: metaReducer}),
-        EffectsModule.forFeature([PostEffects,AddReviewEffects,PostReviewLikeEffects,PostCommentEffects]),
+        EffectsModule.forFeature([PostEffects,AddReviewEffects,PostReviewLikeEffects]),
         RouterModule.forChild([
             { path: '', component: PostComponent, pathMatch: 'full' },
             { path: ':postId/review/:reviewId', component: PostComponent },
+            { path: ':postId/review/:reviewId/c', component: PostComponent },
+            { path: ':postId/review/:reviewId/c/:commentId', component: PostComponent },
             { path: ':postId', component: PostComponent,
                 children:[{
                   path:'addreview', canActivate:[AuthGuard], component:PostAddreviewComponent

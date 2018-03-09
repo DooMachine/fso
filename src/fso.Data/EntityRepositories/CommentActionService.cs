@@ -47,6 +47,7 @@ namespace fso.Data.EntityRepositories
                 ret.IsActionSucceed = false;
                 return ret;
             }
+            ret.PostId = review.PostId.Value;
             ret.ReviewAuthorId = review.UserId;
             Comment comment = new Comment()
             {

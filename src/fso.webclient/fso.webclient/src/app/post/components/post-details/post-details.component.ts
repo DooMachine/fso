@@ -37,11 +37,10 @@ export class PostDetailsComponent implements OnInit {
 
 @Component({
   selector: 'AskIfSure',
-  template: `<h2 mat-dialog-title>Delete post</h2>
-  <mat-dialog-content>Are you sure?</mat-dialog-content>
+  template: `<h2 mat-dialog-title>Are you sure?</h2>
+  <mat-dialog-content>You will lose all reputation gained from this post.</mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>No</button>
-    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
     <button mat-button [mat-dialog-close]="true">Yes</button>
   </mat-dialog-actions>`,
 })

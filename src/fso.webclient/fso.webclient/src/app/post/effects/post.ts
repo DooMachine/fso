@@ -6,7 +6,6 @@ import { Actions, Effect } from '@ngrx/effects';
 import * as postActions from '../actions/post';
 import * as reviewActions from '../actions/reviews';
 import * as postPartActions from '../actions/postparts';
-import * as commentActions from '../actions/comments';
 import * as similiarPostActions from '../actions/similiarposts';
 import * as fromCore from '../../core/actions';
 import { State } from '../reducers';

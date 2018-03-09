@@ -3,9 +3,10 @@
       <a mat-tab-link
          *ngFor="let tabLink of tabLinks; let i = index"
          [routerLink]="tabLink.link"
+         [routerLinkActiveOptions]="{exact: true}"
          routerLinkActive #rla="routerLinkActive"
          [active]="rla.isActive ? true : false ">
-        <b>{{tabLink.label}}</b>
+        <b>{{tabLink.label}}</b> 
       </a>
     </nav>
 <router-outlet></router-outlet>

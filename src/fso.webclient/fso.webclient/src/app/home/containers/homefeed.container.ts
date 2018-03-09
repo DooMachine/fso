@@ -11,6 +11,7 @@ import { selectAll, isEmpty, getLoading, selectHasNextPage } from '../reducers/a
 import { ReviewComment } from '../../post/models/reviewComment';
 import * as fromFeedComments from '../../feed/feed-comments/reducers';
 import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
+import { PlatformService } from '../../shared/services/platform.service';
 
 @Component({
     changeDetection:ChangeDetectionStrategy.OnPush,
@@ -97,8 +98,10 @@ export class HomeFeedComponent implements OnInit {
     openedCommentFormReviewIds$:Observable<number[]>;
     openedCommentEditIds$:Observable<number[]>;
 
-    constructor(private store: Store<State>) {        
-        //this.store.dispatch( new fromActivityActions.GetFeedAction());
+    constructor(private store: Store<State>, private platformService:PlatformService) { 
+        if(this.platformService.isServer){
+            this.store.dispatch( new fromActivityActions.GetFeedAction());
+        }       
         this.feedActivities$ = this.store.select(selectAll);
         this.hasNextPage$ = this.store.select(selectHasNextPage);
         this.isEmpty$ = this.store.select(isEmpty);

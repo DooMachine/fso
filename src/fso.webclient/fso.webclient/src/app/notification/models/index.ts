@@ -1,7 +1,7 @@
 
 export enum NotificationType {
     Followed = 'person_add',
-    Post_Reviewed = 'rate_review',
+    Post_Reviewed = 'stars',
     Post_Commended= 'comment',
     Post_Favourited = 'favorite',
     Review_Commended = 'comment',

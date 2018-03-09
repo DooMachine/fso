@@ -8,6 +8,8 @@ import { ReviewComment } from '../../models/reviewComment';
   styleUrls: ['./post-reviews.component.scss']
 })
 export class PostReviewsComponent implements OnInit {
+
+  
   @Input() reviews: Review[];
   @Input() totalReviewCount:number;
   @Input() postId:number;
@@ -18,7 +20,6 @@ export class PostReviewsComponent implements OnInit {
   @Input() comments:ReviewComment[];
   @Input() hasNextPage:boolean;
   
-  @Output() deleteComment = new EventEmitter();
   @Output() loadAllReviews = new EventEmitter();
   @Output() loadNextPage = new EventEmitter();
   @Output() hideComments = new EventEmitter();
@@ -29,15 +30,33 @@ export class PostReviewsComponent implements OnInit {
   @Output() onundislikeReview: EventEmitter<any> = new EventEmitter();
   @Output() addReviewClicked: EventEmitter<any> = new EventEmitter();
   @Output() seeReviewsClicked: EventEmitter<any> = new EventEmitter();
+
   @Output() onloadReviewComments = new EventEmitter();
   @Output() onReportReview = new EventEmitter();
+
+  @Output() onlikeComment = new EventEmitter();
+  @Output() onunlikeComment = new EventEmitter();
+  @Output() ondislikeComment = new EventEmitter();
+  @Output() onundislikeComment = new EventEmitter();
+  @Output() deleteComment = new EventEmitter();
+  @Output() editComment = new EventEmitter();
+  @Output() submitEdit = new EventEmitter();
+  @Output() closeCommentEditForm = new EventEmitter();
+
+  @Output() openCommentsSection = new EventEmitter();
+  @Output() closeCommentsSection = new EventEmitter();
+
   @Output() showCommentForm = new EventEmitter();
+  @Output() hideCommentForm = new EventEmitter();
+  @Output() submitCommentForm = new EventEmitter();
+
+  @Input() openedCommentReviewIds:number[];
+  @Input() loadedCommentReviewIds:number[];
+  @Input() openedCommentFormReviewIds:number[];
+  @Input() openedCommentEditIds:number[];
+
   @Output() closeCommentForm = new EventEmitter();
-  @Output() submitCommentForm =new EventEmitter();
-  @Output() onlikeComment: EventEmitter<any> = new EventEmitter();
-  @Output() onunlikeComment: EventEmitter<any> = new EventEmitter();
-  @Output() ondislikeComment: EventEmitter<any> = new EventEmitter();
-  @Output() onundislikeComment: EventEmitter<any> = new EventEmitter();
+
 
   constructor() { }
 

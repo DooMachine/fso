@@ -6,6 +6,7 @@
          *ngFor="let tabLink of tabLinks; let i = index"
          [routerLink]="tabLink.link"
          routerLinkActive #rla="routerLinkActive"
+         [routerLinkActiveOptions]="{exact: true}"
          [active]="rla.isActive ? true : false ">
          <mat-icon color="primary" class="tab-icon">{{tabLink.icon}}</mat-icon>
         <b>{{tabLink.label}}</b>

@@ -187,7 +187,7 @@ namespace fso.Api.Controllers
                 
                 return Ok(ret);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest();
             }

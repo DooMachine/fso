@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import { Action, Store} from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import * as postReviewActions from '../actions/reviews';
-import * as postCommentActions from '../actions/comments';
 import * as authActions from '../../auth/actions/auth.actions';
 import * as fromCore from '../../core/actions';
 import { State } from '../../reducers';
@@ -125,66 +124,9 @@ export class PostReviewLikeEffects {
             );
           });
     });
-    @Effect() onLoadComments$: Observable<Action> =
-     this.actions$.ofType<postReviewActions.LoadComments>(postReviewActions.PostIndexReviewsActionTypes.LOAD_COMMENTS)
-     .switchMap((action) => {
-         return this._postService
-         .GetReviewComments(action.payload.id,)
-         .map(data => {
-                 return new postCommentActions.LoadCommentsSuccess
-                 ({entities: data.entities, id: action.payload.id});
-           })
-           .catch((error) => {
-             return Observable.of(
-               new postReviewActions.LoadCommentsFail({id: action.payload.id})
-             );
-           });
-     });
-     @Effect() onPublishComment$: Observable<Action> =
-     this.actions$.ofType<postReviewActions.PublishComment>(postReviewActions.PostIndexReviewsActionTypes.PUBLISH_COMMENT)    
-     
-     .switchMap((action) => {
-         return this.commentService
-         .PublishComment(action.payload)
-         .map(data => {             
-                return new postCommentActions.PublishCommentSuccess(data);
-           })
-           .catch((error) => {
-             return Observable.of(
-               new postReviewActions.PublishCommentFail({id: action.payload.reviewId})
-             );
-           });
-     });
-    @Effect() onShowBarPublishComments$: Observable<Action> =
-    this.actions$.ofType<postReviewActions.PublishComment>(postReviewActions.PostIndexReviewsActionTypes.PUBLISH_COMMENT)
-    .switchMap((action) => {
-        return Observable.of(new fromCore.ShowProgressBar())
-    });
     
-    @Effect() onShowComments$: Observable<Action> =
-    this.actions$.ofType<postReviewActions.ShowComments>(postReviewActions.PostIndexReviewsActionTypes.SHOW_COMMENTS)
-    .switchMap((action) => {
-        return Observable.of(new postReviewActions.LoadComments({id:action.payload.reviewId}))
-    });
-
-    @Effect() onShowCommentsForm$: Observable<Action> =
-    this.actions$.ofType<postReviewActions.ShowCommentForm>(postReviewActions.PostIndexReviewsActionTypes.SHOW_COMMENT_FORM)
-    .switchMap((action) => {
-        return Observable.of(new postReviewActions.ShowComments({reviewId:action.payload}))
-    });
-
-    @Effect() onShowCommentForm$: Observable<Action> =
-    this.actions$.ofType<postReviewActions.ShowCommentForm>(postReviewActions.PostIndexReviewsActionTypes.SHOW_COMMENT_FORM)
-    .withLatestFrom(this.store.select(state=> state.auth.isAuthenticated))
-    .switchMap(([action,isAuthenticated]) => {
-        let obs;
-        if(!isAuthenticated){            
-           obs = Observable.of(new authActions.AttemptLogin());
-        }else{
-            obs = Observable.of({type:'NO_ACTION'});
-        }
-        return obs;
-    });
+    
+    
     
             constructor(
                 private actions$: Actions,

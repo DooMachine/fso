@@ -10,11 +10,11 @@
       "assets": [
         "assets",
         {
-  "glob": "silent-refresh.html",
-  "input": "",
-  "output": "./",
-  "allowOutsideOutDir": false
-},
+          "glob": "silent-refresh.html",
+          "input": "",
+          "output": "./",
+          "allowOutsideOutDir": false
+        },
         "favicon.ico"
       ],
       "index": "index.html",

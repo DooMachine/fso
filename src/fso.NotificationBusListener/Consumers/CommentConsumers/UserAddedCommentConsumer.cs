@@ -52,7 +52,7 @@ namespace fso.NotificationBusListener.Consumers.CommentConsumers
                             NotificationType = NotificationType.Review_Commended,
                             ActivityDescription = "LIKE_COMMENT",
                             ActivityUserJsonArray = JsonConvert.SerializeObject(nUserDataList) ,
-                            RedirectUrl = "post/" + message.PostId.ToString() + "/review/" + message.ReviewId.ToString() + "/c/" + message.CommentId.ToString(),
+                            RedirectUrl = "/post/" + message.PostId.ToString() + "/review/" + message.ReviewId.ToString() + "/c/" + message.CommentId.ToString(),
                             UserId = message.ReviewAuthorId,
                             EntityId = message.ReviewId
                         };

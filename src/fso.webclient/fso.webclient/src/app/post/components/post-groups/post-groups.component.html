@@ -1,14 +1,26 @@
 <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="6px" fxLayoutWrap>
-  <span  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="3px" *ngFor="let group of groups">
+  <mat-chip-list>
     <!--<a [style.borderColor]="group.alphaColor" [routerLink]="['/interest',group.urlKey]">
       <img class="img-circle"  [src]="group.profileImage" alt="{{group.name}}"/>
     </a> -->
-    <a  class="semi-bold no-anchor-text"
+    
+    <a *ngFor="let group of groups" class="semi-bold no-anchor-text"
       [style.color]="group.alphaColor"
        [routerLink]="['/explore',group.urlKey]">
-       #{{group.name}}
+      <mat-chip >  
+        <a class="semi-bold no-anchor-text"
+          
+          [routerLink]="['/explore',group.urlKey]">    
+          <img [style.borderColor]="group.alphaColor"
+           [default] class="img-circle" [src]="group.profileImage"> 
+        </a>
+        <a class="semi-bold a-grey no-anchor-text"
+          [routerLink]="['/explore',group.urlKey]">              
+          <span> {{group.name}} </span>
+        </a>
+      </mat-chip>
     </a>
-  </span> 
+</mat-chip-list> 
   
 </div>
 <span  *ngIf="collection.id!=0">

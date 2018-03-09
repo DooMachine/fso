@@ -19,7 +19,7 @@ import * as fromUserRecommendations from '../actions/userrecommendation';
     template:
         `
         <mat-card *ngIf="!(isEmpty$ | async)">
-        <h3>You may follow</h3>
+        <h3>Suggested follows</h3>
             <app-userrecommendation-list
                 [users]="users$ | async"
                 (followUser)="followUser($event)"

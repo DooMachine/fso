@@ -63,7 +63,7 @@ namespace fso.Api.Controllers
                         UserId = idClaim.Value,
                         ReviewAuthorId = ret.ReviewAuthorId,
                         Username = unameClaim.Value,
-                        
+                        PostId=ret.PostId
                     });
                 }
             }

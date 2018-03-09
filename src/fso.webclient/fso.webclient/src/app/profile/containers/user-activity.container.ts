@@ -10,6 +10,7 @@ import { selectUserId, selectUserProfileImage } from '../../auth/reducers/auth.r
 import { ReviewComment } from '../../post/models/reviewComment';
 import * as fromFeedComments from '../../feed/feed-comments/reducers';
 import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
+import { PlatformService } from '../../shared/services/platform.service';
 
 @Component({
     selector: 'app-user-activity',
@@ -87,7 +88,8 @@ export class UserActivityComponent implements OnInit {
     openedCommentEditIds$:Observable<number[]>;
     constructor(
         private store: Store<State>,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private platformService:PlatformService
 
     ) {
         this.route.parent.params.subscribe( (params) => {
@@ -108,8 +110,9 @@ export class UserActivityComponent implements OnInit {
      }
 
     ngOnInit() {
-        // If username did not changed dont fetch data => SEE EFFECTS..
-        //this.store.dispatch(new userActivityActions.GetUserActivitiesAction({userName: this.userName }));
+        if(this.platformService.isServer){
+            this.store.dispatch(new userActivityActions.GetUserActivitiesAction({userName: this.userName }));
+        }
      }
      onScroll(){
         this.store.dispatch(new userActivityActions.GetUserActivitiesAction({userName: this.userName }));

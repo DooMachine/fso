@@ -1,6 +1,5 @@
 
 
-import * as fromComments from './comment';
 import * as fromPost from './post';
 import * as fromReview from './reviews';
 import * as fromSimiliarPosts from './similiarposts';
@@ -17,7 +16,6 @@ export interface State {
     post: fromPost.State;
     postparts: fromPostParts.State;
     reviews: fromReview.State;
-    comments: fromComments.State;
     similiarPosts: fromSimiliarPosts.State;
     addReview:fromAddReview.State;
 }
@@ -26,7 +24,6 @@ export const reducers: ActionReducerMap<State> =
     post: fromPost.reducer,
     postparts:fromPostParts.reducer,
     reviews: fromReview.reducer,
-    comments: fromComments.reducer,
     similiarPosts:fromSimiliarPosts.reducer,
     addReview:fromAddReview.reducer
  };
