@@ -14,7 +14,7 @@ namespace fso.NotificationApi
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:6900", "http://192.168.1.67:6900")
+                .UseUrls("http://*:6900")
                 .Build();
     }
 }

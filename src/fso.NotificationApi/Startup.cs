@@ -71,7 +71,6 @@ namespace fso.NotificationApi
                });
             services.AddMvc(options =>
             {
-
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

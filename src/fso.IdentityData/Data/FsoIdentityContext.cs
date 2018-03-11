@@ -40,7 +40,7 @@ namespace fso.IdentityData.Data
 
             // define the database to use
             optionsBuilder
-                .UseMySql("Server=localhost;Database=f_i_acc_db;Uid=root;Pwd=seph1w12");
+                .UseMySql("Server=192.168.1.67;Database=f_i_acc_db;Uid=root;Pwd=seph1w12");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -17,6 +17,11 @@ using System.Security.Claims;
 using EasyNetQ;
 using IdentityServer4;
 using Microsoft.EntityFrameworkCore;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Framing.Impl;
+using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
 
 namespace fso.IdentityProvider
 {
@@ -24,8 +29,7 @@ namespace fso.IdentityProvider
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-            
+            Configuration = configuration;            
         }
 
         public IConfiguration Configuration { get; }
@@ -36,8 +40,7 @@ namespace fso.IdentityProvider
 
             services.AddOptions();
             // Add framework services.
-            services.AddDbContext<FsoIdentityContext>()
-            ;
+            services.AddDbContext<FsoIdentityContext>();
 
             services.AddIdentity<AppUser, IdentityRole>(x =>
             {
@@ -70,10 +73,19 @@ namespace fso.IdentityProvider
                 .AddProfileService<AuthProfileService>()
                 .AddResourceOwnerValidator<AuthResourceOwnerPasswordValidator>();
 
+            var connection = new ConnectionConfiguration();
             
+            connection.Port = 5672;
+            connection.UserName = "seph";
+            connection.Password = "seph1w12";
+           
+            connection.Hosts = new List<HostConfiguration> {
+                 new HostConfiguration(){Host="192.168.1.67",Port=5672}
+                };
+            var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
             // event bus
-            services.AddSingleton(p => RabbitHutch.CreateBus(
-                "username=guest;password=guest;host=localhost"));
+            Console.WriteLine("Bus connected {0}",_bus.IsConnected);
+            services.AddSingleton(_bus);
 
             services.AddTransient<IProfileService, AuthProfileService>();
             services.AddTransient<IResourceOwnerPasswordValidator, AuthResourceOwnerPasswordValidator>();
@@ -120,6 +132,28 @@ namespace fso.IdentityProvider
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+    public class DoNothingLogger : IEasyNetQLogger
+    {
+        public void DebugWrite(string format, params object[] args)
+        {
+           Console.Write(format,args);
+        }
+
+        public void ErrorWrite(string format, params object[] args)
+        {
+            Console.Write(format,args);
+        }
+
+        public void ErrorWrite(Exception exception)
+        {
+            Console.Write(exception.Message);
+        }
+
+        public void InfoWrite(string format, params object[] args)
+        {
+            Console.Write(format,args);
         }
     }
 }

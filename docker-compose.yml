@@ -1,0 +1,71 @@
+version: '3'
+services:
+  identityprovider:
+    image: identityprovider
+    container_name: fsoidentityprovider
+    build:
+      context: src/fso.IdentityProvider/
+      dockerfile: Dockerfile
+    expose:
+      - "5000"
+    ports:
+      - "5000:5000"    
+    links:
+      - mysqldb
+      - rabbitmq
+    depends_on:
+      - mysqldb
+      - rabbitmq
+
+  notificationapi:
+    image: notificationapi
+    container_name: fsonotificationapi
+    build:
+      context: src/fso.NotificationApi/
+      dockerfile: Dockerfile
+    expose:
+      - "6900"
+    ports:
+      - "6900:6900"    
+    links:
+      - mysqldb
+      - rabbitmq
+    depends_on:
+      - mysqldb
+      - rabbitmq
+      - identityprovider
+
+  mysqldb:
+    image: mysql/mysql-server:5.7
+    container_name: mysqlc
+    command: mysqld --user=root --verbose
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: "seph"
+      MYSQL_PASSWORD: "seph1w12"
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: "seph1w12"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    volumes:
+      - my-datavolume:/var/lib/mysql
+      
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmqc
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "5671:5671"
+    environment: 
+      RABBITMQ_DEFAULT_PASS: seph1w12
+      RABBITMQ_DEFAULT_USER: seph
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  
+
+volumes:
+  my-datavolume:

@@ -22,7 +22,6 @@ namespace fso.NotificationData.Data
         {
 
         }
-
         public NotificationContext(DbContextOptions options) : base(options)
         {
             if (!_databaseInitialized)
@@ -53,7 +52,7 @@ namespace fso.NotificationData.Data
 
             // define the database to use
             optionsBuilder
-                .UseMySql("Server=localhost;Database=f_n_db;Uid=root;Pwd=seph1w12");
+                .UseMySql("Server=192.168.1.67;Database=f_n_db;Uid=root;Pwd=seph1w12");
         }
         public DbSet<TEntity> SetChild<TEntity>() where TEntity : class
         {
