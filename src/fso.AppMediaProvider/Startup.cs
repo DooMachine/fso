@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace fso.AppMediaProvider
@@ -37,8 +38,19 @@ namespace fso.AppMediaProvider
             services.AddLogging();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            string rabbitConnString = Configuration.GetSection("CommonSettings")["RabbitMqConnectionString"];
-            services.AddSingleton(p => RabbitHutch.CreateBus(rabbitConnString));
+            var connection = new ConnectionConfiguration();
+            
+            connection.Port = 5672;
+            connection.UserName = "seph";
+            connection.Password = "seph1w12";
+           
+            connection.Hosts = new List<HostConfiguration> {
+                 new HostConfiguration(){Host="192.168.1.67", Port=5672}
+                };
+            var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
+            // event bus
+            Console.WriteLine("Bus connected {0}",_bus.IsConnected);
+            services.AddSingleton(_bus);
 
             var appSettings = Configuration.GetSection("PostPartImage");
             services.Configure<PostPartImageSettings>(appSettings);
@@ -130,6 +142,28 @@ namespace fso.AppMediaProvider
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+    public class DoNothingLogger : IEasyNetQLogger
+    {
+        public void DebugWrite(string format, params object[] args)
+        {
+           Console.Write(format,args);
+        }
+
+        public void ErrorWrite(string format, params object[] args)
+        {
+            Console.Write(format,args);
+        }
+
+        public void ErrorWrite(Exception exception)
+        {
+            Console.Write(exception.Message);
+        }
+
+        public void InfoWrite(string format, params object[] args)
+        {
+            Console.Write(format,args);
         }
     }
 }

@@ -17,6 +17,60 @@ services:
       - mysqldb
       - rabbitmq
 
+  identitybuslistener:
+    image: identitybuslistener
+    container_name: fsoidentitybuslistener
+    build:
+      context: src/fso.IdentityBusListener/
+      dockerfile: Dockerfile 
+    links:
+      - mysqldb
+      - rabbitmq
+    depends_on:
+      - mysqldb
+      - rabbitmq
+  eventbuslistener:
+    image: eventbuslistener
+    container_name: fsoeventbuslistener
+    build:
+      context: src/fso.EventBusListener/
+      dockerfile: Dockerfile 
+    links:
+      - mysqldb
+      - rabbitmq
+    depends_on:
+      - mysqldb
+      - rabbitmq
+
+  identitybuslistener:
+    image: identitybuslistener
+    container_name: fsoidentitybuslistener
+    build:
+      context: src/fso.IdentityBusListener/
+      dockerfile: Dockerfile 
+    links:
+      - mysqldb
+      - rabbitmq
+    depends_on:
+      - mysqldb
+      - rabbitmq
+
+  appmediaprovider:
+    image: appmediaprovider
+    container_name: fsoappmediaprovider
+    build:
+      context: src/fso.AppMediaProvider/
+      dockerfile: Dockerfile
+    expose:
+      - "7100"
+    ports:
+      - "7100:7100"    
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
+      - identityprovider
+
   notificationapi:
     image: notificationapi
     container_name: fsonotificationapi
@@ -33,6 +87,40 @@ services:
     depends_on:
       - mysqldb
       - rabbitmq
+      - identityprovider
+    
+  mainapi:
+    image: mainapi
+    container_name: fsomainapi
+    build:
+      context: src/fso.Api/
+      dockerfile: Dockerfile
+    expose:
+      - "7000"
+    ports:
+      - "7000:7000"    
+    links:
+      - mysqldb
+      - rabbitmq
+    depends_on:
+      - mysqldb
+      - rabbitmq
+      - identityprovider
+
+ webclient:
+    image: webclient
+    container_name: fsowebclient
+    build:
+      context: src/fso.webclient/fso.webclient/
+      dockerfile: Dockerfile
+    expose:
+      - "10575"
+    ports:
+      - "10575:10575"
+    depends_on:
+      - mainapi
+      - notificationapi
+      - appmediaprovider
       - identityprovider
 
   mysqldb:
@@ -61,10 +149,10 @@ services:
       RABBITMQ_DEFAULT_PASS: seph1w12
       RABBITMQ_DEFAULT_USER: seph
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        test: ["CMD", "curl", "-f", "http://0.0.0.0:15672"]
         interval: 30s
         timeout: 10s
-        retries: 5
+        retries: 5  
   
 
 volumes:

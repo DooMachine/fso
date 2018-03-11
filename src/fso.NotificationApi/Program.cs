@@ -17,4 +17,5 @@ namespace fso.NotificationApi
                 .UseUrls("http://*:6900")
                 .Build();
     }
+    
 }
