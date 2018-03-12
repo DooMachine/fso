@@ -10,7 +10,8 @@ namespace fso.IdentityProvider.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+            return Redirect("account/login");
         }
 
         public IActionResult About()

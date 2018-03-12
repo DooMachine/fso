@@ -13,11 +13,9 @@ services:
     links:
       - mysqldb
       - rabbitmq
-      - nginx
     depends_on:
       - mysqldb
       - rabbitmq
-      - nginx
     networks:
       - localnet
 
@@ -30,11 +28,9 @@ services:
     links:
       - mysqldb
       - rabbitmq
-      - nginx
     depends_on:
       - mysqldb
       - rabbitmq
-      - nginx
     networks:
       - localnet
     stdin_open: true
@@ -48,11 +44,9 @@ services:
     links:
       - mysqldb
       - rabbitmq
-      - nginx
     depends_on:
       - mysqldb
       - rabbitmq
-      - nginx
     networks:
       - localnet
     stdin_open: true
@@ -87,11 +81,9 @@ services:
       - "7100:7100"    
     links:
       - rabbitmq
-      - nginx
     depends_on:
       - rabbitmq
       - identityprovider
-      - nginx
     networks:
       - localnet
 
@@ -107,13 +99,11 @@ services:
       - "6900:6900"    
     links:
       - mysqldb
-      - nginx
       - rabbitmq
     depends_on:
       - mysqldb
       - rabbitmq
       - identityprovider
-      - nginx
     networks:
       - localnet
 
@@ -129,13 +119,11 @@ services:
       - "7000:7000"    
     links:
       - mysqldb
-      - nginx
       - rabbitmq
     depends_on:
       - mysqldb
       - rabbitmq
       - identityprovider
-      - nginx
     networks:
       - localnet
 
@@ -149,14 +137,11 @@ services:
       - "10575"   
     ports:
       - "10575:10575"
-    links:
-      - nginx
     depends_on:
       - mainapi
       - notificationapi
       - appmediaprovider
       - identityprovider
-      - nginx
     networks:
       - localnet
 
@@ -206,6 +191,12 @@ services:
     build:
       context: nginx/
       dockerfile: Dockerfile
+    links:
+      - identityprovider
+      - webclient
+      - mainapi
+      - notificationapi
+      - appmediaprovider
     networks:
       - localnet
 

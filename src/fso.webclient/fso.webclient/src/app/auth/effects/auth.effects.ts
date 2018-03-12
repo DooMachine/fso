@@ -72,10 +72,11 @@ export class AuthEffects {
           .ofType(authActions.GET_USER_INFO)
           .switchMap((action) => {
             this.getAuthService();
-
-            return this.oauthService.loadUserProfile().then((userData) => {
-                return new authActions.GetUserInfoSuccess({ isUserDataLoaded: true, userData: userData });
-            });
+            let obs;
+            this.oauthService.loadUserProfile().then((userData) => {
+                obs = new authActions.GetUserInfoSuccess({ isUserDataLoaded: true, userData: userData });
+            }).catch((err)=>{ obs = Observable.of({type:"No_ACTION"}) })
+            return obs;
         });
     @Effect({dispatch: false})
         onAttemptLogin: Observable<Action> = this.actions
