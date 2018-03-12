@@ -7,7 +7,9 @@ services:
       context: src/fso.IdentityProvider/
       dockerfile: Dockerfile
     expose:
-      - "5000" 
+      - "5000"
+    ports:
+      - "5000:5000"    
     links:
       - mysqldb
       - rabbitmq
@@ -37,7 +39,6 @@ services:
       - localnet
     stdin_open: true
     tty: true
-
   eventbuslistener:
     image: eventbuslistener
     container_name: fsoeventbuslistener
@@ -82,6 +83,8 @@ services:
       dockerfile: Dockerfile
     expose:
       - "7100"
+    ports:
+      - "7100:7100"    
     links:
       - rabbitmq
       - nginx
@@ -100,6 +103,8 @@ services:
       dockerfile: Dockerfile
     expose:
       - "6900"
+    ports:
+      - "6900:6900"    
     links:
       - mysqldb
       - nginx
@@ -120,6 +125,8 @@ services:
       dockerfile: Dockerfile
     expose:
       - "7000"
+    ports:
+      - "7000:7000"    
     links:
       - mysqldb
       - nginx
@@ -139,7 +146,9 @@ services:
       context: src/fso.webclient/fso.webclient/
       dockerfile: Dockerfile
     expose:
-      - "10575"
+      - "10575"   
+    ports:
+      - "10575:10575"
     links:
       - nginx
     depends_on:
@@ -155,8 +164,8 @@ services:
     image: mysql/mysql-server:5.7
     container_name: mysqlc
     command: mysqld --user=root --verbose
-    expose:
-      - "3306"
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_USER: "seph"
       MYSQL_PASSWORD: "seph1w12"
@@ -173,11 +182,10 @@ services:
     container_name: rabbitmqc
     volumes:
         - rabbit-volume:/var/lib/rabbitmq
-    expose:
-      - "5672"
-      - "5671"
     ports:
       - "15672:15672"
+      - "5672:5672"
+      - "5671:5671"
     environment: 
       RABBITMQ_DEFAULT_PASS: seph1w12
       RABBITMQ_DEFAULT_USER: seph
