@@ -32,7 +32,7 @@ export const initialState: State = adapter.getInitialState({
     isLoading: false,
     error: 'An error occured...',
     showError: false,
-    hasNextPage: false,
+    hasNextPage: true,
     order: 'publishDate',
 });
 

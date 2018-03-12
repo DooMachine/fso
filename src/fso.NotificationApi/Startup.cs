@@ -12,6 +12,7 @@ using fso.Core.Data;
 using Microsoft.Extensions.Logging;
 using fso.NotificationData.Services;
 using fso.NotificationApi.Services;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace fso.NotificationApi
 {
@@ -41,12 +42,14 @@ namespace fso.NotificationApi
                 options.AddPolicy("CorsPolicy",
                     builder => builder
                     .WithOrigins(
-                    "http://192.168.1.67:10575",
-                    "https://192.168.1.67:10575",
-                    "http://192.168.1.67:7000",
-                    "https://192.168.1.67:7000",
-                    "http://192.168.1.67:5000",
-                    "https://192.168.1.67:5000"
+                        "http://192.168.1.67:10575",
+                        "https://192.168.1.67:10575",
+                        "http://localhost",
+                        "https://localhost",
+                        "http://192.168.1.67:7000",
+                        "https://192.168.1.67:7000",
+                        "http://192.168.1.67:5000",
+                        "https://192.168.1.67:5000"
                     )
                     .AllowAnyMethod()
                     .AllowAnyHeader()
@@ -63,7 +66,7 @@ namespace fso.NotificationApi
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                .AddIdentityServerAuthentication(options =>
                {
-                   options.Authority = "http://192.168.1.67:5000/";
+                   options.Authority = "http://account.localhost/";
                    options.ApiName = "fso.NotificationApi";
                    options.ApiSecret = "fso.NotificationApiSecret";
                    options.RequireHttpsMetadata = false;
@@ -95,7 +98,11 @@ namespace fso.NotificationApi
             app.UseCors("CorsPolicy");
             app.UseStaticFiles();
             
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+            
             app.UseAuthentication();
 
             app.UseMvc(routes =>

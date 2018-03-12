@@ -18,7 +18,7 @@
     >    
     </app-post-postpart-grid>
   </div>
-  <div *ngIf="nonActivepostParts?.lenght>0" class="viewmode-buttons">
+  <div *ngIf="nonActivepostParts?.length>0" class="viewmode-buttons">
       <div fxLayout="row" fxLayoutAlign="end end" >
         <button 
         *ngIf="postpartViewStyle == 0"
@@ -34,7 +34,7 @@
         </button>
       </div>
   </div>
-  <div *ngIf="nonActivepostParts?.lenght>0" class="navigate-buttons">
+  <div *ngIf="nonActivepostParts?.length>0" class="navigate-buttons">
       <div fxLayout="row" fxLayoutAlign="space-between center" >
         <button 
           (click)="navigateLeft($event)"

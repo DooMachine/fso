@@ -9,12 +9,16 @@
     ViewData["Title"] = "Log in";
 }
 
-<h2>@ViewData["Title"].</h2>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
+        <section class="text-center">
+            <img class="f-logo-p" alt="feasion logo" src="/feasionLogo.png">
+        </section>
         <section>
             <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                <h4>Use a local account to log in.</h4>
+                <div class="text-center">
+                    <h5>Use a feasion account to log in.</h5>
+                </div>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -47,15 +51,15 @@
                     </div>
                 </div>
                 <p>
-                    <a asp-action="Register" asp-route-returnurl="@Model.ReturnUrl">Register as a new user?</a>
+                    <a class="l-a" asp-action="Register" asp-route-returnurl="@Model.ReturnUrl">Register as a new user?</a>
                 </p>
                 <p>
-                    <a asp-action="ForgotPassword"  asp-route-returnurl="@Model.ReturnUrl">Forgot your password?</a>
+                    <a class="l-a"  asp-action="ForgotPassword"  asp-route-returnurl="@Model.ReturnUrl">Forgot your password?</a>
                 </p>
             </form>
         </section>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-12">
         <section>
             <h4>Use another service to log in.</h4>
             <hr />

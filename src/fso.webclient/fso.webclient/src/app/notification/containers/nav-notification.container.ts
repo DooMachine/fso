@@ -63,6 +63,7 @@ export class NavNotificationContainer implements OnInit, OnDestroy {
             Observable.interval(300 * 120).subscribe(x => {
                 this.store.dispatch( new notificationActions.GetNotificationUpdate());
               });
+              
         }        
     }
     ngOnDestroy() {

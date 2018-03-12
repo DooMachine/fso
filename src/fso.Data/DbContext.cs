@@ -65,7 +65,7 @@ namespace fso.Data
         {
             // define the database to use
             optionsBuilder
-                .UseMySql("Server=localhost;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
+                .UseMySql("Server=192.168.1.67;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
                     x =>
                     {
                         x.MigrationsAssembly("fso.Data");

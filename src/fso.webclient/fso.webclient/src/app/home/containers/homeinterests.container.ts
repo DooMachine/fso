@@ -15,9 +15,8 @@ import { InterestCard } from "../../shared/models/interest/interestcard";
     changeDetection: ChangeDetectionStrategy.OnPush,
     template:
         `
-        <mat-card>
-            <app-feed-interestlist 
-                *ngIf="isAuthorized$ | async"
+        <mat-card *ngIf="isAuthorized$ | async">
+            <app-feed-interestlist                 
                 [interests]="interests$ | async"
                 [isEmpty]="isEmpty$ | async"
                 [hasNextPage]="hasNextPage$ | async"

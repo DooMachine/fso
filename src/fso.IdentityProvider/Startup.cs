@@ -22,6 +22,7 @@ using RabbitMQ.Client.Framing.Impl;
 using System.Collections.Generic;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace fso.IdentityProvider
 {
@@ -117,7 +118,10 @@ namespace fso.IdentityProvider
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseCors("ApiClientPolicy");

@@ -17,8 +17,8 @@ export const environment = {
     401: { 'msg': 'Not Authorized'}
   },
   placeHolderImages:{
-    user: 'http://192.168.1.67:7100/fimg/u/f_default/230x230.jpeg',
-    collection:'http://192.168.1.67:7100/fimg/c/f_default/500x600.jpeg'
+    user: 'http://cdn.localhost/fimg/u/f_default/230x230.jpeg',
+    collection:'http://cdn.localhost/fimg/c/f_default/500x600.jpeg'
   },
-  userProfileImageTemplate:'http://192.168.1.67:7100/fimg/u/{#appUserId}/230x230.jpeg'
+  userProfileImageTemplate:'http://cdn.localhost/fimg/u/{#appUserId}/230x230.jpeg'
 };

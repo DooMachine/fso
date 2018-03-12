@@ -47,7 +47,7 @@ export interface State {
 
 const initialState: State = {
   showSidenav: false,
-  showSearchInput:false,
+  showSearchInput:true,
   navbarMode: NavbarMode.Stable,
   isDarkTheme:false,
   navbarFixed: true,

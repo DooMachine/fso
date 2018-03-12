@@ -15,11 +15,12 @@ import { AttemptLogin } from '../../auth/actions/auth.actions';
         `
             <h1>Welcome to feasion</h1>
             <span>Start your fashion adventure!!</span>
+            <small>FEASION is in debug mode! Your data may deleted in future</small>
             <b>Login now</b>
             <button
             mat-stroked-button
             color="primary"
-            (click)="login"
+            (click)="login()"
             >Login</button>
             
         `,

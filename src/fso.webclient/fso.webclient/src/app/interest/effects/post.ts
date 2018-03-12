@@ -34,18 +34,9 @@ export class InterestPostEffects {
         .GetGroupPosts(action.payload.urlKey, store['posts'].pageIndex, 
             store['posts'].pageSize, store['posts'].order)
         .map(data => {
-            // You don't need an array because it's only 1 item
-            // If you want array use `Observable.from([ /* actions here */ ])`
-            //    but then you'll need to change `map` above to
-            //     `mergeMap` or `switchMap`
-            //   (no big difference for this use case,
-            //     `switchMap` is more conventional in Ngrx effects)
             return new postActions.GetPostSuccessAction(data);
           })
           .catch((error) => {
-            // You probably haven't called this yet,
-            //   but `catch` must return `Obsrvable`
-            // Again, if you want an array use `Observable.from([ /* array */ ])`
             return Observable.of(
               new postActions.GetPostFailAction({error: error})
             );

@@ -23,7 +23,7 @@ export class FeedReviewEditCommentComponent implements OnInit {
   @Input() authUsername:string;
   @Input() authUserProfileImage: string;
   @Input()
-  set commentEditFormPending(value:boolean){
+  set commentFormPending(value:boolean){
     if(value){
       this.form.disable();
     }else{

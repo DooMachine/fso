@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:9-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -6,15 +6,17 @@ WORKDIR /usr/src/app
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY package*.json ./
+COPY package*.json /tmp/
 
-RUN npm install
+RUN cd /tmp && npm install
+RUN mkdir -p /usr/src/app && cp -a /tmp/node_modules /usr/src/app
 # If you are building your code for production
 # RUN npm install --only=production
 
 # Bundle app source
-COPY . .
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+
 RUN npm run build:ssr
-RUN npm run serve:ssr
 EXPOSE 10575
-CMD [ "npm", "start" ]
+CMD npm run serve:ssr

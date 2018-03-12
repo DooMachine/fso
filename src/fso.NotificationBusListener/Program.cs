@@ -33,7 +33,6 @@ namespace fso.NotificationBusListener
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             var provider = services.BuildServiceProvider();
             var connection = new ConnectionConfiguration();
-            
             connection.Port = 5672;
             connection.UserName = "seph";
             connection.Password = "seph1w12";
@@ -41,12 +40,16 @@ namespace fso.NotificationBusListener
             connection.Hosts = new List<HostConfiguration> {
                  new HostConfiguration(){Host="192.168.1.67", Port=5672}
                 };
+            connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
+            connection.RequestedHeartbeat = 6;
+            connection.Timeout = 60;
             var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
             
             
             var subscriber = new AutoSubscriber(_bus, "#");
             subscriber.Subscribe(Assembly.GetExecutingAssembly());
             Console.WriteLine("Notifications EventHandler Listening");
+            string typed = Console.ReadLine();
         }
     }
     public class DoNothingLogger : IEasyNetQLogger

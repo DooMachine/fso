@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -16,7 +16,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 420px;
 }
 
 /* Carousel */
@@ -49,4 +49,13 @@ textarea {
     .carousel-caption {
         display: none;
     }
+}
+.f-logo-p{
+    max-height: 70px;
+}
+.l-a{
+    color: #c62828;
+}
+.l-a:hover{
+    color:#ca7171;
 }

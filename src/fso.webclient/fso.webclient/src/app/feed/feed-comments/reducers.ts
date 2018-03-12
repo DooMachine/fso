@@ -10,7 +10,7 @@ export interface State extends EntityState<ReviewComment> {
     commentloadedReviewIds:Array<number>;
     openedReviewCommentIds:Array<number>;
     openedCommentFormReviewIds:Array<number>;
-    openedCommentEditIds:Array<number>;
+    openedCommentEditIds:Array<number>; 
 }
 
 export const adapter: EntityAdapter<ReviewComment> = createEntityAdapter<ReviewComment>({

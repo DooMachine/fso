@@ -173,6 +173,14 @@ namespace fso.IdentityProvider.IdentityServer
                     //},
                     RedirectUris = new List<string>
                     {
+                        "http://localhost",
+                        "http://localhost/oAuthCallback",
+                        "http://localhost/silent-refresh.html",
+
+                        "http://192.168.1.67:80",
+                        "http://192.168.1.67:80/oAuthCallback",
+                        "http://192.168.1.67:80/silent-refresh.html",
+
                         "http://localhost:10575",
                         "http://localhost:10575/oAuthCallback",
                         "http://localhost:10575/silent-refresh.html",
@@ -182,11 +190,19 @@ namespace fso.IdentityProvider.IdentityServer
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
+                        "http://localhost:80/",
+                        "http://192.168.1.67:80",
+
                         "http://localhost:10575/",
                         "http://192.168.1.67:10575",
                     },
                     AllowedCorsOrigins = new List<string>
                     {
+                        "https://localhost:80",
+                        "http://localhost:80",
+                        "http://192.168.1.67:80",
+                        "https://192.168.1.67:80",
+
                         "https://localhost:10575",
                         "http://localhost:10575",
                         "http://192.168.1.67:10575",

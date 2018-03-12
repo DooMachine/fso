@@ -7,15 +7,17 @@ services:
       context: src/fso.IdentityProvider/
       dockerfile: Dockerfile
     expose:
-      - "5000"
-    ports:
-      - "5000:5000"    
+      - "5000" 
     links:
       - mysqldb
       - rabbitmq
+      - nginx
     depends_on:
       - mysqldb
       - rabbitmq
+      - nginx
+    networks:
+      - localnet
 
   identitybuslistener:
     image: identitybuslistener
@@ -26,9 +28,16 @@ services:
     links:
       - mysqldb
       - rabbitmq
+      - nginx
     depends_on:
       - mysqldb
       - rabbitmq
+      - nginx
+    networks:
+      - localnet
+    stdin_open: true
+    tty: true
+
   eventbuslistener:
     image: eventbuslistener
     container_name: fsoeventbuslistener
@@ -38,15 +47,21 @@ services:
     links:
       - mysqldb
       - rabbitmq
+      - nginx
     depends_on:
       - mysqldb
       - rabbitmq
+      - nginx
+    networks:
+      - localnet
+    stdin_open: true
+    tty: true
 
-  identitybuslistener:
-    image: identitybuslistener
-    container_name: fsoidentitybuslistener
+  notificationbuslistener:
+    image: notificationbuslistener
+    container_name: fsonotificationbuslistener
     build:
-      context: src/fso.IdentityBusListener/
+      context: src/fso.NotificationBusListener/
       dockerfile: Dockerfile 
     links:
       - mysqldb
@@ -54,6 +69,10 @@ services:
     depends_on:
       - mysqldb
       - rabbitmq
+    networks:
+      - localnet
+    stdin_open: true
+    tty: true
 
   appmediaprovider:
     image: appmediaprovider
@@ -63,13 +82,15 @@ services:
       dockerfile: Dockerfile
     expose:
       - "7100"
-    ports:
-      - "7100:7100"    
     links:
       - rabbitmq
+      - nginx
     depends_on:
       - rabbitmq
       - identityprovider
+      - nginx
+    networks:
+      - localnet
 
   notificationapi:
     image: notificationapi
@@ -79,16 +100,18 @@ services:
       dockerfile: Dockerfile
     expose:
       - "6900"
-    ports:
-      - "6900:6900"    
     links:
       - mysqldb
+      - nginx
       - rabbitmq
     depends_on:
       - mysqldb
       - rabbitmq
       - identityprovider
-    
+      - nginx
+    networks:
+      - localnet
+
   mainapi:
     image: mainapi
     container_name: fsomainapi
@@ -97,17 +120,19 @@ services:
       dockerfile: Dockerfile
     expose:
       - "7000"
-    ports:
-      - "7000:7000"    
     links:
       - mysqldb
+      - nginx
       - rabbitmq
     depends_on:
       - mysqldb
       - rabbitmq
       - identityprovider
+      - nginx
+    networks:
+      - localnet
 
- webclient:
+  webclient:
     image: webclient
     container_name: fsowebclient
     build:
@@ -115,20 +140,23 @@ services:
       dockerfile: Dockerfile
     expose:
       - "10575"
-    ports:
-      - "10575:10575"
+    links:
+      - nginx
     depends_on:
       - mainapi
       - notificationapi
       - appmediaprovider
       - identityprovider
+      - nginx
+    networks:
+      - localnet
 
   mysqldb:
     image: mysql/mysql-server:5.7
     container_name: mysqlc
     command: mysqld --user=root --verbose
-    ports:
-      - "3306:3306"
+    expose:
+      - "3306"
     environment:
       MYSQL_USER: "seph"
       MYSQL_PASSWORD: "seph1w12"
@@ -137,23 +165,44 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
     volumes:
       - my-datavolume:/var/lib/mysql
-      
+    networks:
+      - localnet
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: rabbitmqc
+    volumes:
+        - rabbit-volume:/var/lib/rabbitmq
+    expose:
+      - "5672"
+      - "5671"
     ports:
       - "15672:15672"
-      - "5672:5672"
-      - "5671:5671"
     environment: 
       RABBITMQ_DEFAULT_PASS: seph1w12
       RABBITMQ_DEFAULT_USER: seph
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://0.0.0.0:15672"]
+        test: ["CMD", "curl", "-f", "http://localhost:15672"]
         interval: 30s
         timeout: 10s
         retries: 5  
-  
+    networks:
+      - localnet
 
+  nginx:
+    image: nginxhttp
+    container_name: nginxc
+    ports:
+      - "80:80"
+      - "443:443"
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    networks:
+      - localnet
+
+networks:
+  localnet:
 volumes:
   my-datavolume:
+  rabbit-volume:

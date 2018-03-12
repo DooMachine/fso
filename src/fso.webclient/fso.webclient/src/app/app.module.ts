@@ -88,7 +88,7 @@ const ROUTES = [
   },
   {
     provide: OAuthStorage,
-    useClass: BrowserTokenStoreService
+    useClass: BrowserTokenStoreService 
   }
   ],
   bootstrap: [AppComponent],

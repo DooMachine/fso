@@ -16,6 +16,8 @@ using fso.Settings;
 using fso.Settings.Image;
 using Newtonsoft.Json;
 using fso.Core.Settings;
+using System;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace fso.Api
 {
@@ -56,14 +58,15 @@ namespace fso.Api
                 options.AddPolicy("CorsPolicy",
                     builder => builder
                     .WithOrigins(
-                        "http://192.168.1.67:10572",
-                        "https://192.168.1.67:10572",
                         "http://192.168.1.67:10575",
                         "https://192.168.1.67:10575",
+                        "http://localhost",
+                        "https://localhost",
                         "http://192.168.1.67:7000",
                         "https://192.168.1.67:7000",
                         "http://192.168.1.67:5000",
-                        "https://192.168.1.67:5000")                    
+                        "https://192.168.1.67:5000"
+                        )                    
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
@@ -88,8 +91,22 @@ namespace fso.Api
                    options.SupportedTokens = SupportedTokens.Both;
                });
 
-            string rabbitConnString = Configuration.GetSection("CommonSettings")["RabbitMqConnectionString"];
-            services.AddSingleton(p => RabbitHutch.CreateBus(rabbitConnString));
+            var connection = new ConnectionConfiguration();
+            
+            connection.Port = 5672;
+            connection.UserName = "seph";
+            connection.Password = "seph1w12";
+           
+            connection.Hosts = new List<HostConfiguration> {
+                 new HostConfiguration(){Host="192.168.1.67",Port=5672}
+                };
+            connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
+            connection.RequestedHeartbeat = 4;
+            connection.Timeout = 20;
+            var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
+            // event bus
+            Console.WriteLine("Bus connected {0}",_bus.IsConnected);
+            services.AddSingleton(_bus);
 
             services.AddMvc(options =>
             {
@@ -132,7 +149,10 @@ namespace fso.Api
             }
             app.UseCors("CorsPolicy");
             app.UseStaticFiles();
-
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
@@ -147,5 +167,27 @@ namespace fso.Api
 
         }
         
+    }
+    public class DoNothingLogger : IEasyNetQLogger
+    {
+        public void DebugWrite(string format, params object[] args)
+        {
+           Console.Write(format,args);
+        }
+
+        public void ErrorWrite(string format, params object[] args)
+        {
+            Console.Write(format,args);
+        }
+
+        public void ErrorWrite(Exception exception)
+        {
+            Console.Write(exception.Message);
+        }
+
+        public void InfoWrite(string format, params object[] args)
+        {
+            Console.Write(format,args);
+        }
     }
 }

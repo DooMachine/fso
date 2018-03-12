@@ -3,13 +3,13 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://192.168.1.67:5000',
+  issuer: 'http://account.localhost',
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: 'http://192.168.1.67:10575/oAuthCallback',
+  redirectUri: 'http://localhost/oAuthCallback',
   requireHttps: false,
 
-  silentRefreshRedirectUri: 'http://192.168.1.67:10575/silent-refresh.html',
+  silentRefreshRedirectUri: 'http://localhost/silent-refresh.html',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   clientId: 'fso.AngularClient',
@@ -28,13 +28,13 @@ export const authConfig: AuthConfig = {
 export const authServerConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://192.168.1.67:5000',
+  issuer: 'http://account.localhost',
   
   // URL of the SPA to redirect the user to after login
-  redirectUri: 'http://192.168.1.67:10575/oAuthCallback',
+  redirectUri: 'http://localhost/oAuthCallback',
   requireHttps: false,
 
-  silentRefreshRedirectUri: 'http://192.168.1.67:10575/silent-refresh.html',
+  silentRefreshRedirectUri: 'http://localhost/silent-refresh.html',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   clientId: 'fso.AngularClient',

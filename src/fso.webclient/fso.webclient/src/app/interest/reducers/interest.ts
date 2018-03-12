@@ -39,7 +39,6 @@ export function reducer(state = initialState, action: All ): State {
                 ...state,
                 interest: {
                     ...state.interest,
-                    urlKey: action.payload.urlKey
                 },
                 isInterestLoading: true
             };

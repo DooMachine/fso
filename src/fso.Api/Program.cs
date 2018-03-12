@@ -16,7 +16,7 @@ namespace fso.Api
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseUrls("http://localhost:7000", "http://192.168.1.67:7000")
+                .UseUrls("http://*:7000")
                 .UseStartup<Startup>()
             
                 .Build();

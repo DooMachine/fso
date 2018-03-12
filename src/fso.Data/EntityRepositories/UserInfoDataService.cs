@@ -74,7 +74,7 @@ namespace fso.Data.EntityRepositories
         public UserInfoProfileReturn GetUserProfileInfo(string userName, string currUserId)
         {
             UserInfoProfileReturn ret;
-            var uInfo = _context.Set<UserInfo>().AsNoTracking().Select(p=> new {Entity = p }).FirstOrDefault(p => p.Entity.UName == userName);
+            var uInfo = _context.Set<UserInfo>().AsNoTracking().Select(p=> new {Entity = p, p.ProfilePicture }).FirstOrDefault(p => p.Entity.UName == userName);
             if (uInfo==null)
             {
                 ret = new UserInfoProfileReturn();
@@ -97,7 +97,7 @@ namespace fso.Data.EntityRepositories
                 Username = uInfo.Entity.UName,
                 Name = uInfo.Entity.Name,
                 TotalReputation = _userCacheService.GetUserReputation(uInfo.Entity.AppUserId) ?? GetUserReputation(uInfo.Entity.AppUserId, 0),
-                ProfileImageUrl = _userProfileImageSettings.UserImageUrlTemplate.Replace("{#appUserId}",uInfo.Entity.AppUserId),
+                ProfileImageUrl = uInfo.Entity.ProfilePicture.SmallPath,
                 Surname = uInfo.Entity.Surname,
                 InterestCount = _userCacheService.GetUserInterestCount(uInfo.Entity.AppUserId) ?? GetUserInterestCount(uInfo.Entity.AppUserId, 60),
                 FollowingCount = _userFollowCacheService.GetUserFollowingCount(uInfo.Entity.AppUserId) ?? GetUserFollowingCount(uInfo.Entity.AppUserId, 60),

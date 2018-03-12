@@ -30,7 +30,9 @@ export class InterestEffects {
     this.actions$.ofType<interestActions.RequestInterest>(interestActions.InterestActionTypes.REQUEST_INTEREST)
     .withLatestFrom(this.store.select(store => store['interest'])) 
     .switchMap(([action, store]) => {
-        if(store.interest.urlKey == action.payload.urlKey){
+        console.log(store.interest.interest.urlKey);
+        console.log(action.payload.urlKey);
+        if(store.interest.interest.urlKey == action.payload.urlKey){
             return Observable.of({type:'NO_ACTION'});
         }
         return this._interestService

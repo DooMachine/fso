@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -68,6 +69,8 @@ namespace fso.AppMediaProvider
                     .WithOrigins(
                         "http://192.168.1.67:10575",
                         "https://192.168.1.67:10575",
+                        "http://localhost",
+                        "https://localhost",
                         "http://192.168.1.67:7000",
                         "https://192.168.1.67:7000",
                         "http://192.168.1.67:5000",
@@ -88,7 +91,7 @@ namespace fso.AppMediaProvider
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                .AddIdentityServerAuthentication(options =>
                {
-                   options.Authority = "http://192.168.1.67:5000/";
+                   options.Authority = "http://account.localhost/";
                    options.ApiName = "fso.AppFileProvider";
                    options.ApiSecret = "fso.AppFileProviderSecret";
                    options.RequireHttpsMetadata = false;
@@ -122,18 +125,22 @@ namespace fso.AppMediaProvider
             app.UseCors("CorsPolicy");
             app.UseStaticFiles();
             // cache static files
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.Use(async (context, next) =>
             {
                 context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
                 {
                     Public = true,
-                    MaxAge = TimeSpan.FromSeconds(10)
+                    MaxAge = TimeSpan.FromSeconds(60)
                 };
                 context.Response.Headers[HeaderNames.Vary] = new string[] { "Accept-Encoding" };
 
                 await next();
             });
-
+            
             app.UseAuthentication();
 
             app.UseMvc(routes =>

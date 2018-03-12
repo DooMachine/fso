@@ -16,6 +16,7 @@ import { NotificationModule } from '../notification/notification.module';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { BottomNavbarComponent } from './components/bottom-navbar/bottom-navbar.component';
 import { SharedModule } from "../shared/shared.module";
+import { SearchModule } from '../search/search.module';
 
 export const COMPONENTS = [
     AppComponent,
@@ -27,7 +28,7 @@ export const COMPONENTS = [
     BottomNavbarComponent
   ];
 @NgModule({
-    imports: [CommonModule,SharedModule, RouterModule, MaterialModule, NotificationModule],
+    imports: [CommonModule,SharedModule, RouterModule, MaterialModule,SearchModule, NotificationModule],
     declarations: COMPONENTS,
     exports: COMPONENTS,
     

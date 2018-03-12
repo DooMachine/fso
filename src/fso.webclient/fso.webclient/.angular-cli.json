@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ng-universal-demo"
+    "name": "feasion"
   },
   "apps": [
     {
@@ -42,11 +42,11 @@
       "assets": [
         "assets",
         {
-  "glob": "silent-refresh.html",
-  "input": "",
-  "output": "./",
-  "allowOutsideOutDir": false
-},
+          "glob": "silent-refresh.html",
+          "input": "",
+          "output": "./",
+          "allowOutsideOutDir": false
+        },
         "favicon.ico"
       ],
       "platform": "server",

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Threading;
 
 namespace fso.EventBusListener
 {
@@ -22,6 +23,9 @@ namespace fso.EventBusListener
             connection.Hosts = new List<HostConfiguration> {
                  new HostConfiguration(){Host="192.168.1.67", Port=5672}
                 };
+            connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
+            connection.RequestedHeartbeat = 4;
+            connection.Timeout = 20;
             var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
             
             
@@ -32,6 +36,8 @@ namespace fso.EventBusListener
             _bus.Respond<CheckUserCollectionOwner, CheckUserCollectionOwnerResponse>(request => new CheckUserCollectionOwnerResponse { IsOkay = new ResponseActions().IsUserOwnerPostCollection(request.UserId, request.CollectionId) });
 
             Console.WriteLine("Main API Eventhandler Listening");
+            string typed = Console.ReadLine();
+
         }
     }
     public class DoNothingLogger : IEasyNetQLogger
@@ -56,4 +62,6 @@ namespace fso.EventBusListener
             Console.Write(format,args);
         }
     }
+    
 }
+

@@ -22,18 +22,18 @@
       </app-nav-item>
     </app-sidenav>-->
     <app-navbar [textColor]="navbarTextColor$ | async" [color]="navbarColor$ | async" (openMenu)="openSidenav()">
-      <mat-toolbar-row [@panelLeftRight] *ngIf="!(showSearchInput$ | async)">
-        <a class="a-grey" [routerLink]="['/']"><h5  
-        style.color="white !important"       
-        >feasion</h5></a>
+      <mat-toolbar-row fxFlex="20"  [@panelLeftRight]>
+        <a class="a-grey" [routerLink]="['/']"> 
+          <img class="logoel" src="/assets/feasionLogo.png" alt="feasion">
+      </a>
       </mat-toolbar-row>
-      <mat-toolbar-row   
+      <mat-toolbar-row  
+        fxFlex
+        fxHide fxShow.gt-sm 
         [@panelInOut] *ngIf="(showSearchInput$ | async)">
-        <div  fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
-            <mat-form-field color="primary">
-                <input matInput placeholder="Search" >
-            </mat-form-field >
-        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="3px">
+            <!--<app-search-nav></app-search-nav> -->
+        </div>  
       </mat-toolbar-row>
       <mat-toolbar-row fxFlex="20"  fxLayout="row" fxLayoutAlign="end center">
           <!--<div>
@@ -42,11 +42,7 @@
              mat-icon-button>
                 <mat-icon aria-label="Search">search</mat-icon>
             </button>
-          </div> -->
-          <div>   
-          
-        </div>
-        
+          </div>-->     
           <a
           mat-button
           color="accent"

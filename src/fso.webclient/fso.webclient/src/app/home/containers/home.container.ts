@@ -13,7 +13,7 @@ import { GetFeedAction } from '../actions/activityfeed';
     template:
         `
         
-        <div
+        <div 
             class="home-wrapper"
                 fxLayout="row"
                  fxLayout.lt-md="column" 
@@ -22,7 +22,6 @@ import { GetFeedAction } from '../actions/activityfeed';
                   fxLayoutGap="8px"                
             >
             <div fxFlex="19" fxFlex.lt-md="100" >
-
                 <app-home-interests></app-home-interests>
             </div>
             <div fxFlex>
@@ -34,11 +33,10 @@ import { GetFeedAction } from '../actions/activityfeed';
                 <app-home-grouprecommendation></app-home-grouprecommendation>
             </div>
         </div>
-
-            <app-home-noauth
-                *ngIf="!isUserAuthenticated$ | async"
-                >            
-            </app-home-noauth>
+        <app-home-noauth
+            *ngIf="!isUserAuthenticated$ | async"
+            >            
+        </app-home-noauth>
 
         `,
     styles: [``]

@@ -19,12 +19,16 @@ namespace fso.IdentityBusListener
             connection.Hosts = new List<HostConfiguration> {
                  new HostConfiguration(){Host="192.168.1.67", Port=5672}
                 };
+            connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
+            connection.RequestedHeartbeat = 4;
+            connection.Timeout = 20;
             var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
             
             
             var subscriber = new AutoSubscriber(_bus, "#");
             subscriber.Subscribe(Assembly.GetExecutingAssembly());
             Console.WriteLine("Identity EventHandler Listening");
+            string typed = Console.ReadLine();
         }
     }
     public class DoNothingLogger : IEasyNetQLogger

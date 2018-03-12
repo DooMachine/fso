@@ -13,7 +13,7 @@ namespace fso.AppMediaProvider
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://*:7100", "http://192.168.1.67:7100")
+                .UseUrls("http://*:7100")
                 .UseKestrel(options =>
                 {
                     options.AddServerHeader = false;
