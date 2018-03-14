@@ -19,34 +19,23 @@ namespace fso.NotificationBusListener.Consumers.UserConsumers
             {
                 using (NotificationContext db = new NotificationContext())
                 {
-                    for(int i = 0; i < 12; i++)
-                    {
+                    
                         List<NotificationUserInfo> lu = new List<NotificationUserInfo>();
-                        for (int q = 1; q < ((i+1)%6)+1;q++)
-                        {
-                            lu.Add(new NotificationUserInfo
-                            {
-                                DateUtcAdd = DateTime.Now,
-                                ImageUrl = "https://picsum.photos/70/70/",
-                                UserId = message.UserId,
-                                Username = message.UName
-                            });
-                        }
-                            Notification firstNot = new Notification()
+                        
+                        Notification firstNot = new Notification()
                         {
                             DateUtcAdd = DateTime.UtcNow,
                             DateUtcModified = DateTime.UtcNow,
-                            NotificationType = (NotificationType)(i%8),
-                            ImageUrl = "https://picsum.photos/60/60/",
+                            NotificationType = NotificationType.Registered,
+                            ImageUrl = "/assets/default.png",
                             ActivityDescription="Activity Description",
-                            ActivityUserJsonArray = JsonConvert.SerializeObject(lu),
                             IsSoftDeleted = false,
                             IsSeen = false,
                             UserId = message.UserId,
-                            RedirectUrl = "/trending",
+                            RedirectUrl = "/explore",
                         };
                         db.Set<Notification>().Add(firstNot);
-                    }                                        
+                                                          
                     if ( db.SaveChanges() > 0)
                     {
                         Console.WriteLine("Notification Created for User {0}", message.UserId);
@@ -56,7 +45,6 @@ namespace fso.NotificationBusListener.Consumers.UserConsumers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
             }
         }
         

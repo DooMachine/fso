@@ -25,6 +25,7 @@ export class AuthEffects {
         private store: Store<AuthState>,
         private router: Router
     ) {}
+    
     @Effect({ dispatch: false })
     onAuthorizeSuccessAction: Observable<Action> = this.actions
       .ofType(authActions.CALLBACK_AUTHORIZE_SUCCESS_ACTION)

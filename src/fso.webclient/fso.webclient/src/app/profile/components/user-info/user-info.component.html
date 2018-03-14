@@ -22,7 +22,7 @@
               <div
                 fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap.lt-md="12px" fxLayoutGap="12px">
                 <a class="no-anchor-text a-grey" mat-colors="{color:'primary'}" 
-                [routerLink]="[ '/user', userInfo.username ]">
+                [routerLink]="[ '/user', userInfo?.username ]">
                   <h3 class="mat-subreading-2" mat-colors="{color:'primary'}">{{userInfo.username}}</h3>
                   <span class="mat-caption">{{userInfo.name}} {{userInfo.surname}}</span>
                 </a>

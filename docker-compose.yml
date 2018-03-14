@@ -158,7 +158,7 @@ services:
       MYSQL_ROOT_PASSWORD: "seph1w12"
       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
     volumes:
-      - my-datavolume:/var/lib/mysql
+      - mysqlvol:/var/lib/mysql
     networks:
       - localnet
 
@@ -191,6 +191,12 @@ services:
     build:
       context: nginx/
       dockerfile: Dockerfile
+    depends_on:
+      - identityprovider
+      - webclient
+      - mainapi
+      - notificationapi
+      - appmediaprovider
     links:
       - identityprovider
       - webclient
@@ -200,8 +206,21 @@ services:
     networks:
       - localnet
 
+  redis:
+    image: redisc
+    build:
+      context: redis/
+      dockerfile: Dockerfile
+    container_name: redisc
+    ports:
+    - "6379:6379"
+    links:
+      - mainapi
+    networks:
+      - localnet
+
 networks:
   localnet:
 volumes:
-  my-datavolume:
+  mysqlvol:
   rabbit-volume:

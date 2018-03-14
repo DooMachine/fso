@@ -19,7 +19,7 @@ namespace fso.Bootstrapper
         {
             // DbContext
             services.AddDbContext<FsoContext>(options=> {
-               
+            
             });
             services.AddScoped<IEntityContext,FsoContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>(p => new UnitOfWork(p.GetRequiredService<IEntityContext>()));
@@ -50,7 +50,10 @@ namespace fso.Bootstrapper
             services.AddScoped<IExploreDataService, ExploreDataService>();
             // ----- CACHE ----- //
             // TODO: Implement cache as redis.
-            services.AddDistributedMemoryCache();
+            services.AddDistributedRedisCache(options=>{
+                options.InstanceName = "mainapistore";
+                options.Configuration = "192.168.1.67:6379";
+            });
             services.AddScoped<ICacheProvider, CacheProvider>(p => new CacheProvider(p.GetRequiredService<IDistributedCache>()));
             // Cache Services
             services.AddScoped<IPostCacheService, PostCacheService>();

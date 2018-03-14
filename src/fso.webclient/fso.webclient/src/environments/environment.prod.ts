@@ -19,5 +19,5 @@ export const environment = {
     user: 'http://cdn.localhost/fimg/u/f_default/230x230.jpeg',
     collection:'http://cdn.localhost/fimg/c/f_default/500x600.jpeg'
   },
-  userProfileImageTemplate:'cdn.localhost.com/fimg/u/{#appUserId}/230x230.jpeg'
+  userProfileImageTemplate:'http://cdn.localhost.com/fimg/u/{#appUserId}/230x230.jpeg'
 };

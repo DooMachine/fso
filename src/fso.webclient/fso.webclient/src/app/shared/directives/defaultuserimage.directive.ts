@@ -10,7 +10,7 @@ import { Directive, Input } from "@angular/core";
   export class DefaultUserImageDirective {
     @Input() src:string;
     @Input() default:string;
-    defaultUserImage = 'http://192.168.1.67:7100/fimg/u/f_default/230x230.jpeg'
+    defaultUserImage = '/assets/default.png'
     updateUrl() {
       this.src = this.default || this.defaultUserImage;
     }
