@@ -81,7 +81,7 @@ namespace fso.IdentityProvider
             connection.Password = "seph1w12";
            
             connection.Hosts = new List<HostConfiguration> {
-                 new HostConfiguration(){Host="192.168.1.67",Port=5672}
+                 new HostConfiguration(){Host=@"rabbitmq",Port=5672}
                 };
             var _bus = RabbitHutch.CreateBus(connection, ser => ser.Register<IEasyNetQLogger>(logger => new DoNothingLogger()));
             // event bus
@@ -107,10 +107,11 @@ namespace fso.IdentityProvider
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            
 
             if (env.IsDevelopment())
             {
+                loggerFactory.AddDebug();
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
@@ -130,12 +131,6 @@ namespace fso.IdentityProvider
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
             //dbInitializer.Initialize();
             
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
         }
     }
     public class DoNothingLogger : IEasyNetQLogger

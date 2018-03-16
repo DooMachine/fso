@@ -63,9 +63,10 @@ namespace fso.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            string mysqlServer = Environment.GetEnvironmentVariable("MYSQL_BRIDGE_IP");
             // define the database to use
             optionsBuilder
-                .UseMySql("Server=192.168.1.67;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
+                .UseMySql(@"Server=mysqldb;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
                     x =>
                     {
                         x.MigrationsAssembly("fso.Data");

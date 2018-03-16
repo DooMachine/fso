@@ -52,14 +52,16 @@ namespace fso.Api
                 .RequireAuthenticatedUser()                
                 .RequireClaim("scope", "fso.Api")                
                 .Build();
-
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
                     .WithOrigins(
                         "http://192.168.1.67:10575",
-                        "https://192.168.1.67:10575",
+                        "https://192.168.1.67:10575",   
+                        "http://localhost:80",
+                        "https://localhost:80",                     
                         "http://localhost",
                         "https://localhost",
                         "http://192.168.1.67:7000",
@@ -84,7 +86,7 @@ namespace fso.Api
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                .AddIdentityServerAuthentication(options =>
                {
-                   options.Authority = "http://192.168.1.67:5000/";
+                   options.Authority = "http://identityprovider:5000/";
                    options.ApiName = "fso.Api";
                    options.ApiSecret = "fso.ApiSecret";
                    options.RequireHttpsMetadata = false;
@@ -98,7 +100,7 @@ namespace fso.Api
             connection.Password = "seph1w12";
            
             connection.Hosts = new List<HostConfiguration> {
-                 new HostConfiguration(){Host="192.168.1.67",Port=5672}
+                 new HostConfiguration(){Host=@"rabbitmq",Port=5672}
                 };
             connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
             connection.RequestedHeartbeat = 4;
@@ -141,6 +143,7 @@ namespace fso.Api
 
             if (env.IsDevelopment())
             {
+                loggerFactory.AddDebug();
                 app.UseDeveloperExceptionPage();
             }
             else

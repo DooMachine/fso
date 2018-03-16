@@ -17,7 +17,7 @@ namespace fso.IdentityBusListener
             connection.Password = "seph1w12";
            
             connection.Hosts = new List<HostConfiguration> {
-                 new HostConfiguration(){Host="192.168.1.67", Port=5672}
+                 new HostConfiguration(){Host=@"rabbitmq", Port=5672}
                 };
             connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
             connection.RequestedHeartbeat = 4;

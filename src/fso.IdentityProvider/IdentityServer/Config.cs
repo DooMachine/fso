@@ -177,9 +177,9 @@ namespace fso.IdentityProvider.IdentityServer
                         "http://localhost/oAuthCallback",
                         "http://localhost/silent-refresh.html",
 
-                        "http://192.168.1.67:80",
-                        "http://192.168.1.67:80/oAuthCallback",
-                        "http://192.168.1.67:80/silent-refresh.html",
+                        "http://192.168.1.67",
+                        "http://192.168.1.67/oAuthCallback",
+                        "http://192.168.1.67/silent-refresh.html",
 
                         "http://localhost:10575",
                         "http://localhost:10575/oAuthCallback",

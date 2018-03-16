@@ -11,6 +11,7 @@ import { AuthState } from '../reducers/auth.reducer';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/do';
 export type Action = authActions.All;
@@ -69,16 +70,14 @@ export class AuthEffects {
     //         return Observable.of(new authActions.AttemptLogin());        
     // });
     @Effect()
-        onGetUserInfo: Observable<Action> = this.actions
-          .ofType(authActions.GET_USER_INFO)
-          .switchMap((action) => {
-            this.getAuthService();
-            let obs;
-            this.oauthService.loadUserProfile().then((userData) => {
-                obs = new authActions.GetUserInfoSuccess({ isUserDataLoaded: true, userData: userData });
-            }).catch((err)=>{ obs = Observable.of({type:"No_ACTION"}) })
-            return obs;
-        });
+    onGetUserInfo: Observable<Action> = this.actions
+        .ofType(authActions.GET_USER_INFO)
+        .switchMap((action) => {
+        this.getAuthService();
+        var np = this.oauthService.loadUserProfile();
+        return Observable.fromPromise(np.then(userData=>(new authActions.GetUserInfoSuccess({ isUserDataLoaded: true, userData: userData }))))
+        
+    });
     @Effect({dispatch: false})
         onAttemptLogin: Observable<Action> = this.actions
           .ofType(authActions.ATTEMPT_LOGIN)

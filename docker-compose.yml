@@ -2,7 +2,7 @@ version: '3'
 services:
   identityprovider:
     image: identityprovider
-    container_name: fsoidentityprovider
+    container_name: fsoidentityprovider    
     build:
       context: src/fso.IdentityProvider/
       dockerfile: Dockerfile
@@ -191,12 +191,6 @@ services:
     build:
       context: nginx/
       dockerfile: Dockerfile
-    depends_on:
-      - identityprovider
-      - webclient
-      - mainapi
-      - notificationapi
-      - appmediaprovider
     links:
       - identityprovider
       - webclient
@@ -221,6 +215,7 @@ services:
 
 networks:
   localnet:
+    driver: bridge
 volumes:
   mysqlvol:
   rabbit-volume:

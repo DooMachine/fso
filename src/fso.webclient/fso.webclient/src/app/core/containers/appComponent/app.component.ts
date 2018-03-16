@@ -2,6 +2,8 @@ import { Component, ChangeDetectionStrategy, Inject,PLATFORM_ID } from '@angular
 import { Observable } from 'rxjs/Observable';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { authConfig } from '../../../auth/config/AuthConfig';
+import { authDevConfig } from '../../../auth/config/AuthConfig.dev';
+import { environment } from '../../../../environments/environment';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
@@ -11,7 +13,6 @@ import { OnInit, OnDestroy } from '@angular/core';
 import * as layoutActions from '../../actions';
 import { NavbarMode, ProgressBarState } from '../../reducers';
 import {
-  AuthConfig,
   JwksValidationHandler,
   OAuthStorage
 } from 'angular-oauth2-oidc';
@@ -88,6 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
               this.store.dispatch( new authActions.CheckUserAuthState());
         });
     }
+    
     this.progressBarMode$ = this.store.
       select(state=> state['layout'].progressBarMode)
     this.showSidenav$ = this.store.select(state => state['layout'].showSidenav);
@@ -124,7 +126,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
   private configureWithNewConfigApi() {
-    this.oauthService.configure(authConfig);
+    console.log(environment.production);
+    console.log(authDevConfig);
+    if(environment.production){
+      this.oauthService.configure(authConfig);
+    }else{
+      this.oauthService.configure(authDevConfig);
+    }
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.setupAutomaticSilentRefresh();
   }

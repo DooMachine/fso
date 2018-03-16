@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection":
+    "Server=mysqldb;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4"
+  }
+}

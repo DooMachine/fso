@@ -5,9 +5,6 @@
     <UserSecretsId>c1286f52-e413-4d40-a7f4-099cd4170100</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Controllers\NotificationController.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Logs\" />
