@@ -14,7 +14,7 @@
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
-    <PackageReference Include="RevStackCore-ImageSharp" Version="0.9.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-dev000903" />
   </ItemGroup>
 
   <ItemGroup>

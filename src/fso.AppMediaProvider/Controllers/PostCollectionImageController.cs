@@ -2,9 +2,9 @@
 using fso.AppMediaProvider.Models;
 using fso.AppMediaProvider.Settings;
 using fso.EventCore;
-using ImageSharp;
-using ImageSharp.Formats;
-using ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Transforms;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +14,9 @@ using Microsoft.Extensions.Options;
 using System;
 using System.IO;
 using System.Security.Claims;
+using SixLabors.ImageSharp;
+using SixLabors.Primitives;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace fso.AppMediaProvider.Controllers
 {
@@ -80,21 +83,20 @@ namespace fso.AppMediaProvider.Controllers
                     Directory.CreateDirectory(directoryPath);
                 }
                 // Thumb Resizing
-                using (Image image = new Image(collectionimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(collectionimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         
                         Mode = ResizeMode.Min,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _collectionimageSettings.PostCollectionThumbMaxHeight,
                             Width = _collectionimageSettings.PostCollectionThumbMaxWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -104,20 +106,20 @@ namespace fso.AppMediaProvider.Controllers
                     busAction.ThumbImageUrl = thumbUrlPath;
                 };
                 // Small Resizing
-                using (Image image = new Image(collectionimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(collectionimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
-                        Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        
+                        Mode = ResizeMode.Min,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _collectionimageSettings.PostCollectionSmallMaxHeight,
                             Width = _collectionimageSettings.PostCollectionSmallMaxWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -126,20 +128,20 @@ namespace fso.AppMediaProvider.Controllers
                     smallUrlpath = prefx + rootPath + "/fimg/c/" + collectionid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
                     busAction.SmallImageUrl = smallUrlpath;
                 };
-                using (Image image = new Image(collectionimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(collectionimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
-                        Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        
+                        Mode = ResizeMode.Min,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = 30,
                             Width = 30
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/c/" + collectionid + "/lazy.jpeg");

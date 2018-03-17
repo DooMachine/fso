@@ -3,9 +3,9 @@ using fso.AppMediaProvider.Models;
 using fso.AppMediaProvider.Settings;
 using fso.EventCore;
 using fso.EventCore.GroupActions;
-using ImageSharp;
-using ImageSharp.Formats;
-using ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Transforms;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +15,9 @@ using Microsoft.Extensions.Options;
 using System;
 using System.IO;
 using System.Security.Claims;
+using SixLabors.Primitives;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace fso.AppMediaProvider.Controllers
 {
@@ -75,21 +78,22 @@ namespace fso.AppMediaProvider.Controllers
                     Directory.CreateDirectory(directoryPath);
                 }
                 // Thumb Resizing
-                using (Image image = new Image(profileImage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(profileImage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
-                    {
-
-                        Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
-                        Size = new Size()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>
+                        p.Resize(new ResizeOptions()
                         {
-                            Height = _groupImageSettings.GroupProfileThumbMaxHeight,
-                            Width = _groupImageSettings.GroupProfileThumbMaxWidth
-                        }
-                    });
-                    image.AutoOrient();
+
+                            Mode = ResizeMode.Max,
+                            Position=AnchorPositionMode.Center,
+                            Size = new Size()
+                            {
+                                Height = _groupImageSettings.GroupProfileThumbMaxHeight,
+                                Width = _groupImageSettings.GroupProfileThumbMaxWidth
+                            }
+                        })
+                        .AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/p_" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -99,20 +103,20 @@ namespace fso.AppMediaProvider.Controllers
                     busAction.ThumbImageUrl = thumbUrlPath;
                 };
                 // Small Resizing
-                using (Image image = new Image(profileImage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(profileImage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>
+                    p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _groupImageSettings.GroupProfileSmallMaxHeight,
                             Width = _groupImageSettings.GroupProfileSmallMaxWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/p_" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -172,21 +176,19 @@ namespace fso.AppMediaProvider.Controllers
                     Directory.CreateDirectory(directoryPath);
                 }
                 // Thumb Resizing
-                using (Image image = new Image(coverImage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(coverImage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
-
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _groupImageSettings.GroupCoverThumbHeight,
                             Width = _groupImageSettings.GroupCoverThumbWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -196,20 +198,19 @@ namespace fso.AppMediaProvider.Controllers
                     busAction.ThumbImageUrl = thumbUrlPath;
                 };
                 // Small Resizing
-                using (Image image = new Image(coverImage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(coverImage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _groupImageSettings.GroupCoverSmallHeight,
                             Width = _groupImageSettings.GroupCoverSmallWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -219,20 +220,19 @@ namespace fso.AppMediaProvider.Controllers
                     busAction.SmallImageUrl = smallUrlpath;
                 };
                 // Large Resizing
-                using (Image image = new Image(coverImage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(coverImage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _groupImageSettings.GroupCoverLargeHeight,
                             Width = _groupImageSettings.GroupCoverLargeWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/g/" + groupId + "/" + +imageWidth + "x" + imageHeight + ".jpeg");

@@ -3,14 +3,17 @@ using System.IO;
 using EasyNetQ;
 using fso.AppMediaProvider.Models;
 using fso.EventCore.UserSettingsActions;
-using ImageSharp;
-using ImageSharp.Formats;
-using ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Transforms;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.Primitives;
 
 namespace fso.AppMediaProvider.Controllers
 {
@@ -40,24 +43,23 @@ namespace fso.AppMediaProvider.Controllers
                 string fileName = userImage.FileName;
                 var headers = userImage.Headers;
                 string userId = User.FindFirst("sub").Value;
-                using (Image image = new Image(userImage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(userImage.OpenReadStream()))
                 {
                     
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Crop,
                         Compand = true,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = 330,
                             Width = 330
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var directoryPath = Path.Combine(rootFolder, "fimg/u/" + userId);
-                    var path = Path.Combine(rootFolder, "fimg/u/" + userId + "/230x230.jpeg");
+                    var path = Path.Combine(rootFolder, "fimg/u/" + userId + "/330x330.jpeg");
                     if (!Directory.Exists(directoryPath))
                     {
                         Directory.CreateDirectory(directoryPath);

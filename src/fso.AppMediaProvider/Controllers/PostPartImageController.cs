@@ -3,9 +3,9 @@ using fso.AppMediaProvider.Models;
 using fso.AppMediaProvider.Settings;
 using fso.EventCore;
 using fso.EventCore.PostPartActions;
-using ImageSharp;
-using ImageSharp.Formats;
-using ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Transforms;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +15,9 @@ using Microsoft.Extensions.Options;
 using System;
 using System.IO;
 using System.Security.Claims;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.Primitives;
 
 namespace fso.AppMediaProvider.Controllers
 {
@@ -78,20 +81,19 @@ namespace fso.AppMediaProvider.Controllers
                     Directory.CreateDirectory(directoryPath);
                 }
                 // Large Resizing
-                using (Image image = new Image(postpartimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(postpartimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });                    
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);           
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _postPartImageSettings.PostPartLargeMaxHeight,
                             Width = _postPartImageSettings.PostPartLargeMaxWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());  
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     busAction.Dimension = (((float)image.Width / (float)image.Height)).ToString();
@@ -102,20 +104,19 @@ namespace fso.AppMediaProvider.Controllers
                     busAction.LargeImageUrl = largeUrlPath;
                 };
                 // Thumb Resizing
-                using (Image image = new Image(postpartimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(postpartimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _postPartImageSettings.PostPartThumbMaxHeight,
                             Width = _postPartImageSettings.PostPartThumbMaxWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -125,20 +126,19 @@ namespace fso.AppMediaProvider.Controllers
                     busAction.ThumbImageUrl = thumbUrlPath;
                 };
                 // Small Resizing
-                using (Image image = new Image(postpartimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(postpartimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = _postPartImageSettings.PostPartSmallMaxHeight,
                             Width = _postPartImageSettings.PostPartSmallMaxWidth
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg");
@@ -147,20 +147,19 @@ namespace fso.AppMediaProvider.Controllers
                     smallUrlpath = prefx + rootPath + "/fimg/pp/" + postpartid + "/" + imageWidth + "x" + imageHeight + ".jpeg";
                     busAction.SmallImageUrl = smallUrlpath;
                 };
-                using (Image image = new Image(postpartimage.OpenReadStream()))
+                using (Image<Rgba32> image = Image.Load(postpartimage.OpenReadStream()))
                 {
-                    image.SaveAsJpeg(outputStream, new JpegEncoderOptions() { Quality = 100 });
-                    image.Resize(new ResizeOptions()
+                    image.SaveAsJpeg(outputStream);
+                    image.Mutate(p=>p.Resize(new ResizeOptions()
                     {
                         Mode = ResizeMode.Max,
-                        Position = AnchorPosition.Center,
+                        Position = AnchorPositionMode.Center,
                         Size = new Size()
                         {
                             Height = 30,
                             Width = 30
                         }
-                    });
-                    image.AutoOrient();
+                    }).AutoOrient());
                     var imageWidth = image.Width;
                     var imageHeight = image.Height;
                     var path = Path.Combine(rootFolder, "fimg/pp/" + postpartid + "/lazy.jpeg");
