@@ -69,7 +69,7 @@ namespace fso.AppMediaProvider.Controllers
                 outputStream.Dispose();
                 string rootPath = _httpContextAccessor.HttpContext.Request.Host.ToString();
                 var prefx = _httpContextAccessor.HttpContext.Request.IsHttps ? "https://" : "http://";
-                string absUrlPath = prefx + rootPath + "/fimg/u/" + userId + "/230x230.jpeg";
+                string absUrlPath = prefx + rootPath + "/fimg/u/" + userId + "/330x330.jpeg";
 
                 _bus.Publish<UserUpdatedProfileImageAction>(new UserUpdatedProfileImageAction()
                 {

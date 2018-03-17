@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fso.NotificationData", "fso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fso.NotificationApi", "fso.NotificationApi\fso.NotificationApi.csproj", "{B421B04A-142D-4C8F-8A59-49FA62AE7627}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fso.Search", "fso.Search\fso.Search.csproj", "{B221B04A-142D-4C8F-8A59-45FA62AE7627}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fso.EventCore", "fso.EventCore\fso.EventCore.csproj", "{4F298001-B3E4-4D5F-82CA-67FF0612481F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fso.EventBusListener", "fso.EventBusListener\fso.EventBusListener.csproj", "{DB684337-324A-407C-A627-806D5430249E}"

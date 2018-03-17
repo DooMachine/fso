@@ -11,7 +11,7 @@ export const environment = {
     Base: 'http://192.168.1.67:7000/',
     Notification: 'http://ntf.localhost/',
     Statics: 'http://192.168.1.67:6900/',
-    AppMedia: 'http://cdn.localhost/'
+    AppMedia: 'http://192.168.1.67:7100/'
   },
   httpErrors: {
     0:   { 'msg': 'Server is not available'},

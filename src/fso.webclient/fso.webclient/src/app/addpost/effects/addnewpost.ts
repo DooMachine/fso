@@ -7,7 +7,7 @@ import { State } from '../reducers/addnewpost';
 import { AddNewPostService } from '../services/addnewpost.service';
 import { selectPost } from '../reducers/index';
 import { PostPartImageService } from '../services/postpartimage.service';
-import {ShowProgressBar, HideProgressBar } from '../../core/actions/index';
+import {ShowProgressBar, HideProgressBar,ShowSnackBarAction } from '../../core/actions/index';
 import { Router } from '@angular/router';
 import { HideComments } from '../../post/actions/reviews';
 
@@ -102,10 +102,20 @@ export class AddNewPostEffects {
           })
           .catch((error) => {
             return Observable.of(
-              new addpostActions.SetPostPartImageFail({error:error})
+              new addpostActions.SetPostPartImageFail({error:error,postPartId:action.payload.ret.postPartId})
             );
           });
     });
+    @Effect() onAddImageFail$: Observable<Action> =
+    this.actions$.ofType<addpostActions.SetPostPartImageFail>(addpostActions.AddNewPostActionTypes.SET_POSTPART_IMAGE_FAIL)
+    .switchMap((action) =>{
+       return Observable.from([
+         new addpostActions.RemovePostPart({postPartId:action.payload.postPartId}),
+         new ShowSnackBarAction({message:'Image is corrupt, try another one.',action:'',config:{duration:4700}}),
+         new HideProgressBar()]
+        )        
+      });
+
     @Effect() onRemovePostPart$: Observable<Action> =
     this.actions$.ofType<addpostActions.RemovePostPart>(addpostActions.AddNewPostActionTypes.REMOVE_POSTPART)
     
@@ -113,7 +123,6 @@ export class AddNewPostEffects {
         return this.addNewPostService
         .RemovePostPart(action.payload.postPartId)
         .map(data => {
-            console.log(data);
             if(data.value.isActionSucceed){
                 return new addpostActions.RemovePostPartSuccess({ret: data.value, postPartId: action.payload.postPartId});
             }else{

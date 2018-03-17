@@ -10,6 +10,16 @@
                 "${workspaceFolder}/src/fso.Api/fso.Api.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build appmediaprovider",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/fso.AppMediaProvider/fso.AppMediaProvider.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

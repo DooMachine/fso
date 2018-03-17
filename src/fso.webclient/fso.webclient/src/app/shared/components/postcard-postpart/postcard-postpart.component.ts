@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, trigger, transition, animate,SimpleChanges, style,OnDestroy,ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,Input, trigger, transition, animate,SimpleChanges, style,OnDestroy,ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { PostCardPostPart } from '../../models/postcard/postCardPostPart';
 import { Observable } from 'rxjs/Observable';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -22,10 +22,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   ],
   template: `
   <a [routerLink] ="['/post',postId]">
-    <mat-grid-list cols="24" rowHeight="1:3">
+    <mat-grid-list cols="24" rowHeight="2:7">
     <mat-grid-tile
-        *ngFor="let tile of gridTiles; let i=index"
-        
+        *ngFor="let tile of gridTiles; let i=index"        
         [colspan]="tile.cols"
         [rowspan]="tile.rows"
         [style.background]="alphaColor">
@@ -34,12 +33,11 @@ import { BreakpointObserver } from '@angular/cdk/layout';
           [@outAnimation]
           [src]=" tile.postPart.image.lazyUrl"
           class="postPartImageSizeHandle absLazy fillContainer" />-->
-          <img          
+          <img 
           (load)="imageLoaded(i)"
           [ngClass]="i==0 || postPartCount==2 ?  'img-responsive' : ''"
           [src]=" i==0 || postPartCount==2 ? tile.postPart.image.url:tile.postPart.image.smallUrl"
-          class="postPartImageSizeHandle" />
-        
+          class="postPartImageSizeHandle" />        
       </mat-grid-tile>
     </mat-grid-list>
   </a>
@@ -64,21 +62,28 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     
    }`],
 })
-export class PostcardPostpartComponent implements OnInit, OnDestroy {
+export class PostcardPostpartComponent implements OnInit, OnDestroy,AfterViewInit {
   @Input() postParts: PostCardPostPart[];
   @Input() alphaColor:string = 'white';
   @Input() postId: number;
   @Input() username:string;
   gridTiles = [];
+  isObserved:boolean = false;
+  isViewInit:boolean = false;
   gridColumns = 24;
   postPartCount:number;
-  rowHeight = '65px';
+  rowHeight = '70px';
   constructor(public breakpointObserver: BreakpointObserver) { }
-  
+  onScroll(){  
+    this.isObserved = true;
+  }
+  ngAfterViewInit() {
+    this.isViewInit = true;
+  }
   ngOnInit() {
     const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
     if(isSmallScreen){
-      this.rowHeight = '55px';
+      this.rowHeight = '62px';
     }
     this.postPartCount = this.postParts.length;
     switch (this.postPartCount) {
@@ -92,7 +97,7 @@ export class PostcardPostpartComponent implements OnInit, OnDestroy {
         this.gridTiles.push({postPart: this.postParts[1], cols:12 ,rows:6,isLoading:true });
         break;
       case 3:
-      if(isSmallScreen){
+      if(isSmallScreen){ 
           this.gridTiles.push({postPart: this.postParts[0], cols:24 ,rows:4,loading:true });
           this.gridTiles.push({postPart: this.postParts[1], cols:12 ,rows:2,loading:true });
           this.gridTiles.push({postPart: this.postParts[2], cols:12 ,rows:2,loading:true });

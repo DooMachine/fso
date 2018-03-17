@@ -60,7 +60,6 @@ export class AppComponent implements OnInit, OnDestroy {
   isDarkTheme$:Observable<boolean>;
   themeClass$:Observable<string>;
   profileImage$:Observable<string>;
-  title = 'feasion';
   progressBarMode$: Observable<ProgressBarState>;
    
   constructor
@@ -105,7 +104,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
   
   if (isPlatformBrowser(this.platformId)) {    
-    this.handleDarkMode();
+    console.log("plat browser")
+      this.handleDarkMode();
         this.oauthService.loadDiscoveryDocumentAndTryLogin().then(_ => {
             this.store.dispatch(new authActions.CheckUserAuthState());
         });
@@ -126,8 +126,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
   private configureWithNewConfigApi() {
-    console.log(environment.production);
-    console.log(authDevConfig);
     if(environment.production){
       this.oauthService.configure(authConfig);
     }else{

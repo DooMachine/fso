@@ -1,29 +1,28 @@
-﻿using EasyNetQ;
-using EasyNetQ.AutoSubscribe;
-using fso.AppMediaProvider.Settings;
-using IdentityServer4.AccessTokenValidation;
-using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.Options;
+using EasyNetQ;
+using Microsoft.AspNetCore.Authorization;
+using IdentityServer4.AccessTokenValidation;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.HttpOverrides;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 
-namespace fso.AppMediaProvider
+namespace fso.Search
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -31,8 +30,39 @@ namespace fso.AppMediaProvider
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging();
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+             var guestPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()                
+                .RequireClaim("scope", "fso.Api")                
+                .Build();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .WithOrigins(
+                        "http://192.168.1.67:10575",
+                        "https://192.168.1.67:10575",   
+                        "http://localhost:80",
+                        "https://localhost:80",                     
+                        "http://localhost",
+                        "https://localhost",
+                        "http://192.168.1.67:7000",
+                        "https://192.168.1.67:7000",
+                        "http://192.168.1.67:5000",
+                        "https://192.168.1.67:5000"
+                        )                    
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .Build());
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("fso.AngularUser", policyUser =>
+                {
+                    policyUser.RequireClaim("role", "fso.api.user");
+                });
+            });
 
             string isdev = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             if(isdev == "Development"){
@@ -40,8 +70,8 @@ namespace fso.AppMediaProvider
                     .AddIdentityServerAuthentication(options =>
                     {
                         options.Authority = "http://192.168.1.67:5000/";
-                        options.ApiName = "fso.AppFileProvider";
-                        options.ApiSecret = "fso.AppFileProviderSecret";
+                        options.ApiName = "fso.Api";
+                        options.ApiSecret = "fso.ApiSecret";
                         options.RequireHttpsMetadata = false;
                         options.SupportedTokens = SupportedTokens.Both;
                     });
@@ -49,9 +79,9 @@ namespace fso.AppMediaProvider
                 services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                     .AddIdentityServerAuthentication(options =>
                     {
-                        options.Authority = @"http://identityprovider:5000/";
-                        options.ApiName = "fso.AppFileProvider";
-                        options.ApiSecret = "fso.AppFileProviderSecret";
+                        options.Authority = "http://identityprovider:5000/";
+                        options.ApiName = "fso.Api";
+                        options.ApiSecret = "fso.ApiSecret";
                         options.RequireHttpsMetadata = false;
                         options.SupportedTokens = SupportedTokens.Both;
                     });
@@ -79,97 +109,31 @@ namespace fso.AppMediaProvider
             // event bus
             Console.WriteLine("Bus connected {0}",_bus.IsConnected);
             services.AddSingleton(_bus);
-
-            var appSettings = Configuration.GetSection("PostPartImage");
-            services.Configure<PostPartImageSettings>(appSettings);
-
-            var pcolSettings = Configuration.GetSection("PostCollectionImage");
-            services.Configure<PostCollectionImageSettings>(pcolSettings);
-
-            var gImgSettings = Configuration.GetSection("GroupImage");
-            services.Configure<GroupImageSettings>(gImgSettings);
-
-            services.AddCors(options =>
+             services.AddMvc(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder
-                    .WithOrigins(
-                        "http://192.168.1.67:10575",
-                        "https://192.168.1.67:10575",
-                        "http://localhost",
-                        "https://localhost",
-                        "http://localhost:80",
-                        "https://localhost:80",
-                        "http://192.168.1.67:7000",
-                        "https://192.168.1.67:7000",
-                        "http://192.168.1.67:5000",
-                        "https://192.168.1.67:5000"
-                    )
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                    .Build());
-            });
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("fso.AngularUser", policyUser =>
-                {
-                    policyUser.RequireRole("role", "fso.api.user");
-                });
-            });
-            
-
-            services.AddResponseCaching();
-            services.AddMvc(options =>
-            {
-
+                
+                //options.Filters.Add(new AuthorizeFilter(guestPolicy));
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddDebug();
-            loggerFactory.AddConsole();
-            loggerFactory.AddEventSourceLogger();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            app.UseCors("CorsPolicy");
-            app.UseStaticFiles();
-            // cache static files
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
-            app.Use(async (context, next) =>
-            {
-                context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue()
-                {
-                    Public = true,
-                    MaxAge = TimeSpan.FromSeconds(60)
-                };
-                context.Response.Headers[HeaderNames.Vary] = new string[] { "Accept-Encoding" };
-
-                await next();
-            });
-            
             app.UseAuthentication();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
     }
     public class DoNothingLogger : IEasyNetQLogger

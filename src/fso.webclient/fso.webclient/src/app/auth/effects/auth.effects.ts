@@ -18,11 +18,11 @@ export type Action = authActions.All;
 
 @Injectable()
 export class AuthEffects {
-    private oauthService: OAuthService;
 
     constructor(
         private actions: Actions,
         private injector: Injector,
+        private oauthService: OAuthService,
         private store: Store<AuthState>,
         private router: Router
     ) {}
@@ -75,14 +75,18 @@ export class AuthEffects {
         .switchMap((action) => {
         this.getAuthService();
         var np = this.oauthService.loadUserProfile();
-        return Observable.fromPromise(np.then(userData=>(new authActions.GetUserInfoSuccess({ isUserDataLoaded: true, userData: userData }))))
-        
+        return Observable.of(1).switchMap(x=>
+         Observable.fromPromise(
+            np.then(userData=>
+                (new authActions.GetUserInfoSuccess({ isUserDataLoaded: true, userData: userData }))))
+         );
     });
     @Effect({dispatch: false})
         onAttemptLogin: Observable<Action> = this.actions
           .ofType(authActions.ATTEMPT_LOGIN)
           .do(() => {
-              this.getAuthService();
+              console.log("looog");
+                this.getAuthService();
                 this.oauthService.initImplicitFlow();
             });
 
@@ -101,9 +105,11 @@ export class AuthEffects {
          );
 
     private getAuthService(): OAuthService {
+        console.log(typeof this.oauthService)
         if (typeof this.oauthService === 'undefined') {
             this.oauthService = this.injector.get(OAuthService);
         }
+        console.log(typeof this.oauthService)
         return this.oauthService;
     }
 }
