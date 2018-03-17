@@ -69,8 +69,13 @@ namespace fso.Data.EntityRepositories
             {
                 return ret;
             }
-
+           
             PostPart ppart = _postPartSet.Include(p => p.Post).Include(p=>p.Image).FirstOrDefault(p => p.Id == PostPartId);
+            int postpartCount = _entityContext.Set<PostPart>().Count(p=>p.PostId==ppart.PostId);
+            // if postpart count is one dont let delete
+            if(postpartCount==1){
+                return ret;
+            }
             if (ppart.Post.UserInfoId != currUserId)
             {
                 return ret;

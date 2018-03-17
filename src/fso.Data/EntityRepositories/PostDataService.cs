@@ -388,7 +388,7 @@ namespace fso.Data.EntityRepositories
                         PostRate = p.PostRate ?? (double)ret.Post.Rating,
                         // Initial pageIndex is 6
                     })
-                    .Where(p => p.Id==reviewId.Value)
+                    .Where(p => p.Id==reviewId.Value && p.PostId == postId)
                     .ToPaginatedList(1, 6, totalreviewCount);
                 }
                 else

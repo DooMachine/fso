@@ -8,6 +8,9 @@ namespace fso.Core.Domains
         [StringLength(1024)]
         public string Content { get; set; }
 
+        [StringLength(64)]
+        public string PredictedLanguage { get; set; }
+
         public virtual UserInfo Author { get; set; }
         public string AuthorId { get; set; }
         /// <summary>

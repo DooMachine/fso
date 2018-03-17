@@ -16,8 +16,6 @@ namespace fso.DataExtensions.AutoMapper
                 .ForMember(p => p.ProfileImage, opt => opt.MapFrom(src => src.ProfileImage.ThumbPath))
                 .ForMember(p => p.CoverImage, opt => opt.MapFrom(src => src.CoverImage.ThumbPath));
 
-            
-
             CreateMap<Post, PostCard>()
                 .ForMember(p => p.PostParts, opt => opt.MapFrom(src => src.PostParts))
                 .ForMember(p => p.AuthorInfo, opt => opt.MapFrom(src => src.UserInfo));
@@ -30,8 +28,6 @@ namespace fso.DataExtensions.AutoMapper
                 .ForMember(d => d.IsCurrentUserLiked, opt => opt.ResolveUsing(
                    (src, dst, arg3, context) => src.LikedUsers.Any(p => p.UserInfoId == (string)context.Options.Items["appUserId"])
                 ));
-
-            
 
             CreateMap<UserInfo, BaseUserInfoDisplay>()
                 .ForMember(p => p.ProfileImage, opt => opt.MapFrom(src => src.ProfilePicture.SmallPath))

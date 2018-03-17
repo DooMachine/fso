@@ -97,7 +97,7 @@ namespace fso.Data.EntityRepositories
                 Username = uInfo.Entity.UName,
                 Name = uInfo.Entity.Name,
                 TotalReputation = _userCacheService.GetUserReputation(uInfo.Entity.AppUserId) ?? GetUserReputation(uInfo.Entity.AppUserId, 0),
-                ProfileImageUrl = uInfo.Entity.ProfilePicture.SmallPath,
+                ProfileImageUrl = uInfo.ProfilePicture?.SmallPath ?? _userProfileImageSettings.UserImageUrlTemplate.Replace("{#appUserId}",uInfo.Entity.AppUserId),
                 Surname = uInfo.Entity.Surname,
                 InterestCount = _userCacheService.GetUserInterestCount(uInfo.Entity.AppUserId) ?? GetUserInterestCount(uInfo.Entity.AppUserId, 60),
                 FollowingCount = _userFollowCacheService.GetUserFollowingCount(uInfo.Entity.AppUserId) ?? GetUserFollowingCount(uInfo.Entity.AppUserId, 60),

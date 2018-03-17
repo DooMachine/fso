@@ -21,7 +21,8 @@ namespace fso.Core.Domains
         /// Updated every 6 hours
         /// </summary>
         public virtual ICollection<Popularity> Popularity { get; set; }
-
+        [StringLength(64)]
+        public string PredictedLanguage { get; set; }
         public DateTime DateUtcPublished { get; set; }
         public bool IsPublished { get; set; }
 

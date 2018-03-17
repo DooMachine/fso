@@ -53,14 +53,30 @@
         </mat-autocomplete>
       </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="start stretch" fxLayourWrap fxLayoutGap="4px">
-          <button mat-fab
-          class="intbutton"
-            (click)="removeSelectetInterest(interest.id)"
-            [style.backgroundImage]="'url('+interest.profileImage +')'"
-            *ngFor="let interest of selectedInterests">
-            <!--Could not handle via css-->
-          <span class="interest-line" mat-line> {{interest.name.length > 4 ? interest.name.slice(0,4)+"..." : interest.name}} </span>
-         </button>  
+            <mat-chip-list>                    
+                <a *ngFor="let interest of selectedInterests" 
+                class="semi-bold no-anchor-text"
+                href="#"
+                (click)=" removeSelectetInterest(interest.id,$event)"
+                [style.color]="interest.alphaColor"
+                >
+                    <mat-chip >  
+                    <a class="semi-bold no-anchor-text"  
+                    href="#"
+                    (click)=" removeSelectetInterest(interest.id,$event)"                        
+                        >    
+                        <img [style.borderColor]="interest.alphaColor"
+                        [default] class="img-circle" [src]="interest.profileImage"> 
+                    </a>
+                    <a class="semi-bold a-grey no-anchor-text"
+                    href="#"
+                    (click)=" removeSelectetInterest(interest.id,$event)"
+                        >              
+                        <span> {{interest.name}} </span>
+                    </a>
+                    </mat-chip>
+                </a>
+            </mat-chip-list> 
         </div>
       <!--<mat-form-field color="accent">
         <mat-select color="accent" placeholder="Privacy" formControlName="selectedPrivacySettings">

@@ -22,7 +22,7 @@
       </app-nav-item>
     </app-sidenav>-->
     <app-navbar [textColor]="navbarTextColor$ | async" [color]="navbarColor$ | async" (openMenu)="openSidenav()">
-      <mat-toolbar-row fxFlex="20"  [@panelLeftRight]>
+      <mat-toolbar-row fxFlex="80" fxFlex.gt-sm="20"  [@panelLeftRight]>
         <a class="a-grey" [routerLink]="['/']"> 
           <img class="logoel" src="/assets/feasionLogo.png" alt="feasion">
       </a>
@@ -98,6 +98,10 @@
                   <span>Help</span>
                   </button>
                   </a>
+                      <button (click)="logout()" mat-menu-item>
+                      <mat-icon  color="primary">exit</mat-icon>
+                      <span>Logout</span>
+                    </button>
                   <a      
                   class="a-grey"
                   matTooltipShowDelay="310"               

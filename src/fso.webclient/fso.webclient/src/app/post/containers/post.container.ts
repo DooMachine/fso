@@ -29,9 +29,9 @@ import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
     <div class="post-wrapper">
-        <div fxLayout="row" class="post-l" fxLayoutAlign="start start" fxLayoutWrap>
-            <div fxFlex="60" 
-            fxFlex.lt-md="100"
+        <div fxLayout="column" fxLayout.gt-md="row" class="post-l" fxLayoutAlign="start start" fxLayoutWrap>
+            <div fxFlex="100" 
+            fxFlex.gt-md="60"
             fxLayout="column" fxLayoutAlign="start stretch">   
                 <div>
                     <app-post-details
@@ -105,8 +105,8 @@ import * as fromFeedCommentActions from '../../feed/feed-comments/actions';
                 </div>
             </div>
             <div 
-            fxFlex="29"
-            fxFlex.lt-md="100"
+            fxFlex="100"
+            fxFlex.gt-md="29"
             fxLayout="column" fxLayoutAlign="start start"> 
                 <app-post-similiarposts
                 [isLoading]="isLoading$ | async"

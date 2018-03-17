@@ -14,7 +14,7 @@ namespace fso.NotificationBusListener.Consumers.CommentConsumers
 {
     public class UserAddedCommentConsumer : IConsume<UserAddedCommentAction>
     {
-        private readonly string UserSmallImageUrl = "http://192.168.1.67:7100/fimg/u/{appUserId}/230x230.jpeg";
+        private readonly string UserSmallImageUrl = "http://cdn.localhost/fimg/u/{appUserId}/230x230.jpeg";
         public UserAddedCommentConsumer(
             ) : base()
         {
@@ -38,7 +38,7 @@ namespace fso.NotificationBusListener.Consumers.CommentConsumers
                         DateUtcAdd = DateTime.UtcNow
                     };
                     // If same Notification Does Not Exist
-                    // Add new one                    
+                    // Add new one
                     if (nIfExist == null)
                     {
                         nUserDataList.Add(NotfUserInfo);
@@ -68,6 +68,7 @@ namespace fso.NotificationBusListener.Consumers.CommentConsumers
                             nUserDataList.Add(NotfUserInfo);
                             nIfExist.ActivityUserJsonArray = JsonConvert.SerializeObject(nUserDataList);
                             nIfExist.DateUtcModified = DateTime.UtcNow;
+                            nIfExist.IsSeen =false;
                         }
                         db.Entry(nIfExist).State = EntityState.Modified;
                     }

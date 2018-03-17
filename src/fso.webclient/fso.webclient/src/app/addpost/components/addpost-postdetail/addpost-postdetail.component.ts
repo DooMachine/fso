@@ -79,16 +79,17 @@ export class AddpostPostdetailComponent implements OnInit {
     this.form.controls['selectedInterestIds'].setValue([...prevVal,newVal]);
     this.ocInputSelected.emit(newVal);
   }
-  removeSelectetInterest($event){
+  removeSelectetInterest(id,$event){
+    $event.preventDefault();
     if(this.form.controls['selectedInterestIds'].value.length  < 1){
       this.onShowError.emit('At least 1 interest must be selected.');
     }
     const prevVal = this.form.controls['selectedInterestIds'].value;
     const nextVal = prevVal.filter((interestId) => { 
-      return interestId !== $event
+      return interestId !== id
     });
     this.form.controls['selectedInterestIds'].setValue(nextVal);
-    this.onRemoveSelectedInterest.emit($event);
+    this.onRemoveSelectedInterest.emit(id);
   }
   interestInputChanged($event){
     

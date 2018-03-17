@@ -81,17 +81,28 @@ namespace fso.Api
                     policyUser.RequireClaim("role", "fso.api.user");
                 });
             });
-            
-
-            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-               .AddIdentityServerAuthentication(options =>
-               {
-                   options.Authority = "http://identityprovider:5000/";
-                   options.ApiName = "fso.Api";
-                   options.ApiSecret = "fso.ApiSecret";
-                   options.RequireHttpsMetadata = false;
-                   options.SupportedTokens = SupportedTokens.Both;
-               });
+            string isdev = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if(isdev == "Development"){
+                services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = "http://192.168.1.67:5000/";
+                        options.ApiName = "fso.Api";
+                        options.ApiSecret = "fso.ApiSecret";
+                        options.RequireHttpsMetadata = false;
+                        options.SupportedTokens = SupportedTokens.Both;
+                    });
+            }else{
+                services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = "http://identityprovider:5000/";
+                        options.ApiName = "fso.Api";
+                        options.ApiSecret = "fso.ApiSecret";
+                        options.RequireHttpsMetadata = false;
+                        options.SupportedTokens = SupportedTokens.Both;
+                    });
+            }            
 
             var connection = new ConnectionConfiguration();
             
@@ -99,9 +110,15 @@ namespace fso.Api
             connection.UserName = "seph";
             connection.Password = "seph1w12";
            
-            connection.Hosts = new List<HostConfiguration> {
-                 new HostConfiguration(){Host=@"rabbitmq",Port=5672}
+            if(isdev == "Development"){
+             connection.Hosts = new List<HostConfiguration> {
+                 new HostConfiguration(){Host=@"192.168.1.67",Port=5672}
                 };
+            }else{
+                connection.Hosts = new List<HostConfiguration> {
+                 new HostConfiguration(){Host=@"rabbitmq",Port=5672}
+                };            }
+            
             connection.ConnectIntervalAttempt = TimeSpan.FromSeconds(4);
             connection.RequestedHeartbeat = 4;
             connection.Timeout = 20;

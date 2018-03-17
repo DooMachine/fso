@@ -19,6 +19,9 @@ namespace fso.Core.Domains
         public string About { get; set; }
         [StringLength(256)]
         public string ColorAlpha { get; set; }
+
+        [StringLength(64)]
+        public string PredictedLanguage { get; set; }
         /// <summary>
         /// Popularity(Trending) Level of Group. (Follower Last Day * Post Count In Last Day)
         /// It will be updated every 6 hour for posts that posted in last day.

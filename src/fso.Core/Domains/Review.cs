@@ -13,6 +13,8 @@ namespace fso.Core.Domains
 
         public DateTime DateUtcPublished { get; set; }
 
+        [StringLength(64)]
+        public string PredictedLanguage { get; set; }
         public bool IsPublished => DateTime.UtcNow >= DateUtcPublished;
         /// <summary>
         /// Gets or sets the user of Review

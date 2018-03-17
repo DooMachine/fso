@@ -23,7 +23,13 @@ namespace fso.Core.Domains
         [StringLength(32)]
         public string AlphaColor { get; set; }
 
-        public string ProfileImageUnsafe => "http://localhost:7100/fimg/u/" + AppUserId + "/230x230.jpeg";
+        [StringLength(64)]
+        public string LanguagePreference { get; set; }
+
+        [StringLength(64)]
+        public string PredictedLanguage { get; set; }
+
+        public string ProfileImageUnsafe => "http://cdn.localhost/fimg/u/" + AppUserId + "/230x230.jpeg";
         public UserFollowSetting FollowSetting { get; set; }
         public UserPrivacySetting PrivacySetting { get; set; }
 

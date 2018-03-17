@@ -10,6 +10,8 @@ using Microsoft.Extensions.Caching.Distributed;
 using fso.Caching;
 using fso.Core.Caching;
 using fso.Caching.CachingServices;
+using System;
+using System.Linq;
 
 namespace fso.Bootstrapper
 {
@@ -49,11 +51,19 @@ namespace fso.Bootstrapper
             services.AddScoped<IPostCollectionDataService, PostCollectionDataService>();
             services.AddScoped<IExploreDataService, ExploreDataService>();
             // ----- CACHE ----- //
-            // TODO: Implement cache as redis.
-            services.AddDistributedRedisCache(options=>{
+            string isdev = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            if(isdev =="Development"){
+                services.AddDistributedRedisCache(options=>{
                 options.InstanceName = "mainapistore";
-                options.Configuration = "192.168.1.67:6379";
+                options.Configuration = @"192.168.1.67:6379";
             });
+            }else{
+                services.AddDistributedRedisCache(options=>{
+                options.InstanceName = "mainapistore";
+                options.Configuration = @"redis";
+            });
+            }
+            
             services.AddScoped<ICacheProvider, CacheProvider>(p => new CacheProvider(p.GetRequiredService<IDistributedCache>()));
             // Cache Services
             services.AddScoped<IPostCacheService, PostCacheService>();

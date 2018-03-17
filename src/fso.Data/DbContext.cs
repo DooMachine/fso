@@ -63,14 +63,24 @@ namespace fso.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string mysqlServer = Environment.GetEnvironmentVariable("MYSQL_BRIDGE_IP");
-            // define the database to use
-            optionsBuilder
-                .UseMySql(@"Server=mysqldb;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
+            //string isdev = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            //if(isdev =="Development"){
+                optionsBuilder
+                .UseMySql("Server=127.0.0.1;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
                     x =>
                     {
                         x.MigrationsAssembly("fso.Data");
                     });
+            //}else{
+            //    optionsBuilder
+            //    .UseMySql(@"Server=mysqldb;Database=f_m_db;Uid=root;Pwd=seph1w12;CharSet=utf8mb4;",
+            //        x =>
+            //        {
+            //            x.MigrationsAssembly("fso.Data");
+            //        });
+            //}
+            // define the database to use
+            
         }
         public DbSet<TEntity> SetChild<TEntity>() where TEntity : class
         {
