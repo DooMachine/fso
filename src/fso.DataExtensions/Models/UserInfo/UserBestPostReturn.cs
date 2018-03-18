@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace fso.DataExtensions.Models.UserInfo
+namespace fso.DataExtensions.Models
 {
     public class UserBestPostsReturn 
     {

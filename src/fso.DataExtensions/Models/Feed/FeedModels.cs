@@ -1,5 +1,4 @@
 ﻿using fso.Core.Domains.Helpers;
-using fso.DataExtensions.Models.GroupReturnModels;
 using fso.DataExtensions.Models.User;
 
 namespace fso.DataExtensions.Models

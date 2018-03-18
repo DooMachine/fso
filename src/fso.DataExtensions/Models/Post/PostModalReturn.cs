@@ -1,8 +1,6 @@
 ﻿
 
 using fso.Core.Domains.Helpers;
-using fso.DataExtensions.Models.Comment;
-using fso.DataExtensions.Models.UserInfo;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

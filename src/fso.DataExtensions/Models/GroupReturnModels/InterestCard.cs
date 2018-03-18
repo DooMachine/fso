@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace fso.DataExtensions.Models.GroupReturnModels
+namespace fso.DataExtensions.Models
 {
     public class InterestCard : IEquatable<InterestCard>
     {

@@ -9,6 +9,8 @@ namespace fso.Data.EntityMappings
         public override void Map(EntityTypeBuilder<FollowInfo> builder)
         {
             builder.HasKey(p => new { p.FollowedId, p.FollowerId });
+             builder
+                .HasQueryFilter(p => !p.IsSoftDeleted);
         }
     }
 }

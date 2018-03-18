@@ -1,8 +1,5 @@
 ﻿
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.GroupReturnModels;
-using fso.DataExtensions.Models.GroupReturnModels.GroupIndex;
-using fso.DataExtensions.Models.UserInfo;
 using System.Linq;
 
 namespace fso.DataExtensions.DataServices

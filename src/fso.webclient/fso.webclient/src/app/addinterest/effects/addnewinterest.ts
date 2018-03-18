@@ -10,6 +10,22 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AddNewInterestEffects {
+
+  @Effect() onGetAutoCompleteInterests$: Observable<Action> =
+  this.actions$.ofType<addinterestActions.GetAutoCompleteInterests>(addinterestActions.AddNewInterestActionTypes.GET_AUTOCOMPLETE_INTEREST)
+  .switchMap((action) => {
+      return this.addNewInterestService
+      .GetAutoCompleteInterests(action.payload.query,action.payload.pageSize)
+      .map(data => {
+          return new addinterestActions.GetAutoCompleteInterestsSuccess(data.value);
+        })
+        .catch((error) => {
+          return Observable.of(
+            new addinterestActions.GetAutoCompleteInterestsSuccessFail({error:error})
+          );
+        });
+  });
+
     @Effect() onSubmitInterest$: Observable<Action> =
     this.actions$.ofType<addinterestActions.SubmitForm>(addinterestActions.AddNewInterestActionTypes.SUBMIT_FORM)
     .switchMap((action) => {

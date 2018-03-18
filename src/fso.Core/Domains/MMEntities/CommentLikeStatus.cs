@@ -2,7 +2,7 @@
 
 namespace fso.Core.Domains
 {
-    public class CommentUser
+    public class CommentUser : BaseMMEntity
     {
         public virtual Comment Comment { get; set; }
         public int? CommentId { get; set; }

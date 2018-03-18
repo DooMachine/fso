@@ -9,6 +9,8 @@ namespace fso.Data.EntityMappings
         public override void Map(EntityTypeBuilder<CommentUser> builder)
         {
             builder.HasKey(p =>new {p.CommentId,p.UserInfoId });
+            builder
+                .HasQueryFilter(p => !p.IsSoftDeleted);
         }
     }
 }

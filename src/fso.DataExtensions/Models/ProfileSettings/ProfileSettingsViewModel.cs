@@ -1,7 +1,7 @@
 ﻿using fso.Core.Domains;
 using System.ComponentModel.DataAnnotations;
 
-namespace fso.DataExtensions.Models.ProfileSettings
+namespace fso.DataExtensions.Models
 {
     public class ProfileSettingsViewModel
     {

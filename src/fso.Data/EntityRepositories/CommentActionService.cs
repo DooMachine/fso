@@ -1,10 +1,9 @@
 ﻿using fso.DataExtensions.DataServices;
 using System;
-using fso.DataExtensions.Models.Comment;
+using fso.DataExtensions.Models;
 using fso.Core.Domains;
 using Microsoft.EntityFrameworkCore;
 using fso.Core.Domains.MMEntities;
-using fso.DataExtensions.Models;
 using System.Linq;
 using fso.DataExtensions.Models.UserInfo;
 using fso.Caching.CachingServices;

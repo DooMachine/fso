@@ -1,6 +1,6 @@
 ﻿
 
-namespace fso.DataExtensions.Models.UserInfo
+namespace fso.DataExtensions.Models
 {
     public class PostUserInfo
     {

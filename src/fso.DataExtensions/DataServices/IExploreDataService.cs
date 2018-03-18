@@ -1,5 +1,4 @@
 ﻿using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Feed;
 using System;
 using System.Collections.Generic;
 using System.Text;

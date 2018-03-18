@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace fso.Core.Domains.MMEntities
 {
-    public class UserReview : IEquatable<UserReview>
+    public class UserReview : BaseMMEntity, IEquatable<UserReview> 
     {
         public virtual UserInfo UserInfo { get; set; }
         public string UserInfoId { get; set; }
@@ -15,7 +15,6 @@ namespace fso.Core.Domains.MMEntities
 
         public LikeStatus LikeStatus { get; set; }
 
-        public DateTime DateUtcModified { get; set; }
 
         public override bool Equals(object obj)
         {

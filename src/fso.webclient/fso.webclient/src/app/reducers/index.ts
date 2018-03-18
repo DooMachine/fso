@@ -52,7 +52,7 @@ export const metaReducers: MetaReducer<State>[] =
  // stateSetter
  //]
  //:
- [stateSetter,logger];
+ [stateSetter];
 
 
 /**
@@ -61,6 +61,6 @@ export const metaReducers: MetaReducer<State>[] =
 export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
 export const getAuthState = createFeatureSelector<AuthState>('auth');
 export const getShowSidenav = createSelector(
-getLayoutState,
-fromLayout.getShowSidenav
-);
+  getLayoutState,
+  fromLayout.getShowSidenav
+  );

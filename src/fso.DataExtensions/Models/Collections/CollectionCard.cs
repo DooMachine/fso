@@ -1,7 +1,7 @@
 ﻿using fso.DataExtensions.Models.UserInfo;
 using System;
 
-namespace fso.DataExtensions.Models.Collections
+namespace fso.DataExtensions.Models
 {
     public class CollectionCard
     {

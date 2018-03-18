@@ -1,7 +1,6 @@
 ﻿using fso.Core.Domains;
 using fso.Core.Domains.Helpers;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Feed;
 
 namespace fso.DataExtensions.DataServices
 {

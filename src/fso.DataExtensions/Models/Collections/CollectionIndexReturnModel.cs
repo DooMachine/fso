@@ -1,6 +1,6 @@
 ﻿
 
-namespace fso.DataExtensions.Models.Collections
+namespace fso.DataExtensions.Models
 {
     public class CollectionIndexReturnModel
     {

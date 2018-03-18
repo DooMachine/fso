@@ -12,11 +12,8 @@ using fso.DataExtensions.Models.User;
 using System.Collections.Generic;
 using fso.Core.Extensions;
 using System;
-using fso.DataExtensions.Models.GroupReturnModels;
-using fso.DataExtensions.Models.Collections;
 using Microsoft.Extensions.Options;
 using fso.Settings.Image;
-using fso.DataExtensions.Models.Review;
 
 namespace fso.Data.EntityRepositories
 {

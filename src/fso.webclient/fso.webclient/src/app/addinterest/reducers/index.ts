@@ -30,3 +30,6 @@ export function clearState(reducer: ActionReducer<State>): ActionReducer<State> 
   export const selectIsLoading = createSelector(selectAddNewInterestState, state=> state.isLoading);
   export const selectNewInterest = createSelector(selectAddNewInterestState, state=> state.interest);
   export const selectError = createSelector(selectAddNewInterestState, state => state.error); 
+
+  export const selectInterestList = createSelector(selectAddNewInterestState, state=>state.interests);
+  export const selectInterestsLoading =createSelector(selectAddNewInterestState, state=>state.autoCompleteInterestsLoading);

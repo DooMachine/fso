@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using fso.Core.Domains;
-using fso.DataExtensions.Models.GroupReturnModels;
-using fso.DataExtensions.Models.GroupReturnModels.GroupIndex;
 using fso.DataExtensions.Models;
 using System.Linq;
 

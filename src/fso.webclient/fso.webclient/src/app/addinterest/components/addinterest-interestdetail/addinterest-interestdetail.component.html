@@ -28,6 +28,31 @@
               </div>
           </div>
         </mat-form-field>
+        <mat-form-field >
+            <input matInput
+            [formControl]="interestCtrl"
+            placeholder="Search Interests"
+            (input)="interestInputChanged($event)"
+            aria-label="Post Interests" 
+            [matAutocomplete]="interestAc"> 
+            <mat-autocomplete
+              (optionSelected)="interestSelected($event)"
+              #interestAc="matAutocomplete">
+              <mat-option *ngIf="isautoCompleteInterestsLoading"
+               >
+               <mat-spinner
+                diameter="12"
+                mode="indeterminate">
+               </mat-spinner>
+              </mat-option>
+              <mat-option *ngFor="let interest of autoCompleteInterests"
+                [value]="interest.id">
+                <img style="vertical-align:middle;"
+                 aria-hidden src="{{interest.profileImage}}" height="25" />
+                <span>{{ interest.name }}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         <mat-form-field  color="accent">
             <input matInput placeholder="Color-Alpha" [formControl]="colorAlphaCtrl">
             <div class="error" *ngIf="colorAlphaCtrl.invalid  && (colorAlphaCtrl.dirty || colorAlphaCtrl.touched)"

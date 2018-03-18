@@ -1,6 +1,6 @@
 ﻿using fso.Core.Domains.MMEntities;
 
-namespace fso.DataExtensions.Models.UserInfo
+namespace fso.DataExtensions.Models
 {
     public class FollowGroupReturn : BaseReturnModel
     {

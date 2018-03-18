@@ -1,4 +1,4 @@
-﻿using fso.DataExtensions.Models.ProfileSettings;
+﻿using fso.DataExtensions.Models;
 namespace fso.Api.Models.GetParameters
 {
     public class ProfileSettingsParameters

@@ -1,7 +1,6 @@
 ﻿using fso.Core.Domains.Helpers;
 using fso.Core.Domains.MMEntities;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Review;
 using fso.DataExtensions.Models.User;
 using fso.DataExtensions.Models.UserInfo;
 using System.Linq;

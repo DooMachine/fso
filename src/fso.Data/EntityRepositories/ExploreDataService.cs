@@ -4,8 +4,6 @@ using fso.Core.Domains.MMEntities;
 using fso.Core.Extensions;
 using fso.DataExtensions.DataServices;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Feed;
-using fso.DataExtensions.Models.GroupReturnModels;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,20 +73,42 @@ namespace fso.Data.EntityRepositories
                     if(langCodeTrendingInterestIds.Length>req.PageSize)
                         _exploreCacheService.SetExploreInterestIds(req.LangCode, req.PageIndex, langCodeTrendingInterestIds, 60 * 24);
             }
-            ret.Entities = _context.Set<Group>().AsNoTracking()
-                .Select(p => new { Entity = p, Image = p.ProfileImage, p.CoverImage })
-                .Where(p => langCodeTrendingInterestIds.Contains(p.Entity.Id))
-                .Select(p => new InterestCard()
-                {
-                    AlphaColor  = p.Entity.ColorAlpha,
-                    Id = p.Entity.Id,
-                    Name = p.Entity.Name,
-                    UrlKey = p.Entity.UrlKey,
-                    IsCurrentUserFollowing = userFollowedInterest.Contains(p.Entity.Id),
-                    ProfileImage = p.Image.SmallPath,
-                    CoverImage = p.CoverImage.ThumbPath
-                })
-                .ToPaginatedList(req.PageIndex, req.PageSize, totalGroupCount.Value);
+            if(langCodeTrendingInterestIds.Count()<req.PageSize){
+                int dif = req.PageSize - langCodeTrendingInterestIds.Count();
+
+                ret.Entities = _context.Set<Group>().AsNoTracking()
+                    .Select(p => new { Entity = p, Image = p.ProfileImage, p.CoverImage })
+                    .OrderByDescending(p=>p.Entity.DateUtcModified)
+                    .Skip((req.PageIndex-1)*req.PageSize)
+                    .Take(req.PageSize)
+                    .Select(p => new InterestCard()
+                    {
+                        AlphaColor  = p.Entity.ColorAlpha,
+                        Id = p.Entity.Id,
+                        Name = p.Entity.Name,
+                        UrlKey = p.Entity.UrlKey,
+                        IsCurrentUserFollowing = userFollowedInterest.Contains(p.Entity.Id),
+                        ProfileImage = p.Image.SmallPath,
+                        CoverImage = p.CoverImage.ThumbPath
+                    })
+                    .ToPaginatedList(req.PageIndex, req.PageSize, totalGroupCount.Value);
+            }else{
+                ret.Entities = _context.Set<Group>().AsNoTracking()
+                    .Select(p => new { Entity = p, Image = p.ProfileImage, p.CoverImage })
+                    .Where(p => langCodeTrendingInterestIds.Contains(p.Entity.Id))
+                    .Select(p => new InterestCard()
+                    {
+                        AlphaColor  = p.Entity.ColorAlpha,
+                        Id = p.Entity.Id,
+                        Name = p.Entity.Name,
+                        UrlKey = p.Entity.UrlKey,
+                        IsCurrentUserFollowing = userFollowedInterest.Contains(p.Entity.Id),
+                        ProfileImage = p.Image.SmallPath,
+                        CoverImage = p.CoverImage.ThumbPath
+                    })
+                    .ToPaginatedList(req.PageIndex, req.PageSize, totalGroupCount.Value);                
+            
+            }
             return ret;
         }
     }

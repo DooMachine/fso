@@ -1,9 +1,9 @@
-﻿using fso.DataExtensions.Models.GroupReturnModels;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace fso.DataExtensions.Models.UserInfo
+namespace fso.DataExtensions.Models
 {
     public class HoverUserInfo 
     {

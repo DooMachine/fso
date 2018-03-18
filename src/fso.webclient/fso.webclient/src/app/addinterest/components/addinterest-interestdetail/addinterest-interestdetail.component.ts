@@ -12,9 +12,13 @@ export class AddinterestInterestdetailComponent implements OnInit {
   interestInput:string ='';
   form: any;
   @Input() formState: any;
+  @Output() ocInputChanged = new EventEmitter();
   @Output() onFormSubmit= new EventEmitter();
   @Output() onShowError = new EventEmitter();
   @Input() formError: null|string;
+
+  @Input() isautoCompleteInterestsLoading: boolean;
+  @Input() autoCompleteInterests:InterestCard[];
   @Input()
   set pending(isPending: boolean) {
     if (isPending) {
@@ -37,6 +41,7 @@ export class AddinterestInterestdetailComponent implements OnInit {
   aboutCtrl:FormControl;
   urlKeyCtrl:FormControl;
   descriptionCtrl: FormControl;
+  interestCtrl:FormControl;
   colorAlphaCtrl:FormControl;
 
   constructor(
@@ -46,9 +51,12 @@ export class AddinterestInterestdetailComponent implements OnInit {
       this.urlKeyCtrl = this.formBuilder.control('',[Validators.required, Validators.maxLength(32)]);
       this.descriptionCtrl = this.formBuilder.control('', [Validators.minLength(2), Validators.maxLength(256)]);
       this.aboutCtrl = this.formBuilder.control('', [Validators.minLength(2), Validators.maxLength(256)]);
+      this.interestCtrl = this.formBuilder.control('');
       this.form = this.formBuilder.group({
         name: this.nameCtrl,
         about:this.aboutCtrl,
+        interestInput: this.interestCtrl,
+        parentInterestId:0,
         colorAlpha:this.colorAlphaCtrl,
         urlKey:this.urlKeyCtrl,
         description: this.descriptionCtrl,
@@ -58,6 +66,20 @@ export class AddinterestInterestdetailComponent implements OnInit {
      }
 
   ngOnInit() {
+  }
+  interestSelected($event){
+    let newVal = $event.option.value;
+    console.log($event);
+    this.form.controls['interestInput'].setValue($event.option.viewValue);
+    this.form.controls['parentInterestId'].setValue(newVal);
+  }
+  interestInputChanged($event){    
+    const query = $event.target.value;    
+    if (query === null ||query.match(/^ *$/) !== null) {
+      return false;
+    }
+    console.log(query);
+    this.ocInputChanged.emit(query);
   }
   submit($event){
     if(this.form.valid){

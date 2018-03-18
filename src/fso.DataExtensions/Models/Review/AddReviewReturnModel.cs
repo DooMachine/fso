@@ -2,7 +2,7 @@
 
 using fso.DataExtensions.Models;
 
-namespace fso.DataExtensions.Models.Review
+namespace fso.DataExtensions.Models
 {
     public class AddReviewReturnModel : BaseReturnModel
     {

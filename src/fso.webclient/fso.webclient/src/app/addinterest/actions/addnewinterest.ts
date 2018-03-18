@@ -9,6 +9,10 @@ export enum AddNewInterestActionTypes {
     SUBMIT_FORM_SUCCESS = '[AddNewInterest] SUBMIT_FORM_SUCCESS',
     SUBMIT_FORM_FAIL = '[AddNewInterest] SUBMIT_FORM_FAIL',
 
+    GET_AUTOCOMPLETE_INTEREST = '[AddNewInterest] GET_AUTOCOMPLETE_INTEREST',
+    GET_AUTOCOMPLETE_INTEREST_SUCCESS = '[AddNewInterest] GET_AUTOCOMPLETE_INTEREST_SUCCESS',
+    GET_AUTOCOMPLETE_INTEREST_FAIL = '[AddNewInterest] GET_AUTOCOMPLETE_INTEREST_FAIL',
+
     SHOW_ERROR = '[AddNewInterest] SHOW_ERROR'
 };
 
@@ -34,6 +38,23 @@ export class SubmitFormFail implements Action {
     constructor(public payload?: any) { }
 }
 
+export class GetAutoCompleteInterests implements Action {
+    readonly type = AddNewInterestActionTypes.GET_AUTOCOMPLETE_INTEREST;
+
+    constructor(public payload?: any) { }
+}
+
+export class GetAutoCompleteInterestsSuccess implements Action {
+    readonly type = AddNewInterestActionTypes.GET_AUTOCOMPLETE_INTEREST_SUCCESS;
+
+    constructor(public payload?: any) { }
+}
+export class GetAutoCompleteInterestsSuccessFail implements Action {
+    readonly type = AddNewInterestActionTypes.GET_AUTOCOMPLETE_INTEREST_FAIL;
+
+    constructor(public payload?: any) { }
+}
+
 export class ShowError implements Action {
     readonly type = AddNewInterestActionTypes.SHOW_ERROR;
 
@@ -45,6 +66,9 @@ export class ShowError implements Action {
  */
 export type AddNewInterestActions
                         = 
+                        GetAutoCompleteInterests
+                        | GetAutoCompleteInterestsSuccess
+                        | GetAutoCompleteInterestsSuccessFail
                         | SubmitForm
                         | SubmitFormFail
                         | SubmitFormSuccess

@@ -1,7 +1,9 @@
 ﻿using fso.Core.Domains;
+using fso.Core.Domains.MMEntities;
 using fso.DataExtensions.DataServices;
-using fso.DataExtensions.Models.GroupReturnModels.GroupAdd;
+using fso.DataExtensions.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace fso.Data.EntityRepositories
@@ -25,6 +27,7 @@ namespace fso.Data.EntityRepositories
                 ret.Errors.Add("1", "Url key exist!");
                 return ret;
             }
+            
             Group group = new Group()
             {
                 DateUtcAdd = DateTime.UtcNow,
@@ -35,6 +38,34 @@ namespace fso.Data.EntityRepositories
                 About = model.About,
                 ColorAlpha = model.ColorAlpha,
             };
+            if(model.ParentInterestId.HasValue){
+                group.Childs = new List<GroupRelation>();
+                group.Childs.Append(new GroupRelation(){
+                    ParentGroupId = model.ParentInterestId.Value,
+                    Child = group,
+                    DominateValue = 80
+                });
+            }
+            _context.Set<Group>().Add(group);
+            if (_context.SaveChanges()>0)
+            {
+                ret.IsActionSucceed = true;
+                ret.Group = group;
+                return ret;
+            }
+            ret.IsActionSucceed = false;
+            return ret;
+        }
+        public DeleteGroupReturn DeleteGroup(GroupIdParameters req)
+        {
+            DeleteGroupReturn ret = new DeleteGroupReturn();
+            ret.IsActionSucceed = false;
+            Group group = _context.Set<Group>().FirstOrDefault(p => p.Id == req.GroupId);
+            foreach (GroupRelation child in group.Childs)
+            {
+                child.IsSoftDeleted = true;
+                _context.SetChildAsModified(child);
+            }
             _context.Set<Group>().Add(group);
             if (_context.SaveChanges()>0)
             {

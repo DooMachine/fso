@@ -1,4 +1,4 @@
-﻿using fso.DataExtensions.Models.Review;
+﻿using fso.DataExtensions.Models;
 
 namespace fso.DataExtensions.DataServices
 {
@@ -6,8 +6,7 @@ namespace fso.DataExtensions.DataServices
     {
         ReviewLikeResult LikeReview(string currUserId, int reviewId);
         ReviewLikeResult UnlikeReview(string currUserId, int reviewId);
-
-
+        DeleteReviewModel DeleteReview(int reviewId,string currUserId);
         ReviewLikeResult DislikeReview(string currUserId, int reviewId);
         ReviewLikeResult UndislikeReview(string currUserId, int reviewId);
 

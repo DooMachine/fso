@@ -1,7 +1,5 @@
 ﻿using fso.Core.Domains;
 using fso.Core.Domains.Helpers.Enum;
-using fso.DataExtensions.Models.Collections;
-using fso.DataExtensions.Models.GroupReturnModels;
 using System.Collections.Generic;
 
 namespace fso.DataExtensions.Models

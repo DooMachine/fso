@@ -2,7 +2,6 @@
 using fso.DataExtensions.DataServices;
 using Microsoft.EntityFrameworkCore;
 using System;
-using fso.DataExtensions.Models.Review;
 using System.Linq;
 using fso.Caching.CachingServices;
 using fso.Core.Domains;
@@ -12,6 +11,7 @@ using Microsoft.Extensions.Options;
 using fso.Settings.Image;
 using fso.Core.Settings;
 using fso.Data.Extensions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace fso.Data.EntityRepositories
 {
@@ -73,13 +73,12 @@ namespace fso.Data.EntityRepositories
             {
                 ret.IsActionSucceed = false;
                 ret.ErrorInformation.UserInformation = "You cannot review your own post";
-                //TODO: UNCOMMENT THIS LINE return ret;
+                return ret;
             }
-            bool isPreReviewed = _reviewSet.Any(p => p.PostId == postId && p.UserId == currUserId);
+            bool isPreReviewed = post.Reviews.Any(p=>p.UserId == currUserId);
 
             // Check if user already reviewed this post
-            // TODO: remove !isPreReviewed
-            if (isPreReviewed && !isPreReviewed)
+            if (isPreReviewed)
             {
                 ret.IsActionSucceed = false;
                 ret.ErrorInformation.UserInformation = "You can only have one review each post";
@@ -118,34 +117,36 @@ namespace fso.Data.EntityRepositories
                     PostId = postId,
                     ReviewId = newReview.Id,
                 };
-                _reputationSet.Add(rg);
-                _reputationSet.Add(rgofPost);
+                _reputationSet.AddRange(rgofPost,rg);
                 
                 _postSet.Update(post);
                 ret.PostAuthorId = post.UserInfoId;
                 // Remove post rate to calculate when needed
                 _postCacheService.RemovePostRateCache(post.Id);
-                _context.SaveChanges();
-                ret.IsActionSucceed = true;               
-                ret.Review = new ReviewActivityEntity()
+                if(_context.SaveChanges()>0)
                 {
-                    DateUtcPublished = newReview.DateUtcPublished,
-                    DislikeCount = 0,
-                    Id = newReview.Id,
-                    Content = newReview.Content,
-                    LikeCount = 0,                    
-                    PostId = newReview.PostId.Value,
-                    PostRate = newReview.PostRate.Value,
-                    CommentCount = 0,
-                    LikeStatus = LikeStatus.None,
-                    AuthorInfo = new BaseUserInfoDisplay()
+                    ret.IsActionSucceed = true;
+                    ret.Review = new ReviewActivityEntity()
                     {
-                        AppUserId = currUserId,
-                        ProfileImage = _userProfileImageSettings.UserImageUrlTemplate.Replace("{#appUserId}", currUserId),
-                        Username = currUsername
-                    }                    
-                };
-                
+                        DateUtcPublished = newReview.DateUtcPublished,
+                        DislikeCount = 0,
+                        Id = newReview.Id,
+                        Content = newReview.Content,
+                        LikeCount = 0,                    
+                        PostId = newReview.PostId.Value,
+                        PostRate = newReview.PostRate.Value,
+                        CommentCount = 0,
+                        LikeStatus = LikeStatus.None,
+                        AuthorInfo = new BaseUserInfoDisplay()
+                        {
+                            AppUserId = currUserId,
+                            ProfileImage = _userProfileImageSettings.UserImageUrlTemplate.Replace("{#appUserId}", currUserId),
+                            Username = currUsername
+                        }                    
+                    };                
+                    return ret;             
+                };        
+                ret.IsActionSucceed = false;
                 return ret;
             }
             ret.IsActionSucceed = false;
@@ -164,7 +165,6 @@ namespace fso.Data.EntityRepositories
             if (reviewId ==-1 || string.IsNullOrEmpty(currUserId))
             {
                 ret.IsActionSucceed = false;
-                ret.SuccessInformation.SuccessType = SuccessType.NoAction;
                 return ret;
             }
             UserReview rlike =  _dbEntitySet.FirstOrDefault(p => p.ReviewId == reviewId && p.UserInfoId == currUserId);
@@ -194,6 +194,7 @@ namespace fso.Data.EntityRepositories
             }
             if (_context.SaveChanges() != 0)
             {
+                ret.IsActionSucceed = true;
                 prevDislikedReviews = prevDislikedReviews.Where(val => val != reviewId).ToArray();
                 prevLikedReviews = prevLikedReviews.Append(reviewId).Distinct().ToArray();
 
@@ -210,7 +211,7 @@ namespace fso.Data.EntityRepositories
             {
                 IsActionSucceed = true,
                 LikeStatus = LikeStatus.Like
-        };
+            };
             ret.SuccessInformation.SuccessType = SuccessType.NoAction;
             if (reviewId == -1 || string.IsNullOrEmpty(currUserId))
             {
@@ -325,7 +326,50 @@ namespace fso.Data.EntityRepositories
             };
             return ret;
         }
-
+        public DeleteReviewModel DeleteReview(int reviewId,string currUserId)
+        {
+            DeleteReviewModel ret = new  DeleteReviewModel();
+            if(string.IsNullOrEmpty(currUserId)){
+                ret.IsActionSucceed = false;
+                return ret;
+            }
+            Review reviewtoDel = _context.Set<Review>()
+                .Include(p=>p.Post).Include(p=>p.Comments).Include(p=>p.ReputationGains)
+                .FirstOrDefault(p=>p.Id==reviewId);
+            ret.Review = reviewtoDel;
+            if(reviewtoDel==null){
+                ret.Errors.Add("custom","Review already deleted");
+                ret.IsActionSucceed = false;
+                return ret;
+            }
+            try
+            {
+                foreach (ReputationGain rg in reviewtoDel.ReputationGains)
+                {
+                    rg.IsSoftDeleted = true;
+                    _context.SetAsModified(rg);                    
+                }
+                foreach (Comment cm in reviewtoDel.Comments)
+                {
+                    cm.IsSoftDeleted = true;
+                    _context.SetAsModified(cm);
+                }
+                if(reviewtoDel.PostId.HasValue)
+                    _postCacheService.RemovePostRateCache(reviewtoDel.PostId.Value);
+                reviewtoDel.IsSoftDeleted = true;
+                _context.SetAsModified(reviewtoDel);
+                if(_context.SaveChanges()>0){
+                    ret.IsActionSucceed =true;
+                    return ret;
+                };
+                return ret;
+            }
+            catch (System.Exception)
+            {
+                ret.Errors.Add("custom","An error occured, try again later");
+                return ret;
+            }
+        }
         private void GetUserLikes(string currUserId)
         {
             prevLikedReviews = _userLikeCacheService.GetUserLikedReviewsIds(currUserId) ?? _userLikeDataService.GetUserLikedReviewsIds(currUserId);

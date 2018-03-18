@@ -1,5 +1,4 @@
 ﻿using fso.Core.Domains.Helpers;
-using fso.DataExtensions.Models.GroupReturnModels.GroupIndex;
 using fso.DataExtensions.Models;
 using System;
 using System.Collections.Generic;

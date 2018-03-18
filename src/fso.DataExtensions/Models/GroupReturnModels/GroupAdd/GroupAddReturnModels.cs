@@ -1,6 +1,6 @@
 ﻿
 
-namespace fso.DataExtensions.Models.GroupReturnModels.GroupAdd
+namespace fso.DataExtensions.Models
 {
     public class GroupAddReturn : BaseReturnModel
     {

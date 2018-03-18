@@ -1,7 +1,7 @@
 ﻿using fso.Core.Domains;
 using System.ComponentModel.DataAnnotations;
 
-namespace fso.DataExtensions.Models.GroupReturnModels.GroupAdd
+namespace fso.DataExtensions.Models
 {
     public class AddGroupParameters
     {
@@ -14,10 +14,21 @@ namespace fso.DataExtensions.Models.GroupReturnModels.GroupAdd
         [Required]
         [StringLength(1024)]
         public string Description { get; set; }
+        public int? ParentInterestId {get;set;}
         public string About { get; set; }
         public string ColorAlpha { get; set; }
     }
+    public class GroupIdParameters
+    {
+        public int GroupId { get; set; }
+    }
+    public class DeleteGroupReturn : BaseFormReturnModel
+    {
+        public DeleteGroupReturn():base(){
 
+        }
+        public Group Group { get; set; }
+    }
     public class AddGroupReturn : BaseFormReturnModel
     {
         public AddGroupReturn() : base()

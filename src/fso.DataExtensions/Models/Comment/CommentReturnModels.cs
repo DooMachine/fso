@@ -1,10 +1,9 @@
 ﻿using fso.Core.Domains.Helpers;
 using fso.Core.Domains.MMEntities;
-using fso.DataExtensions.Models.Review;
 using fso.DataExtensions.Models.UserInfo;
 using System;
 
-namespace fso.DataExtensions.Models.Comment
+namespace fso.DataExtensions.Models
 {
 
     public class ReviewCommentDTO

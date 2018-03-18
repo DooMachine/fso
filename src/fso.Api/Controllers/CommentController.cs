@@ -3,7 +3,6 @@ using fso.Api.Models.GetParameters;
 using fso.Api.Models.RequestModels;
 using fso.DataExtensions.DataServices;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Comment;
 using fso.EventCore.CommentActions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;

@@ -3,7 +3,6 @@ using fso.Api.Models.GetParameters;
 using fso.Core.Caching;
 using fso.DataExtensions.DataServices;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Review;
 using fso.EventCore.ReviewActions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -85,7 +84,27 @@ namespace fso.Api.Controllers
             }
             return Ok(ret);
         }
-
+        [Authorize(Policy = "fso.AngularUser")]
+        [HttpPost("[action]")]
+        public IActionResult DeleteReview([FromBody]ReviewIdParameter model)
+        {
+            DeleteReviewModel ret;
+            Claim idClaim = User.FindFirst("sub");
+            if (idClaim==null)
+            {
+                return Unauthorized();
+            }
+            ret = _reviewActionService.DeleteReview(model.ReviewId,idClaim.Value);
+            if (ret.IsActionSucceed)
+            {
+                _bus.Publish<UserDeletedReviewAction>(new UserDeletedReviewAction()
+                {
+                    Review = ret.Review,
+                    DateUtcAction = DateTime.UtcNow
+                }, "#");
+            }
+            return Ok(ret);
+        }
         [Authorize(Policy = "fso.AngularUser")]
         [HttpPost("[action]")]
         public IActionResult LikeReview([FromBody]ReviewIdParameter model)

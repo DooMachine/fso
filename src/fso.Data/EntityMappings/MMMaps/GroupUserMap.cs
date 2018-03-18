@@ -9,6 +9,8 @@ namespace fso.Data.EntityMappings
         public override void Map(EntityTypeBuilder<UserGroup> builder)
         {
             builder.HasKey(p => new { p.GroupId, p.UserId });
+            builder
+                .HasQueryFilter(p => !p.IsSoftDeleted);
         }
     }
 }

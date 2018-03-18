@@ -1,5 +1,4 @@
 ﻿using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Comment;
 using System;
 
 namespace fso.DataExtensions.DataServices

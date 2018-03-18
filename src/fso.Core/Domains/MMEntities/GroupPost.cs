@@ -4,7 +4,7 @@ using System;
 
 namespace fso.Core.Domains.MMEntities
 {
-    public class GroupPost
+    public class GroupPost : BaseMMEntity
     {
         public virtual Group Group { get; set; }
         public int GroupId { get; set; }

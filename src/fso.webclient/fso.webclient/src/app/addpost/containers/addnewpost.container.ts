@@ -50,10 +50,11 @@ import { CollectionCard } from '../../shared/models/collection/collectioncard';
                         (onRemoveSelectedInterest)="acInterestRemoved($event)"
                         [selectedInterests]="selectedInterests$ | async"
                         [collectionsList] = "collectionsList$ | async"
-                        [isautoCompleteInterestsLoading]="acInterestsLoading$ | async"
+                        
                         (ocInputChanged)="getInterestAutoComplete($event)"
                         [pending]="formPending$ | async"
                         [autoCompleteInterests]="acInterestList$ | async"
+                        [isautoCompleteInterestsLoading]="acInterestsLoading$ | async"
                         [formState]="newPostState$ | async">
                         </app-addpost-postdetail>
                     </mat-step>

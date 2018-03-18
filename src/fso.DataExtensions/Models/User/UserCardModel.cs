@@ -1,7 +1,7 @@
 ﻿
 using fso.Core.Domains;
 
-namespace fso.DataExtensions.Models.User
+namespace fso.DataExtensions.Models
 {
     public class UserCardModel : BaseUserInfoDisplay
     {

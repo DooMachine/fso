@@ -1,5 +1,5 @@
 ﻿
-namespace fso.DataExtensions.Models.GroupReturnModels.GroupIndex
+namespace fso.DataExtensions.Models
 {
     public class GroupIndexReturn
     {

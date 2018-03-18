@@ -1,7 +1,7 @@
-﻿using fso.DataExtensions.Models.GroupReturnModels;
+﻿
 using System.Collections.Generic;
 
-namespace fso.DataExtensions.Models.User
+namespace fso.DataExtensions.Models
 {
     public class UserIndexReturnModel
     {

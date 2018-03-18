@@ -1,4 +1,4 @@
-﻿using fso.DataExtensions.Models.Trending;
+﻿using fso.DataExtensions.Models;
 using System;
 using System.Collections.Generic;
 

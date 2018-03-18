@@ -1,7 +1,7 @@
 ﻿
 using fso.Core.Domains.MMEntities;
 
-namespace fso.DataExtensions.Models.GroupReturnModels.GroupIndex
+namespace fso.DataExtensions.Models
 {
     public class GroupIndexDetail
     {

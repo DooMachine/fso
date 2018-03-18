@@ -4,7 +4,7 @@ using fso.Api.Models.Auth;
 using fso.Core.Domains;
 using fso.Core.Domains.Helpers;
 using fso.Core.Services;
-using fso.DataExtensions.Models.GroupReturnModels;
+using fso.DataExtensions.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using fso.Core.Caching;
 using fso.DataExtensions.DataServices;
-using fso.DataExtensions.Models.Trending;
 using System.Security.Claims;
 
 namespace fso.Api.Controllers
@@ -48,19 +47,11 @@ namespace fso.Api.Controllers
         
         [HttpGet("[action]")]
         public TrendingGroupsReturnModel GetGroups([FromQuery]int pageSize, int pageIndex, string culture)
-        {
-            TrendingGroupsReturnModel model = new TrendingGroupsReturnModel();
+        {            
             var user = HttpContext.User;
             Claim idClaim = User.FindFirst("sub");
-            if (string.IsNullOrEmpty(culture)) culture = "WW";
-            if (idClaim != null)
-            {
-                return _trendingDataService.GetTrendingGroups(pageIndex, pageSize, idClaim.Value, culture);
-            }
-            else
-            {
-                return _trendingDataService.GetTrendingGroups(pageIndex, pageSize, null, culture);
-            }
+            return _trendingDataService.GetTrendingGroups(pageIndex, pageSize, idClaim?.Value, culture);
+            
         }
         
         [HttpGet("[action]")]

@@ -2,7 +2,7 @@
 using fso.DataExtensions.Models;
 using System.Collections.Generic;
 
-namespace fso.DataExtensions.Models.Review
+namespace fso.DataExtensions.Models
 {
     public class UserReviewsReturnModel : PaginatedReturn<ReviewActivityEntity>
     {

@@ -4,7 +4,6 @@ using fso.Core.Extensions;
 using fso.Core.Settings;
 using fso.DataExtensions.DataServices;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Collections;
 using fso.DataExtensions.Models.User;
 using fso.DataExtensions.Models.UserInfo;
 using fso.Settings.Image;

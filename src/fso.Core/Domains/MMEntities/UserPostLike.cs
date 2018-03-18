@@ -2,7 +2,7 @@
 
 namespace fso.Core.Domains.MMEntities
 {
-    public class UserPostLike
+    public class UserPostLike : BaseMMEntity
     {
         public int PostId { get; set; }
         public string UserInfoId { get; set; }

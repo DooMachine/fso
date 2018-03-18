@@ -2,7 +2,7 @@
 
 using fso.Core.Domains;
 
-namespace fso.DataExtensions.Models.UserInfo
+namespace fso.DataExtensions.Models
 {
     public class UserInfoProfileReturn : BaseReturnModel
     {

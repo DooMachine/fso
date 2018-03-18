@@ -1,6 +1,5 @@
 ﻿using fso.Core.Domains.Helpers;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.GroupReturnModels;
 
 namespace fso.Api.Models.Auth
 {

@@ -36,7 +36,7 @@ namespace fso.Data
             if (String.IsNullOrWhiteSpace(connstr) == true)
             {
                 throw new InvalidOperationException(
-                "Could not find a connection string named 'DefaultConnection'.");
+                    "Could not find a connection string named 'DefaultConnection'.");
             }
             else
             {

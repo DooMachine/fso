@@ -9,6 +9,8 @@ namespace fso.Data.EntityMappings
         public override void Map(EntityTypeBuilder<UserPostLike> builder)
         {
             builder.HasKey(p => new { p.PostId, p.UserInfoId });
+            builder
+                .HasQueryFilter(p => !p.IsSoftDeleted);
         }
     }
 }

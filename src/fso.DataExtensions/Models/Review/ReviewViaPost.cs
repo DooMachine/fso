@@ -3,7 +3,7 @@ using fso.Core.Domains.MMEntities;
 using System;
 using System.Collections.Generic;
 
-namespace fso.DataExtensions.Models.Review
+namespace fso.DataExtensions.Models
 {
     public class ReviewViaPost
     {

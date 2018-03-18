@@ -1,7 +1,6 @@
 ﻿using fso.Core.Domains.Helpers;
-using fso.DataExtensions.Models.Collections;
 
-namespace fso.DataExtensions.Models.UserInfo
+namespace fso.DataExtensions.Models
 {
     public class UserPostCollectionsReturn : PaginatedReturn<CollectionCard>
     {

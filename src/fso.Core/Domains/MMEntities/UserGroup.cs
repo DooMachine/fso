@@ -2,7 +2,7 @@
 
 namespace fso.Core.Domains.MMEntities
 {
-    public class UserGroup
+    public class UserGroup : BaseMMEntity
     {
         public virtual UserInfo UserInfo { get; set; }
         public string UserId { get; set; }

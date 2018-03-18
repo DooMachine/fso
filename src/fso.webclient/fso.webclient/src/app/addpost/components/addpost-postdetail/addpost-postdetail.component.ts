@@ -19,8 +19,9 @@ export class AddpostPostdetailComponent implements OnInit {
   @Output() ocInputSelected = new EventEmitter();
   @Output() onShowError = new EventEmitter();
   @Output() onRemoveSelectedInterest = new EventEmitter();
-  @Input() isautoCompleteInterestsLoading: boolean;
+  
   @Input() formError: null|string;
+  @Input() isautoCompleteInterestsLoading: boolean;
   @Input() selectedInterests: Array<InterestCard>;
   @Input() collectionsList: CollectionCard[];
   @Input()

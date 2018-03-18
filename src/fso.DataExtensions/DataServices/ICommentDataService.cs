@@ -1,4 +1,4 @@
-﻿using fso.DataExtensions.Models.Comment;
+﻿using fso.DataExtensions.Models;
 using System;
 using System.Threading.Tasks;
 

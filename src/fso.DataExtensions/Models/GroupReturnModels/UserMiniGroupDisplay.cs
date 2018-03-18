@@ -1,6 +1,6 @@
 ﻿
 
-namespace fso.DataExtensions.Models.GroupReturnModels
+namespace fso.DataExtensions.Models
 {
     public class UserMiniGroupDisplay
     {

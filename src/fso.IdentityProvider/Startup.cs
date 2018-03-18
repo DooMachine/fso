@@ -40,6 +40,8 @@ namespace fso.IdentityProvider
         {
 
             services.AddOptions();
+            var mailSettings = Configuration.GetSection("MailSettings");
+            services.Configure<MailSettings>(mailSettings);
             // Add framework services.
             services.AddDbContext<FsoIdentityContext>();
 

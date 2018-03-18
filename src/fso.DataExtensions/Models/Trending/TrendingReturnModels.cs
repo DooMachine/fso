@@ -1,11 +1,9 @@
 ﻿using fso.Core.Domains.Helpers;
-using fso.DataExtensions.Models.GroupReturnModels;
-using fso.DataExtensions.Models.GroupReturnModels.GroupIndex;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace fso.DataExtensions.Models.Trending
+namespace fso.DataExtensions.Models
 {
     public class TrendingGroupsReturnModel
     {

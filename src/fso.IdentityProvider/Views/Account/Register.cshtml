@@ -6,7 +6,9 @@
 <h2>@ViewData["Title"].</h2>
 
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <h4>Create a feasion account.</h4>
+    <section class="text-center">
+            <img class="f-logo-p" alt="feasion logo" src="/feasionLogo.png">
+    </section>
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">

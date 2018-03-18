@@ -8,7 +8,6 @@ using fso.Core.Extensions;
 using fso.Core.Services;
 using fso.DataExtensions.DataServices;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.Review;
 using fso.DataExtensions.Models.UserInfo;
 using fso.EventCore.UserActions;
 using Microsoft.AspNetCore.Authorization;

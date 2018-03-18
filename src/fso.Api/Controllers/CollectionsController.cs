@@ -2,7 +2,7 @@
 using fso.Api.Models.GetParameters;
 using fso.Core.Domains;
 using fso.DataExtensions.DataServices;
-using fso.DataExtensions.Models.Collections;
+using fso.DataExtensions.Models;
 using fso.EventCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;

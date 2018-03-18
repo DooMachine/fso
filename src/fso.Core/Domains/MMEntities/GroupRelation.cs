@@ -2,8 +2,9 @@
 
 namespace fso.Core.Domains.MMEntities
 {
-    public class GroupRelation
+    public class GroupRelation : BaseMMEntity
     {
+        
         public int ParentGroupId { get; set; }
         public int ChildGroupId { get; set; }
         public virtual Group Parent { get; set; }

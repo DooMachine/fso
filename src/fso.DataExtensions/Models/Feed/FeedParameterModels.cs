@@ -1,6 +1,6 @@
 ﻿
 
-namespace fso.DataExtensions.Models.Feed
+namespace fso.DataExtensions.Models
 {
     public class PaginatedRequest
     {

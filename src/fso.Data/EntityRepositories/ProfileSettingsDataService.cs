@@ -2,7 +2,6 @@
 using fso.Data.Extensions;
 using fso.DataExtensions.DataServices;
 using fso.DataExtensions.Models;
-using fso.DataExtensions.Models.ProfileSettings;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

@@ -2,15 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using fso.DataExtensions.Models.Comment;
 using Microsoft.EntityFrameworkCore;
 using fso.Core.Domains;
 using System.Linq;
-using fso.DataExtensions.Models.Review;
 using fso.Core.Domains.MMEntities;
 using fso.DataExtensions.Models.UserInfo;
 using fso.Core.Extensions;
 using System.Threading.Tasks;
+using fso.DataExtensions.Models;
 
 namespace fso.Data.EntityRepositories
 {

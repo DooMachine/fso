@@ -3,7 +3,7 @@ using System;
 
 namespace fso.Core.Domains
 {
-    public class FollowInfo
+    public class FollowInfo : BaseMMEntity
     {
         public string FollowerId { get; set; }
         public UserInfo Follower { get; set; }

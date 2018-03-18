@@ -1,6 +1,6 @@
 ﻿using EasyNetQ;
 using fso.DataExtensions.DataServices;
-using fso.DataExtensions.Models.GroupReturnModels.GroupAdd;
+using fso.DataExtensions.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;

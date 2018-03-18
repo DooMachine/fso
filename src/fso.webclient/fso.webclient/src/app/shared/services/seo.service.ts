@@ -27,8 +27,8 @@ export class SEOService {
 
   updateHome(){
     this.clearTags();
-    this.updateTitle('Home');
-    this.updateDescription('feasion is a fashion ranking platform');
+    this.updateTitleWithoutPrefix('feayoi');
+    this.updateDescription('feayoi is a fashion ranking platform');
   }
   updateNotificationPage(){
     this.clearTags();
@@ -70,11 +70,14 @@ export class SEOService {
   }
 
   updateTitle(title: string) {
-    const titleAfterfix = " - feasion"
+    const titleAfterfix = " - feayoi"
     this.title.setTitle(title + titleAfterfix);
     this.meta.updateTag(this.createOgTag('title', title))
   }
-
+  updateTitleWithoutPrefix(title: string) {
+    this.title.setTitle(title);
+    this.meta.updateTag(this.createOgTag('title', title))
+  }
   updateDescription(desc: string) {
     this.meta.updateTag({ name: 'description', content: desc })
     this.meta.updateTag(this.createOgTag('description', desc))

@@ -1,8 +1,9 @@
 ﻿
 
+using fso.Core.Domains;
 using fso.Core.Domains.MMEntities;
 
-namespace fso.DataExtensions.Models.Review
+namespace fso.DataExtensions.Models
 {
     public class ReviewLikeResult : BaseReturnModel
     {
@@ -13,5 +14,11 @@ namespace fso.DataExtensions.Models.Review
         public LikeStatus LikeStatus { get; set; }
         public string ReviewAuthorId { get; set; }
         public int PostId { get; set; }
+    }
+    public class DeleteReviewModel : BaseFormReturnModel{
+        public DeleteReviewModel() : base(){
+
+        }
+        public Review Review { get; set; }
     }
 }

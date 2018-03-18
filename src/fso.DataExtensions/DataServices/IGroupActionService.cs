@@ -1,4 +1,4 @@
-﻿using fso.DataExtensions.Models.GroupReturnModels.GroupAdd;
+﻿using fso.DataExtensions.Models;
 
 namespace fso.DataExtensions.DataServices
 {

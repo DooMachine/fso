@@ -7,10 +7,8 @@ using fso.Core.Domains.MMEntities;
 using fso.Core.Domains.Helpers;
 using fso.Core.Extensions;
 using fso.DataExtensions.Models.UserInfo;
-using fso.DataExtensions.Models.Review;
 using System.Collections.Generic;
 using fso.Caching.CachingServices;
-using fso.DataExtensions.Models.Comment;
 
 namespace fso.Data.EntityRepositories
 {
