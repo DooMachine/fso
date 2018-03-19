@@ -13,7 +13,8 @@ You need Docker And .Net Core 2^ Installed on your development machine.
 
 ### Installing
 
-Clone the repository. Publish fso.Api,fso.EventBusListener, fso.NotificaitonApi, fso.NotificationBusListener, fso.IdentityProvider, fso.AppMediaProvider projects to /publish directory
+Clone fso-linux branch . Publish fso.Api,fso.EventBusListener, fso.NotificaitonApi, fso.NotificationBusListener, fso.IdentityProvider, fso.AppMediaProvider projects to /publish directory 
+#Sample
 
 ```
 cd src/fso.Api
@@ -24,6 +25,6 @@ Then in root directory
 ```
 docker-compose up
 ```
-navigate to localhost:80 | localhost in Chrome Browser
+navigate to localhost OR localhost:80 in Chrome Browser
 
 Other browsers may add 'www' prefix to subdomains of microservices.
