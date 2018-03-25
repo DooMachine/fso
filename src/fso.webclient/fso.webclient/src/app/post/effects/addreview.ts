@@ -34,17 +34,20 @@ export class AddReviewEffects {
             .switchMap((resp) => {
                 let error;
                 let showForm;
+                let obs=[];
                 if(resp.isActionSucceed){
-                     error = null;
-                     showForm= false;
+                    obs.push([
+                        new addReviewActions.SubmitFormSuccess({error: error,showForm: showForm}),
+                        new reviewActions.AddReviews({entities:[resp.review]})
+                    ]);
+                    
                 }else{
-                    error = resp.errorInformation.userInformation;
-                    showForm= true;
+                    obs.push([
+                        new addReviewActions.SubmitFormFail({error: resp.errorInformation.userInformation,showForm: true}),
+                        new fromCore.ShowSnackBarAction({message:resp.errorInformation.userInformation,action:null,config:{duration:6000}})
+                    ]);
                 }
-                return Observable.from([
-                    new addReviewActions.SubmitFormSuccess({error: error,showForm: showForm}),
-                    new reviewActions.AddReviews({entities:[resp.review]})
-                ]);                               
+                return Observable.from(obs);                  
             })
             .catch((error) => {
                 // You probably haven't called this yet,
