@@ -8,14 +8,14 @@
         <mat-grid-list cols="1" rowHeight="120px">
             <mat-grid-tile
               colspan="1">
-              <a [routerLink]="[ '/post', post.id ]"><img  class="postpart-image"        
+              <a [routerLink]="[ '/post',post.urlKey, post.id ]"><img  class="postpart-image"        
                 [src]="post.thumbnailUrls[post.activeThumbnailIndex]" alt="{{post.title}}"></a>
             </mat-grid-tile>
           </mat-grid-list>
       </div>
       <div fxFlex="57">        
         <mat-card>
-            <a class="no-anchor-text a-grey bold" [routerLink]="[ '/post', post.id ]"><h3>{{post.title}}</h3></a>
+            <a class="no-anchor-text a-grey bold" [routerLink]="[ '/post',post.urlKey, post.id ]"><h3>{{post.title}}</h3></a>
             <mat-card-header>                              
                 <a mat-card-avatar [routerLink]="['',post.userInfo.userName]">
                   <img mat-card-avatar [default] [src]="post.userInfo.profileImage" class="img-circle"/>

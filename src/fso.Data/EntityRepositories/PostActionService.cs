@@ -135,9 +135,7 @@ namespace fso.Data.EntityRepositories
                     GainedReputationValue = _reputationSettings.InitialPostReputationValue,
                     UserInfoId = currUserId,                    
                 }
-            };
-
-            
+            };            
             if (post.PostParts.Count < 1)
             {
                 ret.Errors.Add("custom", "Please add your pictures");

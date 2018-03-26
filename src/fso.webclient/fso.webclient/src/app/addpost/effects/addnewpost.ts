@@ -51,7 +51,7 @@ export class AddNewPostEffects {
             if(!data.value.isActionSucceed){
               return new addpostActions.SubmitFormFail({error:data.value.errorInformation.userInformation});
             }else{
-              this.router.navigate(['/post',data.value.publishedUrlKey,data.value.publishedPostId]);
+              this.router.navigate(['/post',data.value.postUrlKey,data.value.publishedPostId]);
               return new addpostActions.SubmitFormSuccess(data.value);
             }
           })

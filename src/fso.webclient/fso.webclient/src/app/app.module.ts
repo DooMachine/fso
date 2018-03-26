@@ -44,7 +44,7 @@ const ROUTES = [
   { path : 'explore/:urlKey' , loadChildren: './interest/interest.module#InterestModule'},
   { path : 'addnewinterest' , canActivate: [ModGuard], loadChildren: './addinterest/addinterest.module#AddNewInterestModule'},
   { path : 'post' , loadChildren: './post/post.module#PostModule'},
-  { path : 'post/:postId/edit' , loadChildren: './editpost/editpost.module#EditPostModule'},  
+  { path : 'post/:urlKey/:postId/edit' , loadChildren: './editpost/editpost.module#EditPostModule'},  
   { path : 'profilesettings', canActivate: [AuthGuard], loadChildren: './profile/profilesettings/profilesettings.module#ProfileSettingsModule'},
   { path : 'newpost' , canActivate:[AuthGuard], loadChildren: './addpost/addnewpost.module#AddNewPostModule'},
   { path : ':userName' , loadChildren: './profile/profile.module#ProfileModule'},

@@ -8,6 +8,7 @@ export class PostCard {
     title: string;
     description: string;
     url: string;
+    urlKey:string;
     dateUtcPublished: Date;
     isCurrentUserLiked: boolean;
     favouriteCount: number;

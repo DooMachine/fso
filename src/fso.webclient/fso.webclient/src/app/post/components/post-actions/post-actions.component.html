@@ -32,7 +32,7 @@
           matTooltip="Add a review" 
           matTooltipPosition="above"  matTooltipShowDelay="400" matTooltipHideDelay="200">
             <a color="accent"
-            [routerLink]="['/post',post.id,'addreview']"
+            [routerLink]="['/post',post.urlKey,post.id,'addreview']"
             mat-icon-button>
                 <mat-icon aria-label="Add a review">rate_review</mat-icon>
             </a>

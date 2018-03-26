@@ -12,7 +12,7 @@ namespace fso.Core.Domains
         public string Title { get; set; }
         [StringLength(5012)]
         public string Content { get; set; }
-
+        [StringLength(512)]
         public string UrlKey { get; set; }
         public PrivacyStatus PrivacyStatus { get; set; }
         [StringLength(2048)]

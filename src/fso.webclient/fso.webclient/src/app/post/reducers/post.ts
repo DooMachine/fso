@@ -13,6 +13,7 @@ export interface PostState {
     id:number;
     content:string;
     url:string;
+    urlKey:string;
     description:string;
     title:string;
     dateUtcPublished:Date;
@@ -32,10 +33,11 @@ export interface State{
 }
 
 const initialState: State = {
-    isLoading:false,    
+    isLoading:false,        
     error:null,
     post:{
         id:0,
+        urlKey:'',
         content:'',
         url:'',
         description:'',

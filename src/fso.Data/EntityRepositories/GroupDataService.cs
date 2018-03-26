@@ -165,6 +165,7 @@ namespace fso.Data.EntityRepositories
                     Content = p.Entity.Content,
                     Title = p.Entity.Title,
                     Id = p.Entity.Id,
+                    UrlKey = p.Entity.UrlKey,
                     ReviewCount = p.ReviewCount,
                     PostParts = p.Entity.PostParts.Select(f => new PostPartDisplay()
                     {
@@ -245,6 +246,7 @@ namespace fso.Data.EntityRepositories
                     DateUtcPublished = p.Entity.DateUtcPublished,
                     Content = p.Entity.Content,
                     Title = p.Entity.Title,
+                    UrlKey = p.Entity.UrlKey,
                     Id = p.Entity.Id,
                     ReviewCount = p.ReviewCount,
                     PostParts = p.Entity.PostParts.Select(f => new PostPartDisplay()
@@ -335,6 +337,7 @@ namespace fso.Data.EntityRepositories
                     DateUtcPublished = p.Entity.DateUtcPublished,
                     Content = p.Entity.Content,
                     Title = p.Entity.Title,
+                    UrlKey = p.Entity.UrlKey,
                     Id = p.Entity.Id,
                     ReviewCount = p.ReviewCount,
                     PostParts = p.Entity.PostParts.Select(f => new PostPartDisplay()
@@ -421,6 +424,7 @@ namespace fso.Data.EntityRepositories
                     DateUtcPublished = p.Entity.DateUtcPublished,
                     Content = p.Entity.Content,
                     Title = p.Entity.Title,
+                    UrlKey = p.Entity.UrlKey,
                     Id = p.Entity.Id,
                     ReviewCount = p.ReviewCount,
                     PostParts = p.Entity.PostParts.Select(f => new PostPartDisplay()

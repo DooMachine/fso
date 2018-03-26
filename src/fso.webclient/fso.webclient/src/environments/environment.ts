@@ -8,10 +8,10 @@
 export const environment = {
   production: false,
   serviceUrls: {
-    Base: 'http://192.168.1.67:7000/',
+    Base: 'http://api.localhost/',
     Notification: 'http://ntf.localhost/',
     Statics: 'http://192.168.1.67:6900/',
-    AppMedia: 'http://192.168.1.67:7100/'
+    AppMedia: 'http://cdn.localhost/'
   },
   httpErrors: {
     0:   { 'msg': 'Server is not available'},
