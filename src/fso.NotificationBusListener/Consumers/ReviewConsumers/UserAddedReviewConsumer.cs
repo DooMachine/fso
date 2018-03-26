@@ -46,7 +46,7 @@ namespace fso.NotificationBusListener.Consumers.ReviewConsumers
                             IsSoftDeleted = false,
                             IsSeen = false,
                             UserId = message.PostAuthorId,
-                            RedirectUrl = "/post/" + message.PostId+"/review/"+message.ReviewId,
+                            RedirectUrl = "/post/"+message.PostUrlKey+ "/" + message.PostId+"/review/"+message.ReviewId,
                             EntityId = message.PostId
                         };
                         db.Add(firstNot);

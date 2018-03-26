@@ -82,6 +82,7 @@ namespace fso.Data.EntityRepositories
                 .Select(p => new PostCard()
                 {
                     DateUtcPublished = p.DateUtcPublished,
+                    UrlKey = p.UrlKey,
                     Description = p.Description,
                     AuthorInfo = new BaseUserInfoDisplay()
                     {

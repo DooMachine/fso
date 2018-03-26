@@ -14,6 +14,7 @@ namespace fso.DataExtensions.Models
         public LikeStatus LikeStatus { get; set; }
         public string ReviewAuthorId { get; set; }
         public int PostId { get; set; }
+        public string PostUrlKey { get; set; }
     }
     public class DeleteReviewModel : BaseFormReturnModel{
         public DeleteReviewModel() : base(){

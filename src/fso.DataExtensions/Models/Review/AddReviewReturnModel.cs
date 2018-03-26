@@ -11,5 +11,6 @@ namespace fso.DataExtensions.Models
         public ReviewActivityEntity Review { get; set; }
         // To use in notification event bus.
         public string PostAuthorId { get; set; }
+        public string PostUrlKey { get; set; }
     }
 }

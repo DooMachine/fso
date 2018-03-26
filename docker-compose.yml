@@ -191,6 +191,12 @@ services:
     build:
       context: nginx/
       dockerfile: Dockerfile
+    depends_on:
+      - identityprovider
+      - webclient
+      - mainapi
+      - notificationapi
+      - appmediaprovider
     links:
       - identityprovider
       - webclient

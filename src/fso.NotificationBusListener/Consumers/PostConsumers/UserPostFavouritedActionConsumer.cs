@@ -43,7 +43,7 @@ namespace fso.NotificationBusListener.Consumers.PostConsumers
                             IsSoftDeleted = false,
                             IsSeen = false,
                             UserId = message.PostAuthorId,
-                            RedirectUrl = "/post/"+message.PostId,
+                            RedirectUrl = "/post/"+message.PostUrlKey+"/"+message.PostId,
                             EntityId = message.PostId
                         };
                         db.Add(firstNot);

@@ -47,11 +47,11 @@ export class AddNewPostEffects {
     .switchMap(([action,username]) => {
         return this.addNewPostService
         .PublishPost(action.payload)
-        .map(data => {
+        .map(data => { 
             if(!data.value.isActionSucceed){
               return new addpostActions.SubmitFormFail({error:data.value.errorInformation.userInformation});
             }else{
-              this.router.navigate(['/post',data.value.publishedPostId]);
+              this.router.navigate(['/post',data.value.publishedUrlKey,data.value.publishedPostId]);
               return new addpostActions.SubmitFormSuccess(data.value);
             }
           })

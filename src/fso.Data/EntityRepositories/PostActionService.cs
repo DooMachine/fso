@@ -124,6 +124,7 @@ namespace fso.Data.EntityRepositories
             post.DateUtcPublished = DateTime.UtcNow;
             post.Description = model.Description;
             post.IsPublished = true;
+            post.UrlKey = System.Text.RegularExpressions.Regex.Replace(post.Title, @"[^A-Za-z0-9_\.~]+", "-");
             post.Content = TagHelpers.RemoveUnwantedTags(model.Content);
             post.DateUtcModified = DateTime.UtcNow;
             post.Groups = new List<GroupPost>();
@@ -229,6 +230,7 @@ namespace fso.Data.EntityRepositories
                 // set return to succeed
                 ret.IsActionSucceed = true;
                 ret.PublishedPostId = post.Id;
+                ret.PostUrlKey = post.UrlKey;
             }
             return ret;
         }
@@ -245,6 +247,7 @@ namespace fso.Data.EntityRepositories
                 return ret;
             }
             post.Title = TagHelpers.RemoveUnwantedTags(model.Title);
+            post.UrlKey = System.Text.RegularExpressions.Regex.Replace(post.Title, @"[^A-Za-z0-9_\.~]+", "-");
             post.DateUtcModified = DateTime.UtcNow;
             post.Description = model.Description;
             post.IsPublished = true;

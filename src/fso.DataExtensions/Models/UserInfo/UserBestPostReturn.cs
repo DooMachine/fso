@@ -18,7 +18,7 @@ namespace fso.DataExtensions.Models
         public UserInfoExtraSmall UserInfo { get; set; }
         public double Rating { get; set; }
         public DateTime DateUtcPublished { get; set; }
-        public string Url { get; set; }
+        public string UrlKey { get; set; }
         public List<string> ThumbnailUrls { get; set; }
         // First Shown Thumnnail Index
         public int ActiveThumbnailIndex { get; set; }

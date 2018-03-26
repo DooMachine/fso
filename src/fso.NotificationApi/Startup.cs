@@ -77,7 +77,7 @@ namespace fso.NotificationApi
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            });
+            }); 
                         
         }
 

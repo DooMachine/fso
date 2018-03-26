@@ -57,6 +57,7 @@ namespace fso.Api.Controllers
                     _bus.Publish<UserAddedCommentAction>(new UserAddedCommentAction()
                     {
                         DateUtcAction = DateTime.UtcNow,
+                        PostUrlKey = ret.PostUrlKey,
                         CommentId = ret.Comment.Id,
                         ReviewId = model.ReviewId,
                         UserId = idClaim.Value,

@@ -162,6 +162,7 @@ namespace fso.Data.EntityRepositories
                                 DateUtcPublished = p.DateUtcPublished,
                                 Description = p.Description,
                                 PostParts = p.PostParts,
+                                UrlKey = p.UrlKey,
                                 LikedUsers = p.LikedUsers,
                                 Content = p.Content,
                                 PrivacyStatus = p.PrivacyStatus,
@@ -221,6 +222,7 @@ namespace fso.Data.EntityRepositories
                                 .Select(p => new PostActivityEntity()
                                 {
                                     DateUtcPublished = p.DateUtcPublished,
+                                    UrlKey = p.UrlKey,
                                     AuthorInfo = new BaseUserInfoDisplay()
                                     {
                                         AppUserId = p.UserInfoId,
@@ -326,6 +328,7 @@ namespace fso.Data.EntityRepositories
                                 .Select(p => new PostActivityEntity()
                                 {
                                     DateUtcPublished = p.DateUtcPublished,
+                                    UrlKey = p.UrlKey,
                                     AuthorInfo = new BaseUserInfoDisplay()
                                     {
                                         AppUserId = p.UserInfoId,
@@ -542,6 +545,7 @@ namespace fso.Data.EntityRepositories
                                 },
                                 Content = p.Post.Content,
                                 Title = p.Post.Title,
+                                UrlKey = p.Post.UrlKey,
                                 IsCurrentUserLiked = userPostLikesIds.Contains(p.Post.Id),
                                 Id = p.Post.Id,
                                 PostParts = p.PostParts.Select(f => new PostPartDisplay()

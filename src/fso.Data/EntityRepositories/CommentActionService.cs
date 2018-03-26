@@ -46,6 +46,8 @@ namespace fso.Data.EntityRepositories
                 ret.IsActionSucceed = false;
                 return ret;
             }
+            Post post = _context.Set<Post>().AsNoTracking().FirstOrDefault(p=>p.Id==review.PostId.Value);
+            ret.PostUrlKey = post.UrlKey;
             ret.PostId = review.PostId.Value;
             ret.ReviewAuthorId = review.UserId;
             Comment comment = new Comment()

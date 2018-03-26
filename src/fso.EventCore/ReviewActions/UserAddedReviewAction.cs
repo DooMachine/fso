@@ -7,6 +7,8 @@ namespace fso.EventCore.ReviewActions
         public string Username { get; set; }
         public string PostAuthorId { get; set; }
         public int PostId { get; set; }
+
+        public string PostUrlKey { get; set; }
         public int ReviewId { get; set; }
     }
 }

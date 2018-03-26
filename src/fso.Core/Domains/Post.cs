@@ -13,6 +13,7 @@ namespace fso.Core.Domains
         [StringLength(5012)]
         public string Content { get; set; }
 
+        public string UrlKey { get; set; }
         public PrivacyStatus PrivacyStatus { get; set; }
         [StringLength(2048)]
         public string Description { get; set; }
@@ -47,5 +48,6 @@ namespace fso.Core.Domains
 
         public virtual PostCollection Collection { get; set; }
         public int? CollectionId { get; set; }
+        
     }
 }

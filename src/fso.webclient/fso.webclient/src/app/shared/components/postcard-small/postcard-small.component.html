@@ -11,7 +11,7 @@
         {{postCard.dateUtcPublished | utcdate | date:'d MMM yy - hh:mm'}} 
         <span class="settingsButton" *ngIf="isOwner"> 
           - <a 
-          [routerLink]="['/post',postCard.id,'edit']"
+          [routerLink]="['/post',postCard.urlKey,postCard.id,'edit']"
           mat-icon-button>
               <mat-icon aria-label="Edit Post">settings</mat-icon>
           </a>
@@ -34,13 +34,14 @@
         <div class="abs-header">
           <mat-card-title>
               <a mat-line class="no-anchor-text p-c-title"
-              [routerLink]="['/post',postCard.id]">
+              [routerLink]="['/post',postCard.urlKey,postCard.id]">
               {{postCard.title}}</a>
             </mat-card-title>    
           </div> 
         <div
           class="postPartsBorder" fxLayout="row" fxLayoutAlign="center center">
           <app-postcard-postpart fxFlex [postId]="postCard.id" 
+          [postUrlKey]="postCard.urlKey"
           [username]="postCard.authorInfo.username"
           [postParts]="postCard.postParts"></app-postcard-postpart>      
         </div>  
@@ -80,7 +81,7 @@
                       <a color="primary"
                       class="add-r-b"
                       color="accent"
-                      [routerLink]="['/post',postCard.id,'addreview']"
+                      [routerLink]="['/post',postCard.urlKey,postCard.id,'addreview']"
                       mat-icon-button>
                           <mat-icon aria-label="Add a review">rate_review</mat-icon>
                       </a>

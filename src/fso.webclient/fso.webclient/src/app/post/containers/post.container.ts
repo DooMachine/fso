@@ -157,12 +157,15 @@ export class PostComponent implements OnInit {
             this.showSeeAllReviewsOption = this.reviewIdparam !=undefined;
             this.commentParamExist = this.commentIdparam !=undefined;
             if(this.showSeeAllReviewsOption){               
-                
+                this.store.dispatch({type:"CLEAR_POST_STATE"});
+            }
+            this.store.dispatch(new postActions.GetPost({postId:this.urlParam,reviewId:this.reviewIdparam}));
+            if(this.showSeeAllReviewsOption){
                 setTimeout(() => {
                     this.reviewlist.nativeElement.scrollIntoView({ behavior: "smooth"}); 
                 }, 220);
             }
-            this.store.dispatch(new postActions.GetPost({postId:this.urlParam,reviewId:this.reviewIdparam}));
+            
         });
         
     }

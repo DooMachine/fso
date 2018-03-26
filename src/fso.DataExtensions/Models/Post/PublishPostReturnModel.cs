@@ -6,6 +6,7 @@ namespace fso.DataExtensions.Models
     {
         public PublishPostReturnModel():base(){}
         public int PublishedPostId { get; set; }
+        public string PostUrlKey { get; set; }
     }
 
     public class SaveEditingPostReturnModel : BaseFormReturnModel

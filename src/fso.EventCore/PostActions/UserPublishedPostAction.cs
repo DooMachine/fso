@@ -5,6 +5,7 @@ namespace fso.EventCore.PostActions
     {
         public int PostId { get; set; }
         public string PostTitle { get; set; }
+        public string PostUrlKey { get; set; }
         public string UserId { get; set; }
     }
 }

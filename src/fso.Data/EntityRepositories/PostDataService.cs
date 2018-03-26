@@ -215,6 +215,7 @@ namespace fso.Data.EntityRepositories
                     DateUtcPublished = c.DateUtcPublished,
                     ReviewCount = c.Reviews.Count(),
                     LikeCount = c.LikedUsers.Count(),
+                    UrlKey = c.UrlKey,
                     IsPublished = c.IsPublished,
                     IsCurrentUserLiked = c.LikedUsers.Any(f => f.UserInfoId == currUserId),
                     AuthorInfo = new BaseUserInfoDisplay() {
@@ -256,6 +257,7 @@ namespace fso.Data.EntityRepositories
                 .Select(c => new PostCard()
                 {
                     DateUtcPublished = c.DateUtcPublished,
+                    UrlKey = c.UrlKey,
                     ReviewCount=c.Reviews.Count(),
                     LikeCount=c.LikedUsers.Count(),
                     IsPublished = c.IsPublished,
@@ -314,6 +316,7 @@ namespace fso.Data.EntityRepositories
                     Content = p.Content,
                     Title = p.Title,
                     Description = p.Description,
+                    UrlKey = p.UrlKey,
                     Id = p.Id,
                     CollectionId = p.CollectionId                    
                 })
@@ -486,6 +489,7 @@ namespace fso.Data.EntityRepositories
                         Id = q.Id,
                         Title = q.Title,
                         ActiveThumbnailIndex = 0,
+                        UrlKey = q.UrlKey,
                         DateUtcPublished = q.DateUtcPublished,
                         Rating = q.Rating ?? 0,
                         UserInfo = new UserInfoExtraSmall()

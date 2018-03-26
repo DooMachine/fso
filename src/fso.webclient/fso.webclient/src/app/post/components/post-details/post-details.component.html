@@ -12,7 +12,7 @@
           <span>{{post.dateUtcPublished | utcdate | date:'d MMM yy - hh:mm'}}</span>
           <span class="settingsButton" *ngIf="authUserId == post.authorInfo.appUserId"> 
             - <a 
-            [routerLink]="['/post',post.id,'edit']"
+            [routerLink]="['/post',post.urlKey,post.id,'edit']"
             mat-icon-button>
               <mat-icon aria-label="Edit Post">settings</mat-icon>
             </a> - <a 
@@ -36,7 +36,7 @@
       </mat-card-header>   
       <mat-card-title>
         <a class="no-anchor-text a-grey"
-        [routerLink]="['/post',post.id]">
+        [routerLink]="['/post',post.urlKey,post.id]">
         {{post.title}}</a>
     </mat-card-title>   
      

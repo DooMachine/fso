@@ -452,6 +452,7 @@ namespace fso.Data.EntityRepositories
                 .Take(pageSize)
                 .Select(f => new UserBestPost() {
                     Title = f.Title,
+                    UrlKey = f.UrlKey,
                     Id = f.Id,         
                 }).ToList();
 
@@ -469,6 +470,7 @@ namespace fso.Data.EntityRepositories
             {
                 post.ThumbnailUrls = new List<string>();
                 post.ActiveThumbnailIndex = 0;
+                
                 var belongingPostParts = postParts.Where(p => p.PostId == post.Id);
                 foreach (var postpart in belongingPostParts)
                 {
@@ -505,6 +507,7 @@ namespace fso.Data.EntityRepositories
                         .Select(p => new PostCardModel()
                         {
                             DateUtcPublished = p.DateUtcPublished,
+                            UrlKey = p.UrlKey,
                             AuthorInfo = new UserCardModel()
                             {
                                 AppUserId = p.UserInfoId,
@@ -618,6 +621,7 @@ namespace fso.Data.EntityRepositories
                         .Select(p => new PostCardModel()
                         {
                             DateUtcPublished = p.DateUtcPublished,
+                            UrlKey = p.UrlKey,
                             AuthorInfo = new UserCardModel()
                             {
                                 AppUserId = p.UserInfoId,
@@ -737,6 +741,7 @@ namespace fso.Data.EntityRepositories
                 .Select(p=> new PostActivityEntity()
                 {
                     DateUtcPublished = p.Entity.DateUtcPublished,
+                    UrlKey = p.Entity.UrlKey,
                     Content = p.Entity.Content,
                     Title = p.Entity.Title,
                     Id = p.Entity.Id,

@@ -60,11 +60,11 @@ export class MyHammerConfig extends HammerGestureConfig  {
         StoreModule.forFeature('post', reducers, {metaReducers: metaReducer}),
         EffectsModule.forFeature([PostEffects,AddReviewEffects,PostReviewLikeEffects]),
         RouterModule.forChild([
-            { path: '', component: PostComponent, pathMatch: 'full' },
-            { path: ':postId/review/:reviewId', component: PostComponent },
-            { path: ':postId/review/:reviewId/c', component: PostComponent },
-            { path: ':postId/review/:reviewId/c/:commentId', component: PostComponent },
-            { path: ':postId', component: PostComponent,
+            { path: '', redirectTo:'/' , pathMatch: 'full' },
+            { path: ':urlKey/:postId/review/:reviewId', component: PostComponent },
+            { path: ':urlKey/:postId/review/:reviewId/c', component: PostComponent },
+            { path: ':urlKey/:postId/review/:reviewId/c/:commentId', component: PostComponent },
+            { path: ':urlKey/:postId', component: PostComponent,
                 children:[{
                   path:'addreview', canActivate:[AuthGuard], component:PostAddreviewComponent
                 },

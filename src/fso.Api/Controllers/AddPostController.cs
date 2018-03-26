@@ -82,7 +82,7 @@ namespace fso.Api.Controllers
                 // Publish to remove Image
                 _bus.Publish<PostPartRemovedAction>(new PostPartRemovedAction()
                 {
-                    PostPartId = model.PostPartId,
+                    PostPartId = model.PostPartId,                    
                     DateUtcAction = DateTime.UtcNow,
                     LargeUrl = ret.LargeImageUrl,
                     SmallUrl = ret.SmallImageUrl,
@@ -118,6 +118,7 @@ namespace fso.Api.Controllers
                 _bus.Publish<UserPublishedPostAction>(new UserPublishedPostAction()
                 {
                     DateUtcAction = DateTime.UtcNow,
+                    PostUrlKey = ret.PostUrlKey,
                     PostId = ret.PublishedPostId,
                     UserId = idClaim.Value
                 });

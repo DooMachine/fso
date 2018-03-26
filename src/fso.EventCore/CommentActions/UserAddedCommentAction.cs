@@ -10,5 +10,6 @@ namespace fso.EventCore.CommentActions
         //public int? ParentCommentId { get; set; }
         public int CommentId { get; set; }
         public int PostId { get; set; }
+        public string PostUrlKey { get; set; }
     }
 }

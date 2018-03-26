@@ -26,9 +26,7 @@ import { PlatformService } from "../services/platform.service";
         }
         
         this.observer = new IntersectionObserver(this.scroll, options);
-        console.log(this.querySelector);
         var target = document.querySelector(this.querySelector);
-        console.log(target);
         this.observer.observe(target);
       }
     }

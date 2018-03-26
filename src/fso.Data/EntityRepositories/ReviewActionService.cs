@@ -94,6 +94,7 @@ namespace fso.Data.EntityRepositories
                 PostRate = rating,
                 UserReputation = reviewerReputation
             };
+            
             _reviewSet.Add(newReview);
             if (_context.SaveChanges() != 0)
             {
@@ -121,6 +122,7 @@ namespace fso.Data.EntityRepositories
                 
                 _postSet.Update(post);
                 ret.PostAuthorId = post.UserInfoId;
+                ret.PostUrlKey = post.UrlKey;
                 // Remove post rate to calculate when needed
                 _postCacheService.RemovePostRateCache(post.Id);
                 if(_context.SaveChanges()>0)
@@ -171,6 +173,8 @@ namespace fso.Data.EntityRepositories
             var rev = _reviewSet.Select(p => new { p.Id, p.UserId,p.PostId }).FirstOrDefault(p => p.Id == reviewId);
             ret.ReviewAuthorId = rev.UserId;
             ret.PostId = rev.PostId ?? 0;
+            Post pst = _context.Set<Post>().AsNoTracking().FirstOrDefault(p=>p.Id==ret.PostId);
+            ret.PostUrlKey = pst.UrlKey;
             if (rlike==null)
             {
                  _dbEntitySet.Add(new UserReview()
@@ -281,7 +285,8 @@ namespace fso.Data.EntityRepositories
             }
             if (_context.SaveChanges() != 0)
             {
-
+                Post pst = _context.Set<Post>().AsNoTracking().FirstOrDefault(p=>p.Id==ret.PostId);
+                ret.PostUrlKey = pst.UrlKey;
                 prevLikedReviews =  prevLikedReviews.Where(val => val != reviewId).ToArray();
                 prevDislikedReviews = prevDislikedReviews.Append(reviewId).Distinct().ToArray();
 

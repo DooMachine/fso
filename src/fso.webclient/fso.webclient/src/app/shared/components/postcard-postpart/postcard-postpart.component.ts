@@ -21,7 +21,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     )
   ],
   template: `
-  <a [routerLink] ="['/post',postId]">
+  <a [routerLink] ="['/post',postUrlKey,postId]">
     <mat-grid-list cols="24" rowHeight="2:7">
     <mat-grid-tile
         *ngFor="let tile of gridTiles; let i=index"        
@@ -66,6 +66,7 @@ export class PostcardPostpartComponent implements OnInit, OnDestroy,AfterViewIni
   @Input() postParts: PostCardPostPart[];
   @Input() alphaColor:string = 'white';
   @Input() postId: number;
+  @Input() postUrlKey:string;
   @Input() username:string;
   gridTiles = [];
   isObserved:boolean = false;

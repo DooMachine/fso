@@ -31,33 +31,40 @@ export class AddReviewEffects {
         const formBody = {...action.payload,postId:postId};
         return this.addReviewService
             .PublishReview(formBody)
-            .switchMap((resp) => {
+            .map((resp) => {
                 let error;
                 let showForm;
-                let obs=[];
-                if(resp.isActionSucceed){
-                    obs.push([
-                        new addReviewActions.SubmitFormSuccess({error: error,showForm: showForm}),
-                        new reviewActions.AddReviews({entities:[resp.review]})
-                    ]);
-                    
-                }else{
-                    obs.push([
-                        new addReviewActions.SubmitFormFail({error: resp.errorInformation.userInformation,showForm: true}),
-                        new fromCore.ShowSnackBarAction({message:resp.errorInformation.userInformation,action:null,config:{duration:6000}})
-                    ]);
-                }
-                return Observable.from(obs);                  
+                let obs;
+                if(resp.isActionSucceed){    
+                    showForm = false;                
+                    return new addReviewActions.SubmitFormSuccess({error: error,showForm: showForm,review:resp.review})                      
+                }else{   
+                    showForm = true;                 
+                    return new addReviewActions.SubmitFormFail({error: resp.errorInformation.userInformation,showForm: true})                      
+                }                 
             })
             .catch((error) => {
-                // You probably haven't called this yet,
-                //   but `catch` must return `Obsrvable`
-                // Again, if you want an array use `Observable.from([ /* array */ ])`
                 return Observable.of(
                   new addReviewActions.SubmitFormFail({error: "Oops an error occured"})
                 );
-              });
+            });
     });
+
+
+    @Effect()
+    onReviewFail$: Observable<Action> =
+    this.actions$.ofType<addReviewActions.SubmitFormFail>(addReviewActions.AddReviewActionTypes.SUBMIT_FORM_FAIL)
+    .switchMap((action) => {
+        return Observable.of(new fromCore.ShowSnackBarAction({message:action.payload.error,action:null,config:{duration:6000}}));        
+    });
+
+    @Effect()
+    onReviewSuccess$: Observable<Action> =
+    this.actions$.ofType<addReviewActions.SubmitFormSuccess>(addReviewActions.AddReviewActionTypes.SUBMIT_FORM_SUCCESS)
+    .switchMap((action) => {
+        return Observable.of(new reviewActions.AddReviews({entities:[action.payload.review]}));        
+    });
+
     @Effect()
     onSubmitReviewShowProgressBar$: Observable<Action> =
     this.actions$.ofType<addReviewActions.SubmitForm>(addReviewActions.AddReviewActionTypes.SUBMIT_FORM)
